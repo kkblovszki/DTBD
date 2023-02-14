@@ -1,2 +1,1 @@
-# Digital Testbed and Benchmark Development
-## For self-adaptive and self-organizing systems
+# Digital Testbed and Benchmark Development for Self-adaptive and Self-organizing Systems
