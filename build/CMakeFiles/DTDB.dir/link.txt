@@ -1,1 +1,0 @@
-/usr/bin/g++  -Wall -Wextra -Wpedantic -Werror -g CMakeFiles/DTDB.dir/src/main.cpp.o -o bin/DTDB   -L/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/libs 
