@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/build",
+  "command": "/usr/bin/g++  -I/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/include  -Wall -Wextra -Wpedantic -Werror -g -std=gnu++20 -o CMakeFiles/DTDB_Framework.dir/src/main.cpp.o -c /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/src/main.cpp",
+  "file": "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/src/main.cpp"
+},
+{
+  "directory": "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/build",
+  "command": "/usr/bin/g++  -I/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/include  -Wall -Wextra -Wpedantic -Werror -g -std=gnu++20 -o CMakeFiles/DTDB_tests.dir/test/add_test.cpp.o -c /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/test/add_test.cpp",
+  "file": "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/test/add_test.cpp"
+}
+]

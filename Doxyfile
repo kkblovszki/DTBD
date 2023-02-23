@@ -1,0 +1,16 @@
+# Set the project name and version
+PROJECT_NAME           = "DTDB Code Documentation"
+PROJECT_BRIEF          = "Digital Testbed and Benchmarking development for self-adaptive and self-organizing systems"
+PROJECT_NUMBER         = "0.1"
+
+# Specify the source code directories to be documented
+INPUT                  = ../src
+
+# Specify the output directory for the generated documentation
+OUTPUT_DIRECTORY       = ../docs
+
+# Enable the generation of a combined documentation page
+GENERATE_HTML          = YES
+INLINE_SOURCES         = YES
+GENERATE_TREEVIEW      = YES
+SEARCHENGINE           = NO
