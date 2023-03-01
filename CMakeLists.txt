@@ -63,10 +63,14 @@ include_directories(include)
 # ----------------------------- Add the source files -----------------------------
 
 # Add the source files from the 'src' directory
-add_executable(DTDB_Framework src/main.cpp)
+add_executable(DTDB_main src/main.cpp)
+add_executable(DTDB_core src/core.Benchmark.cpp src/core.Scenario.cpp src/core.Testbed.cpp)
+add_executable(DTDB_additional src/SimulatorCreator.cpp src/SimulatorListener.cpp)
 
 # Set the output directory for the 'my_project' target to 'bin'
-set_target_properties(DTDB_Framework PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+set_target_properties(DTDB_main PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+set_target_properties(DTDB_core PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+set_target_properties(DTDB_additional PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 
 
 # ------------------------------- Add the tests -------------------------------

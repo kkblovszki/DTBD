@@ -1,12 +1,14 @@
 #ifndef SIMULATOR_MOCKUP_INTERFACE_HPP
 #define SIMULATOR_MOCKUP_INTERFACE_HPP
 #include "core.Types.hpp"
+#include "include/Listener.hpp"
 
 class SimulatorMockUpInterface
 {
 private:
     SimulatorInfo simulator;
     std::map<std::string,int> APIFunctionPassThrough;
+    std::unique_ptr<Listener> activeSimulatorListener;
 public:
     SimulatorMockUpInterface();
     ~SimulatorMockUpInterface();
@@ -19,6 +21,7 @@ public:
     virtual void RunSimulation() = 0;
     virtual void GetRuntimeData() = 0;
     std::vector<std::size_t> GetSimulationResults(){};
+    void SetListener(std::unique_ptr<Listener> uniqueListener) {activeSimulatorListener = std::move(uniqueListener); uniqueListener.reset();}
 };
 
 SimulatorMockUpInterface::SimulatorMockUpInterface() {
@@ -39,6 +42,7 @@ SimulatorMockUpInterface::SimulatorMockUpInterface(SimulatorInfo specifiedSimula
     
     APIFunctionPassThrough = specifiedAPIFunction;
 }
+
 
 
 

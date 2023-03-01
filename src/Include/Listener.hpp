@@ -4,11 +4,10 @@
 
 class Listener {
 private:
-    std::unique_ptr<Listener> ActiveSimulatorListener;
+    
 public:
     Listener();
     ~Listener();
-    Listener(std::unique_ptr<Listener> specifiedListener);
     
     virtual void OnSimulationStart() = 0;
     virtual void OnSimulationEnd() = 0;
@@ -21,10 +20,6 @@ Listener::Listener() {
 }
 
 Listener::~Listener() {
-
-}
-
-Listener::Listener(std::unique_ptr<Listener> specifiedListener) {
 
 }
 
