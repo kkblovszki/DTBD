@@ -6,7 +6,17 @@ SimulatorCreator::~SimulatorCreator(){}
 
 void SimulatorCreator::CreatePublisher(SimulatorType type){};
 void SimulatorCreator::CreateSubscriber(SimulatorType type){};
-    
+
+const std::map<std::string, SimulatorCreator::SimulatorType>& SimulatorCreator::stringToSimType() {
+    static const std::map<std::string, SimulatorType> simMap = {
+        {"EVOCRAFT", SimulatorType::EVOCRAFT},
+        {"ALCHEMIST", SimulatorType::ALCHEMIST},
+        {"NS3", SimulatorType::NS3}
+    };
+        
+    return simMap;
+}
+
 std::unique_ptr<SimulatorMockUpInterface> SimulatorCreator::CreateSimulator(const std::string& simulatorName){
     auto stringType = stringToSimType().find(simulatorName);
     if (stringType == stringToSimType().end()) {
@@ -31,12 +41,3 @@ std::unique_ptr<SimulatorMockUpInterface> SimulatorCreator::CreateSimulator(cons
     return nullptr;
 };
 
-const std::map<std::string, SimulatorCreator::SimulatorType>& SimulatorCreator::stringToSimType() {
-    static const std::map<std::string, SimulatorType> simMap = {
-        {"EVOCRAFT", SimulatorType::EVOCRAFT},
-        {"ALCHEMIST", SimulatorType::ALCHEMIST},
-        {"NS3", SimulatorType::NS3}
-    };
-        
-    return simMap;
-}
