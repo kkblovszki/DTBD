@@ -21,7 +21,7 @@ public:
     virtual void RunSimulation() = 0;
     virtual void GetRuntimeData() = 0;
     std::vector<std::size_t> GetSimulationResults(){};
-    void SetListener(std::unique_ptr<Listener> uniqueListener) {activeSimulatorListener = std::move(uniqueListener); uniqueListener.reset();}
+    void SetListener(std::unique_ptr<Listener> uniqueListener) {activeSimulatorListener = std::move(uniqueListener); /* uniqueListener.reset(); */ }
 };
 
 SimulatorMockUpInterface::SimulatorMockUpInterface() {

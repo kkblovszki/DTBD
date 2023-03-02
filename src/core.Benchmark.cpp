@@ -42,14 +42,12 @@ Scenario::Scenario(std::string uniqueName, std::string simulatorType) : scenario
     std::unique_ptr<Listener> newListener = std::make_unique<Listener>();
 
     // create new simulator instance 
-    SimulatorCreator::CreateSimulator(simulatorType);
+    std::unique_ptr<SimulatorMockUpInterface> Simulator = SimulatorCreator::CreateSimulator(simulatorType);
 
 
     // connect that listener to the simulator active listener
-    SimulatorMockUpInterface::SetListener()
+    Simulator->SetListener(std::move(newListener));
 }
-
-
 
 
 typedef struct Parameter {
