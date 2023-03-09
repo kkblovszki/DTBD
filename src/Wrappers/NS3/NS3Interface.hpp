@@ -7,10 +7,13 @@ private:
     SimulatorInfo simulator;
     std::map<std::string,int> APIFunctionPassThrough;
     std::unique_ptr<Listener> activeSimulatorListener;
+    void* ns3LibHandler;
+
 public:
     NS3Interface();
     ~NS3Interface();
 
+    virtual void setLibraryHandle(void* libraryHandle) override;
     virtual void LoadConfiguration(std::string configFileName) override;
     virtual void WriteToConfiguration(std::string configFileName) override;
     virtual void LoadProblem(std::map<std::string, std::string> CoreProblemCallback()) override;

@@ -11,7 +11,7 @@ typedef struct Metrics {
     std::string name;
     std::string unit;
 
-    Metrics(){name = 'NULL'; unit = 'NULL';};
+    Metrics(){name = "NULL"; unit = "NULL";};
     Metrics(std::string specifiedName, std::string specifiedUnit){name = specifiedName; unit = specifiedUnit;}
     ~Metrics(){};
 } Metrics;
@@ -19,16 +19,25 @@ typedef struct Metrics {
 typedef struct Measure {
     Metrics metric;
     std::string label;
-    std::vector<std::string> readings;
+    std::map<Metrics, std::vector<std::string>> readings;
+    //std::vector<std::string> readings;
 
-    Measure(){metric = Metrics(); label = 'NULL'; readings = {};};
-    ~Measure(){};
-    Measure(Metrics specifiedMetric, std::string specifiedLabel, std::vector<std::string> specifiedReadings) {
-        metric = specifiedMetric; 
-        label = specifiedLabel;
-        readings = specifiedReadings;
-    };
+    Measure(Metrics specifiedMetric, 
+            std::string specifiedLabel, 
+            std::map<Metrics, std::vector<std::string>> specifiedReadings) 
+            : metric(specifiedMetric), 
+            label(specifiedLabel), 
+            readings(specifiedReadings){};
+    Measure(){};
 } Measure;
+
+typedef struct Parameter {
+    std::string name;
+    size_t defaultParameter;
+    // UML diagram says type <V> for the Parameter struct, as well as the type for the variable undertest, yet we don't know exactly what we means by this 
+    size_t underTest; 
+
+} Parameter;
 
 typedef struct SimulatorInfo {
     std::string simulatorName;
@@ -36,27 +45,17 @@ typedef struct SimulatorInfo {
     std::string nativeOutputType;
     std::vector<std::string> functions;
     std::vector<std::string> parameters;
-
-    SimulatorInfo() {
-        simulatorName = 'NULL';
-        simulatorVersion = 'NULL';
-        nativeOutputType = 'NULL';
-        functions = {};
-        parameters = {};
-    };
-    ~SimulatorInfo(){};
-    SimulatorInfo(std::string specifiedName, 
-                  std::string specifiedVersion,
-                  std::string specifiedOutputType,
-                  std::vector<std::string> specifiedFunctions, 
-                  std::vector<std::string> specifiedParamaters) {
-        simulatorName = specifiedName;
-        simulatorVersion = specifiedVersion;
-        nativeOutputType = specifiedOutputType;
-        functions = specifiedFunctions;
-        parameters = specifiedParamaters;
-    };
-
+    
+    SimulatorInfo(const std::string& simulatorName  = "", 
+                const std::string& simulatorVersion = "", 
+                const std::string& nativeOutputType = "", 
+                const std::vector<std::string>& functions   = {}, 
+                const std::vector<std::string>& parameters  = {}) 
+                : simulatorName(simulatorName), 
+                simulatorVersion(simulatorVersion), 
+                nativeOutputType(nativeOutputType), 
+                functions(functions), 
+                parameters(parameters){}
 } SimulatorInfo;
 
 #endif

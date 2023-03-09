@@ -8,7 +8,7 @@ project(DTDB_Framework)
 set(CMAKE_CXX_STANDARD 20)
 
 # Set the compiler flags
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -Werror")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wpedantic -Werror") #-Wextra
 
 #Add the shared libraries
 #add_library(DTDB_Framework SHARED src/handlers/Handler.cpp src/handlers/Handler.h)
@@ -64,13 +64,13 @@ include_directories(include)
 
 # Add the source files from the 'src' directory
 add_executable(DTDB_main src/main.cpp)
-add_executable(DTDB_core src/core.Benchmark.cpp src/core.Scenario.cpp src/core.Testbed.cpp)
-add_executable(DTDB_additional src/SimulatorCreator.cpp src/SimulatorListener.cpp)
+add_executable(DTDB_core src/ListenerCreator.cpp src/core.Testbed.cpp)
+#add_executable(DTDB_additional src/SimulatorCreator.cpp src/SimulatorListener.cpp)
 
 # Set the output directory for the 'my_project' target to 'bin'
 set_target_properties(DTDB_main PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
-set_target_properties(DTDB_core PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
-set_target_properties(DTDB_additional PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+#set_target_properties(DTDB_core PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+#set_target_properties(DTDB_additional PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 
 
 # ------------------------------- Add the tests -------------------------------
