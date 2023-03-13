@@ -1,9 +1,11 @@
 #include "core.Types.hpp"
+#include "AbstractListener.hpp"
 #include "Listener.hpp"
 
 class ListenerCreator {
 public:
-    virtual ~ListenerCreator() {}
+    ListenerCreator(){}
+    ~ListenerCreator(){}
 
-    static const std::unique_ptr<Listener> createListener(const std::string& listenerType);
+    static std::unique_ptr<Listener> CreateListener(const std::string& listenerType);
 };

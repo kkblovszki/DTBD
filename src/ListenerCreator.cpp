@@ -1,8 +1,8 @@
 #include "Include/ListenerCreator.hpp"
 
-std::unique_ptr<Listener> ListenerCreator::createListener(const std::string& listenerType) {
+std::unique_ptr<Listener> ListenerCreator::CreateListener(const std::string& listenerType){
     if (listenerType == "DefaultListener") {
-        return nullptr; // std::make_unique<Listeners::Default::TestListener>();
+        return std::make_unique<Core::Listeners::TestListener>(); // std::make_unique<Listeners::Default::TestListener>();
     }
     else {
         return nullptr;

@@ -1,5 +1,6 @@
 #ifndef SIMULATOR_CREATOR_HPP
 #define SIMULATOR_CREATOR_HPP
+
 #include "core.Types.hpp"
 #include "SimulatorMockUpInterface.hpp"
 
@@ -26,10 +27,12 @@ private:
 public:
     //SimulatorCreator();
     ~SimulatorCreator();
+
+    enum class SimulatorType;
     
     void CreatePublisher(SimulatorType type);
     void CreateSubscriber(SimulatorType type);
-    
+
     static std::unique_ptr<SimulatorMockUpInterface> CreateSimulator(const std::string& simulatorName);
 };
 

@@ -52,26 +52,22 @@ endif()
 
 
 # Include the header files from the 'include' directory
-include_directories(include)
+include_directories(src/include)
 
 # Link the libraries from the 'libs' directory
 link_directories(libs)
-
-# Include the header files from the 'include' directory
-include_directories(include)
 
 # ----------------------------- Add the source files -----------------------------
 
 # Add the source files from the 'src' directory
 add_executable(DTDB_main src/main.cpp)
-add_executable(DTDB_core src/ListenerCreator.cpp src/core.Testbed.cpp)
-#add_executable(DTDB_additional src/SimulatorCreator.cpp src/SimulatorListener.cpp)
+add_executable(DTDB_sims src/Wrappers/NS3/NS3Interface.cpp)
+#add_executable(DTDB_additional src/SimulatorCreator.cpp src/ListenerCreator.cpp)src/core.Scenario.cpp src/core.Benchmark.cpp
 
 # Set the output directory for the 'my_project' target to 'bin'
 set_target_properties(DTDB_main PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
-#set_target_properties(DTDB_core PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+set_target_properties(DTDB_sims PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/simulators/bin")
 #set_target_properties(DTDB_additional PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
-
 
 # ------------------------------- Add the tests -------------------------------
 
@@ -82,3 +78,27 @@ add_executable(DTDB_tests test/add_test.cpp)
 set_target_properties(DTDB_tests PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/tests/bin")
 
 
+# ----------------------------- Add Static libraries -----------------------------
+
+add_library(DTDB_framework 
+            src/core.Testbed.cpp 
+            src/core.Scenario.cpp 
+            src/core.Benchmark.cpp
+            src/ListenerCreator.cpp
+            src/SimulatorCreator.cpp 
+            src/Listener.cpp 
+            )
+
+set_target_properties(DTDB_framework PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/bin/static_libs")
+
+target_link_libraries(DTDB_main DTDB_framework)
+
+# ----------------------------- Add Shared libraries -----------------------------
+
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/shared_lib)
+
+add_library(DTDB_framework_shared SHARED 
+            src/Wrappers/NS3/NS3Interface.cpp
+            )
+
+set_target_properties(DTDB_framework PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/bin/shared_libs")          

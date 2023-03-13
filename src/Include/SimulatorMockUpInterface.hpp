@@ -1,13 +1,13 @@
 #ifndef SIMULATOR_MOCKUP_INTERFACE_HPP
 #define SIMULATOR_MOCKUP_INTERFACE_HPP
 #include "core.Types.hpp"
-#include "Listener.hpp"
+#include "AbstractListener.hpp"
 
 class SimulatorMockUpInterface
 {
 private:
     SimulatorInfo simulator;
-    std::map<std::string,int> APIFunctionPassThrough;
+    std::map<std::string, int> APIFunctionPassThrough;
     std::unique_ptr<Listener> activeSimulatorListener;
 
 public:

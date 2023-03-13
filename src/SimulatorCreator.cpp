@@ -1,10 +1,19 @@
 #include "include/SimulatorCreator.hpp"
 #include <dlfcn.h>
 
-SimulatorCreator::SimulatorCreator(/* args */){}
-SimulatorCreator::~SimulatorCreator(){}
-
 //i want to add code documentation of the SimulatorCreator::createsimulator function to doxygen. how can i do it?
+
+
+const std::map<std::string, SimulatorCreator::SimulatorType>& SimulatorCreator::stringToSimType() {
+    static const std::map<std::string, SimulatorType> simMap = {
+        {"EVOCRAFT", SimulatorType::EVOCRAFT},
+        {"ALCHEMIST", SimulatorType::ALCHEMIST},
+        {"NS3", SimulatorType::NS3}
+    };
+        
+    return simMap;
+}
+
 
 /** 
  * @brief function that creates a simulator object based on the name of the simulator
@@ -18,12 +27,8 @@ SimulatorCreator::~SimulatorCreator(){}
  * while ensuring that each simulator instance have its own library handle.
  */
 std::unique_ptr<SimulatorMockUpInterface> SimulatorCreator::CreateSimulator(const std::string& simulatorName){
-    auto stringType = stringToSimType().find(simulatorName);
-    if (stringType == stringToSimType().end()) {
-        throw std::invalid_argument("Unsupported Simulator");
-    }
-    
-    std::string libName = "./lib" + simulatorName + "Simulator.so";
+    // Load the shared library of the specific simulator
+    std::string libName = "./bin/shared_libs/lib" + simulatorName + "Simulator.so";
     void* libraryHandle = dlopen(libName.c_str(), RTLD_LAZY);
     if (!libraryHandle) {
         std::cerr << "Error loading dynamic library: " << dlerror() << "\n";
@@ -39,16 +44,33 @@ std::unique_ptr<SimulatorMockUpInterface> SimulatorCreator::CreateSimulator(cons
         return nullptr;
     }
 
-    // Cast the constructor function pointer to the appropriate type
+     // Cast the constructor function pointer to the appropriate type
     using CreateFunc = SimulatorMockUpInterface* (*)();
     CreateFunc createFunc = reinterpret_cast<CreateFunc>(constructor);
-
     // Call the constructor function to create an instance of the specific simulator
-    SimulatorMockUpInterface* simulator = createFunc();
-
+    auto simulator = createFunc();
     simulator->setLibraryHandle(libraryHandle);
 
-    return std::make_unique<SimulatorMockUpInterface>(simulator);
+    return std::unique_ptr<SimulatorMockUpInterface>(simulator);
+
+    switch (stringToSimType().at(simulatorName)) {
+        case SimulatorType::EVOCRAFT:
+            std::cout << "Creating Evocraft simulator" << std::endl;
+            return std::make_unique<EvocraftSimulator>(simulator);
+            break;
+        case SimulatorType::ALCHEMIST:
+            std::cout << "Creating Alchemist simulator" << std::endl;
+            break;
+        case SimulatorType::NS3:
+            std::cout << "Creating NS3 simulator" << std::endl;
+            break;
+        default:
+            std::cerr << "Error: Simulator type not supported" << std::endl;
+            dlclose(libraryHandle);
+            return nullptr;
+    }
+
+   
     
 };
 
