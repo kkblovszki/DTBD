@@ -1,19 +1,21 @@
 #include "include/SimulatorCreator.hpp"
 #include <dlfcn.h>
+#include <cassert>
 
-//i want to add code documentation of the SimulatorCreator::createsimulator function to doxygen. how can i do it?
 
-
+/**
+ * @brief 
+ * @details converts a string to a SimulatorType enum value for the simulator creator function
+ * @return const std::map<std::string, SimulatorCreator::SimulatorType>& 
+ */
 const std::map<std::string, SimulatorCreator::SimulatorType>& SimulatorCreator::stringToSimType() {
     static const std::map<std::string, SimulatorType> simMap = {
         {"EVOCRAFT", SimulatorType::EVOCRAFT},
         {"ALCHEMIST", SimulatorType::ALCHEMIST},
         {"NS3", SimulatorType::NS3}
     };
-        
     return simMap;
 }
-
 
 /** 
  * @brief function that creates a simulator object based on the name of the simulator
@@ -27,50 +29,98 @@ const std::map<std::string, SimulatorCreator::SimulatorType>& SimulatorCreator::
  * while ensuring that each simulator instance have its own library handle.
  */
 std::unique_ptr<SimulatorMockUpInterface> SimulatorCreator::CreateSimulator(const std::string& simulatorName){
+
+    // Check if the simulator name is supported
+    auto upperCaseSimulatorName = stringForceUpperCase(simulatorName);
+
+    if (stringToSimType().find(upperCaseSimulatorName) == stringToSimType().end()) {
+        throw std::invalid_argument("Simulator name not supported");
+    }
+
+    //find the dynamic/shared libraries
+    std::string LibraryPath = __FILE__;
+    std::string LibraryDir = LibraryPath.substr(0, LibraryPath.find_last_of("/\\")) + "/../build/bin/shared_libs/";
+    
     // Load the shared library of the specific simulator
-    std::string libName = "./bin/shared_libs/lib" + simulatorName + "Simulator.so";
+    std::string libName = LibraryDir + "lib" + upperCaseSimulatorName + "Simulator.so";
     void* libraryHandle = dlopen(libName.c_str(), RTLD_LAZY);
     if (!libraryHandle) {
         std::cerr << "Error loading dynamic library: " << dlerror() << "\n";
         return nullptr;
     }
+    assert(libraryHandle != nullptr);
+
+
+    // Get the name of the class for the specific simulator
+    std::string simulatorClassName = upperCaseSimulatorName + "_mockup_interface";
 
     // Get the address of the constructor function for the specific simulator
-    std::string constructorName = "_ZN" + simulatorName.length() + simulatorName + "SimulatorC1Ev";
-    void* constructor = dlsym(libraryHandle, constructorName.c_str());
-    if (!constructor) {
+    std::string constructorName = "_ZN" + std::to_string(simulatorClassName.length()) + simulatorClassName + "C1Ev";
+
+    // Get the address of the constructor function for the specific simulator
+    //_ZN20NS3_mockup_interface15createSimulatorE13SimulatorInfoSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiSt4lessIS7_ESaISt4pairIKS7_iEEE
+    
+    using CreateSim = SimulatorMockUpInterface* (*)(); 
+    CreateSim SimConstructor = reinterpret_cast<CreateSim>(dlsym(libraryHandle, "createSimulator"));
+    //void* constructor = dlsym(libraryHandle, constructorName.c_str());
+    if (!SimConstructor){
         std::cerr << "Error getting constructor address: " << dlerror() << "\n";
         dlclose(libraryHandle);
         return nullptr;
     }
 
-     // Cast the constructor function pointer to the appropriate type
-    using CreateFunc = SimulatorMockUpInterface* (*)();
-    CreateFunc createFunc = reinterpret_cast<CreateFunc>(constructor);
-    // Call the constructor function to create an instance of the specific simulator
-    auto simulator = createFunc();
+    std::unique_ptr<SimulatorMockUpInterface> simulator(SimConstructor());
     simulator->setLibraryHandle(libraryHandle);
+    
+    std::cout << "inside creator test" << std::endl;
+    simulator->RunSimulation();
 
-    return std::unique_ptr<SimulatorMockUpInterface>(simulator);
+    return simulator;
 
-    switch (stringToSimType().at(simulatorName)) {
-        case SimulatorType::EVOCRAFT:
-            std::cout << "Creating Evocraft simulator" << std::endl;
-            return std::make_unique<EvocraftSimulator>(simulator);
-            break;
-        case SimulatorType::ALCHEMIST:
-            std::cout << "Creating Alchemist simulator" << std::endl;
-            break;
-        case SimulatorType::NS3:
-            std::cout << "Creating NS3 simulator" << std::endl;
-            break;
-        default:
-            std::cerr << "Error: Simulator type not supported" << std::endl;
-            dlclose(libraryHandle);
-            return nullptr;
-    }
+    //
+    //SimulatorMockUpInterface* simulatorConstructor = reinterpret_cast<SimulatorMockUpInterface* (*)()>(constructor)();
 
-   
+    //call the simulator constructor to get create an instance of the choosen simulator
+
+
+    
+    
+    // Get the name of the class for the specific simulator
+    //std::string simulatorClassName = upperCaseSimulatorName + "_mockup_interface";
+//
+    //// Get the address of the constructor function for the specific simulator
+    //std::string constructorName = "_ZN" + std::to_string(simulatorClassName.length()) + simulatorClassName + "C1Ev";
+//
+    //std::cout << "Constructor name: " << constructorName << "\n";
+    //
+    ////assert(constructorName == "_ZN20NS3_mockup_interfaceC1Ev");
+//
+    //void* constructor = dlsym(libraryHandle, constructorName.c_str());
+    //if (!constructor) {
+    //    std::cerr << "Error getting constructor address: " << dlerror() << "\n";
+    //    dlclose(libraryHandle);
+    //    return nullptr;
+    //}
+//
+    //using ConstructorFunc = SimulatorMockUpInterface* (*)();
+    //// Create an instance of the specific simulator
+    //ConstructorFunc* simulatorConstructor = reinterpret_cast<ConstructorFunc*>(constructor);
+//
+    //assert(simulatorConstructor != nullptr);
+    //
+    //std::cout << "Constructor address: " << simulatorConstructor << "\n";
+
+    //auto simulator = simulatorConstructor.call();
+
+    // Cast the constructor function pointer to the appropriate type
+    //using CreateFunc = SimulatorMockUpInterface* (*)();
+    //
+    //CreateFunc createFunc = reinterpret_cast<CreateFunc>(constructor);
+    //
+    //// Call the constructor function to create an instance of the specific simulator
+    //auto simulator = createFunc();
+
+    //
     
 };
 

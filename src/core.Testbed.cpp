@@ -8,6 +8,7 @@ Testbed::~Testbed()
 {
 }
 
+
 std::map<std::string, Benchmark> benchmarks;
 
 void Testbed::CreateBenchmark(std::string benchmarkName){

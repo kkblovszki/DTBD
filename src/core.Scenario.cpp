@@ -1,19 +1,37 @@
 #include "Include/core.Scenario.hpp"
+#include <cassert>
 
-Scenario::~Scenario(){}
-
+/**
+ * @brief Construct a new Scenario:: Scenario object
+ * 
+ * @param uniqueName 
+ * @param simulatorType 
+ * @param ListenerType 
+ */
 Scenario::Scenario(std::string uniqueName, std::string simulatorType, std::string ListenerType) : scenarioName(uniqueName) {
+    // create new listener instance
+    std::unique_ptr<Listener> activeSimulatorListener = ListenerCreator::CreateListener(ListenerType);
 
-    std::unique_ptr<Listener> newListener = ListenerCreator::CreateListener(ListenerType);
+    // check if the listener is of type Listener
+    //static_assert(std::is_same_v<decltype(activeSimulatorListener), std::unique_ptr<Listener>>);
 
     // create new simulator instance 
-    std::unique_ptr<SimulatorMockUpInterface> Simulator = SimulatorCreator::CreateSimulator(simulatorType);
-    
+    Simulator = SimulatorCreator::CreateSimulator(simulatorType);
+
     // connect that listener to the simulator active listener
-    Simulator->SetListener(std::move(newListener));
+    Simulator->SetListener(std::move(activeSimulatorListener));
+}
+
+Scenario::~Scenario(){
+    return;
 }
 
 
+/**
+ * @brief Prepare the simulation for the given strategy
+ *  This function is used to prepare the simulation for the given strategy
+ * @param Strategy 
+ */
 void Scenario::PrepareSimulation(std::map<std::string, size_t> Strategy) {
     return;
 }

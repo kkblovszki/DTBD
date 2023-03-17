@@ -1,23 +1,26 @@
 #ifndef SIMULATOR_MOCKUP_INTERFACE_HPP
 #define SIMULATOR_MOCKUP_INTERFACE_HPP
+
 #include "core.Types.hpp"
 #include "AbstractListener.hpp"
 
 class SimulatorMockUpInterface
 {
 private:
-    SimulatorInfo simulator;
     std::map<std::string, int> APIFunctionPassThrough;
     std::unique_ptr<Listener> activeSimulatorListener;
 
 public:
-    SimulatorMockUpInterface();
-    ~SimulatorMockUpInterface();
-    SimulatorMockUpInterface(SimulatorInfo specifiedSimulator, std::map<std::string,int> specifiedAPIFunction);
+    SimulatorMockUpInterface(){};
+    ~SimulatorMockUpInterface(){};
+    //SimulatorMockUpInterface(SimulatorInfo specifiedSimulator, std::map<std::string,int> specifiedAPIFunction);
+    SimulatorInfo simulator;
+    //virtual void createSimulator(SimulatorInfo specifiedSimulator, std::map<std::string,int> specifiedAPIFunction);
+
+    virtual void* createSimulator() = 0;
 
     virtual void setLibraryHandle(void* libraryHandle) = 0;
     void SetListener(std::unique_ptr<Listener> uniqueListener) {activeSimulatorListener = std::move(uniqueListener); uniqueListener.reset(); }
-
     virtual void LoadConfiguration(std::string configFileName) = 0;
     virtual void WriteToConfiguration(std::string configFileName) = 0;
     virtual void LoadProblem(std::map<std::string, std::string> CoreProblemCallback()) = 0;

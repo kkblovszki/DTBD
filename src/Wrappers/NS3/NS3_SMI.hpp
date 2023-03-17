@@ -1,17 +1,20 @@
 #ifndef NS3_INTERFACE_HPP
 #define NS3_INTERFACE_HPP
-#include "./include/SimulatorMockUpInterface.hpp"
+#include "../include/SimulatorMockUpInterface.hpp"
 
-class NS3Interface : SimulatorMockUpInterface {
+class NS3_mockup_interface : SimulatorMockUpInterface {
 private:
-    SimulatorInfo simulator;
+
+    SimulatorInfo simulatorInfo;
     std::map<std::string,int> APIFunctionPassThrough;
     std::unique_ptr<Listener> activeSimulatorListener;
     void* ns3LibHandler;
 
 public:
-    NS3Interface();
-    ~NS3Interface();
+    NS3_mockup_interface();
+    ~NS3_mockup_interface();
+
+    void* createSimulator();
 
     virtual void setLibraryHandle(void* libraryHandle) override;
     virtual void LoadConfiguration(std::string configFileName) override;
@@ -20,7 +23,7 @@ public:
     virtual void LoadMetrics() override;
     virtual void RunSimulation() override;
     virtual void GetRuntimeData() override;
-    std::vector<std::size_t> GetSimulationResults(){};
+    std::vector<std::size_t> GetSimulationResults(){return std::vector<std::size_t>();};
 
 };
 

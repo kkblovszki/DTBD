@@ -3,57 +3,36 @@
 
 #include "AbstractListener.hpp"
 
+
+/**
+ * @brief This class is responsible for creating the listener instances
+ */
 namespace Core {
     namespace Listeners {
 
         class TestListener : public Listener {
-        private:
         public:
             TestListener();
             ~TestListener();
 
-             void OnSimulationStart(std::vector<Metrics> metrics) override {
-                std::cout << "Simulation started" << std::endl;
-            };
-
-            void OnSimulationEnd() override {
-                std::cout << "Simulation ended" << std::endl;
-            };
-
-            void OnSimulationUpdate() override {
-                std::cout << "Simulation updated" << std::endl;
-            };
-
-            void OnSimulationResult() override {
-                std::cout << "Simulation result" << std::endl;
-            };
+            void OnSimulationStart(std::vector<Metrics> metrics) override;
+            void OnSimulationEnd() override;
+            void OnSimulationUpdate() override;
+            void OnSimulationResult() override;
         };
 
-        class DefaultSimulatorListener : public Listener {
-        private:
-            /* data */
+        class DefaultListener : public Listener {
         public:
-            DefaultSimulatorListener(/* args */);
-            ~DefaultSimulatorListener();
+            DefaultListener();
+            ~DefaultListener();
 
-            void OnSimulationStart(std::vector<Metrics> metrics) override {
-                std::cout << "Simulation started" << std::endl;
-            };
-
-            void OnSimulationEnd() override {
-                std::cout << "Simulation ended" << std::endl;
-            };
-
-            void OnSimulationUpdate() override {
-                std::cout << "Simulation updated" << std::endl;
-            };
-
-            void OnSimulationResult() override {
-                std::cout << "Simulation result" << std::endl;
-            };
+            void OnSimulationStart(std::vector<Metrics> metrics) override;
+            void OnSimulationEnd() override;
+            void OnSimulationUpdate() override;
+            void OnSimulationResult() override;
         };
-    
-    }
-}
+    };
+};
+
 
 #endif

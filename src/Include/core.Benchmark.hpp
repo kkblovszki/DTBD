@@ -30,7 +30,6 @@ public:
     std::vector<std::string> RunScenariosWithParameters(std::map<std::string, Scenario> scenarios);
 
     std::vector<std::string> RunScenarioUsingStrategy(std::map<std::string, Scenario>, size_t executionStrategy);
-
 };
 
 

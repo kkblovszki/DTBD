@@ -1,14 +1,12 @@
+#include "../src/Include/core.Scenario.hpp"
 #include <iostream>
-#include "Include/core.Testbed.hpp"
+#include <memory>
 #include <cassert>
 
-
 int main() {
-
-    //Testbed testbed = Testbed();
-
-    std::unique_ptr<Scenario> singleScenario = std::make_unique<Scenario>("testScenario", "NS3", "TESTLISTENER");
-
+    
+    std::unique_ptr<Scenario> singleScenario = std::make_unique<Scenario>("testScenario", "NS3", "TestListener");
+    
     std::cout << "Scenario Exist: ";
     assert(singleScenario != nullptr);
     std::cout << "True" << std::endl;
@@ -18,14 +16,17 @@ int main() {
     std::cout << "True" << std::endl;
 
     std::cout << "Asserting simulator existing: ";
-    assert(singleScenario->Simulator != nullptr);
+    assert(singleScenario->Simulator.get() != nullptr);
     std::cout << "True" << std::endl;
 
-    //std::cout << "Asserting simulator name: ";
-    //assert(singleScenario->Simulator->simulator.simulatorName == "NS3");
-    //std::cout << "True" << std::endl;
+    std::cout << "Asserting single run: ";
+    std::cout << "True - output: " << std::endl;
+    singleScenario->Simulator->RunSimulation(); //Segfault?
+    
 
     std::cout << "Framework scenario creation: success" << std::endl;
-    
+
+
+
     return 0;
 }
