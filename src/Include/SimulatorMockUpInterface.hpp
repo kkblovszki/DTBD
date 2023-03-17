@@ -17,10 +17,8 @@ public:
     SimulatorInfo simulator;
     //virtual void createSimulator(SimulatorInfo specifiedSimulator, std::map<std::string,int> specifiedAPIFunction);
 
-    virtual void* createSimulator() = 0;
-
     virtual void setLibraryHandle(void* libraryHandle) = 0;
-    void SetListener(std::unique_ptr<Listener> uniqueListener) {activeSimulatorListener = std::move(uniqueListener); uniqueListener.reset(); }
+    virtual void SetListener(std::unique_ptr<Listener> uniqueListener) = 0;
     virtual void LoadConfiguration(std::string configFileName) = 0;
     virtual void WriteToConfiguration(std::string configFileName) = 0;
     virtual void LoadProblem(std::map<std::string, std::string> CoreProblemCallback()) = 0;
@@ -32,28 +30,5 @@ public:
     };
     
 };
-
-
-/*
-SimulatorMockUpInterface::SimulatorMockUpInterface() {
-    simulator = SimulatorInfo();
-    APIFunctionPassThrough = {};
-}
-
-SimulatorMockUpInterface::~SimulatorMockUpInterface() {
-
-}
-
-SimulatorMockUpInterface::SimulatorMockUpInterface(SimulatorInfo specifiedSimulator, std::map<std::string,int> specifiedAPIFunction) {
-    simulator = SimulatorInfo(specifiedSimulator.simulatorName,
-                              specifiedSimulator.simulatorVersion,
-                              specifiedSimulator.nativeOutputType,
-                              specifiedSimulator.functions,
-                              specifiedSimulator.parameters);
-    
-    APIFunctionPassThrough = specifiedAPIFunction;
-}
-*/
-
 
 #endif

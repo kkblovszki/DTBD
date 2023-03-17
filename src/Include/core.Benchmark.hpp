@@ -1,3 +1,6 @@
+#ifndef BENCHMARK_HPP
+#define BENCHMARK_HPP
+
 #include "core.Types.hpp"
 #include "SimulatorMockUpInterface.hpp"
 #include "core.Scenario.hpp"
@@ -33,3 +36,4 @@ public:
 };
 
 
+#endif

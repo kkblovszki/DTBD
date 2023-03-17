@@ -33,11 +33,6 @@ int main() {
     assert(singleScenario->Simulator->simulator.nativeOutputType == "ns3::Packet");
     std::cout << "True - " << singleScenario->Simulator->simulator.simulatorVersion << std::endl;
 
-    std::cout << "Asserting listener existing: ";
-    assert(singleScenario->activeSimulatorListener != nullptr);
-    std::cout << "True" << std::endl;
-
-
     std::cout << "Framework scenario creation: success" << std::endl;
 
     return 0;

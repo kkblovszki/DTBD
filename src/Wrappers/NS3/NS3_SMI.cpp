@@ -1,6 +1,10 @@
 #include "NS3_SMI.hpp"
 
-NS3_mockup_interface::NS3_mockup_interface(){}
+NS3_mockup_interface::NS3_mockup_interface(){
+    //initial setup
+    activeSimulatorListener = nullptr;
+    ns3LibHandler = nullptr;
+}
 
 NS3_mockup_interface::~NS3_mockup_interface(){}
 
@@ -36,7 +40,9 @@ void NS3_mockup_interface::LoadMetrics() {
 };
 
 void NS3_mockup_interface::RunSimulation(){
-    activeSimulatorListener->OnSimulationEnd();
+    std::cout << "NS3_mockup_interface::RunSimulation(): Running" << std::endl;
+    activeSimulatorListener->OnSimulationResult();
+    std::cout << "NS3_mockup_interface::RunSimulation(): Finished" << std::endl;
 };
 
 void NS3_mockup_interface::GetRuntimeData(){

@@ -55,13 +55,10 @@ std::unique_ptr<SimulatorMockUpInterface> SimulatorCreator::CreateSimulator(cons
     std::string simulatorClassName = upperCaseSimulatorName + "_mockup_interface";
 
     // Get the address of the constructor function for the specific simulator
-    std::string constructorName = "_ZN" + std::to_string(simulatorClassName.length()) + simulatorClassName + "C1Ev";
-
-    // Get the address of the constructor function for the specific simulator
-    //_ZN20NS3_mockup_interface15createSimulatorE13SimulatorInfoSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiSt4lessIS7_ESaISt4pairIKS7_iEEE
-    
+    std::string constructorFnName = "_ZN" + std::to_string(simulatorClassName.length()) + simulatorClassName + "15createSimulatorEv";
+   
     using CreateSim = SimulatorMockUpInterface* (*)(); 
-    CreateSim SimConstructor = reinterpret_cast<CreateSim>(dlsym(libraryHandle, "createSimulator"));
+    CreateSim SimConstructor = reinterpret_cast<CreateSim>(dlsym(libraryHandle, constructorFnName.c_str()));
     //void* constructor = dlsym(libraryHandle, constructorName.c_str());
     if (!SimConstructor){
         std::cerr << "Error getting constructor address: " << dlerror() << "\n";
@@ -72,55 +69,6 @@ std::unique_ptr<SimulatorMockUpInterface> SimulatorCreator::CreateSimulator(cons
     std::unique_ptr<SimulatorMockUpInterface> simulator(SimConstructor());
     simulator->setLibraryHandle(libraryHandle);
     
-    std::cout << "inside creator test" << std::endl;
-    simulator->RunSimulation();
-
-    return simulator;
-
-    //
-    //SimulatorMockUpInterface* simulatorConstructor = reinterpret_cast<SimulatorMockUpInterface* (*)()>(constructor)();
-
-    //call the simulator constructor to get create an instance of the choosen simulator
-
-
-    
-    
-    // Get the name of the class for the specific simulator
-    //std::string simulatorClassName = upperCaseSimulatorName + "_mockup_interface";
-//
-    //// Get the address of the constructor function for the specific simulator
-    //std::string constructorName = "_ZN" + std::to_string(simulatorClassName.length()) + simulatorClassName + "C1Ev";
-//
-    //std::cout << "Constructor name: " << constructorName << "\n";
-    //
-    ////assert(constructorName == "_ZN20NS3_mockup_interfaceC1Ev");
-//
-    //void* constructor = dlsym(libraryHandle, constructorName.c_str());
-    //if (!constructor) {
-    //    std::cerr << "Error getting constructor address: " << dlerror() << "\n";
-    //    dlclose(libraryHandle);
-    //    return nullptr;
-    //}
-//
-    //using ConstructorFunc = SimulatorMockUpInterface* (*)();
-    //// Create an instance of the specific simulator
-    //ConstructorFunc* simulatorConstructor = reinterpret_cast<ConstructorFunc*>(constructor);
-//
-    //assert(simulatorConstructor != nullptr);
-    //
-    //std::cout << "Constructor address: " << simulatorConstructor << "\n";
-
-    //auto simulator = simulatorConstructor.call();
-
-    // Cast the constructor function pointer to the appropriate type
-    //using CreateFunc = SimulatorMockUpInterface* (*)();
-    //
-    //CreateFunc createFunc = reinterpret_cast<CreateFunc>(constructor);
-    //
-    //// Call the constructor function to create an instance of the specific simulator
-    //auto simulator = createFunc();
-
-    //
-    
+    return simulator;    
 };
 

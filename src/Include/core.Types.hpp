@@ -1,5 +1,6 @@
 #ifndef CORE_TYPES_HPP
 #define CORE_TYPES_HPP
+
 #include <iostream>
 #include <vector>
 #include <map>

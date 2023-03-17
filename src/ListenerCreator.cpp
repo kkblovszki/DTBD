@@ -9,6 +9,8 @@ std::unique_ptr<Listener> ListenerCreator::CreateListener(const std::string& lis
     std::cout << "Creating listener of type: " << listenerType << std::endl;
 
     std::string ListenerType = stringForceUpperCase(listenerType);
+
+    std::cout << "UpperCase name: " << ListenerType << std::endl;
     
     switch (stringToListenerType().at(ListenerType)) {
         case ListenerType::DefaultListener:

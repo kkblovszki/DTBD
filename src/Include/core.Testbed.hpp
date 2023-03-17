@@ -1,3 +1,5 @@
+#ifndef TESTBED_HPP
+
 #include "core.Benchmark.hpp"
 
 class Testbed
@@ -15,3 +17,5 @@ public:
     void LoadBenchmarkConfig(std::string benchmarkName, std::string configPath);
     
 };
+
+#endif

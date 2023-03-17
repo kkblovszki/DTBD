@@ -21,7 +21,7 @@ int main() {
 
     std::cout << "Asserting single run: ";
     std::cout << "True - output: " << std::endl;
-    singleScenario->Simulator->RunSimulation(); //Segfault?
+    singleScenario->Simulator->RunSimulation();
     
 
     std::cout << "Framework scenario creation: success" << std::endl;

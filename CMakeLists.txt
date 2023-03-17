@@ -8,7 +8,7 @@ project(DTDB)
 set(CMAKE_CXX_STANDARD 20)
 
 # Set the compiler flags
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wpedantic -Werror -v") #-Wextra
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wpedantic -Werror") #-Wextra
 
 #Add the shared libraries
 #add_library(DTDB_Framework SHARED src/handlers/Handler.cpp src/handlers/Handler.h)
@@ -69,14 +69,6 @@ set_target_properties(DTDB PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_D
 #set_target_properties(DTDB_sims PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/simulators/bin")
 #set_target_properties(DTDB_additional PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 
-# ------------------------------- Add the tests -------------------------------
-
-# Add any test files from the 'test' directory
-add_executable(DTDB_tests test/scenarioCreationBasic.cpp)
-
-# Set the output directory for the 'my_project_tests' target to 'test/bin'
-set_target_properties(DTDB_tests PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests")
-
 
 # ----------------------------- Add Static libraries -----------------------------
 
@@ -101,11 +93,21 @@ target_link_libraries(DTDB_framework DTDB_listeners)
 
 # Link the libraries to the executables
 target_link_libraries(DTDB DTDB_framework)
-target_link_libraries(DTDB_tests DTDB_framework)
+
+# ------------------------------- Add the tests -------------------------------
+
+# Add any test files from the 'test' directory
+add_executable(NS3_basic_scenario_creation test/NS3_scenarioCreationBasic.cpp)
+add_executable(NS3_Exhaustive_scenario_creation test/NS3_scenarioCreationExhaustive.cpp)
+
+# Set the output directory for the 'my_project_tests' target to 'test/bin'
+set_target_properties(NS3_basic_scenario_creation NS3_Exhaustive_scenario_creation PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests")
+
+target_link_libraries(NS3_basic_scenario_creation DTDB_framework)
+target_link_libraries(NS3_Exhaustive_scenario_creation DTDB_framework)
 
 # ----------------------------- Add Shared libraries -----------------------------
 
-#set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/shared_lib)
 
 add_library(NS3Simulator SHARED 
             src/Wrappers/NS3/NS3_SMI.cpp
