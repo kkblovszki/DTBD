@@ -31,6 +31,21 @@ namespace Core {
             void OnSimulationUpdate() override;
             void OnSimulationResult() override;
         };
+
+
+        class CSVListener : public Listener {
+        public:
+            CSVListener();
+            ~CSVListener();
+
+            void OnSimulationStart(std::vector<Metrics> metrics) override;
+            void OnSimulationEnd() override;
+            void OnSimulationUpdate() override;
+            void OnSimulationResult() override;
+        };
+
+
+        
     };
 };
 

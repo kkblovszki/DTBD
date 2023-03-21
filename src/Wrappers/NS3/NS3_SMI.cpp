@@ -1,7 +1,17 @@
 #include "NS3_SMI.hpp"
 
 NS3_mockup_interface::NS3_mockup_interface(){
-    //initial setup
+    //load the persistent data from specific NS3 yaml file, insert it into the SimulatorInfo simulatorInfo variable
+    //load the APIFunctionPassThrough from specific NS3 yaml file, insert it into the std::map<std::string,int> APIFunctionPassThrough variable
+
+    simulatorInfo = SimulatorInfo();
+    APIFunctionPassThrough = std::map<std::string, int>();
+
+    YAML::Node config = YAML::LoadFile("NS3_config.yaml");
+    YAML::Node persistentData = config["persistentData"];
+    YAML::Node APIFunctionPassThrough = config["APIFunctionPassThrough"];
+
+
     activeSimulatorListener = nullptr;
     ns3LibHandler = nullptr;
 }
@@ -9,12 +19,7 @@ NS3_mockup_interface::NS3_mockup_interface(){
 NS3_mockup_interface::~NS3_mockup_interface(){}
 
 extern "C" void* NS3_mockup_interface::createSimulator() {
-    //auto simulator = new NS3_mockup_interface();
-    //simulator->simulatorInfo = SimulatorInfo(specifiedSimulator.simulatorName = "NS3",
-    //                                         specifiedSimulator.simulatorVersion = "3.29",
-    //                                         specifiedSimulator.nativeOutputType = "ns3::Packet",
-    //                                         specifiedSimulator.functions = {},
-    //                                         specifiedSimulator.parameters = {});
+    
     return new NS3_mockup_interface();
 };
 
@@ -23,8 +28,7 @@ void NS3_mockup_interface::setLibraryHandle(void* libraryHandle) {
     ns3LibHandler = libHandle;
 };
 
-void NS3_mockup_interface::LoadConfiguration(std::string configFileName) {
-    
+void NS3_mockup_interface::LoadConfiguration(std::string configFileName /*Yaml::node Config*/) {
 };
 
 void NS3_mockup_interface::WriteToConfiguration(std::string configFileName) {
@@ -39,13 +43,11 @@ void NS3_mockup_interface::LoadMetrics() {
 
 };
 
-void NS3_mockup_interface::RunSimulation(){
-    std::cout << "NS3_mockup_interface::RunSimulation(): Running" << std::endl;
-    activeSimulatorListener->OnSimulationResult();
-    std::cout << "NS3_mockup_interface::RunSimulation(): Finished" << std::endl;
+void NS3_mockup_interface::RunSimulation(){ 
+
 };
 
 void NS3_mockup_interface::GetRuntimeData(){
-
+    
 };
 

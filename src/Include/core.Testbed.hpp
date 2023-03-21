@@ -1,4 +1,5 @@
 #ifndef TESTBED_HPP
+#define TESTBED_HPP
 
 #include "core.Benchmark.hpp"
 

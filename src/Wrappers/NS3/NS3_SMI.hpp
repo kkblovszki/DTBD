@@ -1,6 +1,7 @@
 #ifndef NS3_INTERFACE_HPP
 #define NS3_INTERFACE_HPP
 #include "../include/SimulatorMockUpInterface.hpp"
+#include <./yaml-cpp/yaml.h>
 
 class NS3_mockup_interface : SimulatorMockUpInterface {
 private:

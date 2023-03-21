@@ -30,8 +30,10 @@ private:
     static const std::map<std::string, ListenerType>& stringToListenerType(){
         static const std::map<std::string, ListenerType> stringToListenerType = {
             {"TESTLISTENER", ListenerType::TestListener},
+            {"CSVLISTENER", ListenerType::DefaultListener},
             {"DEFAULTLISTENER", ListenerType::DefaultListener}
-            //{"CUSTOMLISTENER", ListenerType::CustomListener}
+            
+            
         };
         return stringToListenerType;
     }

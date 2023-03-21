@@ -4,7 +4,7 @@
 #include "core.Types.hpp"
 #include "SimulatorMockUpInterface.hpp"
 #include "core.Scenario.hpp"
-
+#include <./yaml-cpp/yaml.h>
 
 //! Benchmark class
 /*!
@@ -15,11 +15,23 @@ class Benchmark {
 private:
     std::map<std::string, std::unique_ptr<Scenario>> scenarios;
 
+    /*Yaml::Node*/
+
+    /*
+    ????
+    struct ExecutionStrategy {
+        std::string name;
+        std::vector<std::string> scenarios;
+    };
+    */
+
 public:
     Benchmark(){};
     ~Benchmark(){};
 
     void LoadSimulationConfig(std::string configPath);
+
+    /*ExecutionStrategy CreateExecutionStrategy(std::vector<std::string> scenarios){}; ???? */ 
 
     void CreateScenario(std::string scenarioName);
 

@@ -10,12 +10,6 @@ set(CMAKE_CXX_STANDARD 20)
 # Set the compiler flags
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wpedantic -Werror") #-Wextra
 
-#Add the shared libraries
-#add_library(DTDB_Framework SHARED src/handlers/Handler.cpp src/handlers/Handler.h)
-
-# Set the output directory for the 'my_project' target to 'bin'
-#set_target_properties(DTDB_Framework PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/shared_libs")
-
 # ------------------------------- Add the Doxygen documentation -------------------------------
 find_package(Doxygen REQUIRED)
 
@@ -26,7 +20,6 @@ if(BUILD_DOCUMENTATION)
         message(FATAL_ERROR "Doxygen is needed to build the documentation.")
     endif()
 
-    #set(doxyfile_in ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in)
     set(doxyfile    ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile)
 
     set(DOXYGEN_GENERATE_HTML YES)
@@ -37,7 +30,6 @@ if(BUILD_DOCUMENTATION)
             ${CMAKE_CURRENT_SOURCE_DIR}/src
             COMMENT "Generate code documentation."
     )
-
 
     add_custom_target(doc ALL
         COMMAND ${DOXYGEN_EXECUTABLE} ${doxyfile}
@@ -61,14 +53,8 @@ link_directories(libs)
 # Add the source files from the 'src' directory
 add_executable(DTDB src/main.cpp)
 
-#add_executable(DTDB_sims src/Wrappers/NS3/NS3Interface.cpp)
-#add_executable(DTDB_additional src/SimulatorCreator.cpp src/ListenerCreator.cpp)src/core.Scenario.cpp src/core.Benchmark.cpp
-
 # Set the output directory for the 'my_project' target to 'bin'
 set_target_properties(DTDB PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
-#set_target_properties(DTDB_sims PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/simulators/bin")
-#set_target_properties(DTDB_additional PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
-
 
 # ----------------------------- Add Static libraries -----------------------------
 
@@ -85,6 +71,7 @@ add_library(DTDB_listeners
             src/Listeners/TestListener.cpp
             )
 
+
 set_target_properties(DTDB_framework PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/static_libs")
 set_target_properties(DTDB_listeners PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/static_libs")
 
@@ -93,6 +80,27 @@ target_link_libraries(DTDB_framework DTDB_listeners)
 
 # Link the libraries to the executables
 target_link_libraries(DTDB DTDB_framework)
+
+
+# ------------------------------- Yaml-cpp -----------------------------
+
+set(CMAKE_YAML_CPP_PATH ${CMAKE_YAML_CPP_PATH} "${CMAKE_SOURCE_DIR}/libs/yaml-cpp")
+set(YAML_CPP_INCLUDE_DIR ${YAML_CPP_INCLUDE_DIR} "${CMAKE_YAML_CPP_PATH}/include")
+
+#find_package(yaml-cpp REQUIRED)
+
+#add_library(yaml-cpp STATIC IMPORTED)
+
+#set_target_properties(yaml-cpp PROPERTIES IMPORTED_LOCATION ${YAML_CPP_LIBRARIES})
+
+#include_directories(${CMAKE_YAML_CPP_PATH}/include)
+
+set(YAML_CPP_BUILD_TESTS OFF CACHE INTERNAL "")
+
+add_subdirectory(libs/yaml-cpp)
+include_directories(${YAML_CPP_SOURCE_DIR}/include)
+
+target_link_libraries(DTDB_framework yaml-cpp)
 
 # ------------------------------- Add the tests -------------------------------
 
@@ -114,3 +122,4 @@ add_library(NS3Simulator SHARED
             )
 
 set_target_properties(NS3Simulator PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/shared_libs")          
+target_link_libraries(NS3Simulator yaml-cpp)

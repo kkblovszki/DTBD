@@ -12,13 +12,6 @@ Scenario::Scenario(std::string uniqueName, std::string simulatorType, std::strin
     // create new listener instance
     std::unique_ptr<Listener> newSimulatorListener = ListenerCreator::CreateListener(ListenerType);
 
-    std::cout << "Testing if listener creation fails: ";
-    newSimulatorListener->OnSimulationResult();
-    std::cout << "it doesn't" << std::endl;
-
-    // check if the listener is of type Listener
-    //static_assert(std::is_same_v<decltype(activeSimulatorListener), std::unique_ptr<Listener>>);
-
     // create new simulator instance 
     Simulator = SimulatorCreator::CreateSimulator(simulatorType);
 
@@ -27,10 +20,7 @@ Scenario::Scenario(std::string uniqueName, std::string simulatorType, std::strin
 
 }
 
-Scenario::~Scenario(){
-    return;
-}
-
+Scenario::~Scenario(){}
 
 /**
  * @brief Prepare the simulation for the given strategy
