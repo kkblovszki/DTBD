@@ -14,6 +14,7 @@
 class Benchmark {
 private:
     std::map<std::string, std::unique_ptr<Scenario>> scenarios;
+    std::map<std::string, std::string> config;
 
     /*Yaml::Node*/
 
@@ -24,6 +25,30 @@ private:
         std::vector<std::string> scenarios;
     };
     */
+
+    std::map<std::string, std::string> YAMLNodeToMap(const YAML::Node& node){
+        std::map<std::string, std::string> map;
+        for (auto it = node.begin(); it != node.end(); ++it) {
+            std::string key = it->first.as<std::string>();
+            std::string value = it->second.as<std::string>();
+            map[key] = value;
+        }
+        return map;
+    }
+
+    /*
+    void MapToYAML(const std::map<std::string, std::string>& map, const std::string& filename){
+        YAML::Emitter out;
+        out << YAML::BeginMap;
+        for (auto const& pair : map) {
+            out << YAML::Key << pair.first;
+            out << YAML::Value << pair.second;
+        }
+        out << YAML::EndMap;
+        std::ofstream file(filename);
+        file << out.c_str();
+    }*/
+
 
 public:
     Benchmark(){};

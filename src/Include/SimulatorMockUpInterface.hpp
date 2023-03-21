@@ -21,8 +21,8 @@ public:
     virtual void SetListener(std::unique_ptr<Listener> uniqueListener) = 0;
     virtual void LoadConfiguration(std::string configFileName) = 0;
     virtual void WriteToConfiguration(std::string configFileName) = 0;
-    virtual void LoadProblem(std::map<std::string, std::string> CoreProblemCallback()) = 0;
-    virtual void LoadMetrics() = 0;
+    virtual void LoadParameters(std::map<std::string, Parameter>& parameter) = 0;
+    virtual void LoadMetrics(std::map<std::string, Metrics>& metrics) = 0;
     virtual void RunSimulation() = 0;
     virtual void GetRuntimeData() = 0;
     std::vector<std::size_t> GetSimulationResults(){

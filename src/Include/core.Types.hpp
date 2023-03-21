@@ -36,7 +36,7 @@ typedef struct Parameter {
     std::string name;
     size_t defaultParameter;
     // UML diagram says type <V> for the Parameter struct, as well as the type for the variable undertest, yet we don't know exactly what we means by this 
-    size_t underTest; 
+    size_t underTest; //???????????????
 
 } Parameter;
 
@@ -45,7 +45,8 @@ typedef struct SimulatorInfo {
     std::string simulatorVersion;
     std::string nativeOutputType;
     std::vector<std::string> functions;
-    std::vector<std::string> parameters;
+    std::vector<std::string> supportedParameters;
+    std::vector<std::string> supportedMetrics;
     
     SimulatorInfo(const std::string& simulatorName  = "", 
                 const std::string& simulatorVersion = "", 
@@ -56,7 +57,7 @@ typedef struct SimulatorInfo {
                 simulatorVersion(simulatorVersion), 
                 nativeOutputType(nativeOutputType), 
                 functions(functions), 
-                parameters(parameters){}
+                supportedParameters(parameters){}
 } SimulatorInfo;
 
 #endif

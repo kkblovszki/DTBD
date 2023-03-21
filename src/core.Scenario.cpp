@@ -17,7 +17,6 @@ Scenario::Scenario(std::string uniqueName, std::string simulatorType, std::strin
 
     // connect that listener to the simulator active listener the function is setListener and it takes a std::unique_ptr<Listener> as parameter
     Simulator->SetListener(std::move(newSimulatorListener));
-
 }
 
 Scenario::~Scenario(){}
@@ -28,5 +27,15 @@ Scenario::~Scenario(){}
  * @param Strategy 
  */
 void Scenario::PrepareSimulation(std::map<std::string, size_t> Strategy) {
+    
+    // load the metrics to the simulator
+    Simulator->LoadMetrics(metrics);
+
+    // load the parameters to the simulator
+    Simulator->LoadParameters(parameters);
+
+    // load the strategy to the simulator
+    //Simulator->LoadStrategy(Strategy);
+
     return;
 }

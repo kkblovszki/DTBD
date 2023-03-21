@@ -5,18 +5,24 @@
 
 class NS3_mockup_interface : SimulatorMockUpInterface {
 private:
-
     SimulatorInfo simulatorInfo;
     std::map<std::string,int> APIFunctionPassThrough;
     std::unique_ptr<Listener> activeSimulatorListener;
     void* ns3LibHandler;
+
+    /**
+     * @brief 
+     * Command line strings build inside the respective 
+     * @ref LoadParameter function and used in the @ref RunSimulation function
+     */
+    std::string CL_BuildOptions;
+    std::string CL_Parameters;
 
 public:
     NS3_mockup_interface();
     ~NS3_mockup_interface();
 
     void* createSimulator();
-
 
     /**
      * @brief Set the Listener object
@@ -39,7 +45,8 @@ public:
      * is the listener that is used by the simulator.
      * @param uniqueListener The created listener
      * @param simulatorUniqueListener The listener that is used by the simulator
-     */
+     *
+    */
     /*virtual void SetListener(std::unique_ptr<Listener> uniqueListener, std::unique_ptr<Listener> simulatorUniqueListener) override {
         simulatorUniqueListener = std::move(uniqueListener); uniqueListener.reset(); 
     }*/
@@ -47,8 +54,8 @@ public:
     virtual void setLibraryHandle(void* libraryHandle) override;
     virtual void LoadConfiguration(std::string configFileName) override;
     virtual void WriteToConfiguration(std::string configFileName) override;
-    virtual void LoadProblem(std::map<std::string, std::string> CoreProblemCallback()) override;
-    virtual void LoadMetrics() override;
+    virtual void LoadParameters(std::map<std::string, Parameter>& parameter) override;
+    virtual void LoadMetrics(std::map<std::string, Metrics>& metrics) override;
     virtual void RunSimulation() override;
     virtual void GetRuntimeData() override;
     std::vector<std::size_t> GetSimulationResults(){return std::vector<std::size_t>();};

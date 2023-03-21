@@ -24,7 +24,7 @@ class Scenario {
 public:
     const std::string scenarioName;
     std::map<std::string, Metrics> metrics;
-    Parameter parameters; 
+    std::map<std::string, Parameter> parameters; 
     std::unique_ptr<SimulatorMockUpInterface> Simulator;
 
     //Scenario(): scenarioName(NULL){metrics = {}; parameters.name = 'NULL'; parameters.defaultParameter = 0; parameters.underTest = NULL;};

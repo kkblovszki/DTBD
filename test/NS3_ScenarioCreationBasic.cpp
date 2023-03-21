@@ -23,10 +23,7 @@ int main() {
     std::cout << "True - output: " << std::endl;
     singleScenario->Simulator->RunSimulation();
     
-
     std::cout << "Framework scenario creation: success" << std::endl;
-
-
 
     return 0;
 }

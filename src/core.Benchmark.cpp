@@ -7,11 +7,14 @@
  * @param configPath 
  */
 void Benchmark::LoadSimulationConfig(std::string configPath){
-    YAML::Node config = YAML::LoadFile(configPath);
+    
+    YAML::Node config_ = YAML::LoadFile(configPath);
 
-    if(config.IsNull()){
+    if(config_.IsNull()){
         throw std::runtime_error("Config file not found");
     }
+
+    config = YAMLNodeToMap(config_);    
     
     std::cout << "Config loaded" << std::endl;
 };
@@ -77,7 +80,8 @@ void Benchmark::RemoveScenario(std::string scenarioName){
 };
 
 void Benchmark::mapScenarioToParameter(std::string scenarioName, Parameter parameter){
-    scenarios[scenarioName]->parameters = parameter;
+    //scenarios[scenarioName]->parameters = parameter;
+    throw std::runtime_error("Not implemented");
 };
 
 
