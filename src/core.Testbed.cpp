@@ -8,7 +8,7 @@ Testbed::~Testbed(){ }
 std::map<std::string, Benchmark> benchmarks;
 
 void Testbed::CreateBenchmark(std::string benchmarkName){
-   // benchmarks[benchmarkName] = std::move(Benchmark());
+   //benchmarks[benchmarkName] = std::move(Benchmark());
 };
 
 void Testbed::RemoveBenchmark(std::string benchmarkName){

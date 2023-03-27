@@ -8,12 +8,34 @@
 #include <memory>
 #include <functional>
 
+
+struct Scenario {
+    std::string name;
+    std::string description;
+    std::string simulator;
+    std::map<std::string, std::string> optional;
+    std::map<std::string, std::string> required;
+    std::vector<Parameter> parameters;
+    std::vector<BuildOptions> buildOptions;
+};
+
+struct SimulationStrategy {
+    bool multithread;
+    int threadNr;
+    std::map<int, std::string> executionOrder;
+};
+
+struct Benchmark {
+    SimulationStrategy simulationStrategy;
+    std::vector<Scenario> scenarios;
+};
+
 typedef struct Metrics {
     std::string name;
     std::string unit;
 
     Metrics(){name = "NULL"; unit = "NULL";};
-    Metrics(std::string specifiedName, std::string specifiedUnit){name = specifiedName; unit = specifiedUnit;}
+    Metrics(std::string specifiedName, std::string specifiedUnit) : name(specifiedName), unit(specifiedUnit){};
     ~Metrics(){};
 } Metrics;
 

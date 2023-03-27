@@ -28,6 +28,9 @@ Scenario::~Scenario(){}
  */
 void Scenario::PrepareSimulation(std::map<std::string, size_t> Strategy) {
     
+    /*In the prepare simulation the config file from the benchmark is */
+    //Simulator->LoadConfiguration();
+
     // load the metrics to the simulator
     Simulator->LoadMetrics(metrics);
 

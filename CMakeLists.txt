@@ -102,18 +102,6 @@ include_directories(${YAML_CPP_SOURCE_DIR}/include)
 
 target_link_libraries(DTDB_framework yaml-cpp)
 
-# ------------------------------- Add the tests -------------------------------
-
-# Add any test files from the 'test' directory
-add_executable(NS3_basic_scenario_creation test/NS3_scenarioCreationBasic.cpp)
-add_executable(NS3_Exhaustive_scenario_creation test/NS3_scenarioCreationExhaustive.cpp)
-
-# Set the output directory for the 'my_project_tests' target to 'test/bin'
-set_target_properties(NS3_basic_scenario_creation NS3_Exhaustive_scenario_creation PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests")
-
-target_link_libraries(NS3_basic_scenario_creation DTDB_framework)
-target_link_libraries(NS3_Exhaustive_scenario_creation DTDB_framework)
-
 # ----------------------------- Add Shared libraries -----------------------------
 
 
@@ -123,3 +111,16 @@ add_library(NS3Simulator SHARED
 
 set_target_properties(NS3Simulator PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/shared_libs")          
 target_link_libraries(NS3Simulator yaml-cpp)
+
+# ------------------------------- Add the tests -------------------------------
+
+# Add any test files from the 'test' directory
+add_executable(NS3_Basic_scenario_creation test/NS3_Tests/NS3_ScenarioCreationBasic.cpp)
+add_executable(NS3_Exhaustive_scenario_creation test/NS3_Tests/NS3_ScenarioCreationExhaustive.cpp)
+
+# Set the output directory for the 'my_project_tests' target to 'test/bin'
+set_target_properties(NS3_Basic_scenario_creation NS3_Exhaustive_scenario_creation PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests")
+
+target_link_libraries(NS3_Basic_scenario_creation DTDB_framework)
+target_link_libraries(NS3_Exhaustive_scenario_creation DTDB_framework)
+

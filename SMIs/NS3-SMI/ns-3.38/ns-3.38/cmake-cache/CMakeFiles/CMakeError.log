@@ -1,0 +1,141 @@
+Performing C++ SOURCE FILE Test MISSING_OSTREAM_NULLPTR_OPERATOR failed with the following output:
+Change Dir: /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_e70bc/fast && gmake: Warning: File 'Makefile' has modification time 357 s in the future
+/usr/bin/gmake  -f CMakeFiles/cmTC_e70bc.dir/build.make CMakeFiles/cmTC_e70bc.dir/build
+gmake[1]: Entering directory '/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/CMakeTmp'
+gmake[1]: Warning: File 'CMakeFiles/cmTC_e70bc.dir/flags.make' has modification time 356 s in the future
+Building CXX object CMakeFiles/cmTC_e70bc.dir/src.cxx.o
+/usr/bin/c++ -DMISSING_OSTREAM_NULLPTR_OPERATOR  -fPIE -std=gnu++17 -o CMakeFiles/cmTC_e70bc.dir/src.cxx.o -c /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/CMakeTmp/src.cxx
+/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/CMakeTmp/src.cxx: In function ‘int main()’:
+/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/CMakeTmp/src.cxx:11:12: error: ambiguous overload for ‘operator<<’ (operand types are ‘std::ostream’ {aka ‘std::basic_ostream<char>’} and ‘std::nullptr_t’)
+   11 |         os << std::nullptr_t();
+In file included from /usr/include/c++/11/iostream:39,
+                 from /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/CMakeTmp/src.cxx:2:
+/usr/include/c++/11/ostream:108:7: note: candidate: ‘std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(std::basic_ostream<_CharT, _Traits>::__ostream_type& (*)(std::basic_ostream<_CharT, _Traits>::__ostream_type&)) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]’
+  108 |       operator<<(__ostream_type& (*__pf)(__ostream_type&))
+      |       ^~~~~~~~
+/usr/include/c++/11/ostream:117:7: note: candidate: ‘std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(std::basic_ostream<_CharT, _Traits>::__ios_type& (*)(std::basic_ostream<_CharT, _Traits>::__ios_type&)) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>; std::basic_ostream<_CharT, _Traits>::__ios_type = std::basic_ios<char>]’
+  117 |       operator<<(__ios_type& (*__pf)(__ios_type&))
+      |       ^~~~~~~~
+/usr/include/c++/11/ostream:127:7: note: candidate: ‘std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(std::ios_base& (*)(std::ios_base&)) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]’
+  127 |       operator<<(ios_base& (*__pf) (ios_base&))
+      |       ^~~~~~~~
+/usr/include/c++/11/ostream:245:7: note: candidate: ‘std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(const void*) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]’
+  245 |       operator<<(const void* __p)
+      |       ^~~~~~~~
+/usr/include/c++/11/ostream:250:7: note: candidate: ‘std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(std::nullptr_t) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>; std::nullptr_t = std::nullptr_t]’
+  250 |       operator<<(nullptr_t)
+      |       ^~~~~~~~
+In file included from /usr/include/c++/11/ostream:829,
+                 from /usr/include/c++/11/iostream:39,
+                 from /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/CMakeTmp/src.cxx:2:
+/usr/include/c++/11/bits/ostream.tcc:119:5: note: candidate: ‘std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(std::basic_ostream<_CharT, _Traits>::__streambuf_type*) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__streambuf_type = std::basic_streambuf<char>]’
+  119 |     basic_ostream<_CharT, _Traits>::
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/CMakeTmp/src.cxx:4:26: note: candidate: ‘std::ostream& operator<<(std::ostream&, std::nullptr_t)’
+    4 |     inline std::ostream& operator << (std::ostream& os, std::nullptr_t ptr)
+      |                          ^~~~~~~~
+gmake[1]: *** [CMakeFiles/cmTC_e70bc.dir/build.make:78: CMakeFiles/cmTC_e70bc.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory '/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_e70bc/fast] Error 2
+
+
+Source file was:
+
+    #include <iostream>
+    #include <cstddef>
+    inline std::ostream& operator << (std::ostream& os, std::nullptr_t ptr)
+    {
+      return os << "nullptr"; //whatever you want nullptr to show up as in the console
+    }
+    int main()
+    {
+        std::ostream os(NULL);
+        os << std::nullptr_t();
+        return 0;
+    }
+    
+Performing C++ SOURCE FILE Test HAVE_UINT128_T failed with the following output:
+Change Dir: /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_215e4/fast && gmake: Warning: File 'Makefile' has modification time 352 s in the future
+/usr/bin/gmake  -f CMakeFiles/cmTC_215e4.dir/build.make CMakeFiles/cmTC_215e4.dir/build
+gmake[1]: Entering directory '/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/CMakeTmp'
+gmake[1]: Warning: File 'CMakeFiles/cmTC_215e4.dir/flags.make' has modification time 352 s in the future
+Building CXX object CMakeFiles/cmTC_215e4.dir/src.cxx.o
+/usr/bin/c++ -DHAVE_UINT128_T  -fPIE -std=gnu++17 -o CMakeFiles/cmTC_215e4.dir/src.cxx.o -c /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/CMakeTmp/src.cxx
+/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/CMakeTmp/src.cxx: In function ‘int main()’:
+/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/CMakeTmp/src.cxx:4:18: error: ‘uint128_t’ was not declared in this scope; did you mean ‘uint8_t’?
+    4 |             if ((uint128_t *) 0) return 0;
+      |                  ^~~~~~~~~
+      |                  uint8_t
+/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/CMakeTmp/src.cxx:4:29: error: expected primary-expression before ‘)’ token
+    4 |             if ((uint128_t *) 0) return 0;
+      |                             ^
+/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/CMakeTmp/src.cxx:4:30: error: expected ‘)’ before numeric constant
+    4 |             if ((uint128_t *) 0) return 0;
+      |                ~             ^~
+      |                              )
+/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/CMakeTmp/src.cxx:5:25: error: ‘uint128_t’ was not declared in this scope; did you mean ‘uint8_t’?
+    5 |             if (sizeof (uint128_t)) return 0;
+      |                         ^~~~~~~~~
+      |                         uint8_t
+gmake[1]: *** [CMakeFiles/cmTC_215e4.dir/build.make:78: CMakeFiles/cmTC_215e4.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory '/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_215e4/fast] Error 2
+
+
+Source file was:
+#include <stdint.h>
+       int main()
+         {
+            if ((uint128_t *) 0) return 0;
+            if (sizeof (uint128_t)) return 0;
+            return 1;
+         }
+Determining if files boost/units/quantity.hpp;boost/units/systems/si.hpp exist failed with the following output:
+Change Dir: /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_f9155/fast && gmake: Warning: File 'Makefile' has modification time 349 s in the future
+/usr/bin/gmake  -f CMakeFiles/cmTC_f9155.dir/build.make CMakeFiles/cmTC_f9155.dir/build
+gmake[1]: Entering directory '/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/CMakeTmp'
+gmake[1]: Warning: File 'CMakeFiles/cmTC_f9155.dir/flags.make' has modification time 349 s in the future
+Building CXX object CMakeFiles/cmTC_f9155.dir/HAVE_BOOST_UNITS.cpp.o
+/usr/bin/c++   -fPIE -std=gnu++17 -o CMakeFiles/cmTC_f9155.dir/HAVE_BOOST_UNITS.cpp.o -c /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/CheckIncludeFiles/HAVE_BOOST_UNITS.cpp
+/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/CheckIncludeFiles/HAVE_BOOST_UNITS.cpp:2:10: fatal error: boost/units/quantity.hpp: No such file or directory
+    2 | #include <boost/units/quantity.hpp>
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+gmake[1]: *** [CMakeFiles/cmTC_f9155.dir/build.make:78: CMakeFiles/cmTC_f9155.dir/HAVE_BOOST_UNITS.cpp.o] Error 1
+gmake[1]: Leaving directory '/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_f9155/fast] Error 2
+
+
+Source:
+/* */
+#include <boost/units/quantity.hpp>
+#include <boost/units/systems/si.hpp>
+
+
+int main(void){return 0;}
+
+Determining if the include file net/netmap_user.h exists failed with the following output:
+Change Dir: /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_5486f/fast && gmake: Warning: File 'Makefile' has modification time 347 s in the future
+/usr/bin/gmake  -f CMakeFiles/cmTC_5486f.dir/build.make CMakeFiles/cmTC_5486f.dir/build
+gmake[1]: Entering directory '/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/CMakeTmp'
+gmake[1]: Warning: File 'CMakeFiles/cmTC_5486f.dir/flags.make' has modification time 347 s in the future
+Building C object CMakeFiles/cmTC_5486f.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE -o CMakeFiles/cmTC_5486f.dir/CheckIncludeFile.c.o -c /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:10: fatal error: net/netmap_user.h: No such file or directory
+    1 | #include <net/netmap_user.h>
+      |          ^~~~~~~~~~~~~~~~~~~
+compilation terminated.
+gmake[1]: *** [CMakeFiles/cmTC_5486f.dir/build.make:78: CMakeFiles/cmTC_5486f.dir/CheckIncludeFile.c.o] Error 1
+gmake[1]: Leaving directory '/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_5486f/fast] Error 2
+
+
+

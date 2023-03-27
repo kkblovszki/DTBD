@@ -19,7 +19,7 @@ public:
 
     virtual void setLibraryHandle(void* libraryHandle) = 0;
     virtual void SetListener(std::unique_ptr<Listener> uniqueListener) = 0;
-    virtual void LoadConfiguration(std::string configFileName) = 0;
+    virtual void LoadConfiguration(YAML::Node& config) = 0;
     virtual void WriteToConfiguration(std::string configFileName) = 0;
     virtual void LoadParameters(std::map<std::string, Parameter>& parameter) = 0;
     virtual void LoadMetrics(std::map<std::string, Metrics>& metrics) = 0;

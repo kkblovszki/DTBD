@@ -25,10 +25,13 @@ void CSVListener::OnSimulationStart(std::vector<Metrics> metrics)
 
 void CSVListener::OnSimulationEnd()
 {
+    
 }
 
-void CSVListener::OnSimulationUpdate()
-{
+void CSVListener::OnSimulationUpdate(std::string value)
+{   
+    //write the value to the csv file
+    
 }
 
 void CSVListener::OnSimulationResult()

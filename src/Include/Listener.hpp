@@ -17,7 +17,7 @@ namespace Core {
 
             void OnSimulationStart(std::vector<Metrics> metrics) override;
             void OnSimulationEnd() override;
-            void OnSimulationUpdate() override;
+            void OnSimulationUpdate(std::string value) override;
             void OnSimulationResult() override;
         };
 
@@ -28,7 +28,7 @@ namespace Core {
 
             void OnSimulationStart(std::vector<Metrics> metrics) override;
             void OnSimulationEnd() override;
-            void OnSimulationUpdate() override;
+            void OnSimulationUpdate(std::string value) override;
             void OnSimulationResult() override;
         };
 
@@ -40,7 +40,7 @@ namespace Core {
 
             void OnSimulationStart(std::vector<Metrics> metrics) override;
             void OnSimulationEnd() override;
-            void OnSimulationUpdate() override;
+            void OnSimulationUpdate(std::string value) override;
             void OnSimulationResult() override;
         };
 

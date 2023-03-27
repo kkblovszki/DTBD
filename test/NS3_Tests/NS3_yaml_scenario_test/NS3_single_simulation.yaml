@@ -1,0 +1,25 @@
+Profile-name: NS3_single_simulation
+
+Benchmark:
+- Simulator: NS3
+    Scenario: 
+    name: NS3 Example
+    description: An example problem in NS3
+    simulator: NS3
+    optional: null
+    required:
+      topology-file-path: network.cpp
+      traffic-file-path: traffic.cpp
+
+      - BuildOptions:
+        examples: enable
+        tests: enable
+        python: disable
+        gs1: enable
+        ns3-mobility: enable
+        system-libraries: enable 
+
+      - Parameters:
+        protocol: TCP
+        tcp-variant: NewReno
+        routing-protocol: OSPF

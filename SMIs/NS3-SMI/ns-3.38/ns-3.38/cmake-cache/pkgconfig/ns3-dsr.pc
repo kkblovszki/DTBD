@@ -1,0 +1,13 @@
+exec_prefix="/usr/local/bin"
+libdir="/usr/local/lib"
+includedir="/usr/local/include"
+
+Name: ns3-dsr
+Description: 
+URL: 
+Version: 3.38
+Requires:  ns3-internet ns3-wifi
+Requires.private: 
+Cflags: -I"${includedir}" 
+Libs: -L"${libdir}" -lns3.38-dsr-debug  -lns3.38-internet-debug -lns3.38-wifi-debug
+Libs.private: -L"${libdir}" 

@@ -12,7 +12,7 @@ public:
 
     virtual void OnSimulationStart(std::vector<Metrics> metrics) = 0;
     virtual void OnSimulationEnd() = 0;
-    virtual void OnSimulationUpdate() = 0;
+    virtual void OnSimulationUpdate(std::string value) = 0;
     virtual void OnSimulationResult() = 0;
 };
 

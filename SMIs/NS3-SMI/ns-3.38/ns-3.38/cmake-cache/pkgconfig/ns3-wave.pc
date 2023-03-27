@@ -1,0 +1,13 @@
+exec_prefix="/usr/local/bin"
+libdir="/usr/local/lib"
+includedir="/usr/local/include"
+
+Name: ns3-wave
+Description: 
+URL: 
+Version: 3.38
+Requires:  ns3-core ns3-propagation ns3-wifi ns3-internet
+Requires.private: 
+Cflags: -I"${includedir}" 
+Libs: -L"${libdir}" -lns3.38-wave-debug  -lns3.38-core-debug -lns3.38-propagation-debug -lns3.38-wifi-debug -lns3.38-internet-debug
+Libs.private: -L"${libdir}" 

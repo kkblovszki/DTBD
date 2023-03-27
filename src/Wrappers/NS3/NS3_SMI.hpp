@@ -2,13 +2,24 @@
 #define NS3_INTERFACE_HPP
 #include "../include/SimulatorMockUpInterface.hpp"
 #include <./yaml-cpp/yaml.h>
+#include <fstream>
+#include <thread>
+#include <chrono>
+#include <filesystem>
+
 
 class NS3_mockup_interface : SimulatorMockUpInterface {
 private:
+
     SimulatorInfo simulatorInfo;
     std::map<std::string,int> APIFunctionPassThrough;
     std::unique_ptr<Listener> activeSimulatorListener;
     void* ns3LibHandler;
+
+    typedef struct BuildOptions {
+        std::string buildOption;
+        std::string buildOptionValue;
+    } buildOptions;
 
     /**
      * @brief 
@@ -17,6 +28,20 @@ private:
      */
     std::string CL_BuildOptions;
     std::string CL_Parameters;
+
+    void ParseToNS3CommandLine(std::map<std::string, Parameter>& Parameter, std::map<std::string, std::string>& BuildOptions);
+
+    void UpdateListener(std::ifstream& outputFileStream){
+        std::string line;
+        if(outputFileStream.is_open()){
+            while(getline(outputFileStream, line)){
+                activeSimulatorListener->OnSimulationUpdate(line);
+                std::this_thread::sleep_for(std::chrono::nanoseconds(100));
+            }
+            outputFileStream.close();
+        }
+    }
+    
 
 public:
     NS3_mockup_interface();
@@ -52,7 +77,7 @@ public:
     }*/
 
     virtual void setLibraryHandle(void* libraryHandle) override;
-    virtual void LoadConfiguration(std::string configFileName) override;
+    virtual void LoadConfiguration(YAML::Node& config) override;
     virtual void WriteToConfiguration(std::string configFileName) override;
     virtual void LoadParameters(std::map<std::string, Parameter>& parameter) override;
     virtual void LoadMetrics(std::map<std::string, Metrics>& metrics) override;
