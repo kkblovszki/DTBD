@@ -110,6 +110,8 @@ target_link_libraries(NS3Simulator yaml-cpp)
 
 # ------------------------------- Add the tests -------------------------------
 
+### NS3
+
 # Add any test files from the 'test' directory
 add_executable(NS3_Exhaustive_scenario_creation test/NS3_Tests/NS3_ScenarioCreationExhaustive.cpp)
 add_executable(NS3_Basic_scenario_creation test/NS3_Tests/NS3_ScenarioCreationBasic.cpp)
@@ -120,3 +122,13 @@ set_target_properties(NS3_Basic_scenario_creation NS3_Exhaustive_scenario_creati
 target_link_libraries(NS3_Exhaustive_scenario_creation DTDB_framework)
 target_link_libraries(NS3_Basic_scenario_creation DTDB_framework)
 
+
+### YAML parser
+# Add tests from the directory
+add_executable(parser_test test/parser_tests/parserTests.cpp)
+
+# Set the output directory for the 'my_projects_tests' target to 'test/bin'
+set_target_properties(parser_test PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests")
+
+# Link the parser directory with the main framework
+target_link_libraries(parser_test DTDB_framework)
