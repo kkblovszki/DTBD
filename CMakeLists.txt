@@ -58,12 +58,14 @@ set_target_properties(DTDB PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_D
 
 # ----------------------------- Add Static libraries -----------------------------
 
+add_library(Parser src/Parser.cpp)
+
 add_library(DTDB_framework 
             src/core.Testbed.cpp 
             src/core.Scenario.cpp 
             src/core.Benchmark.cpp
             src/ListenerCreator.cpp
-            src/SimulatorCreator.cpp  
+            src/SimulatorCreator.cpp
             )
 
 add_library(DTDB_listeners 
@@ -76,6 +78,7 @@ set_target_properties(DTDB_framework PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAK
 set_target_properties(DTDB_listeners PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/static_libs")
 
 # Link the libraries
+target_link_libraries(DTDB_framework Parser)
 target_link_libraries(DTDB_framework DTDB_listeners)
 
 # Link the libraries to the executables
@@ -86,14 +89,6 @@ target_link_libraries(DTDB DTDB_framework)
 
 set(CMAKE_YAML_CPP_PATH ${CMAKE_YAML_CPP_PATH} "${CMAKE_SOURCE_DIR}/libs/yaml-cpp")
 set(YAML_CPP_INCLUDE_DIR ${YAML_CPP_INCLUDE_DIR} "${CMAKE_YAML_CPP_PATH}/include")
-
-#find_package(yaml-cpp REQUIRED)
-
-#add_library(yaml-cpp STATIC IMPORTED)
-
-#set_target_properties(yaml-cpp PROPERTIES IMPORTED_LOCATION ${YAML_CPP_LIBRARIES})
-
-#include_directories(${CMAKE_YAML_CPP_PATH}/include)
 
 set(YAML_CPP_BUILD_TESTS OFF CACHE INTERNAL "")
 

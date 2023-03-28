@@ -14,12 +14,9 @@ private:
     SimulatorInfo simulatorInfo;
     std::map<std::string,int> APIFunctionPassThrough;
     std::unique_ptr<Listener> activeSimulatorListener;
+    std::vector<Metrics> NS3metrics;
+    std::vector<Parameter> NS3parameters;
     void* ns3LibHandler;
-
-    typedef struct BuildOptions {
-        std::string buildOption;
-        std::string buildOptionValue;
-    } buildOptions;
 
     /**
      * @brief 
@@ -77,10 +74,11 @@ public:
     }*/
 
     virtual void setLibraryHandle(void* libraryHandle) override;
-    virtual void LoadConfiguration(YAML::Node& config) override;
+    virtual void LoadConfiguration() override; //loads the configuration file of the simulator.
     virtual void WriteToConfiguration(std::string configFileName) override;
-    virtual void LoadParameters(std::map<std::string, Parameter>& parameter) override;
-    virtual void LoadMetrics(std::map<std::string, Metrics>& metrics) override;
+    virtual void LoadParameters(std::vector<Parameter>& parameter);
+    virtual void LoadParameters(std::vector<Parameter>& parameter, std::vector<BuildOptions>& BuildOptions);
+    virtual void LoadMetrics(std::vector<Metrics>& metrics) override;
     virtual void RunSimulation() override;
     virtual void GetRuntimeData() override;
     std::vector<std::size_t> GetSimulationResults(){return std::vector<std::size_t>();};

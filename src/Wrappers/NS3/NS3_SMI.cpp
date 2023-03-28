@@ -37,14 +37,36 @@
 
 /**
  * @brief Construct a new ns3 mockup interface::ns3 mockup interface object
- * 
  */
 NS3_mockup_interface::NS3_mockup_interface(){
+    LoadConfiguration(); // Load the configuration from the NS3_config.yaml file
+    activeSimulatorListener = nullptr; // Set the listener to null
+    ns3LibHandler = nullptr; // Set the library handler to null
+}
+
+NS3_mockup_interface::~NS3_mockup_interface(){};
+
+/**
+ * @brief Returns an instance of the NS3 simulator interface
+ * @return void*
+ */
+extern "C" void* NS3_mockup_interface::createSimulator() {
+    return new NS3_mockup_interface();
+};
+
+/**
+ * @brief Load the configuration from the benchmark
+ * @param NS3ScenarioConfig Single NS3 scenario configuration mapped from the Benchmark class
+ */
+void NS3_mockup_interface::LoadConfiguration() {
 
     simulatorInfo = SimulatorInfo();
     APIFunctionPassThrough = std::map<std::string, int>();
 
-    YAML::Node config = YAML::LoadFile("PersistentData.yaml");
+    namespace fs = std::filesystem;
+    fs::path configPath = fs::current_path() / "PersistentData.yaml";
+
+    YAML::Node config = YAML::LoadFile(configPath.string());
     YAML::Node persistentData = config["persistentData"];
     YAML::Node APIFunctionPassThrough = config["APIFunctionPassThrough"];
 
@@ -56,74 +78,7 @@ NS3_mockup_interface::NS3_mockup_interface(){
     for (YAML::const_iterator it = persistentData["supportedParameters"].begin(); it != persistentData["supportedParameters"].end(); ++it){
         simulatorInfo.supportedParameters.push_back(it->as<std::string>());
     }
-    
-    activeSimulatorListener = nullptr;
-    ns3LibHandler = nullptr;
-}
 
-
-NS3_mockup_interface::~NS3_mockup_interface(){};
-
-/**
- * @brief 
- * @return void*
- */
-extern "C" void* NS3_mockup_interface::createSimulator() {
-    return new NS3_mockup_interface();
-};
-
-/**
- * @brief Load the configuration from the benchmark
- * @param NS3ScenarioConfig Single NS3 scenario configuration mapped from the Benchmark class
- */
-void NS3_mockup_interface::LoadConfiguration(YAML::Node& NS3ScenarioConfig) {
-    //load the persistent data from specific NS3 yaml file, insert it into the SimulatorInfo simulatorInfo variable
-    //load the APIFunctionPassThrough from specific NS3 yaml file, insert it into the std::map<std::string,int> APIFunctionPassThrough variable
-
-    std::stringstream command;
-    std::vector<std::string> options;
-
-    const auto& scenario = NS3ScenarioConfig["Simulator"]["Scenario"];
-
-    // Add program name
-    command << "./ns3 run '" << scenario["simulator"].as<std::string>() << "' ";
-
-    // Add required arguments
-    command << "--topology-file-path=" << scenario["required"]["topology-file-path"].as<std::string>() << " ";
-    command << "--traffic-file-path=" << scenario["required"]["traffic-file-path"].as<std::string>() << " ";
-
-    // Add optional arguments
-    if (!scenario["optional"].IsNull()) {
-        command << "--optional=" << scenario["optional"].as<std::string>() << " ";
-    }
-
-    // Add build options
-    if (config["Simulator"]["Scenario"]["BuildOptions"]) {
-        const auto& buildOptions = config["Simulator"]["Scenario"]["BuildOptions"];
-        for (const auto& it : buildOptions) {
-            options.push_back("--" + it.second.as<std::string>() + "-" + it.first.as<std::string>());
-        }
-    }
-
-    // Add parameters
-    if (config["Simulator"]["Scenario"]["Parameters"]) {
-        const auto& parameters = config["Simulator"]["Scenario"]["Parameters"];
-        for (const auto& it : parameters) {
-            options.push_back("--" + it.second.as<std::string>() + "-" + it.first.as<std::string>() );
-        }
-    }
-
-    // Sort options alphabetically for consistency
-    std::sort(options.begin(), options.end());
-
-    // Add options to command
-    for (const auto& option : options) {
-        command << option << " ";
-    }
-    
-    //debug
-    std::cout << command.str() << std::endl;
-    
 };
 
 void NS3_mockup_interface::WriteToConfiguration(std::string configFileName){};
@@ -142,11 +97,13 @@ void NS3_mockup_interface::setLibraryHandle(void* libraryHandle) {
  * @brief
  * @param parameter
  */
-void NS3_mockup_interface::LoadParameters(std::map<std::string, Parameter>& parameter) {
-    /**/
+void NS3_mockup_interface::LoadParameters(std::vector<Parameter>& parameter) {
     for(auto it = parameter.begin(); it != parameter.end(); ++it){
-        if(std::find(simulatorInfo.supportedParameters.begin(), simulatorInfo.supportedParameters.end(), it->first) == simulatorInfo.supportedParameters.end()){
-            std::cerr << "Parameter: " << it->first << " is not supported by the simulator" << std::endl;
+        if(std::find(simulatorInfo.supportedParameters.begin(), simulatorInfo.supportedParameters.end(), it) == simulatorInfo.supportedParameters.end()){
+            std::cerr << "Parameter: " << (it->name) << " is not supported by the simulator" << std::endl;
+        }else{
+            //if the metric is supported by the simulator, then add it to the metrics map
+            NS3parameters.emplace_back(*it);
         }
     }
 };
@@ -157,19 +114,43 @@ void NS3_mockup_interface::LoadParameters(std::map<std::string, Parameter>& para
  * simulator with the metrics that are inputted in the benchmark yaml config file, 
  * and parsed to the individual scenarios where the variable called is metrics.
  */
-void NS3_mockup_interface::LoadMetrics(std::map<std::string, Metrics>& metrics) {
-    
+void NS3_mockup_interface::LoadMetrics(std::vector<Metrics>& metrics) {
     //Check if the metrics are supported by the simulator
     for(auto it = metrics.begin(); it != metrics.end(); ++it){
         //check if its supported and that the type inputed is matching the type supported by the simulator
-        if(std::find(simulatorInfo.supportedMetrics.begin(), simulatorInfo.supportedMetrics.end(), it->first) == simulatorInfo.supportedMetrics.end()){
-            std::cerr << "Metric: " << it->first << " is not supported by the simulator" << std::endl;
+        if(std::find(simulatorInfo.supportedMetrics.begin(), simulatorInfo.supportedMetrics.end(), it) == simulatorInfo.supportedMetrics.end()){
+            std::cerr << "Metric: " << (it->name) << " is not supported by the simulator" << std::endl;
         }else{
             //if the metric is supported by the simulator, then add it to the metrics map
-            Metrics metric = Metrics(it->first, it->second.unit);
-            metrics.insert(std::pair<std::string, Metrics>(it->first, metric));
-        }   
+            NS3metrics.emplace_back(*it);
+        }
     }
+};
+
+/**
+ * @brief 
+ * basic function which parses the parameters to an NS3 command line string for building the simulation
+ * and the build options to an NS3 command line string for building the simulation
+ * @param parameter 
+ * @return std::string 
+ */
+void NS3_mockup_interface::ParseToNS3CommandLine(std::vector<BuildOptions>& buildOptions){
+    
+    std::string ParamsCMDstring = "ns3 ";
+    std::string BuildCMDstring = "ns3 ";
+    
+    //Parse the build options to an NS3 command line string for building the simulation
+    for(auto it = buildOptions.begin(); it != buildOptions.end(); ++it){
+        BuildCMDstring += "--" + it->buildOption + "=" + it->buildOptionValue + " ";
+    }
+
+    //Parse the parameters to an NS3 command line string for building the simulation
+    for(auto it = NS3parameters.begin(); it != NS3parameters.end(); ++it){
+        ParamsCMDstring += "--" + (it->name) + "=" + (it->defaultParameter) + " ";
+    }
+
+    CL_Parameters = ParamsCMDstring;
+    CL_BuildOptions = BuildCMDstring;
 };
 
 
@@ -183,7 +164,8 @@ void NS3_mockup_interface::LoadMetrics(std::map<std::string, Metrics>& metrics) 
  */
 void NS3_mockup_interface::RunSimulation(){
     //Run the parsing function to parse the inputted parameters to an NS3 command line string for building the simulation
-    //std::string commandLine = ParseToNS3CommandLine(parameters, buildoptions);
+    
+    std::string commandLine = ParseToNS3CommandLine(buildoptions);
 
     namespace fs = std::filesystem; 
     fs::path tempPath = fs::temp_directory_path()/"output.txt";
@@ -195,7 +177,7 @@ void NS3_mockup_interface::RunSimulation(){
     std::cout.rdbuf(outputFile.rdbuf());
 
     //Run the simulation through command line the using the command line string
-    activeSimulatorListener->OnSimulationStart(metrics);
+    activeSimulatorListener->OnSimulationStart(NS3metrics);
 
     system(commandLine.c_str());
 
@@ -209,32 +191,6 @@ void NS3_mockup_interface::RunSimulation(){
     //Cleanup
     std::cout.rdbuf(oldCoutStreamBuf); //Reset the cout stream buffer
     fs::remove(tempPath); //remove the file
-};
-
-/**
- * @brief 
- * basic function which parses the parameters to an NS3 command line string for building the simulation
- * and the build options to an NS3 command line string for building the simulation
- * @param parameter 
- * @return std::string 
- */
-void NS3_mockup_interface::ParseToNS3CommandLine(std::map<std::string, Parameter>& parameter, std::map<std::string, BuildOptions>& buildOptions){
-    
-    std::string ParamsCMDstring = "ns3 ";
-    std::string BuildCMDstring = "ns3 ";
-
-    //Parse the build options to an NS3 command line string for building the simulation
-    for(auto it = buildOptions.begin(); it != buildOptions.end(); ++it){
-        BuildCMDstring += "--" + it->first + "=" + it->second.buildOptionValue + " ";
-    }
-
-    //Parse the parameters to an NS3 command line string for building the simulation
-    for(auto it = parameter.begin(); it != parameter.end(); ++it){
-        ParamsCMDstring += "--" + it->first + "=" + it->second.defaultParameter + " ";
-    }
-
-    CL_Parameters = ParamsCMDstring;
-    CL_BuildOptions = BuildCMDstring;
 };
 
 

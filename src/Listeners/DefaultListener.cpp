@@ -18,7 +18,7 @@ void DefaultListener::OnSimulationEnd() {
     std::cout << "Simulation ended" << std::endl;
 }
 
-void DefaultListener::OnSimulationUpdate(){
+void DefaultListener::OnSimulationUpdate(std::string value){
     std::cout << "Simulation updated" << std::endl;
 }
 
