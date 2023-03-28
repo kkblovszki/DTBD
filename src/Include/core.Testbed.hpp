@@ -11,7 +11,7 @@ public:
     Testbed();
     ~Testbed();
 
-    std::map<std::string, Benchmark> benchmarks;
+    std::map<std::string, std::unique_ptr<Benchmark>> benchmarks;
 
     void CreateBenchmark(std::string benchmarkName);
     void RemoveBenchmark(std::string benchmarkName);

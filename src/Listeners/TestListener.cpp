@@ -18,7 +18,7 @@ void TestListener::OnSimulationEnd(){
     std::cout << "Simulation ended" << std::endl;
 }
 
-void TestListener::OnSimulationUpdate() {
+void TestListener::OnSimulationUpdate(std::string value) {
     std::cout << "Simulation updated" << std::endl;
 }
 

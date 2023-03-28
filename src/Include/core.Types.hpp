@@ -9,7 +9,19 @@
 #include <functional>
 
 
-struct Scenario {
+typedef struct BuildOptions {
+        std::string buildOption;
+        std::string buildOptionValue;
+} BuildOptions;
+
+typedef struct Parameter {
+    std::string name;
+    std::string defaultParameter;
+    // UML diagram says type <V> for the Parameter struct, as well as the type for the variable undertest, yet we don't know exactly what we means by this 
+    //size_t underTest; //???????????????
+} Parameter;
+
+struct ScenarioType {
     std::string name;
     std::string description;
     std::string simulator;
@@ -19,15 +31,17 @@ struct Scenario {
     std::vector<BuildOptions> buildOptions;
 };
 
+
+
 struct SimulationStrategy {
     bool multithread;
     int threadNr;
     std::map<int, std::string> executionOrder;
 };
 
-struct Benchmark {
+struct BenchmarkType {
     SimulationStrategy simulationStrategy;
-    std::vector<Scenario> scenarios;
+    std::vector<ScenarioType> scenarios;
 };
 
 typedef struct Metrics {
@@ -54,13 +68,7 @@ typedef struct Measure {
     Measure(){};
 } Measure;
 
-typedef struct Parameter {
-    std::string name;
-    size_t defaultParameter;
-    // UML diagram says type <V> for the Parameter struct, as well as the type for the variable undertest, yet we don't know exactly what we means by this 
-    size_t underTest; //???????????????
 
-} Parameter;
 
 typedef struct SimulatorInfo {
     std::string simulatorName;

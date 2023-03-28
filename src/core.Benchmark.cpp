@@ -4,6 +4,7 @@
  * @brief 
  * Using the library yaml-cpp, load the simulation configuration file and store the data in the Benchmark object
  * convert the config into an accessable ordered map, to get the individual simulations names, get the simulator type, and the listener type
+ * Runs the parser @ref parseScenario, @ref parseSimulator, and @ref parseListener to parse the simulation configuration file into a predetermined format, with a ruleset. 
  * @param configPath 
  */
 void Benchmark::LoadSimulationConfig(std::string configPath){
@@ -14,7 +15,7 @@ void Benchmark::LoadSimulationConfig(std::string configPath){
         throw std::runtime_error("Config file not found");
     }
 
-    config = YAMLNodeToMap(config_);    
+    config = parseBenchmark(config_, ScenariosDescriptors, SimulationStrategiesDescriptors);
     
     std::cout << "Config loaded" << std::endl;
 };
@@ -87,7 +88,8 @@ void Benchmark::mapScenarioToParameter(std::string scenarioName, Parameter param
 
 //using the scenarioName given as a string, find the scenario in the map and add the metrics to it
 void Benchmark::mapScenarioToMetrics(std::string scenarioName, std::map<std::string, Metrics> metrics){
-    scenarios[scenarioName]->metrics = metrics;
+    throw std::runtime_error("Not implemented");
+    //scenarios[scenarioName]->metrics = std::copy(metrics.begin(), metrics.end(), scenarios[scenarioName]->metrics.begin());
 };
 
 
