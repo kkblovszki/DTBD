@@ -18,10 +18,9 @@ public:
     Parser();
     ~Parser();
 
-static void parseBenchmark(const YAML::Node& benchmarkNode, std::map<std::string, ScenarioType>& ScenarioDescriptor, SimulationStrategy& simulationStrategy);
+static void parseBenchmark(const YAML::Node& benchmarkNode, std::map<std::string, ScenarioType>& ScenarioDescriptor, SimulationStrategy simulationStrategy);
 static void parseSimulationStrategy(const YAML::Node& simulationStrategyNode, SimulationStrategy& simulationStrategy);
 static void parseScenario(const YAML::Node& scenarioNode, ScenarioType& scenario);
-
 };
 
 #endif //PARSER_HPP

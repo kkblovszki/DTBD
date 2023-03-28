@@ -15,7 +15,7 @@ void Benchmark::LoadSimulationConfig(std::string configPath){
         throw std::runtime_error("Config file not found");
     }
 
-    config = parseBenchmark(config_, ScenariosDescriptors, SimulationStrategiesDescriptors);
+    Parser::parseBenchmark(config_, ScenariosDescriptors, SimulationStrategiesDescriptors);
     
     std::cout << "Config loaded" << std::endl;
 };

@@ -16,14 +16,9 @@ class Benchmark {
 private:
     std::map<std::string, std::unique_ptr<Scenario>> scenarios;
     std::map<std::string, std::string> config;
-
-    struct SimulationStrategy {
-        std::string name;
-        std::vector<std::string> scenarios;
-    };
     
     std::map<std::string, ScenarioType> ScenariosDescriptors;
-    std::map<std::string, SimulationStrategy> SimulationStrategiesDescriptors;
+    SimulationStrategy SimulationStrategiesDescriptors;
 
 public:
     Benchmark(){};

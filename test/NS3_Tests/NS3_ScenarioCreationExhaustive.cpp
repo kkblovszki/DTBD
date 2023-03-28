@@ -1,8 +1,7 @@
 #include <iostream>
 #include <cassert>
 
-#include "../src/Include/core.Scenario.hpp"
-
+#include <core.Scenario.hpp>
 
 //main function which creates scenario and performs exhaustive testing on it
 int main() {

@@ -3,7 +3,8 @@
 #include <vector>
 #include <map>
 #include <functional>
-#include "yaml-cpp/yaml.h"
+#include "../src/Include/core.Scenario.hpp"
+#include <yaml-cpp/yaml.h>
 
 typedef struct metric{
     std::string name;

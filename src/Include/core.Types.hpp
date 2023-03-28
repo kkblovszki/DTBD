@@ -31,13 +31,11 @@ struct ScenarioType {
     std::vector<BuildOptions> buildOptions;
 };
 
-
-
-struct SimulationStrategy {
+typedef struct SimulationStrategy {
     bool multithread;
     int threadNr;
     std::map<int, std::string> executionOrder;
-};
+}SimulationStrategy;
 
 struct BenchmarkType {
     SimulationStrategy simulationStrategy;

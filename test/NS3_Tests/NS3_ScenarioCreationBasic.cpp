@@ -1,7 +1,8 @@
-#include "../src/Include/core.Scenario.hpp"
 #include <iostream>
 #include <memory>
 #include <cassert>
+
+#include <core.Scenario.hpp>
 
 int main() {
     

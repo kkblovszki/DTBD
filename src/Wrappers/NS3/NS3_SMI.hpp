@@ -1,5 +1,6 @@
 #ifndef NS3_INTERFACE_HPP
 #define NS3_INTERFACE_HPP
+
 #include "../include/SimulatorMockUpInterface.hpp"
 #include <./yaml-cpp/yaml.h>
 #include <fstream>
@@ -28,7 +29,7 @@ private:
 
     void ParseToNS3CommandLine(std::map<std::string, Parameter>& Parameter, std::map<std::string, std::string>& BuildOptions);
 
-    void UpdateListener(std::ifstream& outputFileStream){
+    /*void UpdateListener(std::ifstream& outputFileStream){
         std::string line;
         if(outputFileStream.is_open()){
             while(getline(outputFileStream, line)){
@@ -37,7 +38,7 @@ private:
             }
             outputFileStream.close();
         }
-    }
+    }*/
     
 
 public:
@@ -45,7 +46,6 @@ public:
     ~NS3_mockup_interface();
 
     void* createSimulator();
-
     /**
      * @brief Set the Listener object
      * Using this function which takes two parameters @param uniqueListener
