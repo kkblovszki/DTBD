@@ -10,6 +10,7 @@ set(CMAKE_CXX_STANDARD 20)
 # Set the compiler flags
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wpedantic -Werror") #-Wextra
 
+
 # ------------------------------- Add the Doxygen documentation -------------------------------
 find_package(Doxygen REQUIRED)
 
@@ -80,6 +81,7 @@ set(CMAKE_FRAMEWORK_CPP_PATH ${CMAKE_FRAMEWORK_CPP_PATH} "${CMAKE_SOURCE_DIR}/sr
 set(FRAMEWORK_CPP_INCLUDE_DIR ${FRAMEWORK_CPP_INCLUDE_DIR} "${CMAKE_FRAMEWORK_CPP_PATH}/include")
 
 # Link the libraries
+target_link_libraries(DTDB_framework ${CMAKE_DL_LIBS})
 target_link_libraries(DTDB_framework Parser)
 target_link_libraries(DTDB_framework DTDB_listeners)
 
