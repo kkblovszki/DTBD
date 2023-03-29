@@ -37,7 +37,7 @@ typedef struct SimulationStrategy {
     std::map<int, std::string> executionOrder;
 }SimulationStrategy;
 
-struct BenchmarkType {
+struct BenchmarkType{
     SimulationStrategy simulationStrategy;
     std::vector<ScenarioType> scenarios;
 };
@@ -65,7 +65,6 @@ typedef struct Measure {
             readings(specifiedReadings){};
     Measure(){};
 } Measure;
-
 
 
 typedef struct SimulatorInfo {

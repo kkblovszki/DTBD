@@ -16,8 +16,7 @@
 /**
  * \brief Scenario documentation.
  *
- * This is the MyClass class. It does some things and has some properties.
- *
+ * This is the Scenario class. It does some things and has some properties.
  * For more information, see \ref Scenario.
  */
 class Scenario {

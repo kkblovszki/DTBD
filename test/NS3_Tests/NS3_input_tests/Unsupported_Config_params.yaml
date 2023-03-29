@@ -1,0 +1,21 @@
+Benchmark:
+- Simulator: NS3
+    Scenario: 
+    name: NS3_unsupported_config_params_test
+    description: An example problem in NS3
+    optional: null
+    required:
+      topology-file-path: network.cpp
+      traffic-file-path: traffic.cpp
+
+      - BuildOptions:
+        examples: enable
+        tests: enable
+  
+      - Parameters:
+        protocol: TCP
+        tcp-variant: NewReno
+        routing-protocol: OSPF
+        unsupported-param: unsupported #This is an unsupported parameter and should throw an error
+
+

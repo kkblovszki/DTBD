@@ -110,25 +110,43 @@ target_link_libraries(NS3Simulator yaml-cpp)
 
 # ------------------------------- Add the tests -------------------------------
 
-### NS3
+# ------------ Framework tests ------------
+
+add_executable(framework_test test/Framework_tests/load_sim_config.cpp)
+
+# Set the output directory for the 'my_project_tests' target to 'test/bin'
+set_target_properties(framework_test PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests/framework_tests")
+
+target_link_libraries(framework_test DTDB_framework)
+
+add_test(NAME framework_test COMMAND framework_test)
+
+# ------------ NS3 tests ------------
 
 # Add any test files from the 'test' directory
 add_executable(NS3_Exhaustive_scenario_creation test/NS3_Tests/NS3_ScenarioCreationExhaustive.cpp)
 add_executable(NS3_Basic_scenario_creation test/NS3_Tests/NS3_ScenarioCreationBasic.cpp)
 
 # Set the output directory for the 'my_project_tests' target to 'test/bin'
-set_target_properties(NS3_Basic_scenario_creation NS3_Exhaustive_scenario_creation PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests")
+set_target_properties(NS3_Basic_scenario_creation NS3_Exhaustive_scenario_creation PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests/NS3_tests")
 
 target_link_libraries(NS3_Exhaustive_scenario_creation DTDB_framework)
 target_link_libraries(NS3_Basic_scenario_creation DTDB_framework)
 
+# Add tests that will be run when running the 'make test' command
+add_test(NAME NS3_Exhaustive_scenario_creation_test COMMAND NS3_Exhaustive_scenario_creation)
+add_test(NAME NS3_Basic_scenario_creation_test COMMAND NS3_Basic_scenario_creation)
 
-### YAML parser
+
+# ------------ YAML parser tests ------------
 # Add tests from the directory
 add_executable(parser_test test/parser_tests/parserTests.cpp)
 
 # Set the output directory for the 'my_projects_tests' target to 'test/bin'
-set_target_properties(parser_test PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests")
+set_target_properties(parser_test PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests/parser_tests")
 
 # Link the parser directory with the main framework
 target_link_libraries(parser_test DTDB_framework)
+
+# Add the test to the test suite
+add_test(NAME parser_test COMMAND parser_test)

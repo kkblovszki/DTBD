@@ -2,7 +2,6 @@
 
 /**
  * @todo:
- * 
  * When creating a new simulator, the following steps need to be taken:
  * - Run constructor:
  *      
@@ -32,7 +31,6 @@
  * - Set up a filestream to read the output from the simulation
  * - Run the simulation
  * - Read the output from the simulation
- * 
  */
 
 /**
@@ -76,9 +74,10 @@ void NS3_mockup_interface::LoadConfiguration() {
 
     /*Store the supported parameters for the simulator SMI from the persistentData*/
     for (YAML::const_iterator it = persistentData["supportedParameters"].begin(); it != persistentData["supportedParameters"].end(); ++it){
+        //Get the name of each individual supportedParameters and add it to the list of supportedParameters for the simulatorInfo.SupportedParameters
+        //simulatorInfo.supportedParameters.push_back(it->first.as<std::string>());
         simulatorInfo.supportedParameters.push_back(it->as<std::string>());
     }
-
 };
 
 void NS3_mockup_interface::WriteToConfiguration(std::string configFileName){};
@@ -99,12 +98,12 @@ void NS3_mockup_interface::setLibraryHandle(void* libraryHandle) {
  */
 void NS3_mockup_interface::LoadParameters(std::vector<Parameter>& parameter) {
     for(auto it = parameter.begin(); it != parameter.end(); ++it){
-        /*if(std::find(simulatorInfo.supportedParameters.begin(), simulatorInfo.supportedParameters.end(), it) == simulatorInfo.supportedParameters.end()){
+        if(std::find(simulatorInfo.supportedParameters.begin(), simulatorInfo.supportedParameters.end(), (it->name)) == simulatorInfo.supportedParameters.end()){
             std::cerr << "Parameter: " << (it->name) << " is not supported by the simulator" << std::endl;
         }else{
             //if the metric is supported by the simulator, then add it to the metrics map
             NS3parameters.emplace_back(*it);
-        }*/
+        }
     }
 };
 
@@ -118,7 +117,7 @@ void NS3_mockup_interface::LoadMetrics(std::vector<Metrics>& metrics) {
     //Check if the metrics are supported by the simulator
     for(auto it = metrics.begin(); it != metrics.end(); ++it){
         //check if its supported and that the type inputed is matching the type supported by the simulator
-        /*if(std::find(simulatorInfo.supportedMetrics.begin(), simulatorInfo.supportedMetrics.end(), it) == simulatorInfo.supportedMetrics.end()){
+        /*if(std::find(simulatorInfo.supportedMetrics.begin(), simulatorInfo.supportedMetrics.end(), *it) == simulatorInfo.supportedMetrics.end()){
             std::cerr << "Metric: " << (it->name) << " is not supported by the simulator" << std::endl;
         }else{
             //if the metric is supported by the simulator, then add it to the metrics map
@@ -133,9 +132,8 @@ void NS3_mockup_interface::LoadMetrics(std::vector<Metrics>& metrics) {
  * and the build options to an NS3 command line string for building the simulation
  * @param parameter 
  * @return std::string 
- 
+ */
 void NS3_mockup_interface::ParseToNS3CommandLine(std::vector<BuildOptions>& buildOptions){
-    
     std::string ParamsCMDstring = "ns3 ";
     std::string BuildCMDstring = "ns3 ";
     
@@ -152,7 +150,7 @@ void NS3_mockup_interface::ParseToNS3CommandLine(std::vector<BuildOptions>& buil
     CL_Parameters = ParamsCMDstring;
     CL_BuildOptions = BuildCMDstring;
 };
-*/
+
 
 /**
  * @brief

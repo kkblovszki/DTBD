@@ -22,36 +22,50 @@ void Benchmark::LoadSimulationConfig(std::string configPath){
 
 /**
  * @brief Creates a scenario object and adds it to the map of scenarios
- * it iterates through the simulations in the config file and creates a single scenario at a time, based on the scenario name, simulator type, and listener type
+ * It iterates through the simulations in the config file and creates a single scenario at a time, based on the scenario name, simulator type, and listener type.
+ * \n 
  * However the listener type is optional and can be added later by manually creating a listener object and adding it to the scenario using the @SimulatorMockupInterface's SetListener method
- * @param scenarioName 
+ * @details The @param scenarioName must match the name of the scenario in the simulation configuration file
  */
 void Benchmark::CreateScenario(std::string scenarioName){
-    /* 
-    YAML::Node simulationProfiles = config_["SimulationProfile"];
-    YAML::Node scenarioConfig = simulationProfiles[scenarioName];
 
-    // Check if scenario already exists
-    if (scenarios_.find(scenarioName) != scenarios_.end()) {
+    //Check if scenario already exists
+    if (scenarios.find(scenarioName) != scenarios.end()) {
         std::cerr << "Error: Scenario " << scenarioName << " already exists.\n";
+        return;
+    }else if (ScenariosDescriptors.find(scenarioName) == ScenariosDescriptors.end()) {
+        std::cerr << "Error: Scenario " << scenarioName << " not found in config file.\n";
         return;
     }
 
-    //Get the simulator type written in the yaml file
-    std::string simulatorType = scenarioConfig["SimulatorType"].as<std::string>();
+    //Get the simulator type written in the yaml file for the specific scenario
+    std::string simulatorType = ScenariosDescriptors[scenarioName].simulator;
 
-    // Create listener if specified
-    std::shared_ptr<ListenerInterface> listener;
-    if (scenarioConfig["ListenerType"]) {
-        std::string listenerType = scenarioConfig["ListenerType"].as<std::string>();
-    }
+    //Create listener if specified
+    //std::shared_ptr<Listener> listener;
+    std::string listenerType;
+
+    //DEBUGGING test_listener for outputting to console
+    #ifdef DEBUG
+    listenerType = "testlistener";
+    #else
+    //std::string listenerType = ScenariosDescriptors[scenarioName].listener;
+    #endif
+
+    /*for(auto it = ScenariosDescriptors.begin(); it != ScenariosDescriptors.end(); ++it){
+        if(it->first == scenarioName){
+            if(it->second.listener != ""){
+                listener = std::make_shared<Listener>(it->second.listener);
+            }
+        }
+    }*/
     
     // Create scenario
     std::unique_ptr<Scenario> singleScenario = std::make_unique<Scenario>(scenarioName, simulatorType, listenerType);
 
     // Add scenario to map
     scenarios.insert(std::make_pair(scenarioName, std::move(singleScenario)));
-    */
+    
 };
 
 /*

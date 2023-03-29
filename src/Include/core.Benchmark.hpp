@@ -28,7 +28,7 @@ public:
 
     void CreateScenario(std::string scenarioName);
     void RemoveScenario(std::string scenarioName);
-
+    
     void mapScenarioToParameter(std::string scenarioName, Parameter parameter);
     void mapScenarioToMetrics(std::string scenarioName, std::map<std::string, Metrics> metrics);
 

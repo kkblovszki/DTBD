@@ -5,6 +5,8 @@
 #include <functional>
 #include "yaml-cpp/yaml.h"
 
+namespace pseudo {
+
 typedef struct metric{
     std::string name;
     std::string unit;
@@ -99,4 +101,6 @@ int main() {
     testbed->benchmarks["Benchmark_NS3"]->scenarios["Scenario_2"]->getSimulatorInfo();
  
     return 0;
+}
+
 }

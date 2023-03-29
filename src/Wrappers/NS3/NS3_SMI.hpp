@@ -27,7 +27,7 @@ private:
     std::string CL_BuildOptions;
     std::string CL_Parameters;
 
-    void ParseToNS3CommandLine(std::map<std::string, Parameter>& Parameter, std::map<std::string, std::string>& BuildOptions);
+    void ParseToNS3CommandLine(std::vector<BuildOptions>& BuildOptions);
 
     /*void UpdateListener(std::ifstream& outputFileStream){
         std::string line;
