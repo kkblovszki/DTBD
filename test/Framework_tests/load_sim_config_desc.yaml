@@ -1,0 +1,12 @@
+
+Benchmark:
+  - Simulator: NS3
+      Scenario: 
+      name: NS3 Example
+      description: An example problem in NS3
+      listeners:
+      - TestListener
+      - DefaultListener
+      - CSVListener 
+      
+

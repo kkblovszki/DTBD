@@ -13,13 +13,14 @@ std::unique_ptr<Listener> ListenerCreator::CreateListener(const std::string& lis
     std::cout << "UpperCase name: " << ListenerType << std::endl;
     
     switch (stringToListenerType().at(ListenerType)) {
-        case ListenerType::DefaultListener:
-            return std::make_unique<Core::Listeners::DefaultListener>();
-            break;
         case ListenerType::TestListener:
             std::cout << "Creating test listener" << std::endl;
             return std::make_unique<Core::Listeners::TestListener>();
             break;
+        case ListenerType::DefaultListener:
+            return std::make_unique<Core::Listeners::DefaultListener>();
+            break;
+        
         default:
             return nullptr;
             break;

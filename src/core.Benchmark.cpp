@@ -15,7 +15,7 @@ void Benchmark::LoadSimulationConfig(std::string configPath){
         throw std::runtime_error("Config file not found");
     }
 
-    Parser::parseBenchmark(config_, ScenariosDescriptors, SimulationStrategiesDescriptors);
+    Parser::parseBenchmark(config_, scenariosDescriptors, simulationStrategiesDescriptors);
     
     std::cout << "Config loaded" << std::endl;
 };
@@ -23,7 +23,7 @@ void Benchmark::LoadSimulationConfig(std::string configPath){
 /**
  * @brief Creates a scenario object and adds it to the map of scenarios
  * It iterates through the simulations in the config file and creates a single scenario at a time, based on the scenario name, simulator type, and listener type.
- * \n 
+ * \n
  * However the listener type is optional and can be added later by manually creating a listener object and adding it to the scenario using the @SimulatorMockupInterface's SetListener method
  * @details The @param scenarioName must match the name of the scenario in the simulation configuration file
  */
@@ -33,13 +33,13 @@ void Benchmark::CreateScenario(std::string scenarioName){
     if (scenarios.find(scenarioName) != scenarios.end()) {
         std::cerr << "Error: Scenario " << scenarioName << " already exists.\n";
         return;
-    }else if (ScenariosDescriptors.find(scenarioName) == ScenariosDescriptors.end()) {
+    }else if (scenariosDescriptors.find(scenarioName) == scenariosDescriptors.end()) {
         std::cerr << "Error: Scenario " << scenarioName << " not found in config file.\n";
         return;
     }
 
     //Get the simulator type written in the yaml file for the specific scenario
-    std::string simulatorType = ScenariosDescriptors[scenarioName].simulator;
+    std::string simulatorType = scenariosDescriptors[scenarioName].simulator;
 
     //Create listener if specified
     //std::shared_ptr<Listener> listener;
@@ -49,10 +49,11 @@ void Benchmark::CreateScenario(std::string scenarioName){
     #ifdef DEBUG
     listenerType = "testlistener";
     #else
-    //std::string listenerType = ScenariosDescriptors[scenarioName].listener;
+    listenerType = scenariosDescriptors[scenarioName].listener;
     #endif
 
-    /*for(auto it = ScenariosDescriptors.begin(); it != ScenariosDescriptors.end(); ++it){
+    //For when multi listeners gets supported
+    /*for(auto it = scenariosDescriptors.begin(); it != scenariosDescriptors.end(); ++it){
         if(it->first == scenarioName){
             if(it->second.listener != ""){
                 listener = std::make_shared<Listener>(it->second.listener);
@@ -85,7 +86,7 @@ void Benchmark::CreateAllScenarios()
 
 /**
  * @brief 
- * 
+ * Removes a scenario from the map of scenarios
  * @param scenarioName 
  */
 void Benchmark::RemoveScenario(std::string scenarioName){

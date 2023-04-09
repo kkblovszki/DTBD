@@ -10,7 +10,7 @@ TestListener::~TestListener(){
     std::cout << "Test listener destroyed" << std::endl;
 }
 
-void TestListener::OnSimulationStart(std::vector<Metrics> metrics) {
+void TestListener::OnSimulationStart() {
     std::cout << "Simulation started" << std::endl;
 }
 

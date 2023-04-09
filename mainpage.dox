@@ -1,0 +1,96 @@
+/**
+* @mainpage Digital Benchmark and Testbed framework for multi-simulatior and multisimulation.
+*
+*
+* @section intro Introduction
+*
+* This framework is a software package that does something cool. It's written in C++ and uses the
+* NS-3 network simulation framework to simulate network traffic and analyze network performance.
+*
+* @section usage Usage
+*
+* To use the framework, you need to have the individual simulator mock-up interfaces for each individual simulator and the source code, to build the framework.
+* You can then build the framework using the included build system, either cmake (maybe ninja in the future), and run the included examples to see how it works.
+*
+* To use the framework, a simulation configuration for the benchmark is needs to be created. This configuration file is a YAML file that contains the configuration for the benchmark.  
+* in the case of multiple benchmarks. multiple configuration files are needs to be created. 
+*
+* @section example Example
+* 
+* @code{.YAML}
+* Profile-name: NS3_single_simulation
+*
+* Benchmark:
+* - Simulator: NS3
+*    Scenario: 
+*    name: NS3 Example
+*    description: An example problem in NS3
+*    simulator: NS3
+*    optional: null
+*    required:
+*      topology-file-path: network.cpp
+*      traffic-file-path: traffic.cpp
+*
+*      - BuildOptions:
+*        examples: enable
+*        tests: enable
+*        python: disable
+*        gs1: enable
+*        ns3-mobility: enable
+*        system-libraries: enable
+*        precompiled-header: enable
+*        
+*        - openflow:
+*          enable: enable
+*          openflow-version: 1.3
+*          openflow-protocol: OpenFlowSwitch13
+*          openflow-helper: OpenFlowHelper
+*          openflow-controller: RemoteController
+*        performance: trace
+*        - brite:
+*          enable: enable
+*          brite-version: 1.3
+*          brite-protocol: BriteTopologyHelper
+*          brite-helper: BriteHelper
+*          brite-controller: BriteControllerHelper
+*        prefix: /usr/local
+*
+*      - Parameters:
+*        protocol: TCP
+*        tcp-variant: NewReno
+*        routing-protocol: OSPF
+*
+* - Simulator: OMNET++
+* @endcode
+*
+* Here's an example of how to initialise the framework in your own code:
+*
+* @code{.cpp}
+* #include <core.Testbed.hpp>
+*
+* int main ()
+* {
+*     Testbed Testbed;
+*     return 0;
+* }
+* @endcode
+*
+* @section supported-features Currently supported features
+*
+* - @li Currently only Linux is supported as a build platform (Windows and Mac OS X support is planned)
+* - @li Currently only sequential execution is supported (parallel execution is planned)
+* - @li Multiple scenarios
+* - @li Multiple Benchmarks
+* - @li NS3 simulator mock-up interface(SMIs)
+* - @li Dynamic loading of SMI
+* - @li Dynamic Creation or removal of Benchmark and scenarios
+* - @li Basic parser for the Benchmark configuration file
+*
+* @section links Links
+*
+* For more information about My Project, see the <a href="http://www.myproject.com">My Project website</a>.
+* 
+* Links to the simulators currently supported can be found here:
+* For more information about NS-3, see the <a href="http://www.nsnam.org">NS-3 website</a>.
+* 
+*/

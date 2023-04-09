@@ -19,6 +19,7 @@ Benchmark:
         ns3-mobility: enable
         system-libraries: enable
         precompiled-header: enable
+        
         - openflow:
           enable: enable
           openflow-version: 1.3
@@ -38,3 +39,6 @@ Benchmark:
         protocol: TCP
         tcp-variant: NewReno
         routing-protocol: OSPF
+
+- Simulator: OMNET++
+  

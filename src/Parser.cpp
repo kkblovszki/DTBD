@@ -1,6 +1,7 @@
 #include "Include/Parser.hpp"
+#include "Parser.hpp"
 
-void parseScenario(const YAML::Node& scenarioNode, ScenarioType& scenario) {
+void Parser::parseScenario(const YAML::Node& scenarioNode, ScenarioDescriptor& scenario) {
     scenario.name = scenarioNode["name"].as<std::string>();
     scenario.description = scenarioNode["description"].as<std::string>();
     scenario.simulator = scenarioNode["simulator"].as<std::string>();
@@ -42,16 +43,16 @@ void parseScenario(const YAML::Node& scenarioNode, ScenarioType& scenario) {
             scenario.buildOptions.push_back(buildOptions);
         }
     }
-}
+};
 
-void parseSimulationStrategy(const YAML::Node& simulationStrategyNode, SimulationStrategy& simulationStrategy) {
+void Parser::parseSimulationStrategy(const YAML::Node& simulationStrategyNode, SimulationStrategy& simulationStrategy) {
     simulationStrategy.multithread = simulationStrategyNode["multithread"].as<bool>();
     simulationStrategy.threadNr = simulationStrategyNode["thread_nr"].as<int>();
     const auto& executionOrderNode = simulationStrategyNode["ExecutionOrder"];
     for (const auto& it : executionOrderNode) {
         simulationStrategy.executionOrder[it.first.as<int>()] = it.second.as<std::string>();
     }
-}
+};
 
 /**
  * @brief 
@@ -64,16 +65,16 @@ void parseSimulationStrategy(const YAML::Node& simulationStrategyNode, Simulatio
  * @param benchmarkNode 
  * @param benchmark 
  */
-void parseBenchmark(const YAML::Node& benchmarkNode, std::map<std::string, ScenarioType>& ScenarioDescriptor, SimulationStrategy& simulationStrategy) {
+void Parser::parseBenchmark(const YAML::Node& benchmarkNode, std::map<std::string, ScenarioDescriptor>& ScenarioDescriptors, SimulationStrategy& simulationStrategy) {
     if (benchmarkNode["SimulationStrategy"]) {
         const auto& simulationStrategyNode = benchmarkNode["SimulationStrategy"];
         parseSimulationStrategy(simulationStrategyNode, simulationStrategy);
     }else if(benchmarkNode["Simulators"]) {
         const auto& scenariosNode = benchmarkNode["Scenarios"];
         for (const auto& it : scenariosNode) {
-            ScenarioType scenario;
+            ScenarioDescriptor scenario;
             parseScenario(it.second, scenario);
-            ScenarioDescriptor[it.first.as<std::string>()] = scenario;
+            ScenarioDescriptors[it.first.as<std::string>()] = scenario;
         }
     }
 };

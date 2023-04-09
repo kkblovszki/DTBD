@@ -1,11 +1,11 @@
 #ifndef BENCHMARK_HPP
 #define BENCHMARK_HPP
 
+#include <./yaml-cpp/yaml.h>
 #include "core.Types.hpp"
 #include "SimulatorMockUpInterface.hpp"
 #include "core.Scenario.hpp"
-#include <./yaml-cpp/yaml.h>
-#include "parser.hpp"
+#include "Parser.hpp"
 
 /**
  * @brief Benchmark class
@@ -17,8 +17,8 @@ private:
     std::map<std::string, std::unique_ptr<Scenario>> scenarios;
     std::map<std::string, std::string> config;
     
-    std::map<std::string, ScenarioType> ScenariosDescriptors;
-    SimulationStrategy SimulationStrategiesDescriptors;
+    std::map<std::string, ScenarioDescriptor> scenariosDescriptors;
+    SimulationStrategy simulationStrategiesDescriptors;
 
 public:
     Benchmark(){};

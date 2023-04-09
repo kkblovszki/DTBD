@@ -9,7 +9,7 @@
  * \section Listeners
  * 
  * Whether the individual listeners support updating in runtime depends on the individual Listener & SMI implementation respectively.
- *  
+ * 
  * \subsection ListenersOverview
  * There are currently 3 core listeners implemented in the framework. 
  * These being:
@@ -35,10 +35,11 @@ namespace Core {
             TestListener();
             ~TestListener();
 
-            void OnSimulationStart(std::vector<Metrics> metrics) override;
+            void OnSimulationStart() override;
             void OnSimulationEnd() override;
-            void OnSimulationUpdate(std::string value) override;
             void OnSimulationResult() override;
+            
+            void OnSimulationUpdate(std::string value) override;
         };
 
         class DefaultListener : public Listener {
@@ -46,10 +47,10 @@ namespace Core {
             DefaultListener();
             ~DefaultListener();
 
-            void OnSimulationStart(std::vector<Metrics> metrics) override;
+            void OnSimulationStart() override;
             void OnSimulationEnd() override;
-            void OnSimulationUpdate(std::string value) override;
             void OnSimulationResult() override;
+            void OnSimulationUpdate(std::string value) override;
         };
 
 
@@ -64,8 +65,6 @@ namespace Core {
             void OnSimulationResult() override;
         };
 
-
-        
     };
 };
 

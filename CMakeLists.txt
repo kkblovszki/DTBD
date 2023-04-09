@@ -46,6 +46,9 @@ endif()
 # Include the header files from the 'include' directory
 include_directories(src/include)
 
+# Define the path to the SMI directory as a variable to use in the code
+add_definitions(-DSMI_PATH="${CMAKE_SOURCE_DIR}/SMIs")
+
 # Link the libraries from the 'libs' directory
 link_directories(libs)
 
@@ -59,7 +62,6 @@ set_target_properties(DTDB PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_D
 
 # ----------------------------- Add Static libraries -----------------------------
 
-add_library(Parser src/Parser.cpp)
 
 add_library(DTDB_framework 
             src/core.Testbed.cpp 
@@ -67,7 +69,10 @@ add_library(DTDB_framework
             src/core.Benchmark.cpp
             src/ListenerCreator.cpp
             src/SimulatorCreator.cpp
+            src/Parser.cpp
             )
+
+#add_library(Parser )
 
 add_library(DTDB_listeners 
             src/Listeners/DefaultListener.cpp
@@ -82,8 +87,8 @@ set(FRAMEWORK_CPP_INCLUDE_DIR ${FRAMEWORK_CPP_INCLUDE_DIR} "${CMAKE_FRAMEWORK_CP
 
 # Link the libraries
 target_link_libraries(DTDB_framework ${CMAKE_DL_LIBS})
-target_link_libraries(DTDB_framework Parser)
 target_link_libraries(DTDB_framework DTDB_listeners)
+#target_link_libraries(DTDB_framework Parser)
 
 # Link the libraries to the executables
 target_link_libraries(DTDB DTDB_framework)

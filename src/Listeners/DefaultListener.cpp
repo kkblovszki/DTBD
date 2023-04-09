@@ -10,7 +10,7 @@ DefaultListener::~DefaultListener(){
     std::cout << "DefaultListener destroyed" << std::endl;
 };
 
-void DefaultListener::OnSimulationStart(std::vector<Metrics> metrics) {
+void DefaultListener::OnSimulationStart() {
     std::cout << "Simulation started" << std::endl;
 }
 

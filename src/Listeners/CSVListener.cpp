@@ -8,34 +8,25 @@
 using namespace Core::Listeners;
 
 
-CSVListener::CSVListener()
-{
+CSVListener::CSVListener(){
     //create a new csv file with the current date and time as the name of the file 
 
     //write the header of the csv file
 }
 
-CSVListener::~CSVListener()
-{
+CSVListener::~CSVListener(){
 }
 
-void CSVListener::OnSimulationStart(std::vector<Metrics> metrics)
-{
+void CSVListener::OnSimulationStart(std::vector<Metrics> metrics){
 }
 
-void CSVListener::OnSimulationEnd()
-{
-    
-}
+void CSVListener::OnSimulationEnd(){}
 
-void CSVListener::OnSimulationUpdate(std::string value)
-{   
+void CSVListener::OnSimulationUpdate(std::string value){   
     //write the value to the csv file
-    
 }
 
-void CSVListener::OnSimulationResult()
-{
+void CSVListener::OnSimulationResult(){
 }
 
 // Path: src/Listeners/CSVListener.cpp

@@ -9,39 +9,64 @@
 #include <functional>
 
 
+/**
+ * @brief
+ * 
+ */
 typedef struct BuildOptions {
         std::string buildOption;
         std::string buildOptionValue;
 } BuildOptions;
 
+
+/**
+ * @brief 
+ * 
+ */
 typedef struct Parameter {
     std::string name;
     std::string defaultParameter;
-    // UML diagram says type <V> for the Parameter struct, as well as the type for the variable undertest, yet we don't know exactly what we means by this 
-    //size_t underTest; //???????????????
 } Parameter;
 
-struct ScenarioType {
+
+/**
+ * @brief 
+ * The descriptor of the scenario structure.
+ */
+typedef struct ScenarioDescriptor {
     std::string name;
     std::string description;
     std::string simulator;
+    std::string listener;
     std::map<std::string, std::string> optional;
     std::map<std::string, std::string> required;
     std::vector<Parameter> parameters;
     std::vector<BuildOptions> buildOptions;
-};
+}ScenarioDescriptor;
 
+/**
+ * @brief 
+ * 
+ */
 typedef struct SimulationStrategy {
     bool multithread;
     int threadNr;
     std::map<int, std::string> executionOrder;
 }SimulationStrategy;
 
+/**
+ * @brief 
+ * 
+ */
 struct BenchmarkType{
     SimulationStrategy simulationStrategy;
-    std::vector<ScenarioType> scenarios;
+    std::vector<ScenarioDescriptor> scenarios;
 };
 
+/**
+ * @brief
+ * 
+ */
 typedef struct Metrics {
     std::string name;
     std::string unit;
@@ -51,6 +76,10 @@ typedef struct Metrics {
     ~Metrics(){};
 } Metrics;
 
+/**
+ * @brief 
+ * 
+ */
 typedef struct Measure {
     Metrics metric;
     std::string label;
@@ -66,7 +95,10 @@ typedef struct Measure {
     Measure(){};
 } Measure;
 
-
+/**
+ * @brief 
+ * 
+ */
 typedef struct SimulatorInfo {
     std::string simulatorName;
     std::string simulatorVersion;

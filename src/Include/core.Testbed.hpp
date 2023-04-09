@@ -10,7 +10,7 @@ private:
 public:
     Testbed();
     ~Testbed();
-
+    
     std::map<std::string, std::unique_ptr<Benchmark>> benchmarks;
 
     void CreateBenchmark(std::string benchmarkName);

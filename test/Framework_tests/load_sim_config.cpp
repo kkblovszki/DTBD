@@ -6,7 +6,9 @@
 int main(int argc, char** argv) {
     Testbed testbed;
     
-    testbed.("test/NS3_Tests/NS3_input_tests/NS3_unsupported_Parameters.yaml");
+    testbed.CreateBenchmark("testBenchmark"); // Create a benchmark
+
+    testbed.LoadBenchmarkConfig("testBenchmark", "test/Framework_tests/load_sim_config_desc.yaml"); // Load the config file
 
     return 0;
 }

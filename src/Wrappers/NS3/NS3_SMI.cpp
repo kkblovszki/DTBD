@@ -134,8 +134,8 @@ void NS3_mockup_interface::LoadMetrics(std::vector<Metrics>& metrics) {
  * @return std::string 
  */
 void NS3_mockup_interface::ParseToNS3CommandLine(std::vector<BuildOptions>& buildOptions){
-    std::string ParamsCMDstring = "ns3 ";
-    std::string BuildCMDstring = "ns3 ";
+    std::string ParamsCMDstring = "./ns3 build "; //possible point of failure.
+    std::string BuildCMDstring = "./ns3 run "; //possible point of failure.
     
     //Parse the build options to an NS3 command line string for building the simulation
     for(auto it = buildOptions.begin(); it != buildOptions.end(); ++it){
@@ -162,33 +162,70 @@ void NS3_mockup_interface::ParseToNS3CommandLine(std::vector<BuildOptions>& buil
  */
 void NS3_mockup_interface::RunSimulation(){
     //Run the parsing function to parse the inputted parameters to an NS3 command line string for building the simulation
-    
     //std::string commandLine = ParseToNS3CommandLine(buildoptions);
 
-    namespace fs = std::filesystem; 
-    fs::path tempPath = fs::temp_directory_path()/"output.txt";
+    auto currentTime = std::chrono::system_clock::now();
+    std::string currentTimeInHourMinSec = 
+        std::to_string(std::chrono::duration_cast<std::chrono::hours>(currentTime.time_since_epoch()).count()) + 
+        std::to_string(std::chrono::duration_cast<std::chrono::minutes>(currentTime.time_since_epoch()).count()) + 
+        std::to_string(std::chrono::duration_cast<std::chrono::seconds>(currentTime.time_since_epoch()).count());
 
-    std::ofstream outputFile(tempPath);
+    std::string fileOutput = simulatorInfo.simulatorName + "_" + currentTimeInHourMinSec + ".txt";
 
-    //redirect the output to the file
-    std::streambuf* oldCoutStreamBuf = std::cout.rdbuf();
-    std::cout.rdbuf(outputFile.rdbuf());
+    CL_Parameters += " > " + fileOutput + " 2>&1";
 
+    activeSimulatorListener->SimulationStart();
+
+    #ifdef UNIX
+         //First we build/configure the simulation
+        system(CL_BuildOptions.c_str());
+        //Then we run the simulation
+        system(CL_Parameters.c_str());
+    #endif
+
+    #ifdef WINDOWS
+        //Use wslapi.h to run the simulation
+    #endif
+
+    std::string smiPath = SMI_PATH;
+    std::string changeDirectory = "cd "+ smiPath;
+
+     //First we build/configure the simulation
+    system(CL_BuildOptions.c_str());
+
+    //Then we run the simulation
+    system(CL_Parameters.c_str());
+   
+
+    activeSimulatorListener->SimulationEnd();
+
+    //namespace fs = std::filesystem;
+    //fs::path tempPath = fs::temp_directory_path()/"output.txt";
+    //
+    //std::ofstream outputFile(tempPath);
+    //
+    ////redirect the output to the file
+    //std::streambuf* oldCoutStreamBuf = std::cout.rdbuf();
+    //std::cout.rdbuf(outputFile.rdbuf());
+    //
     //Run the simulation through command line the using the command line string
-    activeSimulatorListener->OnSimulationStart(NS3metrics);
+    //activeSimulatorListener->OnSimulationStart(NS3metrics);
 
-    //system(commandLine.c_str());
+    //First we build the simulation
+    //system(CL_BuildOptions.c_str());
+
+    //Then we run the simulation
+    //system(CL_Parameters.c_str());
 
     //std::thread ThreadUpdate(UpdateListener);
-
     //Wait for thread to finish
     //ThreadUpdate.join();
 
-    activeSimulatorListener->OnSimulationEnd();
+    //activeSimulatorListener->OnSimulationEnd();
 
     //Cleanup
-    std::cout.rdbuf(oldCoutStreamBuf); //Reset the cout stream buffer
-    fs::remove(tempPath); //remove the file
+    //std::cout.rdbuf(oldCoutStreamBuf); //Reset the cout stream buffer
+    //fs::remove(tempPath); //remove the file
 };
 
 

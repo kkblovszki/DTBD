@@ -39,7 +39,6 @@ private:
             outputFileStream.close();
         }
     }*/
-    
 
 public:
     NS3_mockup_interface();
