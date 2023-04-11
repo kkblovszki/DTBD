@@ -41,6 +41,11 @@ if(BUILD_DOCUMENTATION)
     install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/html DESTINATION share/doc)
 endif()
 
+# -------------------------------------Add GTest funcitonality--------------------------------------------
+
+find_package(GTest REQUIRED)
+include_directories(${GTEST_INCLUDE_DIRS})
+
 # ---------------------------------------------------------------------------------------------
 
 # Include the header files from the 'include' directory
@@ -148,12 +153,16 @@ add_test(NAME NS3_Basic_scenario_creation_test COMMAND NS3_Basic_scenario_creati
 # ------------ YAML parser tests ------------
 # Add tests from the directory
 add_executable(parser_test test/parser_tests/parserTests.cpp)
+add_executable(parser_unit_test test/parser_tests/parserUnitTests.cpp)
 
 # Set the output directory for the 'my_projects_tests' target to 'test/bin'
-set_target_properties(parser_test PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests/parser_tests")
+set_target_properties(parser_test parser_unit_test PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests/parser_tests")
 
 # Link the parser directory with the main framework
 target_link_libraries(parser_test DTDB_framework)
+target_link_libraries(parser_unit_test DTDB_framework)
+target_link_libraries(parser_unit_test ${GTEST_LIBRARIES} pthread)
 
 # Add the test to the test suite
 add_test(NAME parser_test COMMAND parser_test)
+add_test(NAME parser_unit_test COMMAND parser_unit_test)
