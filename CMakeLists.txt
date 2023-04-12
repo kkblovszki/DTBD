@@ -43,7 +43,10 @@ endif()
 
 # -------------------------------------Add GTest funcitonality--------------------------------------------
 
+# Add the gtest library
 find_package(GTest REQUIRED)
+
+# Add directories
 include_directories(${GTEST_INCLUDE_DIRS})
 
 # ---------------------------------------------------------------------------------------------
@@ -161,7 +164,8 @@ set_target_properties(parser_test parser_unit_test PROPERTIES RUNTIME_OUTPUT_DIR
 # Link the parser directory with the main framework
 target_link_libraries(parser_test DTDB_framework)
 target_link_libraries(parser_unit_test DTDB_framework)
-target_link_libraries(parser_unit_test ${GTEST_LIBRARIES} pthread)
+target_link_libraries(parser_unit_test ${GTEST_LIBRARIES} pthread) # possibly unnecessary
+target_link_libraries(parser_unit_test GTest::GTest GTest::Main) # fix to not being able to locate the package
 
 # Add the test to the test suite
 add_test(NAME parser_test COMMAND parser_test)
