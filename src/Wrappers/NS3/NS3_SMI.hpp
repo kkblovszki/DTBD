@@ -9,14 +9,15 @@
 #include <filesystem>
 
 
-class NS3_mockup_interface : SimulatorMockUpInterface {
+class NS3_mockup_interface : SimulatorMockUpInterface {    
 private:
-
-    SimulatorInfo simulatorInfo;
-    std::map<std::string,int> APIFunctionPassThrough;
-    std::unique_ptr<Listener> activeSimulatorListener;
-    std::vector<Metrics> NS3metrics;
-    std::vector<Parameter> NS3parameters;
+    const std::string SMIPath = SMI_PATH; 
+    std::map<std::string,int> APIFunctionPassThrough;  //contains the API functions that can be used from simulator.
+    std::unique_ptr<Listener> activeSimulatorListener; //contains the listener that is used by the simulator.
+    std::vector<Metrics> NS3metrics;            //contains the metrics that are used by the simulator.
+    std::vector<BuildOptions> NS3buildOptions;  //contains the build options that are used by the simulator.
+    std::vector<Parameter> NS3parameters;       //contains the parameters that are used by the simulator.
+    std::string PersistentConfigFilePath;       //contains the path to the config file that is used by the simulator.
     void* ns3LibHandler;
 
     /**
@@ -24,9 +25,14 @@ private:
      * Command line strings build inside the respective 
      * @ref LoadParameter function and used in the @ref RunSimulation function
      */
-    std::string CL_BuildOptions;
-    std::string CL_Parameters;
+    std::string CL_BuildOptions; //contains the build options that are used by the simulator, in a string.
+    std::string CL_Parameters; //contains the parameters that are used by the simulator, in a string.
 
+    /**
+     * @brief 
+     * Parses the given parameters and build options into a string /ref CL_BuildOptions and /ref CL_Parameters
+     * @param BuildOptions 
+     */
     void ParseToNS3CommandLine(std::vector<BuildOptions>& BuildOptions);
 
     /*void UpdateListener(std::ifstream& outputFileStream){
@@ -44,7 +50,10 @@ public:
     NS3_mockup_interface();
     ~NS3_mockup_interface();
 
+    SimulatorInfo GetSimulatorInfo() override;
+
     void* createSimulator();
+
     /**
      * @brief Set the Listener object
      * Using this function which takes two parameters @param uniqueListener
@@ -71,17 +80,15 @@ public:
     /*virtual void SetListener(std::unique_ptr<Listener> uniqueListener, std::unique_ptr<Listener> simulatorUniqueListener) override {
         simulatorUniqueListener = std::move(uniqueListener); uniqueListener.reset(); 
     }*/
-
+    
+    virtual void AddBuildOptions(const std::vector<BuildOptions>& buildOptions) override;
     virtual void setLibraryHandle(void* libraryHandle) override;
-    virtual void LoadConfiguration() override; //loads the configuration file of the simulator.
+    virtual void LoadConfiguration(const std::string& simulatorVersion) override; //loads the configuration file of the simulator.
     virtual void WriteToConfiguration(std::string configFileName) override;
     virtual void LoadParameters(std::vector<Parameter>& parameter);
-    virtual void LoadParameters(std::vector<Parameter>& parameter, std::vector<BuildOptions>& BuildOptions);
     virtual void LoadMetrics(std::vector<Metrics>& metrics) override;
     virtual void RunSimulation() override;
-    virtual void GetRuntimeData() override;
-    std::vector<std::size_t> GetSimulationResults(){return std::vector<std::size_t>();};
-
+    
 };
 
 #endif

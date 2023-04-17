@@ -19,18 +19,19 @@
  * This is the Scenario class. It does some things and has some properties.
  * For more information, see \ref Scenario.
  */
-class Scenario {
+class Scenario{
 public:
     const std::string scenarioName;
     std::vector<Metrics> metrics;
-    std::vector<Parameter> parameters; 
-    std::unique_ptr<SimulatorMockUpInterface> Simulator;
+    std::vector<Parameter> parameters;
+    std::unique_ptr<SimulatorMockUpInterface> SimulatorInstance;
 
-    //Scenario(): scenarioName(NULL){metrics = {}; parameters.name = 'NULL'; parameters.defaultParameter = 0; parameters.underTest = NULL;};
-    Scenario(std::string uniqueName, std::string simulatorType, std::string ListenerType);
+    Scenario(std::string uniqueName, std::string& simulatorType, const std::string& simulatorVersion = "", const std::string& listenerType = "ConsoleListener");
+    Scenario(std::string uniqueName, std::string& simulatorType, const std::string& simulatorVersion = "", const std::vector<BuildOptions>& buildOptions = {}, const std::string& listenerType = "ConsoleListener");
     ~Scenario();
 
     void PrepareSimulation(std::map<std::string, size_t> Strategy);
+    
 };
 
 #endif

@@ -1,5 +1,28 @@
 /**
 * @mainpage Digital Benchmark and Testbed framework for multi-simulatior and multisimulation.
+*  
+* @section todo Todo
+* 
+* To reach MVP:
+* @li Ensure that BuildOptions are correctly parsed to the simulator
+* @li Move the actual simulators into the build folder with its persistent data 
+* @li Clean up the code
+* @li Make debugging easier
+* @li Write a debug simulator mock-up interface that can be used to test the framework. 
+* @li Test Parser, and make sure that it works correctly, and parses into the correct data structures.
+* @li Test the framework with the NS3 simulator mock-up interface
+* @li Write a CommandLine listener which outputs the runtime data to the CommandLine
+*
+* Further development after MVP:
+* @li modify the simulators SMI into a custom binary filetype.
+* @li Maybe use Getters and setters to hide the data variables in the core framework
+* @li Add support for Windows and Mac OS X
+* @li Add support for parallel execution
+* @li Add Valgrind support (debugging memory leaks, etc.)
+* @li Add support for more simulators
+* @li More Proper implementation and consistent loading for the simulators which doesn't use the current hacky solution of a cmake macro
+* @li LoadConfiguration could maybe get abstracted into the core framework, and the simulators could just call it when they need to load a configuration file with the appropriate arguments.
+*
 *
 *
 * @section intro Introduction
@@ -74,6 +97,12 @@
 *     return 0;
 * }
 * @endcode
+*
+* To compile the code in debug mode the following flag is used when running the make file  * make CXXFLAGS="-DDEBUG" * 
+* To compile the tests the make flag "COMPILE-TESTS" must be set equal to "true"
+* To run tests CTests can be used, by using the following command: ctest -VV 'testname', example could be: ctest -VV -R CreateBenchmark
+* 
+* As for the flags -VV is a verbose flag that will print out the output of the tests and -R can be used to run a specific test.
 *
 * @section supported-features Currently supported features
 *

@@ -4,32 +4,31 @@
 #include <ctime>
 #include <iomanip>
 
-
 using namespace Core::Listeners;
 
 
-CSVListener::CSVListener(){
-    //create a new csv file with the current date and time as the name of the file 
+CSVListener::CSVListener(){}
 
-    //write the header of the csv file
-}
-
-CSVListener::~CSVListener(){
-}
+CSVListener::~CSVListener(){}
 
 void CSVListener::OnSimulationStart(std::vector<Metrics> metrics){
+    //open the csv file
+    std::cout << "Simulation start" << std::endl;
 }
 
-void CSVListener::OnSimulationEnd(){}
+void CSVListener::OnSimulationEnd(){
+    //close the csv file
+    std::cout << "Simulation end" << std::endl;
+}
 
 void CSVListener::OnSimulationUpdate(std::string value){   
     //write the value to the csv file
+    std::cout << value << std::endl;
 }
 
 void CSVListener::OnSimulationResult(){
+    std::cout << "Simulation result" << std::endl;
 }
-
-// Path: src/Listeners/CSVListener.cpp
 
     
 

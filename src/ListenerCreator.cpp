@@ -17,8 +17,11 @@ std::unique_ptr<Listener> ListenerCreator::CreateListener(const std::string& lis
             std::cout << "Creating test listener" << std::endl;
             return std::make_unique<Core::Listeners::TestListener>();
             break;
-        case ListenerType::DefaultListener:
-            return std::make_unique<Core::Listeners::DefaultListener>();
+        case ListenerType::ConsoleListener:
+            return std::make_unique<Core::Listeners::ConsoleListener>();
+            break;
+        case ListenerType::CSVListener:
+            return std::make_unique<Core::Listeners::CSVListener>();
             break;
         
         default:

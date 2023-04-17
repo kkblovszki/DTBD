@@ -1,6 +1,7 @@
 
 Benchmark:
   - Simulator: NS3
+      SimVersion: 3.26
       Scenario: 
       name: NS3 Example
       description: An example problem in NS3

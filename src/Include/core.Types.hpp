@@ -18,7 +18,6 @@ typedef struct BuildOptions {
         std::string buildOptionValue;
 } BuildOptions;
 
-
 /**
  * @brief 
  * 
@@ -28,15 +27,15 @@ typedef struct Parameter {
     std::string defaultParameter;
 } Parameter;
 
-
 /**
  * @brief 
  * The descriptor of the scenario structure.
  */
-typedef struct ScenarioDescriptor {
+typedef struct ScenarioDescriptor{
     std::string name;
     std::string description;
     std::string simulator;
+    std::string simulatorVersion;
     std::string listener;
     std::map<std::string, std::string> optional;
     std::map<std::string, std::string> required;
@@ -104,19 +103,24 @@ typedef struct SimulatorInfo {
     std::string simulatorVersion;
     std::string nativeOutputType;
     std::vector<std::string> functions;
-    std::vector<std::string> supportedParameters;
-    std::vector<std::string> supportedMetrics;
-    
+    std::vector<std::string> supportedParameters; //maybe change to a vector of Parameter
+    std::vector<std::string> supportedMetrics; //maybe change to a vector of Metrics
+    std::vector<BuildOptions> supportedBuildOptions; //maybe change to a vector of BuildOptions
+
     SimulatorInfo(const std::string& simulatorName  = "", 
                 const std::string& simulatorVersion = "", 
                 const std::string& nativeOutputType = "", 
                 const std::vector<std::string>& functions   = {}, 
-                const std::vector<std::string>& parameters  = {}) 
+                const std::vector<std::string>& parameters  = {},
+                const std::vector<std::string>& metrics     = {},
+                const std::vector<BuildOptions>& buildOptions = {}) 
                 : simulatorName(simulatorName), 
                 simulatorVersion(simulatorVersion), 
                 nativeOutputType(nativeOutputType), 
                 functions(functions), 
-                supportedParameters(parameters){}
+                supportedParameters(parameters),
+                supportedMetrics(metrics),
+                supportedBuildOptions(buildOptions){}
 } SimulatorInfo;
 
 #endif

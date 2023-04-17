@@ -2,6 +2,8 @@ SimulatorName: NS3
 SimulatorVersion: 3.38
 SimulatorNativeOutput: Float
 
+SupportedBuildOptions:
+
 SupportedParameters:
   - Name: "SimulatorNativeOutput"
     Type: "String"

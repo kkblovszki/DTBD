@@ -14,8 +14,8 @@
 //! \version 0.1
 //! \bug none
 //! \todo none
-class SimulatorCreator
-{
+class SimulatorCreator{
+    
 protected:
     enum class SimulatorType {
         EVOCRAFT,
@@ -32,11 +32,6 @@ private:
     static const std::map<std::string, SimulatorType>& stringToSimType();
     
 public:
-    //SimulatorCreator();
-    ~SimulatorCreator();
-    
-    void CreatePublisher(SimulatorType type);
-    void CreateSubscriber(SimulatorType type);
 
     static std::unique_ptr<SimulatorMockUpInterface> CreateSimulator(const std::string& simulatorName);
 };

@@ -5,7 +5,7 @@
  * When creating a new simulator, the following steps need to be taken:
  * - Run constructor:
  *      
- *      - load the APIFunctionPassThrough from the NS3_config.yaml file
+ * - load the APIFunctionPassThrough from the NS3_config.yaml file
  * - Return a NS3_mockup_interface object from the createSimulator function
  * 
  * When the LoadConfiguration function is called, the following steps need to be taken:
@@ -37,7 +37,6 @@
  * @brief Construct a new ns3 mockup interface::ns3 mockup interface object
  */
 NS3_mockup_interface::NS3_mockup_interface(){
-    LoadConfiguration(); // Load the configuration from the NS3_config.yaml file
     activeSimulatorListener = nullptr; // Set the listener to null
     ns3LibHandler = nullptr; // Set the library handler to null
 }
@@ -52,38 +51,109 @@ extern "C" void* NS3_mockup_interface::createSimulator() {
     return new NS3_mockup_interface();
 };
 
+
+SimulatorInfo NS3_mockup_interface::GetSimulatorInfo() {
+    return simulatorInfo;
+}
+
+void NS3_mockup_interface::AddBuildOptions(const std::vector<BuildOptions>& buildOptions) {
+    this->NS3buildOptions = buildOptions;
+}
+
 /**
  * @brief Load the configuration from the benchmark
  * @param NS3ScenarioConfig Single NS3 scenario configuration mapped from the Benchmark class
  */
-void NS3_mockup_interface::LoadConfiguration() {
+void NS3_mockup_interface::LoadConfiguration(const std::string& simulatorVersion) {
 
-    simulatorInfo = SimulatorInfo();
-    APIFunctionPassThrough = std::map<std::string, int>();
+    //before filling out simulator info, we use the version to check if they match 
+    const std::string simulatorSpecificPath = "/NS3-SMI";
+    const std::string simulatorName = "/ns-";
+    const std::string PersistentDataFileName = "/PersistentData.yaml";
+    PersistentConfigFilePath = SMIPath + simulatorSpecificPath + simulatorName + simulatorVersion + PersistentDataFileName;
+    
+    #ifdef DEBUG
+        std::cout << "Loading configuration from: " << PersistentConfigFilePath << std::endl;
+    #endif
 
-    namespace fs = std::filesystem;
-    fs::path configPath = fs::current_path() / "PersistentData.yaml";
+    //Load the configuration file
+    YAML::Node persistentData = YAML::LoadFile(PersistentConfigFilePath);
 
-    YAML::Node config = YAML::LoadFile(configPath.string());
-    YAML::Node persistentData = config["persistentData"];
-    YAML::Node APIFunctionPassThrough = config["APIFunctionPassThrough"];
+    std::string SimulatorName;
 
     /*Store the individual information in the simulatorInfo variables*/ 
-    simulatorInfo.simulatorName = persistentData["simulatorName"].as<std::string>();
-    simulatorInfo.simulatorVersion = persistentData["simulatorVersion"].as<std::string>();
-
-    /*Store the supported parameters for the simulator SMI from the persistentData*/
-    for (YAML::const_iterator it = persistentData["supportedParameters"].begin(); it != persistentData["supportedParameters"].end(); ++it){
-        //Get the name of each individual supportedParameters and add it to the list of supportedParameters for the simulatorInfo.SupportedParameters
-        //simulatorInfo.supportedParameters.push_back(it->first.as<std::string>());
-        simulatorInfo.supportedParameters.push_back(it->as<std::string>());
+    try{
+        SimulatorName = persistentData["SimulatorName"].as<std::string>();
+    } catch (YAML::Exception& e) {
+        std::cerr << "Error at simulatorName: " << e.what() << std::endl;
+        return;
     }
+
+    std::cout << "SimulatorName: " << SimulatorName << std::endl;
+    
+    //check if the simulatorVersion checks out with the already existing value
+    if (simulatorVersion != persistentData["SimulatorVersion"].as<std::string>()){
+        std::cerr << "Simulator version does not match the version in the persistent data file: " << simulatorVersion << " != " << persistentData["SimulatorVersion"].as<std::string>() << std::endl;
+        return;
+    }
+
+    try{
+        simulatorInfo.simulatorVersion = persistentData["SimulatorVersion"].as<std::string>();
+    } catch (YAML::Exception& e) {
+        std::cerr << "Error at SimulatorVersion: " << e.what() <<  std::endl;
+    }
+
+    //this->simulatorInfo = {SimulatorName, simulatorVersion, persistentData["SimulatorNativeOutput"].as<std::string>(), {}, {} }; // Create a new simulator info object
+    
+    //check to see if the build options are supported
+    /*for (YAML::const_iterator it = persistentData["SupportedBuildOptions"].begin(); it != persistentData["SupportedBuildOptions"].end(); ++it){
+        //Get the name of each individual supportedParameters and add it to the list of supportedParameters for the simulatorInfo.SupportedParameters
+        try {
+            simulatorInfo.SupportedBuildOptions.emplace_back( (*it)["Name"].as<std::string>());
+        } catch (YAML::Exception& e) {
+            std::cerr << "Error at SupportedBuildOptions " << e.what() << std::endl;
+        }
+        
+        //simulatorInfo.supportedParameters.push_back(it->as<std::string>());
+    }*/
+
+
+    /*Store the supported parameters for the simulator SMI from the persistentData
+    for (YAML::const_iterator it = persistentData["SupportedParameters"].begin(); it != persistentData["SupportedParameters"].end(); ++it){
+        //Get the name of each individual supportedParameters and add it to the list of supportedParameters for the simulatorInfo.SupportedParameters
+        try {
+            simulatorInfo.supportedParameters.emplace_back( (*it)["Name"].as<std::string>());
+        } catch (YAML::Exception& e) {
+            std::cerr << "Error at supportedParameters " << e.what() << std::endl;
+        }
+        
+        //simulatorInfo.supportedParameters.push_back(it->first.as<std::string>());
+        //simulatorInfo.supportedParameters.push_back(it->as<std::string>());
+    }*/
+
+    /*Store the supported metrics for the simulator SMI from the persistentData
+    simulatorInfo.simulatorName = SimulatorName;
+    simulatorInfo.simulatorVersion = simulatorVersion;
+    simulatorInfo.nativeOutputType = persistentData["SimulatorNativeOutput"].as<std::string>();
+    simulatorInfo.supportedParameters = {};
+    simulatorInfo.supportedMetrics = {};
+    simulatorInfo.supportedBuildOptions = {};*/
+
+    this->simulatorInfo = {SimulatorName, simulatorVersion, persistentData["SimulatorNativeOutput"].as<std::string>(), {}, {}, {} }; // Create a new simulator info object
 };
 
-void NS3_mockup_interface::WriteToConfiguration(std::string configFileName){};
+
+void NS3_mockup_interface::WriteToConfiguration(std::string configFileName){
+    #ifdef DEBUG
+        std::cout << "Writing to configuration is not supported for the NS3 simulator" << std::endl;
+    #else
+        std::cerr << "Writing to configuration is not supported for the NS3 simulator" << std::endl;
+    #endif 
+};
+
 
 /**
- * @brief 
+ * @brief
  * Set the library handle for the simulator
  * @param libraryHandle 
  */
@@ -93,7 +163,7 @@ void NS3_mockup_interface::setLibraryHandle(void* libraryHandle) {
 };
 
 /**
- * @brief
+ * @brief 
  * @param parameter
  */
 void NS3_mockup_interface::LoadParameters(std::vector<Parameter>& parameter) {
@@ -102,7 +172,7 @@ void NS3_mockup_interface::LoadParameters(std::vector<Parameter>& parameter) {
             std::cerr << "Parameter: " << (it->name) << " is not supported by the simulator" << std::endl;
         }else{
             //if the metric is supported by the simulator, then add it to the metrics map
-            NS3parameters.emplace_back(*it);
+            NS3parameters.emplace_back((it->name));
         }
     }
 };
@@ -117,12 +187,12 @@ void NS3_mockup_interface::LoadMetrics(std::vector<Metrics>& metrics) {
     //Check if the metrics are supported by the simulator
     for(auto it = metrics.begin(); it != metrics.end(); ++it){
         //check if its supported and that the type inputed is matching the type supported by the simulator
-        /*if(std::find(simulatorInfo.supportedMetrics.begin(), simulatorInfo.supportedMetrics.end(), *it) == simulatorInfo.supportedMetrics.end()){
-            std::cerr << "Metric: " << (it->name) << " is not supported by the simulator" << std::endl;
+        if(std::find(simulatorInfo.supportedMetrics.begin(), simulatorInfo.supportedMetrics.end(), (it->unit)) == simulatorInfo.supportedMetrics.end()){
+            std::cerr << "Metric: " << (it->unit) << " is not supported by the simulator" << std::endl;
         }else{
             //if the metric is supported by the simulator, then add it to the metrics map
             NS3metrics.emplace_back(*it);
-        }*/
+        }
     }
 };
 
@@ -187,15 +257,13 @@ void NS3_mockup_interface::RunSimulation(){
         //Use wslapi.h to run the simulation
     #endif
 
-    std::string smiPath = SMI_PATH;
-    std::string changeDirectory = "cd "+ smiPath;
+    std::string changeDirectory = "cd "+ SMIPath;
 
      //First we build/configure the simulation
     system(CL_BuildOptions.c_str());
 
     //Then we run the simulation
     system(CL_Parameters.c_str());
-   
 
     activeSimulatorListener->SimulationEnd();
 
@@ -230,5 +298,5 @@ void NS3_mockup_interface::RunSimulation(){
 
 
 
-void NS3_mockup_interface::GetRuntimeData(){};
+//void NS3_mockup_interface::GetRuntimeData(){};
 

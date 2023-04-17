@@ -1,8 +1,6 @@
 #include <iostream>
 #include <../core.Testbed.hpp>
 
-#define DEBUG
-
 int main(int argc, char** argv) {
     Testbed testbed;
     
@@ -10,6 +8,5 @@ int main(int argc, char** argv) {
     testbed.CreateBenchmark("NS3_unsupported_config_params_test");
     testbed.benchmarks["NS3_unsupported_config_params_test"].CreateScenario("NS3_unsupported_config_params_test");
     
-
     return 0;
 }

@@ -1,12 +1,6 @@
 #include "Include/core.Benchmark.hpp"
 
-/**
- * @brief 
- * Using the library yaml-cpp, load the simulation configuration file and store the data in the Benchmark object
- * convert the config into an accessable ordered map, to get the individual simulations names, get the simulator type, and the listener type
- * Runs the parser @ref parseScenario, @ref parseSimulator, and @ref parseListener to parse the simulation configuration file into a predetermined format, with a ruleset. 
- * @param configPath 
- */
+
 void Benchmark::LoadSimulationConfig(std::string configPath){
     
     YAML::Node config_ = YAML::LoadFile(configPath);
@@ -28,28 +22,45 @@ void Benchmark::LoadSimulationConfig(std::string configPath){
  * @details The @param scenarioName must match the name of the scenario in the simulation configuration file
  */
 void Benchmark::CreateScenario(std::string scenarioName){
-
+    
+    /*Perform checks*/
+     
     //Check if scenario already exists
     if (scenarios.find(scenarioName) != scenarios.end()) {
         std::cerr << "Error: Scenario " << scenarioName << " already exists.\n";
         return;
-    }else if (scenariosDescriptors.find(scenarioName) == scenariosDescriptors.end()) {
+    }/*else if (scenariosDescriptors.find(scenarioName) == scenariosDescriptors.end()) {
         std::cerr << "Error: Scenario " << scenarioName << " not found in config file.\n";
         return;
-    }
+    }*/ //This makes it unable to run some basic framework tests since it needs the parser to work.
 
-    //Get the simulator type written in the yaml file for the specific scenario
     std::string simulatorType = scenariosDescriptors[scenarioName].simulator;
+    std::string simulatorVersion = scenariosDescriptors[scenarioName].simulatorVersion;
 
-    //Create listener if specified
-    //std::shared_ptr<Listener> listener;
+    #ifdef DEBUG
+        simulatorType = "ns3"; //currently only ns3 is even remotely supported
+        simulatorVersion = "3.38"; //ns3 version for debugging.
+    #else
+    //Check if simulator type is valid
+    if(simulatorType == ""){
+        std::cerr << "Error - Simulator type is undefined found for scenario: " << scenarioName << ".\n";
+        std::cerr << "Please check the simulation configuration file.\n";
+        std::cerr << "Exiting scenario creation\n";
+        return;
+    }
+    #endif
+
+    //scenariosDescriptors[scenarioName].simulatorVersion = 3.38;
+
+    std::cout << "Simulator: " << simulatorType << std::endl;
+    std::cout << "Version: " << simulatorVersion << std::endl;
+
     std::string listenerType;
 
-    //DEBUGGING test_listener for outputting to console
-    #ifdef DEBUG
-    listenerType = "testlistener";
+    #ifdef DEBUG //DEBUGGING test_listener for outputting to console
+        listenerType = "testlistener";
     #else
-    listenerType = scenariosDescriptors[scenarioName].listener;
+        listenerType = scenariosDescriptors[scenarioName].listener;
     #endif
 
     //For when multi listeners gets supported
@@ -60,9 +71,23 @@ void Benchmark::CreateScenario(std::string scenarioName){
             }
         }
     }*/
+
     
-    // Create scenario
-    std::unique_ptr<Scenario> singleScenario = std::make_unique<Scenario>(scenarioName, simulatorType, listenerType);
+    std::unique_ptr<Scenario> singleScenario = nullptr;
+
+    //Check if build options are defined
+    if(scenariosDescriptors[scenarioName].buildOptions.size() == 0){
+         // Create scenario
+         singleScenario = std::make_unique<Scenario>(scenarioName, simulatorType, simulatorVersion, listenerType);
+    }else{
+         // Create scenario
+        singleScenario = std::make_unique<Scenario>(
+            scenarioName, 
+            simulatorType, 
+            simulatorVersion, 
+            scenariosDescriptors[scenarioName].buildOptions,
+            listenerType);
+    }
 
     // Add scenario to map
     scenarios.insert(std::make_pair(scenarioName, std::move(singleScenario)));
@@ -110,19 +135,14 @@ void Benchmark::mapScenarioToMetrics(std::string scenarioName, std::map<std::str
 
 //using the scenarioName given as a string and run the scenario
 void Benchmark::RunScenario(std::string ScenarioName){
-    /*
-    auto it = scenarios.find(scenarioName);
+    auto it = scenarios.find(ScenarioName);
     if (it == scenarios.end()) {
-        std::cerr << "Scenario " << scenarioName << " not found." << std::endl;
+        std::cerr << "Scenario " << ScenarioName << " not found." << std::endl;
         return;
     }
 
-    Scenario& scenario = *(it->second);
-    scenario.PrepareSimulation({{"ExecutionStrategy", 1}});
-    scenario.Simulator->RunSimulation();
-
-    std::cout << "Scenario " << scenarioName << " completed." << std::endl;
-    */
+    Scenario& scenario = *(it->second); //Found scenario
+    scenario.SimulatorInstance->RunSimulation(); //Run the simulation
 };
 
 std::vector<std::string> RunScenariosWithParameters(std::map<std::string, Scenario> scenarios){

@@ -1,5 +1,4 @@
 #include "Include/Parser.hpp"
-#include "Parser.hpp"
 
 void Parser::parseScenario(const YAML::Node& scenarioNode, ScenarioDescriptor& scenario) {
     scenario.name = scenarioNode["name"].as<std::string>();

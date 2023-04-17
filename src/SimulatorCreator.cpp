@@ -4,9 +4,9 @@
 
 
 /**
- * @brief 
+ * @brief function that converts a string to a SimulatorType enum value for the simulator creator function
  * @details converts a string to a SimulatorType enum value for the simulator creator function
- * @return const std::map<std::string, SimulatorCreator::SimulatorType>& 
+ * @return const std::map<std::string, SimulatorCreator::SimulatorType>&
  */
 const std::map<std::string, SimulatorCreator::SimulatorType>& SimulatorCreator::stringToSimType() {
     static const std::map<std::string, SimulatorType> simMap = {
@@ -48,8 +48,6 @@ std::unique_ptr<SimulatorMockUpInterface> SimulatorCreator::CreateSimulator(cons
         std::cerr << "Error loading dynamic library: " << dlerror() << "\n";
         return nullptr;
     }
-    assert(libraryHandle != nullptr);
-
 
     // Get the name of the class for the specific simulator
     std::string simulatorClassName = upperCaseSimulatorName + "_mockup_interface";
@@ -57,18 +55,17 @@ std::unique_ptr<SimulatorMockUpInterface> SimulatorCreator::CreateSimulator(cons
     // Get the address of the constructor function for the specific simulator
     std::string constructorFnName = "_ZN" + std::to_string(simulatorClassName.length()) + simulatorClassName + "15createSimulatorEv";
    
-    using CreateSim = SimulatorMockUpInterface* (*)(); 
-    CreateSim SimConstructor = reinterpret_cast<CreateSim>(dlsym(libraryHandle, constructorFnName.c_str()));
-    //void* constructor = dlsym(libraryHandle, constructorName.c_str());
+    using CreateSim = SimulatorMockUpInterface* (*)(); // define a function pointer type for the constructor function
+    CreateSim SimConstructor = reinterpret_cast<CreateSim>(dlsym(libraryHandle, constructorFnName.c_str())); // get the address of the constructor function
     if (!SimConstructor){
         std::cerr << "Error getting constructor address: " << dlerror() << "\n";
         dlclose(libraryHandle);
         return nullptr;
     }
 
-    std::unique_ptr<SimulatorMockUpInterface> simulator(SimConstructor());
-    simulator->setLibraryHandle(libraryHandle);
-    
+    std::unique_ptr<SimulatorMockUpInterface> simulator(SimConstructor()); // call the constructor function to create an instance of the simulator
+    simulator->setLibraryHandle(libraryHandle); // set the library handle for the simulator object
+
     return simulator;    
 };
 

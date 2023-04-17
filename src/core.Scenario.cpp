@@ -5,40 +5,89 @@
  * @brief Construct a new Scenario:: Scenario object
  * 
  * @param uniqueName 
- * @param simulatorType 
+ * @param simulatorType
+ * @param simulatorVersion
  * @param ListenerType 
  */
-Scenario::Scenario(std::string uniqueName, std::string simulatorType, std::string ListenerType) : scenarioName(uniqueName) {
+Scenario::Scenario(std::string uniqueName, std::string& simulatorType, const std::string& simulatorVersion, const std::string& listenerType) : scenarioName(uniqueName) {
+    
+    std::cout << "Loading configuration for simulator version: " << simulatorVersion << std::endl;
+
     // create new listener instance
-    std::unique_ptr<Listener> newSimulatorListener = ListenerCreator::CreateListener(ListenerType);
+    std::unique_ptr<Listener> newSimulatorListener = ListenerCreator::CreateListener(listenerType);
 
     // create new simulator instance 
-    Simulator = SimulatorCreator::CreateSimulator(simulatorType);
+    SimulatorInstance = SimulatorCreator::CreateSimulator(simulatorType);
 
     // connect that listener to the simulator active listener the function is setListener and it takes a std::unique_ptr<Listener> as parameter
-    Simulator->SetListener(std::move(newSimulatorListener));
+    SimulatorInstance->SetListener(std::move(newSimulatorListener));
+
+    /*In the prepare simulation the config file from the benchmark is */
+    try
+    {
+        SimulatorInstance->LoadConfiguration(simulatorVersion);
+    }
+    catch(const std::runtime_error& e)
+    {   
+        std::cerr << e.what() << '\n';
+        std::terminate();
+    }
 }
+
+/**
+ * @brief Construct a new Scenario:: Scenario object
+ * 
+ * @param uniqueName 
+ * @param simulatorType 
+ * @param simulatorVersion 
+ * @param buildOptions 
+ * @param listenerType 
+ */
+Scenario::Scenario(std::string uniqueName, std::string& simulatorType, const std::string& simulatorVersion, const std::vector<BuildOptions>& buildOptions, const std::string& listenerType) : scenarioName(uniqueName) {
+
+    std::cout << "Loading configuration for simulator version: " << simulatorVersion << std::endl;
+
+    // create new listener instance
+    std::unique_ptr<Listener> newSimulatorListener = ListenerCreator::CreateListener(listenerType);
+
+    // create new simulator instance 
+    SimulatorInstance = SimulatorCreator::CreateSimulator(simulatorType);
+
+    // Add the build options to the simulator
+    SimulatorInstance->AddBuildOptions(buildOptions);
+
+    // connect that listener to the simulator active listener the function is setListener and it takes a std::unique_ptr<Listener> as parameter
+    SimulatorInstance->SetListener(std::move(newSimulatorListener));
+
+    /*In the prepare simulation the config file from the benchmark is */
+    try
+    {
+        SimulatorInstance->LoadConfiguration(simulatorVersion);
+    }
+    catch(const std::runtime_error& e)
+    {   
+        std::cerr << e.what() << '\n';
+        std::terminate();
+    }
+}
+
 
 Scenario::~Scenario(){}
 
 /**
  * @brief Prepare the simulation for the given strategy
  *  This function is used to prepare the simulation for the given strategy
- * @param Strategy 
+ * @param Strategy
  */
+
 void Scenario::PrepareSimulation(std::map<std::string, size_t> Strategy) {
     
-    /*In the prepare simulation the config file from the benchmark is */
-    //Simulator->LoadConfiguration();
-
     // load the metrics to the simulator
-    Simulator->LoadMetrics(metrics);
+    //SimulatorInstance->LoadMetrics(metrics);
 
     // load the parameters to the simulator
-    Simulator->LoadParameters(parameters);
-
-    // load the strategy to the simulator
-    //Simulator->LoadStrategy(Strategy);
+    SimulatorInstance->LoadParameters(parameters);
+    
 
     return;
 }

@@ -42,10 +42,10 @@ namespace Core {
             void OnSimulationUpdate(std::string value) override;
         };
 
-        class DefaultListener : public Listener {
+        class ConsoleListener : public Listener {
         public:
-            DefaultListener();
-            ~DefaultListener();
+            ConsoleListener();
+            ~ConsoleListener();
 
             void OnSimulationStart() override;
             void OnSimulationEnd() override;

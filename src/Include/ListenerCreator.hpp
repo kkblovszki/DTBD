@@ -18,8 +18,8 @@ private:
     
     enum class ListenerType {
         TestListener,
-        DefaultListener,
-        CustomListener
+        ConsoleListener,
+        CSVListener
     };
 
     static const std::string stringForceUpperCase(std::string inputString){
@@ -30,10 +30,8 @@ private:
     static const std::map<std::string, ListenerType>& stringToListenerType(){
         static const std::map<std::string, ListenerType> stringToListenerType = {
             {"TESTLISTENER", ListenerType::TestListener},
-            {"CSVLISTENER", ListenerType::DefaultListener},
-            {"DEFAULTLISTENER", ListenerType::DefaultListener}
-            
-            
+            {"CSVLISTENER", ListenerType::CSVListener},
+            {"CONSOLELISTENER", ListenerType::ConsoleListener}
         };
         return stringToListenerType;
     }
