@@ -4,10 +4,31 @@
 
 // Test parseScenario
 TEST(ParserTest, parseScenarioTest) {
-    YAML::Node scenarioNode = YAML::Load("{name: TestScenario, description: This is a test scenario, simulator: TestSimulator, "
-                                          "optional: {opt1: value1, opt2: value2}, required: {param1: value1, param2: {param2.1: value2.1, param2.2: value2.2}}, "
-                                          "Parameters: {parameter1: 10, parameter2: 20}, BuildOptions: {option1: value1, option2: value2}}");
-
+    std::string yaml_string = R"(
+        name: TestScenario
+        description: This is a test scenario
+        simulator: TestSimulator
+        optional:
+        - opt1: value1
+        - opt2: value2
+        required:
+        - param1: value1
+        - param2: value2
+        - param3: value3
+        parameters:
+        - name: parameter1
+          defaultParameter: 10
+        - name: parameter2
+          defaultParameter: 20
+        buildOptions:
+        - buildOption: option1
+          buildOptionValue: value1
+        - buildOption: option2
+          buildOptionValue: value2
+    )";
+    //YAML::Node scenarioNode = YAML::Load("{name: TestScenario, description: This is a test scenario, simulator: TestSimulator, optional: {opt1: value1, opt2: value2}, required: {param1: value1, param2: value2, param3: value3}, Parameters: {parameter1: 10, parameter2: 20}, BuildOptions: {option1: value1, option2: value2}}");
+    //YAML::Node scenarioNode = YAML::Load(yaml_string);
+    YAML::Node scenarioNode = YAML::LoadFile("test.yaml");
     ScenarioDescriptor scenario;
     Parser::parseScenario(scenarioNode, scenario);
 
@@ -15,12 +36,12 @@ TEST(ParserTest, parseScenarioTest) {
     EXPECT_EQ(scenario.description, "This is a test scenario");
     EXPECT_EQ(scenario.simulator, "TestSimulator");
     EXPECT_EQ(scenario.optional.size(), 2);
-    EXPECT_EQ(scenario.optional["opt1"], "value1");
-    EXPECT_EQ(scenario.optional["opt2"], "value2");
+    EXPECT_EQ(scenario.optional.at("opt1"), "value1");
+    EXPECT_EQ(scenario.optional.at("opt2"), "value2");
     EXPECT_EQ(scenario.required.size(), 3);
-    EXPECT_EQ(scenario.required["param1"], "value1");
-    EXPECT_EQ(scenario.required["param2.param2.1"], "value2.1");
-    EXPECT_EQ(scenario.required["param2.param2.2"], "value2.2");
+    EXPECT_EQ(scenario.required.at("param1"), "value1");
+    EXPECT_EQ(scenario.required.at("param2"), "value2");
+    EXPECT_EQ(scenario.required.at("param3"), "value3");
     EXPECT_EQ(scenario.parameters.size(), 2);
     EXPECT_EQ(scenario.parameters[0].name, "parameter1");
     EXPECT_EQ(scenario.parameters[0].defaultParameter, std::to_string(10));

@@ -42,7 +42,7 @@ void Parser::parseScenario(const YAML::Node& scenarioNode, ScenarioDescriptor& s
             scenario.buildOptions.push_back(buildOptions);
         }
     }
-};
+}
 
 void Parser::parseSimulationStrategy(const YAML::Node& simulationStrategyNode, SimulationStrategy& simulationStrategy) {
     simulationStrategy.multithread = simulationStrategyNode["multithread"].as<bool>();
@@ -51,7 +51,7 @@ void Parser::parseSimulationStrategy(const YAML::Node& simulationStrategyNode, S
     for (const auto& it : executionOrderNode) {
         simulationStrategy.executionOrder[it.first.as<int>()] = it.second.as<std::string>();
     }
-};
+}
 
 /**
  * @brief 
@@ -76,4 +76,4 @@ void Parser::parseBenchmark(const YAML::Node& benchmarkNode, std::map<std::strin
             ScenarioDescriptors[it.first.as<std::string>()] = scenario;
         }
     }
-};
+}

@@ -87,6 +87,7 @@ void test_handle_incorrect_types() {
         ifstream fin("test.yaml");
         YAML::Node node = YAML::Load(fin);
         int param1 = node["param1"].as<int>();
+        (void) param1;
     } catch (YAML::Exception& e) {
         // check that the parser raises an exception or returns an error message
         cout << "test_handle_incorrect_types passed" << endl;

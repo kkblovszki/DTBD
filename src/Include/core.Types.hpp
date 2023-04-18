@@ -41,6 +41,9 @@ typedef struct ScenarioDescriptor{
     std::map<std::string, std::string> required;
     std::vector<Parameter> parameters;
     std::vector<BuildOptions> buildOptions;
+    ScenarioDescriptor() {name, description, simulator, listener = "NULL"; 
+                          optional, required = {}; 
+                          parameters, buildOptions = {};}
 }ScenarioDescriptor;
 
 /**

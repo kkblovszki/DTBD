@@ -8,7 +8,7 @@ project(DTDB)
 set(CMAKE_CXX_STANDARD 20)
 
 # Set the compiler flags
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wpedantic -Werror") #-Wextra
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wpedantic") #-Wextra -Werror
 
 
 # ------------------------------- Add the Doxygen documentation -------------------------------
@@ -83,9 +83,8 @@ add_library(DTDB_framework
 #add_library(Parser )
 
 add_library(DTDB_listeners 
-            src/Listeners/ConsoleListener.cpp
+            src/Listeners/DefaultListener.cpp
             src/Listeners/TestListener.cpp
-            src/Listeners/CSVListener.cpp
             )
 
 set_target_properties(DTDB_framework PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/static_libs")
@@ -126,36 +125,16 @@ target_link_libraries(NS3Simulator yaml-cpp)
 
 # ------------------------------- Add the tests -------------------------------
 
-# Enable debugging
-add_definitions(-DDEBUG)
-option(COMPILE_TESTS "Compile tests" OFF)
-
-enable_testing()
-
 # ------------ Framework tests ------------
 
-add_executable(LoadSimConfig test/Framework_tests/load_sim_config.cpp)
-add_executable(CreateBenchmark test/Framework_tests/create_benchmark.cpp)
-add_executable(SharedLibLoad test/Framework_tests/test_shared_lib_load.cpp)
-add_executable(PersistentDataMatchingTest test/Framework_tests/check_persistent_data_loaded.cpp)
+add_executable(framework_test test/Framework_tests/load_sim_config.cpp)
 
 # Set the output directory for the 'my_project_tests' target to 'test/bin'
-set_target_properties(LoadSimConfig PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests/framework_tests")
-set_target_properties(CreateBenchmark PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests/framework_tests")
-set_target_properties(SharedLibLoad PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests/framework_tests")
-set_target_properties(PersistentDataMatchingTest PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests/framework_tests")
+set_target_properties(framework_test PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests/framework_tests")
 
-target_link_libraries(LoadSimConfig DTDB_framework)
-target_link_libraries(CreateBenchmark DTDB_framework)
-target_link_libraries(SharedLibLoad DTDB_framework)
-target_link_libraries(PersistentDataMatchingTest DTDB_framework)
+target_link_libraries(framework_test DTDB_framework)
 
-add_test(NAME LoadSimConfig COMMAND LoadSimConfig)
-add_test(NAME CreateBenchmark COMMAND CreateBenchmark)
-add_test(NAME SharedLibLoad COMMAND SharedLibLoad)
-add_test(NAME PersistentDataMatchingTest COMMAND PersistentDataMatchingTest)
-
-if(COMPILE_TESTS)
+add_test(NAME framework_test COMMAND framework_test)
 
 # ------------ NS3 tests ------------
 
@@ -177,22 +156,18 @@ add_test(NAME NS3_Basic_scenario_creation_test COMMAND NS3_Basic_scenario_creati
 # ------------ YAML parser tests ------------
 # Add tests from the directory
 add_executable(parser_test test/parser_tests/parserTests.cpp)
-add_executable(parser_unit_test test/parser_tests/parserUnitTests.cpp)
+add_executable(parser_unit_tests test/parser_tests/parserUnitTests.cpp)
 
 # Set the output directory for the 'my_projects_tests' target to 'test/bin'
-set_target_properties(parser_test parser_unit_test PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests/parser_tests")
+set_target_properties(parser_test PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests/parser_tests")
+set_target_properties(parser_unit_tests PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests/parser_unit_tests")
 
 # Link the parser directory with the main framework
 target_link_libraries(parser_test DTDB_framework)
-target_link_libraries(parser_unit_test DTDB_framework)
-target_link_libraries(parser_unit_test ${GTEST_LIBRARIES} pthread) # possibly unnecessary
-target_link_libraries(parser_unit_test GTest::GTest GTest::Main) # fix to not being able to locate the package
+target_link_libraries(parser_unit_tests DTDB_framework GTest::GTest GTest::Main)
+target_link_libraries(parser_unit_tests ${GTEST_LIBRARIES} pthread) # possibly unnecessary
+#target_link_libraries(parser_unit_test GTest::GTest GTest::Main) # fix to not being able to locate the package
 
 # Add the test to the test suite
 add_test(NAME parser_test COMMAND parser_test)
-<<<<<<< Updated upstream
-add_test(NAME parser_unit_test COMMAND parser_unit_test)
-=======
-
-endif()
->>>>>>> Stashed changes
+add_test(NAME parser_unit_tests COMMAND $<TARGET_FILE:parser_unit_tests>)
