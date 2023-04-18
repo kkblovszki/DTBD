@@ -8,7 +8,7 @@ project(DTDB)
 set(CMAKE_CXX_STANDARD 20)
 
 # Set the compiler flags
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wpedantic") #-Wextra -Werror
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wpedantic -Wno-unused-value") #-Wextra -Werror
 
 
 # ------------------------------- Add the Doxygen documentation -------------------------------
@@ -40,14 +40,6 @@ if(BUILD_DOCUMENTATION)
 
     install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/html DESTINATION share/doc)
 endif()
-
-# -------------------------------------Add GTest funcitonality--------------------------------------------
-
-# Add the gtest library
-find_package(GTest REQUIRED)
-
-# Add directories
-include_directories(${GTEST_INCLUDE_DIRS})
 
 # ---------------------------------------------------------------------------------------------
 
@@ -83,7 +75,8 @@ add_library(DTDB_framework
 #add_library(Parser )
 
 add_library(DTDB_listeners 
-            src/Listeners/DefaultListener.cpp
+            src/Listeners/ConsoleListener.cpp
+            src/Listeners/CSVListener.cpp
             src/Listeners/TestListener.cpp
             )
 
@@ -137,6 +130,7 @@ target_link_libraries(framework_test DTDB_framework)
 add_test(NAME framework_test COMMAND framework_test)
 
 # ------------ NS3 tests ------------
+if(COMPILE_TESTS)
 
 # Add any test files from the 'test' directory
 add_executable(NS3_Exhaustive_scenario_creation test/NS3_Tests/NS3_ScenarioCreationExhaustive.cpp)
@@ -152,7 +146,7 @@ target_link_libraries(NS3_Basic_scenario_creation DTDB_framework)
 add_test(NAME NS3_Exhaustive_scenario_creation_test COMMAND NS3_Exhaustive_scenario_creation)
 add_test(NAME NS3_Basic_scenario_creation_test COMMAND NS3_Basic_scenario_creation)
 
-
+endif()
 # ------------ YAML parser tests ------------
 # Add tests from the directory
 add_executable(parser_test test/parser_tests/parserTests.cpp)
@@ -164,10 +158,8 @@ set_target_properties(parser_unit_tests PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${C
 
 # Link the parser directory with the main framework
 target_link_libraries(parser_test DTDB_framework)
-target_link_libraries(parser_unit_tests DTDB_framework GTest::GTest GTest::Main)
-target_link_libraries(parser_unit_tests ${GTEST_LIBRARIES} pthread) # possibly unnecessary
-#target_link_libraries(parser_unit_test GTest::GTest GTest::Main) # fix to not being able to locate the package
+target_link_libraries(parser_unit_tests DTDB_framework)
 
 # Add the test to the test suite
 add_test(NAME parser_test COMMAND parser_test)
-add_test(NAME parser_unit_tests COMMAND $<TARGET_FILE:parser_unit_tests>)
+add_test(NAME parser_unit_tests COMMAND parser_unit_tests)
