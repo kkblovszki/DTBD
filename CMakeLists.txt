@@ -117,7 +117,7 @@ set_target_properties(NS3Simulator PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_
 target_link_libraries(NS3Simulator yaml-cpp)
 
 # ------------------------------- Add the tests -------------------------------
-
+enable_testing()
 # ------------ Framework tests ------------
 
 add_executable(framework_test test/Framework_tests/load_sim_config.cpp)

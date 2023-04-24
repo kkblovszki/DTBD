@@ -1,29 +1,16 @@
-Benchmark:
-- Simulator: TestSimulator
-  Scenario:
-  name: TestScenario
-  description: This is a test scenario
-  
-  optional:
-    opt1: value1
-    opt2: value2
-  
-  required:
-    param1: value1
-    param2: value2
-    param3: value3
-  
-  parameters:
-    - name: parameter1
-      defaultParameter: 10
-    - name: parameter2
-      defaultParameter: 20
-  
-  buildOptions:
-    - buildOption: option1
-      values: 
-        - value1
-    - buildOption: option2
-      values: 
-        - value2
-  
+name: TestScenario
+description: This is a test scenario
+simulator: TestSimulator
+optional:
+  opt1: value1
+  opt2: value2
+required:
+  param1: value1
+  param2: value2
+  param3: value3
+parameters:
+  parameter1: 10
+  parameter2: 20
+buildOptions:
+  option1: value1
+  option2: value2

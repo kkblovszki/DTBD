@@ -6,39 +6,49 @@ void Parser::parseScenario(const YAML::Node& scenarioNode, ScenarioDescriptor& s
     scenario.simulator = scenarioNode["simulator"].as<std::string>();
     if (scenarioNode["optional"]) {
         const auto& optionalNode = scenarioNode["optional"];
-        for (const auto& it : optionalNode) {
-            scenario.optional[it.first.as<std::string>()] = it.second.as<std::string>();
+        for (auto it = optionalNode.begin(); it != optionalNode.end(); ++it) {
+            scenario.optional[it->first.as<std::string>()] = it->second.as<std::string>();
         }
     }
 
     const auto& requiredNode = scenarioNode["required"];
-    for (const auto& it : requiredNode) {
-        if (it.Type() == YAML::NodeType::Map) {
+    if(requiredNode.IsMap()) {
+        for(auto it = requiredNode.begin(); it != requiredNode.end(); it++) {
+            if(it->second.IsScalar()) {
+                scenario.required[it->first.as<std::string>()] = it->second.as<std::string>();
+            }else {
+                const auto& mapNode = it->second;
+                for(auto it2 = mapNode.begin(); it2 != mapNode.end(); ++it2) {
+                scenario.required[it->first.as<std::string>() + "." + it2->first.as<std::string>()] = it2->second.as<std::string>();
+                }
+            }
+        }
+    } 
+    else if(requiredNode.IsSequence()){
+        for (const auto& it : requiredNode) {
             const auto& mapNode = it.second;
             for (const auto& it2 : mapNode) {
                 scenario.required[it.first.as<std::string>() + "." + it2.first.as<std::string>()] = it2.second.as<std::string>();
             }
-        } else if (it.Type() == YAML::NodeType::Scalar) {
-            scenario.required[it.first.as<std::string>()] = it.second.as<std::string>();
         }
     }
     
-    if (scenarioNode["Parameters"]) {
-        const auto& parametersNode = scenarioNode["Parameters"];
-        for (const auto& it : parametersNode) {
+    if (scenarioNode["parameters"]) {
+        const auto& parametersNode = scenarioNode["parameters"];
+        for (auto it = parametersNode.begin(); it != parametersNode.end(); ++it) {
             Parameter parameter;
-            parameter.name = it.first.as<std::string>();
-            parameter.defaultParameter = it.second.as<std::size_t>();
+            parameter.name = it->first.as<std::string>();
+            parameter.defaultParameter = it->second.as<std::string>();
             scenario.parameters.push_back(parameter);
         }
     }
 
-    if (scenarioNode["BuildOptions"]) {
-        const auto& buildOptionsNode = scenarioNode["BuildOptions"];
-        for (const auto& it : buildOptionsNode) {
+    if (scenarioNode["buildOptions"]) {
+        const auto& buildOptionsNode = scenarioNode["buildOptions"];
+        for (auto it = buildOptionsNode.begin(); it != buildOptionsNode.end(); ++it) {
             BuildOptions buildOptions;
-            buildOptions.buildOption = it.first.as<std::string>();
-            buildOptions.buildOptionValue = it.second.as<std::string>();
+            buildOptions.buildOption = it->first.as<std::string>();
+            buildOptions.buildOptionValue = it->second.as<std::string>();
             scenario.buildOptions.push_back(buildOptions);
         }
     }
