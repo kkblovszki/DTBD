@@ -32,7 +32,6 @@ private:
     static const std::map<std::string, SimulatorType>& stringToSimType();
     
 public:
-
     static std::unique_ptr<SimulatorMockUpInterface> CreateSimulator(const std::string& simulatorName);
 };
 

@@ -1957,6 +1957,19 @@ libwimax/fast:
 .PHONY : libwimax/fast
 
 #=============================================================================
+# Target rules for targets named scratch_Tutorial_NS3_script
+
+# Build rule for target.
+scratch_Tutorial_NS3_script: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 scratch_Tutorial_NS3_script
+.PHONY : scratch_Tutorial_NS3_script
+
+# fast build rule for target.
+scratch_Tutorial_NS3_script/fast:
+	$(MAKE) $(MAKESILENT) -f scratch/CMakeFiles/scratch_Tutorial_NS3_script.dir/build.make scratch/CMakeFiles/scratch_Tutorial_NS3_script.dir/build
+.PHONY : scratch_Tutorial_NS3_script/fast
+
+#=============================================================================
 # Target rules for targets named scratch_scratch-simulator
 
 # Build rule for target.
@@ -2277,6 +2290,7 @@ help:
 	@echo "... print-introspected-doxygen"
 	@echo "... raw-sock-creator"
 	@echo "... scratch-nested-subdir-lib"
+	@echo "... scratch_Tutorial_NS3_script"
 	@echo "... scratch_nested-subdir_scratch-nested-subdir-executable"
 	@echo "... scratch_scratch-simulator"
 	@echo "... scratch_subdir_scratch-subdir"

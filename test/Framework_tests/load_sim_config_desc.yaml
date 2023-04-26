@@ -1,13 +1,11 @@
-
 Benchmark:
   - Simulator: NS3
-      SimVersion: 3.26
-      Scenario: 
-      name: NS3 Example
-      description: An example problem in NS3
-      listeners:
-      - TestListener
-      - DefaultListener
-      - CSVListener 
+    SimVersion: 3.38
+    Scenarios: 
+      - Scenario: TutorialScenario
+        name: NS3 Example
+        description: An example problem in NS3
+        optional: null
+        required: 
       
 

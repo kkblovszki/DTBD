@@ -2,8 +2,6 @@
 #include <cassert>
 #include <core.Testbed.hpp>
 
-#define DEBUG 1
-
 int main(int argc, char** argv) {
     Testbed testbed;
     

@@ -1,6 +1,5 @@
 #include <iostream>
-#include "Include/core.Testbed.hpp"
-#include <cassert>
+#include <core.Testbed.hpp>
 
 
 int main() {

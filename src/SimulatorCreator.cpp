@@ -1,6 +1,5 @@
 #include "include/SimulatorCreator.hpp"
 #include <dlfcn.h>
-#include <cassert>
 
 
 /**

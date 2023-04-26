@@ -163,6 +163,20 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+scratch/CMakeFiles/scratch_Tutorial_NS3_script.dir/rule:
+	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 scratch/CMakeFiles/scratch_Tutorial_NS3_script.dir/rule
+.PHONY : scratch/CMakeFiles/scratch_Tutorial_NS3_script.dir/rule
+
+# Convenience name for target.
+scratch_Tutorial_NS3_script: scratch/CMakeFiles/scratch_Tutorial_NS3_script.dir/rule
+.PHONY : scratch_Tutorial_NS3_script
+
+# fast build rule for target.
+scratch_Tutorial_NS3_script/fast:
+	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache && $(MAKE) $(MAKESILENT) -f scratch/CMakeFiles/scratch_Tutorial_NS3_script.dir/build.make scratch/CMakeFiles/scratch_Tutorial_NS3_script.dir/build
+.PHONY : scratch_Tutorial_NS3_script/fast
+
+# Convenience name for target.
 scratch/CMakeFiles/scratch_scratch-simulator.dir/rule:
 	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 scratch/CMakeFiles/scratch_scratch-simulator.dir/rule
 .PHONY : scratch/CMakeFiles/scratch_scratch-simulator.dir/rule
@@ -189,6 +203,30 @@ scratch_subdir_scratch-subdir: scratch/CMakeFiles/scratch_subdir_scratch-subdir.
 scratch_subdir_scratch-subdir/fast:
 	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache && $(MAKE) $(MAKESILENT) -f scratch/CMakeFiles/scratch_subdir_scratch-subdir.dir/build.make scratch/CMakeFiles/scratch_subdir_scratch-subdir.dir/build
 .PHONY : scratch_subdir_scratch-subdir/fast
+
+Tutorial_NS3_script.o: Tutorial_NS3_script.cc.o
+.PHONY : Tutorial_NS3_script.o
+
+# target to build an object file
+Tutorial_NS3_script.cc.o:
+	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache && $(MAKE) $(MAKESILENT) -f scratch/CMakeFiles/scratch_Tutorial_NS3_script.dir/build.make scratch/CMakeFiles/scratch_Tutorial_NS3_script.dir/Tutorial_NS3_script.cc.o
+.PHONY : Tutorial_NS3_script.cc.o
+
+Tutorial_NS3_script.i: Tutorial_NS3_script.cc.i
+.PHONY : Tutorial_NS3_script.i
+
+# target to preprocess a source file
+Tutorial_NS3_script.cc.i:
+	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache && $(MAKE) $(MAKESILENT) -f scratch/CMakeFiles/scratch_Tutorial_NS3_script.dir/build.make scratch/CMakeFiles/scratch_Tutorial_NS3_script.dir/Tutorial_NS3_script.cc.i
+.PHONY : Tutorial_NS3_script.cc.i
+
+Tutorial_NS3_script.s: Tutorial_NS3_script.cc.s
+.PHONY : Tutorial_NS3_script.s
+
+# target to generate assembly for a file
+Tutorial_NS3_script.cc.s:
+	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache && $(MAKE) $(MAKESILENT) -f scratch/CMakeFiles/scratch_Tutorial_NS3_script.dir/build.make scratch/CMakeFiles/scratch_Tutorial_NS3_script.dir/Tutorial_NS3_script.cc.s
+.PHONY : Tutorial_NS3_script.cc.s
 
 scratch-simulator.o: scratch-simulator.cc.o
 .PHONY : scratch-simulator.o
@@ -274,8 +312,12 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... scratch_Tutorial_NS3_script"
 	@echo "... scratch_scratch-simulator"
 	@echo "... scratch_subdir_scratch-subdir"
+	@echo "... Tutorial_NS3_script.o"
+	@echo "... Tutorial_NS3_script.i"
+	@echo "... Tutorial_NS3_script.s"
 	@echo "... scratch-simulator.o"
 	@echo "... scratch-simulator.i"
 	@echo "... scratch-simulator.s"

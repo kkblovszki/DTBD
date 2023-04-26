@@ -1,10 +1,14 @@
 #include <iostream>
+#include <cassert>
+#include <filesystem>
 #include <core.Testbed.hpp>
 
 int main(int argc, char** argv) {
     Testbed testbed;
 
-    const std::string configPath = "test/Framework_tests/load_sim_config_desc.yaml";
+    namespace fs = std::filesystem;
+
+    std::string configPath = "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/test/Framework_tests/load_sim_config_desc.yaml";
     
     testbed.CreateBenchmark("testBenchmark"); // Create a benchmark
 

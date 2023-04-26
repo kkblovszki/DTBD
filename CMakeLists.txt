@@ -4,12 +4,14 @@ cmake_minimum_required(VERSION 3.12)
 # Project name
 project(DTDB)
 
-# Set the C++ standard to C++20
+#debug mode
+add_definitions(-DDEBUG)
+
 set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Set the compiler flags
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wpedantic -Wno-unused-value") #-Wextra -Werror
-
 
 # ------------------------------- Add the Doxygen documentation -------------------------------
 find_package(Doxygen REQUIRED)
@@ -48,6 +50,8 @@ include_directories(src/include)
 
 # Define the path to the SMI directory as a variable to use in the code
 add_definitions(-DSMI_PATH="${CMAKE_SOURCE_DIR}/SMIs")
+
+add_definitions(-DRESULTS_PATH="${CMAKE_BINARY_DIR}/bin") #TODO: Find a better solution to store results from simulators.
 
 # Link the libraries from the 'libs' directory
 link_directories(libs)
@@ -113,23 +117,53 @@ add_library(NS3Simulator SHARED
             src/Wrappers/NS3/NS3_SMI.cpp
             )
 
-set_target_properties(NS3Simulator PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/shared_libs")          
+
+#ensure there exists a 32-bit offset, so that the shared library can be loaded at any address in memory.POSITION_INDEPENDENT_CODE ON
+set_target_properties(NS3Simulator PROPERTIES POSITION_INDEPENDENT_CODE ON LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/shared_libs")
+
 target_link_libraries(NS3Simulator yaml-cpp)
 
 # ------------------------------- Add the tests -------------------------------
-enable_testing()
+
 # ------------ Framework tests ------------
 
-add_executable(framework_test test/Framework_tests/load_sim_config.cpp)
+add_executable(LoadSimConfig test/Framework_tests/load_sim_config.cpp)
+add_executable(CreateBenchmark test/Framework_tests/create_benchmark.cpp)
+add_executable(SharedLibLoad test/Framework_tests/test_shared_lib_load.cpp)
+add_executable(PersistentDataMatchingTest test/Framework_tests/check_persistent_data_loaded.cpp)
+add_executable(RunScenario test/Framework_tests/test_run_scenario.cpp)
 
 # Set the output directory for the 'my_project_tests' target to 'test/bin'
-set_target_properties(framework_test PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests/framework_tests")
+set_target_properties(LoadSimConfig PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests/framework_tests")
+set_target_properties(CreateBenchmark PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests/framework_tests")
+set_target_properties(SharedLibLoad PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests/framework_tests")
+set_target_properties(PersistentDataMatchingTest PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests/framework_tests")
+set_target_properties(RunScenario PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests/framework_tests")
 
-target_link_libraries(framework_test DTDB_framework)
+target_link_libraries(LoadSimConfig DTDB_framework)
+target_link_libraries(CreateBenchmark DTDB_framework)
+target_link_libraries(SharedLibLoad DTDB_framework)
+target_link_libraries(PersistentDataMatchingTest DTDB_framework)
+target_link_libraries(RunScenario DTDB_framework)
 
-add_test(NAME framework_test COMMAND framework_test)
+add_test(NAME LoadSimConfig COMMAND LoadSimConfig)
+add_test(NAME CreateBenchmark COMMAND CreateBenchmark)
+add_test(NAME SharedLibLoad COMMAND SharedLibLoad)
+add_test(NAME PersistentDataMatchingTest COMMAND PersistentDataMatchingTest)
+add_test(NAME RunScenario COMMAND RunScenario)
+
 
 # ------------ NS3 tests ------------
+
+add_executable(RunNS3Tutorial test/NS3_Tests/NS3_run_tests/Test_run_tutorial.cpp)
+
+set_target_properties(RunNS3Tutorial PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests/NS3_tests")
+
+target_link_libraries(RunNS3Tutorial DTDB_framework)
+
+add_test(NAME RunNS3Tutorial COMMAND RunNS3Tutorial)
+
+
 if(COMPILE_TESTS)
 
 # Add any test files from the 'test' directory
@@ -148,6 +182,7 @@ add_test(NAME NS3_Basic_scenario_creation_test COMMAND NS3_Basic_scenario_creati
 
 endif()
 # ------------ YAML parser tests ------------
+
 # Add tests from the directory
 add_executable(parser_test test/parser_tests/parserTests.cpp)
 add_executable(parser_unit_tests test/parser_tests/parserUnitTests.cpp)

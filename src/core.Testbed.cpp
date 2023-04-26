@@ -5,6 +5,25 @@ Testbed::Testbed(){}
 Testbed::~Testbed(){}
 
 /**
+ * @brief 
+ * 
+ */
+std::vector<std::string> Testbed::ListBenchmarks(bool verbose){
+
+    std::vector<std::string> benchmarkNameList = {};
+    
+    for(auto& benchmark : benchmarks){
+        if(verbose == true){
+            std::cout << benchmark.first << std::endl;    
+        }
+
+        benchmarkNameList.emplace_back(benchmark.first);
+    }       
+
+    return benchmarkNameList;
+}
+
+/**
  * @brief Add new Benchmark to the Testbed.
  * @param benchmarkName 
  */

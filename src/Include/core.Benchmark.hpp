@@ -15,22 +15,23 @@
 class Benchmark {
 private:
 
-    #ifndef DEBUG
+    /* Remove this after debugging to use the private variables 
     std::map<std::string, std::unique_ptr<Scenario>> scenarios;
-    #endif
-
-    std::map<std::string, std::string> config;
-    
     std::map<std::string, ScenarioDescriptor> scenariosDescriptors;
     SimulationStrategy simulationStrategiesDescriptors;
+    */
+
+    //std::map<std::string, std::string> config;
 
 public:
     Benchmark(){};
     ~Benchmark(){};
 
-    #ifdef DEBUG
+    /*only for behavioral debugging must be removed */
+
     std::map<std::string, std::unique_ptr<Scenario>> scenarios;
-    #endif
+    std::map<std::string, ScenarioDescriptor> scenariosDescriptors;
+    SimulationStrategy simulationStrategiesDescriptors;
 
     /**
     * @brief 
@@ -41,39 +42,30 @@ public:
     */
     void LoadSimulationConfig(std::string configPath); 
 
-
     /**
      * @brief Create a Scenario object
-     * 
      * @param scenarioName 
      */
     void CreateScenario(std::string scenarioName);
 
     /**
      * @brief Remove a Scenario object
-     * 
      * @param scenarioName 
      */
     void RemoveScenario(std::string scenarioName);
-    
-    
-    void mapScenarioToParameter(std::string scenarioName, Parameter parameter);
-    void mapScenarioToMetrics(std::string scenarioName, std::map<std::string, Metrics> metrics);
 
     /**
-     * @brief 
-     * 
+     * @brief Run a Scenario object
      * @param ScenarioName 
      */
     void RunScenario(std::string ScenarioName);
 
     /**
      * @brief 
-     * 
-     * @param scenarios 
+     * @param ScenarioName
      * @return std::vector<std::string> 
      */
-    std::vector<std::string> RunScenariosWithParameters(std::map<std::string, Scenario> scenarios);
+    std::vector<std::string> RunScenarioWithParameters(std::string ScenarioName);
 
     /**
      * @brief 
@@ -82,7 +74,7 @@ public:
      * @param executionStrategy 
      * @return std::vector<std::string> 
      */
-    std::vector<std::string> RunScenarioUsingStrategy(std::map<std::string, Scenario>, size_t executionStrategy);
+    std::vector<std::string> RunScenariosUsingStrategy();
 
     /*ExecutionStrategy CreateExecutionStrategy(std::vector<std::string> scenarios){}; ???? */
 };

@@ -30,7 +30,8 @@ public:
     Scenario(std::string uniqueName, std::string& simulatorType, const std::string& simulatorVersion = "", const std::vector<BuildOptions>& buildOptions = {}, const std::string& listenerType = "ConsoleListener");
     ~Scenario();
 
-    void PrepareSimulation(std::map<std::string, size_t> Strategy);
+    //void PrepareSimulation();
+    void PrepareSimulation(const std::vector<Metrics>& metrics = {}, const std::vector<Parameter>& parameters = {});
     
 };
 

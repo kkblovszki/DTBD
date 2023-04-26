@@ -30,6 +30,9 @@
 * This framework is a software package that does something cool. It's written in C++ and uses the
 * NS-3 network simulation framework to simulate network traffic and analyze network performance.
 *
+* @section install Installation 
+* 
+*
 * @section usage Usage
 *
 * To use the framework, you need to have the individual simulator mock-up interfaces for each individual simulator and the source code, to build the framework.
@@ -122,4 +125,37 @@
 * Links to the simulators currently supported can be found here:
 * For more information about NS-3, see the <a href="http://www.nsnam.org">NS-3 website</a>.
 * 
+* @section ns3 NS-3
+* how does it work in-code:
+* When creating a new simulator, the following steps need to be taken:
+* - Run constructor:
+*      
+* - load the APIFunctionPassThrough from the NS3_config.yaml file
+* - Return a NS3_mockup_interface object from the createSimulator function
+* 
+* When the LoadConfiguration function is called, the following steps need to be taken:
+* - load the persistent data from the NS3_config.yaml file
+*          - Get the supported parameters
+* 
+* - Crosscheck the supported parameters from the simulator with the inputted parameters
+* - If the parameters are supported, then pass them to the simulator else throw an error saying that the specific parameter(s) are not supported
+* - It then creates a list of the supported metrics and parameters from the simulator
+* 
+* When the LoadMetrics function is called, the following steps need to be taken:
+* - Convert the standardized metrics to the simulator specific metrics types 
+* 
+* When the LoadParameters function is called, the following steps need to be taken:
+* - Get the inputted parameters from the benchmark yaml file
+* - Convert the standardized parameters to the simulator specific parameters types i.e. BuildOptions Type
+* 
+* When the ParseToNS3CommandLine function is called, the following steps need to be taken:
+* - Parse the inputted parameters to an NS3 command line string for building the simulation  
+*  
+* When RunSimulation is called, the following steps need to be taken:
+* - Run the parsing function to parse the inputted parameters to an NS3 command line string for building the simulation
+* - Set up a filestream to read the output from the simulation
+* - Run the simulation
+* - Read the output from the simulation
+*
 */
+

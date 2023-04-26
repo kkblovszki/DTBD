@@ -4836,6 +4836,11 @@
 },
 {
   "directory": "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/scratch",
+  "command": "/usr/bin/c++ -DNS3_ASSERT_ENABLE -DNS3_BUILD_PROFILE_DEBUG -DNS3_LOG_ENABLE -DPROJECT_SOURCE_PATH=\\\"/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38\\\" -D__LINUX__ -I/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/build/include -g -fPIE   -fno-semantic-interposition -fdiagnostics-color=always -Wall -Werror -Wno-error=deprecated-declarations -std=gnu++17 -Winvalid-pch -include /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/stdlib_pch_exec.dir/cmake_pch.hxx -o CMakeFiles/scratch_Tutorial_NS3_script.dir/Tutorial_NS3_script.cc.o -c /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/scratch/Tutorial_NS3_script.cc",
+  "file": "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/scratch/Tutorial_NS3_script.cc"
+},
+{
+  "directory": "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/scratch",
   "command": "/usr/bin/c++ -DNS3_ASSERT_ENABLE -DNS3_BUILD_PROFILE_DEBUG -DNS3_LOG_ENABLE -DPROJECT_SOURCE_PATH=\\\"/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38\\\" -D__LINUX__ -I/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/build/include -g -fPIE   -fno-semantic-interposition -fdiagnostics-color=always -Wall -Werror -Wno-error=deprecated-declarations -std=gnu++17 -Winvalid-pch -include /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/stdlib_pch_exec.dir/cmake_pch.hxx -o CMakeFiles/scratch_scratch-simulator.dir/scratch-simulator.cc.o -c /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/scratch/scratch-simulator.cc",
   "file": "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/scratch/scratch-simulator.cc"
 },

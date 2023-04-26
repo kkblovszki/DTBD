@@ -78,16 +78,30 @@ Scenario::~Scenario(){}
  * @brief Prepare the simulation for the given strategy
  *  This function is used to prepare the simulation for the given strategy
  * @param Strategy
- */
-
-void Scenario::PrepareSimulation(std::map<std::string, size_t> Strategy) {
-    
+void Scenario::PrepareSimulation() {
     // load the metrics to the simulator
-    //SimulatorInstance->LoadMetrics(metrics);
-
+    SimulatorInstance->LoadMetrics(metrics);
     // load the parameters to the simulator
     SimulatorInstance->LoadParameters(parameters);
     
+    return;
+} */
 
+
+/**
+ * @brief Prepare the simulation with the given metrics and parameters
+ * @param metrics 
+ * @param parameters 
+ * @param Strategy 
+ */
+void Scenario::PrepareSimulation(const std::vector<Metrics>& metrics, const std::vector<Parameter>& parameters) {
+    
+    std::vector<Metrics> metricsToLoad = metrics;
+    std::vector<Parameter> parametersToLoad = parameters;
+    
+    // load the metrics to the simulator
+    SimulatorInstance->LoadMetrics(metricsToLoad);
+    // load the parameters to the simulator
+    SimulatorInstance->LoadParameters(parametersToLoad);
     return;
 }

@@ -5,6 +5,7 @@ cmake_policy(SET CMP0009 NEW)
 # single_source_file_scratches at scratch/CMakeLists.txt:57 (file)
 file(GLOB NEW_GLOB LIST_DIRECTORIES true "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/scratch/[^.]*.cc")
 set(OLD_GLOB
+  "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/scratch/Tutorial_NS3_script.cc"
   "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/scratch/scratch-simulator.cc"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
@@ -37,6 +38,7 @@ endif()
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES true "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/scratch/**")
 set(OLD_GLOB
   "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/scratch/CMakeLists.txt"
+  "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/scratch/Tutorial_NS3_script.cc"
   "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/scratch/nested-subdir"
   "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/scratch/nested-subdir/CMakeLists.txt"
   "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/scratch/nested-subdir/lib"

@@ -15,6 +15,7 @@ public:
 
     void CreateBenchmark(std::string benchmarkName);
     void RemoveBenchmark(std::string benchmarkName);
+    std::vector<std::string> ListBenchmarks(bool verbose = false);
     void LoadBenchmarkConfig(std::string benchmarkName, std::string configPath);
     
 };

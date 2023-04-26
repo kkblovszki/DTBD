@@ -1,4 +1,5 @@
 #include "Include/core.Benchmark.hpp"
+#include "core.Benchmark.hpp"
 
 
 void Benchmark::LoadSimulationConfig(std::string configPath){
@@ -9,8 +10,8 @@ void Benchmark::LoadSimulationConfig(std::string configPath){
         throw std::runtime_error("Config file not found");
     }
 
-    Parser::parseBenchmark(config_, scenariosDescriptors, simulationStrategiesDescriptors);
-    
+    Parser::parseBenchmark(config_, scenariosDescriptors, simulationStrategiesDescriptors);    
+
     std::cout << "Config loaded" << std::endl;
 };
 
@@ -23,7 +24,7 @@ void Benchmark::LoadSimulationConfig(std::string configPath){
  */
 void Benchmark::CreateScenario(std::string scenarioName){
     
-    /*Perform checks*/
+    /* --- Perform checks --- */
      
     //Check if scenario already exists
     if (scenarios.find(scenarioName) != scenarios.end()) {
@@ -37,9 +38,11 @@ void Benchmark::CreateScenario(std::string scenarioName){
     std::string simulatorType = scenariosDescriptors[scenarioName].simulator;
     std::string simulatorVersion = scenariosDescriptors[scenarioName].simulatorVersion;
 
+    
     #ifdef DEBUG
         simulatorType = "ns3"; //currently only ns3 is even remotely supported
         simulatorVersion = "3.38"; //ns3 version for debugging.
+        std::cout << "Debug mode - Simulator type set to: " << simulatorType << std::endl;
     #else
     //Check if simulator type is valid
     if(simulatorType == ""){
@@ -50,18 +53,20 @@ void Benchmark::CreateScenario(std::string scenarioName){
     }
     #endif
 
-    //scenariosDescriptors[scenarioName].simulatorVersion = 3.38;
+    std::cerr << "Simulator: " << simulatorType << std::endl;
+    std::cerr << "Version: " << simulatorVersion << std::endl;
 
-    std::cout << "Simulator: " << simulatorType << std::endl;
-    std::cout << "Version: " << simulatorVersion << std::endl;
 
+    //Check if listener type is valid
     std::string listenerType;
 
-    #ifdef DEBUG //DEBUGGING test_listener for outputting to console
-        listenerType = "testlistener";
-    #else
+    if(scenariosDescriptors[scenarioName].listener == ""){
+        listenerType = "ConsoleListener";
+    }else{
         listenerType = scenariosDescriptors[scenarioName].listener;
-    #endif
+    }
+
+    std::cout << "Listener: " << listenerType << std::endl;
 
     //For when multi listeners gets supported
     /*for(auto it = scenariosDescriptors.begin(); it != scenariosDescriptors.end(); ++it){
@@ -71,7 +76,6 @@ void Benchmark::CreateScenario(std::string scenarioName){
             }
         }
     }*/
-
     
     std::unique_ptr<Scenario> singleScenario = nullptr;
 
@@ -91,7 +95,6 @@ void Benchmark::CreateScenario(std::string scenarioName){
 
     // Add scenario to map
     scenarios.insert(std::make_pair(scenarioName, std::move(singleScenario)));
-    
 };
 
 /*
@@ -118,23 +121,12 @@ void Benchmark::RemoveScenario(std::string scenarioName){
     //delete instance from memory and remove from map
     scenarios[scenarioName].reset();
     scenarios.erase(scenarioName);
+    return;
 };
-
-void Benchmark::mapScenarioToParameter(std::string scenarioName, Parameter parameter){
-    //scenarios[scenarioName]->parameters = parameter;
-    throw std::runtime_error("Not implemented");
-};
-
-
-//using the scenarioName given as a string, find the scenario in the map and add the metrics to it
-void Benchmark::mapScenarioToMetrics(std::string scenarioName, std::map<std::string, Metrics> metrics){
-    throw std::runtime_error("Not implemented");
-    //scenarios[scenarioName]->metrics = std::copy(metrics.begin(), metrics.end(), scenarios[scenarioName]->metrics.begin());
-};
-
 
 //using the scenarioName given as a string and run the scenario
 void Benchmark::RunScenario(std::string ScenarioName){
+
     auto it = scenarios.find(ScenarioName);
     if (it == scenarios.end()) {
         std::cerr << "Scenario " << ScenarioName << " not found." << std::endl;
@@ -143,15 +135,36 @@ void Benchmark::RunScenario(std::string ScenarioName){
 
     Scenario& scenario = *(it->second); //Found scenario
     scenario.SimulatorInstance->RunSimulation(); //Run the simulation
+    return;
 };
 
-std::vector<std::string> RunScenariosWithParameters(std::map<std::string, Scenario> scenarios){
-     throw std::runtime_error("Not implemented");
+std::vector<std::string> Benchmark::RunScenarioWithParameters(std::string ScenarioName){
+    auto it = scenarios.find(ScenarioName);
+    if (it == scenarios.end()) {
+        std::cerr << "Scenario " << ScenarioName << " not found." << std::endl;
+        return std::vector<std::string>();
+    }
+
+    Scenario& scenario = *(it->second); //Found scenario
+
+    /*
+    Currently the parameters are converted to const, then back to non-const.
+    The parameters themselves are not changed, only the "constness". since manipulating the data in the scenarioDescriptor is not allowed in the code.
+    This is done to have a default values in the preparesimulation functions arguments
+    There is must be a smarter way to do this. 
+    */
+    const std::vector<Parameter> parameters = scenariosDescriptors[ScenarioName].parameters; 
+    scenario.PrepareSimulation( {}, parameters ); //Prepare the simulation create function that only loads the metrics and parameters
+    scenario.SimulatorInstance->RunSimulation(); //Run the simulation
+
+return std::vector<std::string>();
 };
 
 
-std::vector<std::string> Benchmark::RunScenarioUsingStrategy(std::map<std::string, Scenario>, size_t executionStrategy){
+std::vector<std::string> Benchmark::RunScenariosUsingStrategy(){
     throw std::runtime_error("Not implemented");
+
+    //TODO: Implement this - using the strategy given in the config file: SimulationStrategy
     /*
     std::vector<std::string> failedScenarios;
 
@@ -181,4 +194,4 @@ std::vector<std::string> Benchmark::RunScenarioUsingStrategy(std::map<std::strin
 
         return failedScenarios
     }*/
-}
+};

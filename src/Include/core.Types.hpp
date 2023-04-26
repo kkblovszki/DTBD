@@ -8,10 +8,8 @@
 #include <memory>
 #include <functional>
 
-
 /**
  * @brief
- * 
  */
 typedef struct BuildOptions {
         std::string buildOption;
@@ -41,9 +39,11 @@ typedef struct ScenarioDescriptor{
     std::map<std::string, std::string> required;
     std::vector<Parameter> parameters;
     std::vector<BuildOptions> buildOptions;
-    ScenarioDescriptor() {name, description, simulator, listener = "NULL"; 
+
+    ScenarioDescriptor() {name, description, simulator, listener = ""; 
                           optional, required = {}; 
                           parameters, buildOptions = {};}
+
 }ScenarioDescriptor;
 
 /**
@@ -73,7 +73,7 @@ typedef struct Metrics {
     std::string name;
     std::string unit;
 
-    Metrics(){name = "NULL"; unit = "NULL";};
+    Metrics(){name = ""; unit = "";};
     Metrics(std::string specifiedName, std::string specifiedUnit) : name(specifiedName), unit(specifiedUnit){};
     ~Metrics(){};
 } Metrics;
@@ -108,7 +108,7 @@ typedef struct SimulatorInfo {
     std::vector<std::string> functions;
     std::vector<std::string> supportedParameters; //maybe change to a vector of Parameter
     std::vector<std::string> supportedMetrics; //maybe change to a vector of Metrics
-    std::vector<BuildOptions> supportedBuildOptions; //maybe change to a vector of BuildOptions
+    std::vector<std::string> supportedBuildOptions; //maybe change to a vector of BuildOptions
 
     SimulatorInfo(const std::string& simulatorName  = "", 
                 const std::string& simulatorVersion = "", 
@@ -116,7 +116,7 @@ typedef struct SimulatorInfo {
                 const std::vector<std::string>& functions   = {}, 
                 const std::vector<std::string>& parameters  = {},
                 const std::vector<std::string>& metrics     = {},
-                const std::vector<BuildOptions>& buildOptions = {}) 
+                const std::vector<std::string>& buildOptions = {}) 
                 : simulatorName(simulatorName), 
                 simulatorVersion(simulatorVersion), 
                 nativeOutputType(nativeOutputType), 

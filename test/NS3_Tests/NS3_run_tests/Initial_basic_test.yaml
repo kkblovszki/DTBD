@@ -1,0 +1,16 @@
+#Yaml file for testing the NS3 simulator in correct format
+
+Benchmark:
+  - Simulator: NS3
+    SimVersion: 3.38
+    Scenarios:
+      - Scenario: TutorialScenario
+        name: NS3 Example
+        description: An example problem in NS3
+        optional: null
+        required:
+          - Parameters:
+            simulation-file-path: "scratch/tutorial.cc"
+            protocol: TCP
+            tcp-variant: NewReno
+            routing-protocol: OSPF

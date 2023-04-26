@@ -1,37 +1,16 @@
 #include "NS3_SMI.hpp"
 
-/**
- * @todo:
- * When creating a new simulator, the following steps need to be taken:
- * - Run constructor:
- *      
- * - load the APIFunctionPassThrough from the NS3_config.yaml file
- * - Return a NS3_mockup_interface object from the createSimulator function
- * 
- * When the LoadConfiguration function is called, the following steps need to be taken:
- * - load the persistent data from the NS3_config.yaml file
- *          - Get the supported parameters
- * 
- * - Crosscheck the supported parameters from the simulator with the inputted parameters
- * - If the parameters are supported, then pass them to the simulator else throw an error saying that the specific parameter(s) are not supported
- * - It then creates a list of the supported metrics and parameters from the simulator
- * 
- * When the LoadMetrics function is called, the following steps need to be taken:
- * - Convert the standardized metrics to the simulator specific metrics types 
- * 
- * When the LoadParameters function is called, the following steps need to be taken:
- * - Get the inputted parameters from the benchmark yaml file
- * - Convert the standardized parameters to the simulator specific parameters types i.e. BuildOptions Type
- * 
- * When the ParseToNS3CommandLine function is called, the following steps need to be taken:
- * - Parse the inputted parameters to an NS3 command line string for building the simulation  
- *  
- * When RunSimulation is called, the following steps need to be taken:
- * - Run the parsing function to parse the inputted parameters to an NS3 command line string for building the simulation
- * - Set up a filestream to read the output from the simulation
- * - Run the simulation
- * - Read the output from the simulation
- */
+////////////////////////////
+/// @file NS3_SMI.cpp
+/// @brief NS3_SMI.cpp contains the implementation of the NS3 simulator interface
+///
+/// @author:  Mikkel Silkeborg
+/// @version: 1.0
+/// @date:    17-03-2023
+/// @note:   This file contains the implementation of the NS3 simulator interface, only supported on Linux
+/// @desc:   {This file contains the implementation of the NS3 simulator interface.
+///           The interface doesn't currently clean-up after itself during copy of the simulation files.}
+////////////////////////////
 
 /**
  * @brief Construct a new ns3 mockup interface::ns3 mockup interface object
@@ -41,6 +20,9 @@ NS3_mockup_interface::NS3_mockup_interface(){
     ns3LibHandler = nullptr; // Set the library handler to null
 }
 
+/**
+ * @brief Destroy the ns3 mockup interface::ns3 mockup interface object
+ */
 NS3_mockup_interface::~NS3_mockup_interface(){};
 
 /**
@@ -51,11 +33,18 @@ extern "C" void* NS3_mockup_interface::createSimulator() {
     return new NS3_mockup_interface();
 };
 
-
+/**
+ * @brief Return the simulator information
+ * @return SimulatorInfo 
+ */
 SimulatorInfo NS3_mockup_interface::GetSimulatorInfo() {
-    return simulatorInfo;
+    return simulatorInfo; //Return a copy of the simulatorInfo
 }
 
+/**
+ * @brief Add build options to the simulator
+ * @param buildOptions 
+ */
 void NS3_mockup_interface::AddBuildOptions(const std::vector<BuildOptions>& buildOptions) {
     this->NS3buildOptions = buildOptions;
 }
@@ -65,18 +54,19 @@ void NS3_mockup_interface::AddBuildOptions(const std::vector<BuildOptions>& buil
  * @param NS3ScenarioConfig Single NS3 scenario configuration mapped from the Benchmark class
  */
 void NS3_mockup_interface::LoadConfiguration(const std::string& simulatorVersion) {
-
+    
     //before filling out simulator info, we use the version to check if they match 
     const std::string simulatorSpecificPath = "/NS3-SMI";
     const std::string simulatorName = "/ns-";
     const std::string PersistentDataFileName = "/PersistentData.yaml";
+
     PersistentConfigFilePath = SMIPath + simulatorSpecificPath + simulatorName + simulatorVersion + PersistentDataFileName;
     
     #ifdef DEBUG
         std::cout << "Loading configuration from: " << PersistentConfigFilePath << std::endl;
     #endif
 
-    //Load the configuration file
+    ////Load the configuration file
     YAML::Node persistentData = YAML::LoadFile(PersistentConfigFilePath);
 
     std::string SimulatorName;
@@ -88,8 +78,6 @@ void NS3_mockup_interface::LoadConfiguration(const std::string& simulatorVersion
         std::cerr << "Error at simulatorName: " << e.what() << std::endl;
         return;
     }
-
-    std::cout << "SimulatorName: " << SimulatorName << std::endl;
     
     //check if the simulatorVersion checks out with the already existing value
     if (simulatorVersion != persistentData["SimulatorVersion"].as<std::string>()){
@@ -102,47 +90,48 @@ void NS3_mockup_interface::LoadConfiguration(const std::string& simulatorVersion
     } catch (YAML::Exception& e) {
         std::cerr << "Error at SimulatorVersion: " << e.what() <<  std::endl;
     }
-
-    //this->simulatorInfo = {SimulatorName, simulatorVersion, persistentData["SimulatorNativeOutput"].as<std::string>(), {}, {} }; // Create a new simulator info object
     
     //check to see if the build options are supported
-    /*for (YAML::const_iterator it = persistentData["SupportedBuildOptions"].begin(); it != persistentData["SupportedBuildOptions"].end(); ++it){
+    for (YAML::const_iterator it = persistentData["SupportedBuildOptions"].begin(); it != persistentData["SupportedBuildOptions"].end(); ++it){
         //Get the name of each individual supportedParameters and add it to the list of supportedParameters for the simulatorInfo.SupportedParameters
         try {
-            simulatorInfo.SupportedBuildOptions.emplace_back( (*it)["Name"].as<std::string>());
+            simulatorInfo.supportedBuildOptions.emplace_back((*it)["BuildName"].as<std::string>());
         } catch (YAML::Exception& e) {
-            std::cerr << "Error at SupportedBuildOptions " << e.what() << std::endl;
+            std::cerr << "Error at SupportedBuildOptions: " << e.what() << std::endl;
+            
         }
-        
-        //simulatorInfo.supportedParameters.push_back(it->as<std::string>());
-    }*/
+    }
 
-
-    /*Store the supported parameters for the simulator SMI from the persistentData
+    //Store the supported parameters for the simulator SMI from the persistentData
     for (YAML::const_iterator it = persistentData["SupportedParameters"].begin(); it != persistentData["SupportedParameters"].end(); ++it){
         //Get the name of each individual supportedParameters and add it to the list of supportedParameters for the simulatorInfo.SupportedParameters
         try {
-            simulatorInfo.supportedParameters.emplace_back( (*it)["Name"].as<std::string>());
+            simulatorInfo.supportedParameters.emplace_back( (*it)["ParamName"].as<std::string>());
         } catch (YAML::Exception& e) {
-            std::cerr << "Error at supportedParameters " << e.what() << std::endl;
+            std::cerr << "Error at supportedParameters: " << e.what() << std::endl;
         }
-        
-        //simulatorInfo.supportedParameters.push_back(it->first.as<std::string>());
-        //simulatorInfo.supportedParameters.push_back(it->as<std::string>());
-    }*/
+    }
 
-    /*Store the supported metrics for the simulator SMI from the persistentData
-    simulatorInfo.simulatorName = SimulatorName;
-    simulatorInfo.simulatorVersion = simulatorVersion;
-    simulatorInfo.nativeOutputType = persistentData["SimulatorNativeOutput"].as<std::string>();
-    simulatorInfo.supportedParameters = {};
-    simulatorInfo.supportedMetrics = {};
-    simulatorInfo.supportedBuildOptions = {};*/
+    //Store the supported metrics for the simulator SMI from the persistentData
+    for (YAML::const_iterator it = persistentData["SupportedMetrics"].begin(); it != persistentData["SupportedMetrics"].end(); ++it){
+        //Get the name of each individual supportedMetrics and add it to the list of supportedMetrics for the simulatorInfo.SupportedMetrics
+        try {
+            simulatorInfo.supportedMetrics.emplace_back( (*it)["MetricName"].as<std::string>());
+        } catch (YAML::Exception& e){
+            std::cerr << "Error at SupportedMetrics: " << e.what() << std::endl;
+        }
+    }
 
-    this->simulatorInfo = {SimulatorName, simulatorVersion, persistentData["SimulatorNativeOutput"].as<std::string>(), {}, {}, {} }; // Create a new simulator info object
+    /*Store the supported metrics for the simulator SMI from the persistentData*/
+    this->simulatorInfo.simulatorName = SimulatorName;
+    this->simulatorInfo.simulatorVersion = simulatorVersion;
+    this->simulatorInfo.nativeOutputType = persistentData["SimulatorNativeOutput"].as<std::string>();
 };
 
-
+/**
+ * @brief Modify the configuration of the simulator
+ * @param configFileName 
+ */
 void NS3_mockup_interface::WriteToConfiguration(std::string configFileName){
     #ifdef DEBUG
         std::cout << "Writing to configuration is not supported for the NS3 simulator" << std::endl;
@@ -150,7 +139,6 @@ void NS3_mockup_interface::WriteToConfiguration(std::string configFileName){
         std::cerr << "Writing to configuration is not supported for the NS3 simulator" << std::endl;
     #endif 
 };
-
 
 /**
  * @brief
@@ -172,16 +160,18 @@ void NS3_mockup_interface::LoadParameters(std::vector<Parameter>& parameter) {
             std::cerr << "Parameter: " << (it->name) << " is not supported by the simulator" << std::endl;
         }else{
             //if the metric is supported by the simulator, then add it to the metrics map
-            NS3parameters.emplace_back((it->name));
+            NS3parameters.emplace_back(*it);
         }
     }
 };
 
 /**
- * @brief 
- * The LoadMetrics function is used to crosscheck the supported metrics from the 
+ * @brief load and crosscheck the metrics with the supported metrics from the simulator
+ * @paragraph{The LoadMetrics function is used to crosscheck the supported metrics from the 
  * simulator with the metrics that are inputted in the benchmark yaml config file, 
- * and parsed to the individual scenarios where the variable called is metrics.
+ * and parsed to the individual scenarios where the variable called is metrics.}
+ * 
+ * @param metrics
  */
 void NS3_mockup_interface::LoadMetrics(std::vector<Metrics>& metrics) {
     //Check if the metrics are supported by the simulator
@@ -200,26 +190,49 @@ void NS3_mockup_interface::LoadMetrics(std::vector<Metrics>& metrics) {
  * @brief 
  * basic function which parses the parameters to an NS3 command line string for building the simulation
  * and the build options to an NS3 command line string for building the simulation
- * @param parameter 
- * @return std::string 
- */
-void NS3_mockup_interface::ParseToNS3CommandLine(std::vector<BuildOptions>& buildOptions){
-    std::string ParamsCMDstring = "./ns3 build "; //possible point of failure.
-    std::string BuildCMDstring = "./ns3 run "; //possible point of failure.
+ * @param parameter
+ * @return void
+*/ 
+void NS3_mockup_interface::ParseToNS3CommandLine(){
+
+    std::string simulationFilePath = "";
+    
+    //Find the simulation file path
+    for(auto it = NS3parameters.begin(); it != NS3parameters.end(); ++it){
+        if((it->name) == "simulation-file-path" ){
+            simulationFilePath = it->defaultParameter;
+        }
+    }
+
+    //Get the file name without the file extension and path (remove after (.) and remove before (/)
+
+    std::string tmpSimulatorFilePath = simulationFilePath.substr(simulationFilePath.find_last_of("/\\") + 1);
+    tmpSimulatorFilePath = tmpSimulatorFilePath.find_last_of('.') != std::string::npos ? tmpSimulatorFilePath.substr(0, tmpSimulatorFilePath.find_last_of('.')) : tmpSimulatorFilePath;
+    std::cout << "The simulation file path is: " << tmpSimulatorFilePath << std::endl;
+
+
+    std::string BuildCMDstring = "python3 ./ns3 build " + tmpSimulatorFilePath + " "; //The simulation file path with the file extension
+    std::string ParamsCMDstring = "python3 ./ns3 run " + tmpSimulatorFilePath + " "; //The simulation file path without the file extension 
     
     //Parse the build options to an NS3 command line string for building the simulation
-    for(auto it = buildOptions.begin(); it != buildOptions.end(); ++it){
+    for(auto it = NS3buildOptions.begin(); it != NS3buildOptions.end(); ++it){
         BuildCMDstring += "--" + it->buildOption + "=" + it->buildOptionValue + " ";
     }
 
     //Parse the parameters to an NS3 command line string for building the simulation
     for(auto it = NS3parameters.begin(); it != NS3parameters.end(); ++it){
-        ParamsCMDstring += "--" + (it->name) + "=" + (it->defaultParameter) + " ";
+        if((it->name) != "simulation-file-path"){
+            ParamsCMDstring += "--" + (it->name) + "=" + (it->defaultParameter) + " ";
+        }else{
+            continue;
+        }
     }
 
     CL_Parameters = ParamsCMDstring;
     CL_BuildOptions = BuildCMDstring;
-};
+
+    return;
+}
 
 
 /**
@@ -231,39 +244,118 @@ void NS3_mockup_interface::ParseToNS3CommandLine(std::vector<BuildOptions>& buil
  * @return std::string 
  */
 void NS3_mockup_interface::RunSimulation(){
-    //Run the parsing function to parse the inputted parameters to an NS3 command line string for building the simulation
-    //std::string commandLine = ParseToNS3CommandLine(buildoptions);
+    
+    #ifdef DEBUG
+        //this->simulatorInfo.simulatorName = "NS3";
+        //this->simulatorInfo.simulatorVersion = "3.38";
+        //this->simulatorInfo.nativeOutputType = "Float";
+        //std::string configFile = "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/test/NS3_Tests/NS3_run_tests/Tutorial_NS3_script.cc";
+        //this->NS3parameters.emplace_back("simulation-file-path", configFile);
+        //this->NS3metrics.emplace_back("Throughput", "Mbps");
+        //this->NS3metrics.emplace_back("Delay", "ms");
+        //this->NS3metrics.emplace_back("Jitter", "ms");
+    #endif
 
+    ParseToNS3CommandLine(); // Run the parsing function to parse the inputted parameters to an NS3 command line string for building the simulation
+
+    //Get more precise time stamp for the output file "HourMinSec"
     auto currentTime = std::chrono::system_clock::now();
-    std::string currentTimeInHourMinSec = 
-        std::to_string(std::chrono::duration_cast<std::chrono::hours>(currentTime.time_since_epoch()).count()) + 
-        std::to_string(std::chrono::duration_cast<std::chrono::minutes>(currentTime.time_since_epoch()).count()) + 
-        std::to_string(std::chrono::duration_cast<std::chrono::seconds>(currentTime.time_since_epoch()).count());
+    std::time_t currentTimeInTimeT = std::chrono::system_clock::to_time_t(currentTime);
+    std::tm* currentTimeInTM = std::localtime(&currentTimeInTimeT);
 
+    std::string currentTimeInHourMinSec = 
+        std::to_string(currentTimeInTM->tm_hour) + 
+        std::to_string(currentTimeInTM->tm_min) + 
+        std::to_string(currentTimeInTM->tm_sec);
+
+    
     std::string fileOutput = simulatorInfo.simulatorName + "_" + currentTimeInHourMinSec + ".txt";
 
-    CL_Parameters += " > " + fileOutput + " 2>&1";
+    std::cerr << "File output name: " << fileOutput << std::endl;
+
+    CL_Parameters += "> " + ResultPath + "/" + fileOutput + " 2>&1";
+
+    std::cout << "CL_Parameters: " << CL_Parameters << std::endl;
+    std::cout << "CL_BuildOptions: " << CL_BuildOptions << std::endl;
 
     activeSimulatorListener->SimulationStart();
 
-    #ifdef UNIX
-         //First we build/configure the simulation
-        system(CL_BuildOptions.c_str());
-        //Then we run the simulation
-        system(CL_Parameters.c_str());
+    //Change directory to the NS3-SMI directory
+    std::string ns3_3_8 = "/ns-" + simulatorInfo.simulatorVersion;
+    std::string changeDirectory = "cd "  + SMIPath + "/NS3-SMI" + ns3_3_8 + ns3_3_8;
+    
+    /*
+    Todo:
+    1. Get the path to the simulator and the simulation file path (done)
+    2. Change directory to the simulator path (done)
+    3. copy the simulation file to be run to the simulator path inside the src folder of the simulator into the scratch folder (done)
+    4. build the simulation 
+    5. run the simulation
+    6. get the output from the simulation
+    7. parse the output to the simulator output format
+    8. delete the simulation file from the simulator path
+    */
+
+    std::string copySimulationCommand; 
+
+    //checks to see if either a simulation-file-path or a simulation-file-path is given in the benchmark configuration file
+    for(auto it = NS3parameters.begin(); it != NS3parameters.end(); ++it){
+        if((it->name) == "simulation-file-path"){
+            //copy the simulation file to the simulator path inside the src folder of the simulator into the scratch folder
+            copySimulationCommand = "cp " + (it->defaultParameter) + " " + SMIPath + "/NS3-SMI" + ns3_3_8 + ns3_3_8 + "/scratch"; 
+        }else if ((it->name) == "simulation-folder-path"){
+            //copy the simulation folder to the simulator path inside the src folder of the simulator into the scratch folder
+            copySimulationCommand = "cp -Rp " + (it->defaultParameter) + " " + SMIPath + "/NS3-SMI" + ns3_3_8 + ns3_3_8 + "/scratch";
+        }else if(it == NS3parameters.end()){
+            //if neither a simulation-file-path or a simulation-file-path is given in the benchmark configuration file
+            std::cout << "No simulation file or folder defined in the benchmark configuration file" << std::endl;
+            std::cout << "Terminating RunSimulation()" << std::endl;
+            return;
+        }else{
+            continue;
+        }
+    }
+
+    //build the command string
+    std::string command = copySimulationCommand + " && " + changeDirectory + " && " + CL_BuildOptions + " && " + CL_Parameters;
+
+     #ifdef DEBUG
+        std::string partialCommand = copySimulationCommand + " && " + changeDirectory + " && " + CL_BuildOptions; 
+        std::cout << "copySimulationCommand: " << copySimulationCommand << std::endl;
     #endif
 
-    #ifdef WINDOWS
-        //Use wslapi.h to run the simulation
-    #endif
+    // Create a pipe to get a handle to the command output
+    std::array<char, 128> buffer;
 
-    std::string changeDirectory = "cd "+ SMIPath;
+    //Run the command
+    FILE* pipe = popen(command.c_str(), "r");
+    if (!pipe) {
+        std::cerr << "Failed to run NS3 command: " << command << std::endl;
+        return;
+    }
 
-     //First we build/configure the simulation
-    system(CL_BuildOptions.c_str());
+    //Read the output
+    while (!feof(pipe)) {
+        if (fgets(buffer.data(), 128, pipe) != nullptr) {
+            std::cout << buffer.data();
+        }
+    }
+
+    pclose(pipe);
+
 
     //Then we run the simulation
-    system(CL_Parameters.c_str());
+    //system(command.c_str());
+
+
+    //#ifdef defined(__unix__) || defined(__unix) || defined(__linux__) || defined(linux)
+    //    system(changeDirectory.c_str());
+    //#endif
+    
+    //#ifdef _WIN64
+        //Use wslapi.h to run the simulation
+    //#endif
+
 
     activeSimulatorListener->SimulationEnd();
 
@@ -294,9 +386,7 @@ void NS3_mockup_interface::RunSimulation(){
     //Cleanup
     //std::cout.rdbuf(oldCoutStreamBuf); //Reset the cout stream buffer
     //fs::remove(tempPath); //remove the file
-};
-
-
+}
 
 //void NS3_mockup_interface::GetRuntimeData(){};
 
