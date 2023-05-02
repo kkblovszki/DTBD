@@ -8,6 +8,6 @@ URL:
 Version: 3.38
 Requires:  ns3-internet ns3-wifi
 Requires.private: 
-Cflags: -I"${includedir}" 
+Cflags: -I"${includedir}"  -I/usr/include/libxml2
 Libs: -L"${libdir}" -lns3.38-aodv-debug  -lns3.38-internet-debug -lns3.38-wifi-debug
 Libs.private: -L"${libdir}" 

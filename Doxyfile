@@ -4,7 +4,8 @@ PROJECT_BRIEF          = "Digital Testbed and Benchmarking development for self-
 PROJECT_NUMBER         = "0.1"
 
 # Specify the source code directories to be documented
-INPUT                  = ../src
+INPUT                  = ../src \
+                         futurework.dox
 
 # Specify the output directory for the generated documentation
 OUTPUT_DIRECTORY       = ../docs
@@ -14,4 +15,5 @@ GENERATE_HTML          = YES
 INLINE_SOURCES         = YES
 GENERATE_TREEVIEW      = YES
 SEARCHENGINE           = NO
-USE_MDFILE_AS_MAINPAGE = mainpage.dox
+HTML_FILE_EXTENSION    = .html
+HTML_START_PAGE = mainpage.dox

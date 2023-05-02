@@ -332,6 +332,7 @@ src/config-store/CMakeFiles/libconfig-store-obj.dir/model/config-store.cc.o: CMa
   ../src/core/model/object-base.h \
   ../build/include/ns3/string.h \
   ../src/core/model/string.h \
+  ../src/config-store/model/xml-config.h \
   /usr/include/unistd.h \
   /usr/include/features.h \
   /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
@@ -463,6 +464,261 @@ src/config-store/CMakeFiles/libconfig-store-obj.dir/model/raw-text-config.cc.o: 
   /usr/include/c++/11/algorithm \
   /usr/include/c++/11/istream
 
+src/config-store/CMakeFiles/libconfig-store-obj.dir/model/xml-config.cc.o: CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx \
+  ../src/config-store/model/xml-config.cc \
+  /usr/include/stdc-predef.h \
+  ../src/config-store/model/xml-config.h \
+  ../src/config-store/model/file-config.h \
+  /usr/include/c++/11/string \
+  ../src/config-store/model/attribute-default-iterator.h \
+  ../build/include/ns3/type-id.h \
+  ../src/core/model/type-id.h \
+  ../src/core/model/attribute-accessor-helper.h \
+  ../src/core/model/attribute.h \
+  ../src/core/model/ptr.h \
+  ../src/core/model/assert.h \
+  ../src/core/model/fatal-error.h \
+  ../src/core/model/fatal-impl.h \
+  /usr/include/c++/11/ostream \
+  ../src/core/model/log.h \
+  ../src/core/model/log-macros-disabled.h \
+  ../src/core/model/log-macros-enabled.h \
+  ../src/core/model/node-printer.h \
+  ../src/core/model/time-printer.h \
+  /usr/include/c++/11/iostream \
+  /usr/include/c++/11/map \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h \
+  /usr/include/c++/11/type_traits \
+  /usr/include/c++/11/vector \
+  /usr/include/c++/11/cstdlib \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
+  /usr/include/c++/11/exception \
+  /usr/include/c++/11/string_view \
+  ../src/core/model/deprecated.h \
+  ../src/core/model/simple-ref-count.h \
+  ../src/core/model/default-deleter.h \
+  /usr/include/c++/11/limits \
+  ../src/core/model/type-traits.h \
+  ../src/core/model/attribute-helper.h \
+  ../src/core/model/abort.h \
+  /usr/include/c++/11/sstream \
+  ../src/core/model/callback.h \
+  /usr/include/c++/11/functional \
+  /usr/include/c++/11/memory \
+  /usr/include/c++/11/bits/stl_algobase.h \
+  /usr/include/c++/11/bits/allocator.h \
+  /usr/include/c++/11/bits/stl_construct.h \
+  /usr/include/c++/11/bits/stl_uninitialized.h \
+  /usr/include/c++/11/bits/stl_tempbuf.h \
+  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
+  /usr/include/c++/11/bits/align.h \
+  /usr/include/c++/11/bit \
+  /usr/include/c++/11/ext/numeric_traits.h \
+  /usr/include/c++/11/debug/assertions.h \
+  /usr/include/c++/11/bits/uses_allocator.h \
+  /usr/include/c++/11/bits/alloc_traits.h \
+  /usr/include/c++/11/debug/debug.h \
+  /usr/include/c++/11/bits/unique_ptr.h \
+  /usr/include/c++/11/utility \
+  /usr/include/c++/11/tuple \
+  /usr/include/c++/11/bits/stl_function.h \
+  /usr/include/c++/11/bits/functional_hash.h \
+  /usr/include/c++/11/bits/shared_ptr.h \
+  /usr/include/c++/11/iosfwd \
+  /usr/include/c++/11/bits/shared_ptr_base.h \
+  /usr/include/c++/11/typeinfo \
+  /usr/include/c++/11/bits/allocated_ptr.h \
+  /usr/include/c++/11/bits/exception_defines.h \
+  /usr/include/c++/11/bits/refwrap.h \
+  /usr/include/c++/11/ext/aligned_buffer.h \
+  /usr/include/c++/11/ext/atomicity.h \
+  /usr/include/c++/11/ext/concurrence.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/gthr.h \
+  /usr/include/c++/11/bits/functexcept.h \
+  /usr/include/c++/11/bits/cpp_type_traits.h \
+  /usr/include/c++/11/ext/type_traits.h \
+  /usr/include/c++/11/bits/shared_ptr_atomic.h \
+  /usr/include/c++/11/bits/atomic_base.h \
+  /usr/include/c++/11/bits/atomic_lockfree_defines.h \
+  /usr/include/c++/11/bits/move.h \
+  /usr/include/c++/11/backward/auto_ptr.h \
+  /usr/include/c++/11/pstl/glue_memory_defs.h \
+  /usr/include/c++/11/pstl/execution_defs.h \
+  ../src/core/model/hash.h \
+  ../src/core/model/hash-fnv.h \
+  ../src/core/model/hash-function.h \
+  /usr/include/c++/11/cstring \
+  /usr/include/string.h \
+  ../src/core/model/hash-murmur3.h \
+  ../src/core/model/trace-source-accessor.h \
+  ../src/config-store/model/attribute-iterator.h \
+  ../build/include/ns3/object-ptr-container.h \
+  ../src/core/model/object-ptr-container.h \
+  ../src/core/model/object.h \
+  ../src/core/model/attribute-construction-list.h \
+  /usr/include/c++/11/list \
+  ../src/core/model/object-base.h \
+  ../src/core/model/type-id.h \
+  ../src/core/model/warnings.h \
+  ../build/include/ns3/object.h \
+  ../src/core/model/object.h \
+  ../build/include/ns3/ptr.h \
+  ../src/core/model/ptr.h \
+  ../build/include/ns3/config.h \
+  ../src/core/model/config.h \
+  ../build/include/ns3/fatal-error.h \
+  ../src/core/model/fatal-error.h \
+  ../build/include/ns3/global-value.h \
+  ../src/core/model/global-value.h \
+  ../build/include/ns3/log.h \
+  ../src/core/model/log.h \
+  ../build/include/ns3/string.h \
+  ../src/core/model/string.h \
+  /usr/include/libxml2/libxml/encoding.h \
+  /usr/include/libxml2/libxml/xmlversion.h \
+  /usr/include/libxml2/libxml/xmlexports.h \
+  /usr/include/iconv.h \
+  /usr/include/features.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h \
+  /usr/include/unicode/ucnv.h \
+  /usr/include/unicode/ucnv_err.h \
+  /usr/include/unicode/utypes.h \
+  /usr/include/unicode/umachine.h \
+  /usr/include/unicode/ptypes.h \
+  /usr/include/unicode/platform.h \
+  /usr/include/unicode/uconfig.h \
+  /usr/include/unicode/uvernum.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdbool.h \
+  /usr/include/unicode/urename.h \
+  /usr/include/unicode/uversion.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/float.h \
+  /usr/include/unicode/utf.h \
+  /usr/include/unicode/utf8.h \
+  /usr/include/unicode/utf16.h \
+  /usr/include/unicode/utf_old.h \
+  /usr/include/unicode/uenum.h \
+  /usr/include/unicode/localpointer.h \
+  /usr/include/libxml2/libxml/tree.h \
+  /usr/include/stdio.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h \
+  /usr/include/limits.h \
+  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+  /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
+  /usr/include/x86_64-linux-gnu/bits/local_lim.h \
+  /usr/include/linux/limits.h \
+  /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
+  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/uio_lim.h \
+  /usr/include/libxml2/libxml/xmlstring.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h \
+  /usr/include/libxml2/libxml/xmlregexp.h \
+  /usr/include/libxml2/libxml/dict.h \
+  /usr/include/libxml2/libxml/xmlmemory.h \
+  /usr/include/libxml2/libxml/threads.h \
+  /usr/include/libxml2/libxml/globals.h \
+  /usr/include/libxml2/libxml/parser.h \
+  /usr/include/libxml2/libxml/hash.h \
+  /usr/include/libxml2/libxml/valid.h \
+  /usr/include/libxml2/libxml/xmlerror.h \
+  /usr/include/libxml2/libxml/list.h \
+  /usr/include/libxml2/libxml/xmlautomata.h \
+  /usr/include/libxml2/libxml/entities.h \
+  /usr/include/libxml2/libxml/xmlIO.h \
+  /usr/include/libxml2/libxml/SAX2.h \
+  /usr/include/c++/11/stdlib.h \
+  /usr/include/libxml2/libxml/xlink.h \
+  /usr/include/libxml2/libxml/xmlreader.h \
+  /usr/include/libxml2/libxml/relaxng.h \
+  /usr/include/libxml2/libxml/xmlschemas.h \
+  /usr/include/libxml2/libxml/xmlwriter.h
+
+
+/usr/include/libxml2/libxml/xmlschemas.h:
+
+/usr/include/libxml2/libxml/xlink.h:
+
+/usr/include/c++/11/stdlib.h:
+
+/usr/include/libxml2/libxml/entities.h:
+
+/usr/include/libxml2/libxml/xmlautomata.h:
+
+/usr/include/libxml2/libxml/list.h:
+
+/usr/include/libxml2/libxml/hash.h:
+
+/usr/include/libxml2/libxml/SAX2.h:
+
+/usr/include/libxml2/libxml/globals.h:
+
+/usr/include/libxml2/libxml/threads.h:
+
+/usr/include/libxml2/libxml/xmlregexp.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h:
+
+/usr/include/x86_64-linux-gnu/bits/xopen_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h:
+
+/usr/include/x86_64-linux-gnu/bits/local_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
+
+/usr/include/limits.h:
+
+/usr/include/libxml2/libxml/dict.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h:
+
+/usr/include/libxml2/libxml/valid.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h:
+
+/usr/include/libxml2/libxml/tree.h:
+
+/usr/include/unicode/localpointer.h:
+
+/usr/include/unicode/uenum.h:
+
+/usr/include/unicode/utf16.h:
+
+/usr/include/unicode/utf.h:
+
+/usr/include/unicode/uversion.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/stdbool.h:
+
+/usr/include/x86_64-linux-gnu/bits/uio_lim.h:
+
+/usr/include/unicode/utf_old.h:
+
+/usr/include/unicode/uvernum.h:
+
+/usr/include/unicode/uconfig.h:
+
+/usr/include/unicode/platform.h:
+
+/usr/include/unicode/ucnv_err.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
+
+/usr/include/linux/limits.h:
+
+/usr/include/unicode/ucnv.h:
+
+/usr/include/iconv.h:
+
+/usr/include/libxml2/libxml/xmlversion.h:
+
+/usr/include/stdio.h:
+
+../build/include/ns3/fatal-error.h:
 
 /usr/include/c++/11/istream:
 
@@ -470,9 +726,13 @@ src/config-store/CMakeFiles/libconfig-store-obj.dir/model/raw-text-config.cc.o: 
 
 /usr/include/x86_64-linux-gnu/bits/unistd_ext.h:
 
+/usr/include/unicode/utf8.h:
+
 /usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
 
 /usr/include/x86_64-linux-gnu/bits/environments.h:
+
+/usr/include/libxml2/libxml/xmlerror.h:
 
 /usr/include/features.h:
 
@@ -504,6 +764,8 @@ src/config-store/CMakeFiles/libconfig-store-obj.dir/model/raw-text-config.cc.o: 
 
 /usr/include/c++/11/bits/stl_construct.h:
 
+/usr/include/libxml2/libxml/xmlwriter.h:
+
 /usr/include/c++/11/sstream:
 
 ../src/core/model/string.h:
@@ -517,6 +779,8 @@ src/config-store/CMakeFiles/libconfig-store-obj.dir/model/raw-text-config.cc.o: 
 /usr/include/c++/11/bits/move.h:
 
 ../src/core/model/trace-source-accessor.h:
+
+/usr/include/libxml2/libxml/xmlexports.h:
 
 /usr/include/c++/11/bits/shared_ptr.h:
 
@@ -548,15 +812,23 @@ src/config-store/CMakeFiles/libconfig-store-obj.dir/model/raw-text-config.cc.o: 
 
 ../src/core/model/default-deleter.h:
 
+/usr/include/libxml2/libxml/encoding.h:
+
 /usr/include/c++/11/bits/unique_ptr.h:
 
 /usr/include/c++/11/ostream:
 
 ../src/core/model/log-macros-enabled.h:
 
+/usr/include/libxml2/libxml/xmlmemory.h:
+
 ../build/include/ns3/global-value.h:
 
 /usr/include/c++/11/fstream:
+
+/usr/include/libxml2/libxml/relaxng.h:
+
+/usr/include/libxml2/libxml/xmlIO.h:
 
 /usr/include/c++/11/iosfwd:
 
@@ -573,6 +845,8 @@ src/config-store/CMakeFiles/libconfig-store-obj.dir/model/raw-text-config.cc.o: 
 ../src/core/model/attribute.h:
 
 /usr/include/c++/11/bits/exception_defines.h:
+
+/usr/include/unicode/umachine.h:
 
 ../src/core/model/abort.h:
 
@@ -592,6 +866,8 @@ CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx:
 
 ../src/core/model/log-macros-disabled.h:
 
+/usr/lib/gcc/x86_64-linux-gnu/11/include/float.h:
+
 /usr/include/x86_64-linux-gnu/bits/posix_opt.h:
 
 ../src/core/model/callback.h:
@@ -606,9 +882,13 @@ CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx:
 
 ../build/include/ns3/attribute.h:
 
+/usr/include/libxml2/libxml/xmlreader.h:
+
 ../src/core/model/global-value.h:
 
 /usr/include/c++/11/bits/allocator.h:
+
+/usr/include/unicode/utypes.h:
 
 /usr/include/c++/11/functional:
 
@@ -670,6 +950,8 @@ CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx:
 
 ../src/core/model/event-id.h:
 
+/usr/include/unicode/ptypes.h:
+
 /usr/include/c++/11/bits/shared_ptr_atomic.h:
 
 ../src/core/model/object-ptr-container.h:
@@ -680,6 +962,8 @@ CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx:
 
 /usr/include/x86_64-linux-gnu/bits/wordsize.h:
 
+../src/config-store/model/xml-config.h:
+
 /usr/include/c++/11/pstl/execution_defs.h:
 
 ../src/config-store/model/raw-text-config.cc:
@@ -688,6 +972,8 @@ CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx:
 
 ../build/include/ns3/abort.h:
 
+../src/config-store/model/xml-config.cc:
+
 ../src/core/model/hash-function.h:
 
 /usr/include/c++/11/cstring:
@@ -695,6 +981,10 @@ CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx:
 /usr/include/string.h:
 
 ../src/core/model/attribute-construction-list.h:
+
+/usr/include/libxml2/libxml/parser.h:
+
+/usr/include/libxml2/libxml/xmlstring.h:
 
 ../build/include/ns3/callback.h:
 
@@ -735,6 +1025,8 @@ CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx:
 ../src/core/model/hash.h:
 
 ../build/include/ns3/object-base.h:
+
+/usr/include/unicode/urename.h:
 
 /usr/include/c++/11/cmath:
 

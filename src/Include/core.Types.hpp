@@ -9,7 +9,9 @@
 #include <functional>
 
 /**
- * @brief
+ * @brief BuildOptions structure that holds the information about a build option.
+ * @param buildOption - the name of the build option
+ * @param buildOptionValue - the value of the build option
  */
 typedef struct BuildOptions {
         std::string buildOption;
@@ -17,8 +19,11 @@ typedef struct BuildOptions {
 } BuildOptions;
 
 /**
- * @brief 
- * 
+ * @brief Parameter structure that holds the information about a parameter.
+ * @param name - the name of the parameter
+ * @param defaultParameter - the default value of the parameter
+ * @details This structure is used to hold the information about the parameter that is read from the simulation configuration file.
+ * It is parsed to the SMI when a scenario is run, during the preparation phase.
  */
 typedef struct Parameter {
     std::string name;
@@ -27,7 +32,37 @@ typedef struct Parameter {
 
 /**
  * @brief 
+ * @param name - the name of the metric
+ * @param unit - the unit of the metric
+ */
+typedef struct Metrics {
+    std::string name;
+    std::string unit;
+
+    Metrics(){name = ""; unit = "";};
+    Metrics(std::string specifiedName, std::string specifiedUnit) : name(specifiedName), unit(specifiedUnit){};
+    ~Metrics(){};
+} Metrics;
+
+/**
+ * @brief 
  * The descriptor of the scenario structure.
+ * @param name - the name of the scenario
+ * @param description - the description of the scenario
+ * @param simulator - the simulator that the scenario uses
+ * @param simulatorVersion - the version of the simulator
+ * @param listener - the listener that the scenario uses
+ * @param optional - the optional parameters of the scenario
+ * @param required - the required parameters of the scenario
+ * @param parameters - the parameters of the scenario
+ * @param metrics - the metrics of the scenario
+ * @param buildOptions - the build options of the scenario
+ * @details This structure is used to hold the information about the scenario that is read from the simulation configuration file.
+ * The @param simulator, @param name, and @param simulatorVersion are required parameters and must be defined in the simulation configuration file.
+ * to be able to create a scenario. The @param listener is an optional parameter and if it is not defined, the framework will use the default listener which is the Console Listener.
+ * The @param optional and @param required are optional parameters and if they are not defined, the framework will use the default values which are empty maps. 
+ * Depending on the simulator, the @param optional and @param required parameters may be used, therefore it is recommended to define them in the simulation configuration file.
+ * However in the end it depends on whether the specific SMI - Simulator Mockup Interface Developer wants to use them or not, and how to use them.
  */
 typedef struct ScenarioDescriptor{
     std::string name;
@@ -38,17 +73,21 @@ typedef struct ScenarioDescriptor{
     std::map<std::string, std::string> optional;
     std::map<std::string, std::string> required;
     std::vector<Parameter> parameters;
+    std::vector<Metrics> metrics;
     std::vector<BuildOptions> buildOptions;
 
     ScenarioDescriptor() {name, description, simulator, listener = ""; 
                           optional, required = {}; 
-                          parameters, buildOptions = {};}
+                          parameters, metrics, buildOptions = {};}
 
 }ScenarioDescriptor;
 
 /**
  * @brief 
- * 
+ * Structure that holds the information about the simulation strategy.
+ * @param multithread - if the simulation is multithreaded
+ * @param threadNr - the number of threads
+ * @param executionOrder - the order of the execution of the scenarios
  */
 typedef struct SimulationStrategy {
     bool multithread;
@@ -65,41 +104,38 @@ struct BenchmarkType{
     std::vector<ScenarioDescriptor> scenarios;
 };
 
-/**
- * @brief
- * 
- */
-typedef struct Metrics {
-    std::string name;
-    std::string unit;
-
-    Metrics(){name = ""; unit = "";};
-    Metrics(std::string specifiedName, std::string specifiedUnit) : name(specifiedName), unit(specifiedUnit){};
-    ~Metrics(){};
-} Metrics;
 
 /**
- * @brief 
- * 
+ * @brief Measure structure that holds the information about a measurement.
+ * @param label - the label of the measure
+ * @param readings - the readings of the measure it consist of a map of metrics and a vector of strings pr. metric
+ * @details This structure is used to hold the information about the measure that is read from the simulation configuration file.
+ * The Measure structure itself contains a map of multiple Metrics. The Metrics structure contains a name and a unit.
  */
 typedef struct Measure {
-    Metrics metric;
     std::string label;
     std::map<Metrics, std::vector<std::string>> readings;
-    //std::vector<std::string> readings;
 
-    Measure(Metrics specifiedMetric, 
-            std::string specifiedLabel, 
+    Measure(std::string specifiedLabel, 
             std::map<Metrics, std::vector<std::string>> specifiedReadings) 
-            : metric(specifiedMetric), 
-            label(specifiedLabel), 
+            : label(specifiedLabel), 
             readings(specifiedReadings){};
     Measure(){};
 } Measure;
 
 /**
- * @brief 
+ * @brief SimulatorInfo structure that holds the information about a simulator.
  * 
+ * @param simulatorName - the name of the simulator
+ * @param simulatorVersion - the version of the simulator
+ * @param nativeOutputType - the native output type of the simulator    
+ * @param functions - the functions that the simulator supports
+ * @param parameters - the parameters that the simulator supports
+ * @param metrics - the metrics that the simulator supports
+ * @param buildOptions - the build options that the simulator supports
+ * @details This structure is used to hold the information about the simulator that is read from the simulation configuration file.
+ * The entirety of this structure isn't optional, this is since the framework needs to know what simulator it is working with, what version it is and what it supports.
+ * Therefore a new simulator must be defined with a simulation configuration file.
  */
 typedef struct SimulatorInfo {
     std::string simulatorName;

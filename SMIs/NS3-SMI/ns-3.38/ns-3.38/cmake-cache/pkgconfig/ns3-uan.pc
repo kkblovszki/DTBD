@@ -8,6 +8,6 @@ URL:
 Version: 3.38
 Requires:  ns3-network ns3-mobility ns3-energy
 Requires.private: 
-Cflags: -I"${includedir}" 
+Cflags: -I"${includedir}"  -I/usr/include/libxml2
 Libs: -L"${libdir}" -lns3.38-uan-debug  -lns3.38-network-debug -lns3.38-mobility-debug -lns3.38-energy-debug
 Libs.private: -L"${libdir}" 

@@ -2581,7 +2581,7 @@ src/aodv/CMakeFiles/libaodv.dir/all: src/wifi/CMakeFiles/libwifi.dir/all
 
 # Build rule for subdir invocation for target.
 src/aodv/CMakeFiles/libaodv.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 58
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 57
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/aodv/CMakeFiles/libaodv.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 0
 .PHONY : src/aodv/CMakeFiles/libaodv.dir/rule
@@ -2637,7 +2637,7 @@ src/applications/CMakeFiles/libapplications.dir/all: src/traffic-control/CMakeFi
 
 # Build rule for subdir invocation for target.
 src/applications/CMakeFiles/libapplications.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 33
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 32
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/applications/CMakeFiles/libapplications.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 0
 .PHONY : src/applications/CMakeFiles/libapplications.dir/rule
@@ -2959,7 +2959,7 @@ src/csma-layout/CMakeFiles/libcsma-layout.dir/all: src/traffic-control/CMakeFile
 
 # Build rule for subdir invocation for target.
 src/csma-layout/CMakeFiles/libcsma-layout.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 33
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 31
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/csma-layout/CMakeFiles/libcsma-layout.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 0
 .PHONY : src/csma-layout/CMakeFiles/libcsma-layout.dir/rule
@@ -3015,7 +3015,7 @@ src/dsdv/CMakeFiles/libdsdv.dir/all: src/traffic-control/CMakeFiles/libtraffic-c
 
 # Build rule for subdir invocation for target.
 src/dsdv/CMakeFiles/libdsdv.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 31
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 30
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/dsdv/CMakeFiles/libdsdv.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 0
 .PHONY : src/dsdv/CMakeFiles/libdsdv.dir/rule
@@ -3040,7 +3040,7 @@ src/dsr/CMakeFiles/libdsr-obj.dir/all: CMakeFiles/stdlib_pch-debug.dir/all
 
 # Build rule for subdir invocation for target.
 src/dsr/CMakeFiles/libdsr-obj.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/dsr/CMakeFiles/libdsr-obj.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 0
 .PHONY : src/dsr/CMakeFiles/libdsr-obj.dir/rule
@@ -3077,7 +3077,7 @@ src/dsr/CMakeFiles/libdsr.dir/all: src/wifi/CMakeFiles/libwifi.dir/all
 
 # Build rule for subdir invocation for target.
 src/dsr/CMakeFiles/libdsr.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 59
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/dsr/CMakeFiles/libdsr.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 0
 .PHONY : src/dsr/CMakeFiles/libdsr.dir/rule
@@ -3341,7 +3341,7 @@ src/flow-monitor/CMakeFiles/libflow-monitor.dir/all: src/traffic-control/CMakeFi
 
 # Build rule for subdir invocation for target.
 src/flow-monitor/CMakeFiles/libflow-monitor.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 32
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 31
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/flow-monitor/CMakeFiles/libflow-monitor.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 0
 .PHONY : src/flow-monitor/CMakeFiles/libflow-monitor.dir/rule
@@ -3396,7 +3396,7 @@ src/internet/CMakeFiles/libinternet.dir/all: src/traffic-control/CMakeFiles/libt
 
 # Build rule for subdir invocation for target.
 src/internet/CMakeFiles/libinternet.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 31
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 30
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/internet/CMakeFiles/libinternet.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 0
 .PHONY : src/internet/CMakeFiles/libinternet.dir/rule
@@ -3452,7 +3452,7 @@ src/internet-apps/CMakeFiles/libinternet-apps.dir/all: src/traffic-control/CMake
 
 # Build rule for subdir invocation for target.
 src/internet-apps/CMakeFiles/libinternet-apps.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 33
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 32
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/internet-apps/CMakeFiles/libinternet-apps.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 0
 .PHONY : src/internet-apps/CMakeFiles/libinternet-apps.dir/rule
@@ -3576,7 +3576,7 @@ src/lte/CMakeFiles/liblte.dir/all: src/virtual-net-device/CMakeFiles/libvirtual-
 
 # Build rule for subdir invocation for target.
 src/lte/CMakeFiles/liblte.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 59
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 57
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/lte/CMakeFiles/liblte.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 0
 .PHONY : src/lte/CMakeFiles/liblte.dir/rule
@@ -3639,7 +3639,7 @@ src/mesh/CMakeFiles/libmesh.dir/all: src/wifi/CMakeFiles/libwifi.dir/all
 
 # Build rule for subdir invocation for target.
 src/mesh/CMakeFiles/libmesh.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 63
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 62
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/mesh/CMakeFiles/libmesh.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 0
 .PHONY : src/mesh/CMakeFiles/libmesh.dir/rule
@@ -3767,7 +3767,7 @@ src/netanim/CMakeFiles/libnetanim.dir/all: src/wimax/CMakeFiles/libwimax.dir/all
 
 # Build rule for subdir invocation for target.
 src/netanim/CMakeFiles/libnetanim.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 86
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 84
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/netanim/CMakeFiles/libnetanim.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 0
 .PHONY : src/netanim/CMakeFiles/libnetanim.dir/rule
@@ -3875,7 +3875,7 @@ src/nix-vector-routing/CMakeFiles/libnix-vector-routing.dir/all: src/traffic-con
 
 # Build rule for subdir invocation for target.
 src/nix-vector-routing/CMakeFiles/libnix-vector-routing.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 31
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 30
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/nix-vector-routing/CMakeFiles/libnix-vector-routing.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 0
 .PHONY : src/nix-vector-routing/CMakeFiles/libnix-vector-routing.dir/rule
@@ -3900,7 +3900,7 @@ src/olsr/CMakeFiles/libolsr-obj.dir/all: CMakeFiles/stdlib_pch-debug.dir/all
 
 # Build rule for subdir invocation for target.
 src/olsr/CMakeFiles/libolsr-obj.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/olsr/CMakeFiles/libolsr-obj.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 0
 .PHONY : src/olsr/CMakeFiles/libolsr-obj.dir/rule
@@ -3984,7 +3984,7 @@ src/point-to-point/CMakeFiles/libpoint-to-point.dir/all: src/stats/CMakeFiles/li
 
 # Build rule for subdir invocation for target.
 src/point-to-point/CMakeFiles/libpoint-to-point.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 18
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 17
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/point-to-point/CMakeFiles/libpoint-to-point.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 0
 .PHONY : src/point-to-point/CMakeFiles/libpoint-to-point.dir/rule
@@ -4042,7 +4042,7 @@ src/point-to-point-layout/CMakeFiles/libpoint-to-point-layout.dir/all: src/traff
 
 # Build rule for subdir invocation for target.
 src/point-to-point-layout/CMakeFiles/libpoint-to-point-layout.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 34
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 32
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/point-to-point-layout/CMakeFiles/libpoint-to-point-layout.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 0
 .PHONY : src/point-to-point-layout/CMakeFiles/libpoint-to-point-layout.dir/rule
@@ -4067,7 +4067,7 @@ src/propagation/CMakeFiles/libpropagation-obj.dir/all: CMakeFiles/stdlib_pch-deb
 
 # Build rule for subdir invocation for target.
 src/propagation/CMakeFiles/libpropagation-obj.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/propagation/CMakeFiles/libpropagation-obj.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 0
 .PHONY : src/propagation/CMakeFiles/libpropagation-obj.dir/rule
@@ -4152,7 +4152,7 @@ src/sixlowpan/CMakeFiles/libsixlowpan.dir/all: src/traffic-control/CMakeFiles/li
 
 # Build rule for subdir invocation for target.
 src/sixlowpan/CMakeFiles/libsixlowpan.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 31
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 30
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/sixlowpan/CMakeFiles/libsixlowpan.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 0
 .PHONY : src/sixlowpan/CMakeFiles/libsixlowpan.dir/rule
@@ -4315,7 +4315,7 @@ src/tap-bridge/CMakeFiles/libtap-bridge.dir/all: src/traffic-control/CMakeFiles/
 
 # Build rule for subdir invocation for target.
 src/tap-bridge/CMakeFiles/libtap-bridge.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 31
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 30
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/tap-bridge/CMakeFiles/libtap-bridge.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 0
 .PHONY : src/tap-bridge/CMakeFiles/libtap-bridge.dir/rule
@@ -4415,7 +4415,7 @@ src/topology-read/CMakeFiles/libtopology-read-obj.dir/all: CMakeFiles/stdlib_pch
 
 # Build rule for subdir invocation for target.
 src/topology-read/CMakeFiles/libtopology-read-obj.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/topology-read/CMakeFiles/libtopology-read-obj.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 0
 .PHONY : src/topology-read/CMakeFiles/libtopology-read-obj.dir/rule
@@ -4443,7 +4443,7 @@ src/topology-read/CMakeFiles/libtopology-read.dir/all: src/topology-read/CMakeFi
 
 # Build rule for subdir invocation for target.
 src/topology-read/CMakeFiles/libtopology-read.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 17
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 18
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/topology-read/CMakeFiles/libtopology-read.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 0
 .PHONY : src/topology-read/CMakeFiles/libtopology-read.dir/rule
@@ -4496,7 +4496,7 @@ src/traffic-control/CMakeFiles/libtraffic-control.dir/all: src/traffic-control/C
 
 # Build rule for subdir invocation for target.
 src/traffic-control/CMakeFiles/libtraffic-control.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 19
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 18
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/traffic-control/CMakeFiles/libtraffic-control.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 0
 .PHONY : src/traffic-control/CMakeFiles/libtraffic-control.dir/rule
@@ -4666,7 +4666,7 @@ src/wave/CMakeFiles/libwave.dir/all: src/wifi/CMakeFiles/libwifi.dir/all
 
 # Build rule for subdir invocation for target.
 src/wave/CMakeFiles/libwave.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 58
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 57
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/wave/CMakeFiles/libwave.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 0
 .PHONY : src/wave/CMakeFiles/libwave.dir/rule
@@ -4782,7 +4782,7 @@ src/wimax/CMakeFiles/libwimax.dir/all: src/wimax/CMakeFiles/libwimax-obj.dir/all
 
 # Build rule for subdir invocation for target.
 src/wimax/CMakeFiles/libwimax.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 39
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 38
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/wimax/CMakeFiles/libwimax.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles 0
 .PHONY : src/wimax/CMakeFiles/libwimax.dir/rule

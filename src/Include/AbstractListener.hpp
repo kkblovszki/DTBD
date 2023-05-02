@@ -2,6 +2,7 @@
 #define ABSTRACT_LISTENER_HPP
 
 #include "core.Types.hpp"
+#include <filesystem>
 
 class Listener {
 public:
@@ -22,8 +23,12 @@ public:
         OnSimulationEnd();
     }
 
-    void SimulationEnd(std::string filepath){
+    void SimulationEnd(std::filesystem::path filepath){
         OnSimulationEnd(filepath);
+    }
+
+    void SimulationEnd(std::string value){
+        OnSimulationEnd(value);
     }
 
     void SimulationUpdate(std::string value){
@@ -53,14 +58,14 @@ private:
     
     virtual void OnSimulationStart(std::vector<Metrics> metrics){};
     
-    virtual void OnSimulationEnd(std::string filepath){};
+    virtual void OnSimulationEnd(std::filesystem::path filepath){};
+
+    virtual void OnSimulationEnd(std::string value){};
 
     virtual void OnSimulationUpdate(std::string value){};
     virtual void OnSimulationUpdate(std::vector<std::string> values){};
     virtual void OnSimulationUpdate(Metrics, std::vector<std::string>){};
     virtual void OnSimulationUpdate(Metrics, std::string){};
-
-    
 };
 
 

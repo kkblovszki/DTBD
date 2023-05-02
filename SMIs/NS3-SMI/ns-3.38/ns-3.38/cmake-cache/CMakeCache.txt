@@ -315,10 +315,10 @@ HarfBuzz_LIBRARY:FILEPATH=HarfBuzz_LIBRARY-NOTFOUND
 LATEXMK:FILEPATH=LATEXMK-NOTFOUND
 
 //Path to a file.
-LIBXML2_INCLUDE_DIR:PATH=LIBXML2_INCLUDE_DIR-NOTFOUND
+LIBXML2_INCLUDE_DIR:PATH=/usr/include/libxml2
 
 //Path to a library.
-LIBXML2_LIBRARY:FILEPATH=LIBXML2_LIBRARY-NOTFOUND
+LIBXML2_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libxml2.so
 
 //Path to a program.
 LIBXML2_XMLLINT_EXECUTABLE:FILEPATH=LIBXML2_XMLLINT_EXECUTABLE-NOTFOUND
@@ -558,7 +558,7 @@ libbridge_LIB_DEPENDS:STATIC=general;-Wl,--no-as-needed;general;libnetwork;gener
 libbuildings_LIB_DEPENDS:STATIC=general;-Wl,--no-as-needed;general;libmobility;general;libpropagation;general;-Wl,--as-needed;
 
 //Dependencies for the target
-libconfig-store_LIB_DEPENDS:STATIC=general;-Wl,--no-as-needed;general;libcore;general;libnetwork;general;-Wl,--as-needed;
+libconfig-store_LIB_DEPENDS:STATIC=general;-Wl,--no-as-needed;general;libcore;general;libnetwork;general;/usr/lib/x86_64-linux-gnu/libxml2.so;general;-Wl,--as-needed;
 
 //Dependencies for the target
 libcore_LIB_DEPENDS:STATIC=general;-Wl,--no-as-needed;general;-Wl,--as-needed;
@@ -1354,7 +1354,7 @@ ns3-execs-clean:INTERNAL=perf-io;print-introspected-doxygen;bench-packets;bench-
 //ADVANCED property for variable: ns3-external-libs
 ns3-external-libs-ADVANCED:INTERNAL=1
 //list of non-ns libraries to link to NS3_STATIC and NS3_MONOLIB
-ns3-external-libs:INTERNAL=;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ns3-external-libs:INTERNAL=;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;/usr/lib/x86_64-linux-gnu/libxml2.so;;;;;;
 //ADVANCED property for variable: ns3-libs
 ns3-libs-ADVANCED:INTERNAL=1
 //list of processed upstream modules

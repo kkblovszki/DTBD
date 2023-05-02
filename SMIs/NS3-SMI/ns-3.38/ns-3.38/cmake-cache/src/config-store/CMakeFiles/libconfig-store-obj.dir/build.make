@@ -69,12 +69,28 @@ include src/config-store/CMakeFiles/libconfig-store-obj.dir/progress.make
 # Include the compile flags for this target's objects.
 include src/config-store/CMakeFiles/libconfig-store-obj.dir/flags.make
 
+src/config-store/CMakeFiles/libconfig-store-obj.dir/model/xml-config.cc.o: src/config-store/CMakeFiles/libconfig-store-obj.dir/flags.make
+src/config-store/CMakeFiles/libconfig-store-obj.dir/model/xml-config.cc.o: ../src/config-store/model/xml-config.cc
+src/config-store/CMakeFiles/libconfig-store-obj.dir/model/xml-config.cc.o: CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx
+src/config-store/CMakeFiles/libconfig-store-obj.dir/model/xml-config.cc.o: CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx.gch
+src/config-store/CMakeFiles/libconfig-store-obj.dir/model/xml-config.cc.o: src/config-store/CMakeFiles/libconfig-store-obj.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/config-store/CMakeFiles/libconfig-store-obj.dir/model/xml-config.cc.o"
+	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/src/config-store && /usr/bin/ccache /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx -MD -MT src/config-store/CMakeFiles/libconfig-store-obj.dir/model/xml-config.cc.o -MF CMakeFiles/libconfig-store-obj.dir/model/xml-config.cc.o.d -o CMakeFiles/libconfig-store-obj.dir/model/xml-config.cc.o -c /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/src/config-store/model/xml-config.cc
+
+src/config-store/CMakeFiles/libconfig-store-obj.dir/model/xml-config.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/libconfig-store-obj.dir/model/xml-config.cc.i"
+	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/src/config-store && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx -E /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/src/config-store/model/xml-config.cc > CMakeFiles/libconfig-store-obj.dir/model/xml-config.cc.i
+
+src/config-store/CMakeFiles/libconfig-store-obj.dir/model/xml-config.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/libconfig-store-obj.dir/model/xml-config.cc.s"
+	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/src/config-store && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx -S /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/src/config-store/model/xml-config.cc -o CMakeFiles/libconfig-store-obj.dir/model/xml-config.cc.s
+
 src/config-store/CMakeFiles/libconfig-store-obj.dir/model/attribute-default-iterator.cc.o: src/config-store/CMakeFiles/libconfig-store-obj.dir/flags.make
 src/config-store/CMakeFiles/libconfig-store-obj.dir/model/attribute-default-iterator.cc.o: ../src/config-store/model/attribute-default-iterator.cc
 src/config-store/CMakeFiles/libconfig-store-obj.dir/model/attribute-default-iterator.cc.o: CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx
 src/config-store/CMakeFiles/libconfig-store-obj.dir/model/attribute-default-iterator.cc.o: CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx.gch
 src/config-store/CMakeFiles/libconfig-store-obj.dir/model/attribute-default-iterator.cc.o: src/config-store/CMakeFiles/libconfig-store-obj.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/config-store/CMakeFiles/libconfig-store-obj.dir/model/attribute-default-iterator.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/config-store/CMakeFiles/libconfig-store-obj.dir/model/attribute-default-iterator.cc.o"
 	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/src/config-store && /usr/bin/ccache /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx -MD -MT src/config-store/CMakeFiles/libconfig-store-obj.dir/model/attribute-default-iterator.cc.o -MF CMakeFiles/libconfig-store-obj.dir/model/attribute-default-iterator.cc.o.d -o CMakeFiles/libconfig-store-obj.dir/model/attribute-default-iterator.cc.o -c /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/src/config-store/model/attribute-default-iterator.cc
 
 src/config-store/CMakeFiles/libconfig-store-obj.dir/model/attribute-default-iterator.cc.i: cmake_force
@@ -90,7 +106,7 @@ src/config-store/CMakeFiles/libconfig-store-obj.dir/model/attribute-iterator.cc.
 src/config-store/CMakeFiles/libconfig-store-obj.dir/model/attribute-iterator.cc.o: CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx
 src/config-store/CMakeFiles/libconfig-store-obj.dir/model/attribute-iterator.cc.o: CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx.gch
 src/config-store/CMakeFiles/libconfig-store-obj.dir/model/attribute-iterator.cc.o: src/config-store/CMakeFiles/libconfig-store-obj.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/config-store/CMakeFiles/libconfig-store-obj.dir/model/attribute-iterator.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/config-store/CMakeFiles/libconfig-store-obj.dir/model/attribute-iterator.cc.o"
 	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/src/config-store && /usr/bin/ccache /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx -MD -MT src/config-store/CMakeFiles/libconfig-store-obj.dir/model/attribute-iterator.cc.o -MF CMakeFiles/libconfig-store-obj.dir/model/attribute-iterator.cc.o.d -o CMakeFiles/libconfig-store-obj.dir/model/attribute-iterator.cc.o -c /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/src/config-store/model/attribute-iterator.cc
 
 src/config-store/CMakeFiles/libconfig-store-obj.dir/model/attribute-iterator.cc.i: cmake_force
@@ -106,7 +122,7 @@ src/config-store/CMakeFiles/libconfig-store-obj.dir/model/config-store.cc.o: ../
 src/config-store/CMakeFiles/libconfig-store-obj.dir/model/config-store.cc.o: CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx
 src/config-store/CMakeFiles/libconfig-store-obj.dir/model/config-store.cc.o: CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx.gch
 src/config-store/CMakeFiles/libconfig-store-obj.dir/model/config-store.cc.o: src/config-store/CMakeFiles/libconfig-store-obj.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/config-store/CMakeFiles/libconfig-store-obj.dir/model/config-store.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/config-store/CMakeFiles/libconfig-store-obj.dir/model/config-store.cc.o"
 	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/src/config-store && /usr/bin/ccache /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx -MD -MT src/config-store/CMakeFiles/libconfig-store-obj.dir/model/config-store.cc.o -MF CMakeFiles/libconfig-store-obj.dir/model/config-store.cc.o.d -o CMakeFiles/libconfig-store-obj.dir/model/config-store.cc.o -c /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/src/config-store/model/config-store.cc
 
 src/config-store/CMakeFiles/libconfig-store-obj.dir/model/config-store.cc.i: cmake_force
@@ -122,7 +138,7 @@ src/config-store/CMakeFiles/libconfig-store-obj.dir/model/file-config.cc.o: ../s
 src/config-store/CMakeFiles/libconfig-store-obj.dir/model/file-config.cc.o: CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx
 src/config-store/CMakeFiles/libconfig-store-obj.dir/model/file-config.cc.o: CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx.gch
 src/config-store/CMakeFiles/libconfig-store-obj.dir/model/file-config.cc.o: src/config-store/CMakeFiles/libconfig-store-obj.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/config-store/CMakeFiles/libconfig-store-obj.dir/model/file-config.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/config-store/CMakeFiles/libconfig-store-obj.dir/model/file-config.cc.o"
 	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/src/config-store && /usr/bin/ccache /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx -MD -MT src/config-store/CMakeFiles/libconfig-store-obj.dir/model/file-config.cc.o -MF CMakeFiles/libconfig-store-obj.dir/model/file-config.cc.o.d -o CMakeFiles/libconfig-store-obj.dir/model/file-config.cc.o -c /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/src/config-store/model/file-config.cc
 
 src/config-store/CMakeFiles/libconfig-store-obj.dir/model/file-config.cc.i: cmake_force
@@ -138,7 +154,7 @@ src/config-store/CMakeFiles/libconfig-store-obj.dir/model/raw-text-config.cc.o: 
 src/config-store/CMakeFiles/libconfig-store-obj.dir/model/raw-text-config.cc.o: CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx
 src/config-store/CMakeFiles/libconfig-store-obj.dir/model/raw-text-config.cc.o: CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx.gch
 src/config-store/CMakeFiles/libconfig-store-obj.dir/model/raw-text-config.cc.o: src/config-store/CMakeFiles/libconfig-store-obj.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/config-store/CMakeFiles/libconfig-store-obj.dir/model/raw-text-config.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/config-store/CMakeFiles/libconfig-store-obj.dir/model/raw-text-config.cc.o"
 	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/src/config-store && /usr/bin/ccache /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx -MD -MT src/config-store/CMakeFiles/libconfig-store-obj.dir/model/raw-text-config.cc.o -MF CMakeFiles/libconfig-store-obj.dir/model/raw-text-config.cc.o.d -o CMakeFiles/libconfig-store-obj.dir/model/raw-text-config.cc.o -c /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/src/config-store/model/raw-text-config.cc
 
 src/config-store/CMakeFiles/libconfig-store-obj.dir/model/raw-text-config.cc.i: cmake_force
@@ -149,6 +165,7 @@ src/config-store/CMakeFiles/libconfig-store-obj.dir/model/raw-text-config.cc.s: 
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/libconfig-store-obj.dir/model/raw-text-config.cc.s"
 	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/src/config-store && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx -S /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/src/config-store/model/raw-text-config.cc -o CMakeFiles/libconfig-store-obj.dir/model/raw-text-config.cc.s
 
+libconfig-store-obj: src/config-store/CMakeFiles/libconfig-store-obj.dir/model/xml-config.cc.o
 libconfig-store-obj: src/config-store/CMakeFiles/libconfig-store-obj.dir/model/attribute-default-iterator.cc.o
 libconfig-store-obj: src/config-store/CMakeFiles/libconfig-store-obj.dir/model/attribute-iterator.cc.o
 libconfig-store-obj: src/config-store/CMakeFiles/libconfig-store-obj.dir/model/config-store.cc.o

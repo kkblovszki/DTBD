@@ -112,6 +112,7 @@ scratch_subdir_scratch__subdir_EXTERNAL_OBJECTS =
 ../build/scratch/subdir/ns3.38-scratch-subdir-debug: scratch/CMakeFiles/scratch_subdir_scratch-subdir.dir/subdir/scratch-subdir-additional-header.cc.o
 ../build/scratch/subdir/ns3.38-scratch-subdir-debug: scratch/CMakeFiles/scratch_subdir_scratch-subdir.dir/subdir/scratch-subdir.cc.o
 ../build/scratch/subdir/ns3.38-scratch-subdir-debug: scratch/CMakeFiles/scratch_subdir_scratch-subdir.dir/build.make
+../build/scratch/subdir/ns3.38-scratch-subdir-debug: /usr/lib/x86_64-linux-gnu/libxml2.so
 ../build/scratch/subdir/ns3.38-scratch-subdir-debug: scratch/CMakeFiles/scratch_subdir_scratch-subdir.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable ../../build/scratch/subdir/ns3.38-scratch-subdir-debug"
 	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/scratch && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/scratch_subdir_scratch-subdir.dir/link.txt --verbose=$(VERBOSE)

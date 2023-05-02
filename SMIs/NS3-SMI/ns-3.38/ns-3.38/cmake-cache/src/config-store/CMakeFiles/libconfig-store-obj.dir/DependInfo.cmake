@@ -18,6 +18,8 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx" "src/config-store/CMakeFiles/libconfig-store-obj.dir/model/file-config.cc.o" "gcc" "src/config-store/CMakeFiles/libconfig-store-obj.dir/model/file-config.cc.o.d"
   "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/src/config-store/model/raw-text-config.cc" "src/config-store/CMakeFiles/libconfig-store-obj.dir/model/raw-text-config.cc.o" "gcc" "src/config-store/CMakeFiles/libconfig-store-obj.dir/model/raw-text-config.cc.o.d"
   "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx" "src/config-store/CMakeFiles/libconfig-store-obj.dir/model/raw-text-config.cc.o" "gcc" "src/config-store/CMakeFiles/libconfig-store-obj.dir/model/raw-text-config.cc.o.d"
+  "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/src/config-store/model/xml-config.cc" "src/config-store/CMakeFiles/libconfig-store-obj.dir/model/xml-config.cc.o" "gcc" "src/config-store/CMakeFiles/libconfig-store-obj.dir/model/xml-config.cc.o.d"
+  "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles/stdlib_pch-debug.dir/cmake_pch.hxx" "src/config-store/CMakeFiles/libconfig-store-obj.dir/model/xml-config.cc.o" "gcc" "src/config-store/CMakeFiles/libconfig-store-obj.dir/model/xml-config.cc.o.d"
   )
 
 # Targets to which this target links.

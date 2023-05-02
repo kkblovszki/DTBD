@@ -94,6 +94,7 @@ scratch_Tutorial_NS3_script_EXTERNAL_OBJECTS =
 
 ../build/scratch/ns3.38-Tutorial_NS3_script-debug: scratch/CMakeFiles/scratch_Tutorial_NS3_script.dir/Tutorial_NS3_script.cc.o
 ../build/scratch/ns3.38-Tutorial_NS3_script-debug: scratch/CMakeFiles/scratch_Tutorial_NS3_script.dir/build.make
+../build/scratch/ns3.38-Tutorial_NS3_script-debug: /usr/lib/x86_64-linux-gnu/libxml2.so
 ../build/scratch/ns3.38-Tutorial_NS3_script-debug: scratch/CMakeFiles/scratch_Tutorial_NS3_script.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../../build/scratch/ns3.38-Tutorial_NS3_script-debug"
 	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/scratch && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/scratch_Tutorial_NS3_script.dir/link.txt --verbose=$(VERBOSE)

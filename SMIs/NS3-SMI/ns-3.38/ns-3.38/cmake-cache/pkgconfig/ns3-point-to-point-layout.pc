@@ -8,6 +8,6 @@ URL:
 Version: 3.38
 Requires:  ns3-internet ns3-point-to-point ns3-mobility
 Requires.private: 
-Cflags: -I"${includedir}" 
+Cflags: -I"${includedir}"  -I/usr/include/libxml2
 Libs: -L"${libdir}" -lns3.38-point-to-point-layout-debug  -lns3.38-internet-debug -lns3.38-point-to-point-debug -lns3.38-mobility-debug
 Libs.private: -L"${libdir}" 

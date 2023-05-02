@@ -1,16 +1,42 @@
-name: TestScenario
-description: This is a test scenario
-simulator: TestSimulator
-optional:
-  opt1: value1
-  opt2: value2
-required:
-  param1: value1
-  param2: value2
-  param3: value3
-parameters:
-  parameter1: 10
-  parameter2: 20
-buildOptions:
-  option1: value1
-  option2: value2
+Benchmark:
+  - SimulationStrategy:
+    Multithread: true
+    Thread_nr: 5
+    ExecutionOrder:
+      "1": AlchemistTutorialScenario
+      "2": NS3TutorialScenario
+
+  - Simulator: NS3
+    SimVersion: 3.38
+    Scenarios:
+      - Scenario: NS3TutorialScenario
+        Name: NS3 Example
+        Description: An example problem in NS3
+        Optional: 
+          OptionalrandomVar: "OptRANDOM"
+
+        Required:
+          - BuildOptions:
+            program_name: "NS3_tutorial"
+   
+          - Parameters:
+            simulation-file-path: "scratch/tutorial.cc"
+            protocol: TCP
+            tcp-variant: NewReno
+            routing-protocol: OSPF
+  
+  - Simulator: Alchemist
+    SimVersion: 2.14
+    Scenarios:
+      - Scenario: AlchemistTutorialScenario
+        Name: Alchemist Example
+        Description: An example problem in Alchemist
+        Optional: null
+        Required:
+          - Parameters:
+            simulation-file-path: "scratch/tutorialAlchemist.cc"
+            protocol: HTTPS
+            tcp-variant: OldReno
+
+
+    

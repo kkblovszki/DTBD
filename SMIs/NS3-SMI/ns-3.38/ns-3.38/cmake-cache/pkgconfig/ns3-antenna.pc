@@ -8,6 +8,6 @@ URL:
 Version: 3.38
 Requires:  ns3-core
 Requires.private: 
-Cflags: -I"${includedir}" 
+Cflags: -I"${includedir}"  -I/usr/include/libxml2
 Libs: -L"${libdir}" -lns3.38-antenna-debug  -lns3.38-core-debug
 Libs.private: -L"${libdir}" 

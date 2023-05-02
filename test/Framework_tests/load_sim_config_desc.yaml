@@ -3,9 +3,9 @@ Benchmark:
     SimVersion: 3.38
     Scenarios: 
       - Scenario: TutorialScenario
-        name: NS3 Example
-        description: An example problem in NS3
-        optional: null
-        required: 
+        Name: NS3 Example
+        Description: An example problem in NS3
+        Optional: null
+        Required: null
       
 

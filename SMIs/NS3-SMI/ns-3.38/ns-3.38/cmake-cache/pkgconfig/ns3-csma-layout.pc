@@ -8,6 +8,6 @@ URL:
 Version: 3.38
 Requires:  ns3-network ns3-internet ns3-csma ns3-point-to-point
 Requires.private: 
-Cflags: -I"${includedir}" 
+Cflags: -I"${includedir}"  -I/usr/include/libxml2
 Libs: -L"${libdir}" -lns3.38-csma-layout-debug  -lns3.38-network-debug -lns3.38-internet-debug -lns3.38-csma-debug -lns3.38-point-to-point-debug
 Libs.private: -L"${libdir}" 

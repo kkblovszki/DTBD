@@ -8,31 +8,22 @@
 #include <chrono>
 #include <filesystem>
 #include <utility>
-#include <pty.h>
+#include <functional>
 
-#ifdef DEBUG
-    #include <source_location>
-#endif
+//#include <pty.h> for forkpty but not implemented to use it yet.
 
-/*
-#ifdef defined (__UNIX__) || defined (__UNIX) || defined (__APPLE__) ||  defined (__MACH__) 
-    #include <libutil>
-#elif defined(_WIN32) || defined(_WIN64)
-    #include <windows.h>
-    #include wslapi.h
-#endif*/
 
 class NS3_mockup_interface : SimulatorMockUpInterface {    
 private:
     const std::string SMIPath = SMI_PATH; //contains the path to the SMI folder.
     const std::string ResultPath = RESULTS_PATH; //contains the path to the NS3 folder.
-    std::map<std::string,int> APIFunctionPassThrough;  //contains the API functions that can be used from simulator.
+    std::map<std::string, std::function< std::unique_ptr<void()>() >> APIFunctionPassThrough;  //contains the API functions that can be used from simulator.
     std::unique_ptr<Listener> activeSimulatorListener; //contains the listener that is used by the simulator.
     std::vector<Metrics> NS3metrics;            //contains the metrics that are used by the simulator.
     std::vector<BuildOptions> NS3buildOptions;  //contains the build options that are used by the simulator.
     std::vector<Parameter> NS3parameters;       //contains the parameters that are used by the simulator.
     std::string PersistentConfigFilePath;       //contains the path to the config file that is used by the simulator.
-    void* ns3LibHandler; // contains the handler to the individual ns3 library instance.
+    std::shared_ptr<void> ns3LibHandler; // contains the handler to the individual ns3 library instance.
 
     /**
      * @brief 
@@ -47,17 +38,6 @@ private:
      * Parses the given parameters and build options into a string /ref CL_BuildOptions and /ref CL_Parameters
      */
     void ParseToNS3CommandLine();
-
-    /*void UpdateListener(std::ifstream& outputFileStream){
-        std::string line;
-        if(outputFileStream.is_open()){
-            while(getline(outputFileStream, line)){
-                activeSimulatorListener->OnSimulationUpdate(line);
-                std::this_thread::sleep_for(std::chrono::nanoseconds(100));
-            }
-            outputFileStream.close();
-        }
-    }*/
 
 public:
     NS3_mockup_interface();
@@ -78,29 +58,52 @@ public:
         activeSimulatorListener = std::move(uniqueListener); 
         uniqueListener.reset(); 
     }
-
-
-    //universal function to set the listener idea
-    /**
-     * @brief Set the Listener object
-     * Using this function which takes two parameters @param uniqueListener and @param simulatorUniqueListener
-     * the simulator can set the listener that is used by the simulator, the unique listener is the 
-     * listener that is created in the constructor of a scenario while the simulatorUniqueListener 
-     * is the listener that is used by the simulator.
-     * @param uniqueListener The created listener
-     * @param simulatorUniqueListener The listener that is used by the simulator
-     *
-    */
-    /*virtual void SetListener(std::unique_ptr<Listener> uniqueListener, std::unique_ptr<Listener> simulatorUniqueListener) override {
-        simulatorUniqueListener = std::move(uniqueListener); uniqueListener.reset(); 
-    }*/
     
+    /**
+     * @brief Add Build Options to the simulator
+     * 
+     * @param buildOptions 
+     */
     virtual void AddBuildOptions(const std::vector<BuildOptions>& buildOptions) override;
-    virtual void setLibraryHandle(void* libraryHandle) override;
+
+    /**
+     * @brief Set the Library Handle object
+     * 
+     * @param libraryHandle 
+     */
+    virtual void setLibraryHandle(std::shared_ptr<void> libraryHandle) override;
+    
+    /**
+     * @brief Load the configuration file of the simulator.
+     * 
+     * @param simulatorVersion 
+     */
     virtual void LoadConfiguration(const std::string& simulatorVersion) override; //loads the configuration file of the simulator.
+    
+    /**
+     * @brief Write the configuration file of the simulator.
+     * 
+     * @param configFileName 
+     */
     virtual void WriteToConfiguration(std::string configFileName) override;
+
+    /**
+     * @brief Load the parameters into the simulator.
+     * 
+     * @param parameter 
+     */
     virtual void LoadParameters(std::vector<Parameter>& parameter) override;
+    
+    /**
+     * @brief Load the metrics into the simulator.
+     * 
+     * @param metrics 
+     */
     virtual void LoadMetrics(std::vector<Metrics>& metrics) override;
+    
+    /**
+     * @brief Run the simulation.
+     */
     virtual void RunSimulation() override;
     
 };

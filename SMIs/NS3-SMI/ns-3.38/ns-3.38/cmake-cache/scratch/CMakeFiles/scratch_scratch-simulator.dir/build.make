@@ -94,6 +94,7 @@ scratch_scratch__simulator_EXTERNAL_OBJECTS =
 
 ../build/scratch/ns3.38-scratch-simulator-debug: scratch/CMakeFiles/scratch_scratch-simulator.dir/scratch-simulator.cc.o
 ../build/scratch/ns3.38-scratch-simulator-debug: scratch/CMakeFiles/scratch_scratch-simulator.dir/build.make
+../build/scratch/ns3.38-scratch-simulator-debug: /usr/lib/x86_64-linux-gnu/libxml2.so
 ../build/scratch/ns3.38-scratch-simulator-debug: scratch/CMakeFiles/scratch_scratch-simulator.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../../build/scratch/ns3.38-scratch-simulator-debug"
 	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/scratch && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/scratch_scratch-simulator.dir/link.txt --verbose=$(VERBOSE)

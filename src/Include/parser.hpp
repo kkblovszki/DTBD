@@ -15,7 +15,7 @@
  */
 class Parser {
 public:
-    static void parseBenchmark(const YAML::Node& benchmarkNode, std::map<std::string, ScenarioDescriptor>& ScenarioDescriptor, SimulationStrategy& simulationStrategy);
+    static void parseBenchmark(YAML::Node& benchmarkNode, std::map<std::string, ScenarioDescriptor>& ScenarioDescriptor, SimulationStrategy& simulationStrategy);
     static void parseSimulationStrategy(const YAML::Node& simulationStrategyNode, SimulationStrategy& simulationStrategy);
     static void parseScenario(const YAML::Node& scenarioNode, ScenarioDescriptor& scenario);
 };

@@ -11,7 +11,7 @@ SupportedBuildOptions:
   Description: "Run the simulation"
   Default: "run"
 
-- BuildName: program_name
+- BuildName: "program_name"
   Arguments: True
 
 SupportedParameters:
@@ -30,7 +30,7 @@ SupportedParameters:
   Type: "String"
   Description: ""
 
-- ParamName: "tcpvariant"
+- ParamName: "tcp-variant"
   Arguments: true
   Type: "String"
   Description: ""

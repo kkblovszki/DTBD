@@ -8,6 +8,6 @@ URL:
 Version: 3.38
 Requires:  ns3-network
 Requires.private: 
-Cflags: -I"${includedir}" 
+Cflags: -I"${includedir}"  -I/usr/include/libxml2
 Libs: -L"${libdir}" -lns3.38-topology-read-debug  -lns3.38-network-debug
 Libs.private: -L"${libdir}" 

@@ -21,14 +21,11 @@ private:
     SimulationStrategy simulationStrategiesDescriptors;
     */
 
-    //std::map<std::string, std::string> config;
-
 public:
     Benchmark(){};
     ~Benchmark(){};
 
-    /*only for behavioral debugging must be removed */
-
+    /*only for behavioral debugging must be moved into private */
     std::map<std::string, std::unique_ptr<Scenario>> scenarios;
     std::map<std::string, ScenarioDescriptor> scenariosDescriptors;
     SimulationStrategy simulationStrategiesDescriptors;
@@ -43,10 +40,15 @@ public:
     void LoadSimulationConfig(std::string configPath); 
 
     /**
-     * @brief Create a Scenario object
+     * @brief Create a Scenario object and add it to the map of scenarios
      * @param scenarioName 
      */
     void CreateScenario(std::string scenarioName);
+
+    /**
+     * @brief Create all Scenario objects in the config file and add them to the map of scenarios
+     */
+    void CreateAllScenarios();
 
     /**
      * @brief Remove a Scenario object
@@ -62,21 +64,19 @@ public:
 
     /**
      * @brief 
-     * @param ScenarioName
-     * @return std::vector<std::string> 
+     * @param ScenarioName 
      */
-    std::vector<std::string> RunScenarioWithParameters(std::string ScenarioName);
+    void RunScenarioWithParameters(std::string ScenarioName);
 
     /**
      * @brief 
-     * 
+     * Runs the scenarios using the strategy defined in the simulation configuration file
+     * @details 
      * @param scenarios 
      * @param executionStrategy 
      * @return std::vector<std::string> 
      */
     std::vector<std::string> RunScenariosUsingStrategy();
-
-    /*ExecutionStrategy CreateExecutionStrategy(std::vector<std::string> scenarios){}; ???? */
 };
 
 

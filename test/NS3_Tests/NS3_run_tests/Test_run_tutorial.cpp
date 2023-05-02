@@ -13,19 +13,16 @@ int main(){
     fs::path SourcePath = loc.file_name();
 
     fs::path configFile = SourcePath.parent_path() / "Initial_basic_test.yaml";
-
+    
     std::cout << "SourcePath: " << SourcePath << std::endl;
     std::cout << "configFile: " << configFile << std::endl;
 
     testbed.CreateBenchmark("TutorialBenchmark");
 
-    testbed.LoadBenchmarkConfig("TutorialBenchmark", configFile.string()); //parser needs fixing....
-
-    //std::cout all the scenarioDescriptor information for TutorialBenchmark and TutorialScenario
+    testbed.LoadBenchmarkConfig("TutorialBenchmark", configFile.string());
 
     std::cout << "----------- Benchmarks -----------" << std::endl;
     std::vector<std::string> benchmarks = testbed.ListBenchmarks(true);
-
 
     std::cout << "----------- Scenario Descriptor -----------" << std::endl;
     std::cout << "Scenario Name: " << testbed.benchmarks["TutorialBenchmark"]->scenariosDescriptors["TutorialScenario"].name << std::endl;
@@ -45,7 +42,6 @@ int main(){
     testbed.benchmarks["TutorialBenchmark"]->CreateScenario("TutorialScenario");
 
     //auto testbed.benchmarks["TutorialBenchmark"]->scenarios["TutorialScenario"]->SimulatorInstance->GetSimulatorInfo();
-
-    testbed.benchmarks["TutorialBenchmark"]->RunScenario("TutorialScenario");
-
+    testbed.benchmarks["TutorialBenchmark"]->RunScenarioWithParameters("TutorialScenario");
+    //testbed.benchmarks["TutorialBenchmark"]->RunScenario("TutorialScenario");
 }

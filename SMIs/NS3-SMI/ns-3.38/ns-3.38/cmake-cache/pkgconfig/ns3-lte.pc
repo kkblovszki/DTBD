@@ -8,6 +8,6 @@ URL:
 Version: 3.38
 Requires:  ns3-fd-net-device ns3-core ns3-network ns3-spectrum ns3-stats ns3-buildings ns3-virtual-net-device ns3-point-to-point ns3-applications ns3-internet ns3-csma ns3-config-store
 Requires.private: 
-Cflags: -I"${includedir}" 
+Cflags: -I"${includedir}"  -I/usr/include/libxml2
 Libs: -L"${libdir}" -lns3.38-lte-debug  -lns3.38-fd-net-device-debug -lns3.38-core-debug -lns3.38-network-debug -lns3.38-spectrum-debug -lns3.38-stats-debug -lns3.38-buildings-debug -lns3.38-virtual-net-device-debug -lns3.38-point-to-point-debug -lns3.38-applications-debug -lns3.38-internet-debug -lns3.38-csma-debug -lns3.38-config-store-debug
 Libs.private: -L"${libdir}" 

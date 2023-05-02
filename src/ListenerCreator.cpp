@@ -6,15 +6,19 @@
  * @return std::unique_ptr<Listener> 
  */
 std::unique_ptr<Listener> ListenerCreator::CreateListener(const std::string& listenerType){
+
+    #ifdef DEBUG
     std::cout << "Creating listener of type: " << listenerType << std::endl;
+    #endif
 
     std::string ListenerType = stringForceUpperCase(listenerType);
 
+    #ifdef DEBUG
     std::cout << "UpperCase name: " << ListenerType << std::endl;
-    
+    #endif
+
     switch (stringToListenerType().at(ListenerType)) {
         case ListenerType::TestListener:
-            std::cout << "Creating test listener" << std::endl;
             return std::make_unique<Core::Listeners::TestListener>();
             break;
         case ListenerType::ConsoleListener:

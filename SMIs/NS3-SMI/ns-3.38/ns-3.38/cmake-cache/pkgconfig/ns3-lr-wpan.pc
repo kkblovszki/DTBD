@@ -8,6 +8,6 @@ URL:
 Version: 3.38
 Requires:  ns3-network ns3-core ns3-mobility ns3-spectrum ns3-propagation
 Requires.private: 
-Cflags: -I"${includedir}" 
+Cflags: -I"${includedir}"  -I/usr/include/libxml2
 Libs: -L"${libdir}" -lns3.38-lr-wpan-debug  -lns3.38-network-debug -lns3.38-core-debug -lns3.38-mobility-debug -lns3.38-spectrum-debug -lns3.38-propagation-debug
 Libs.private: -L"${libdir}" 

@@ -51,6 +51,7 @@ namespace Core {
             void OnSimulationEnd() override;
             void OnSimulationResult() override;
             void OnSimulationUpdate(std::string value) override;
+            void OnSimulationEnd(std::string value) override;
         };
 
 

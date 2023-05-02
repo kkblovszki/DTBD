@@ -74,18 +74,21 @@ libconfig__store_OBJECTS =
 
 # External object files for target libconfig-store
 libconfig__store_EXTERNAL_OBJECTS = \
+"/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/src/config-store/CMakeFiles/libconfig-store-obj.dir/model/xml-config.cc.o" \
 "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/src/config-store/CMakeFiles/libconfig-store-obj.dir/model/attribute-default-iterator.cc.o" \
 "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/src/config-store/CMakeFiles/libconfig-store-obj.dir/model/attribute-iterator.cc.o" \
 "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/src/config-store/CMakeFiles/libconfig-store-obj.dir/model/config-store.cc.o" \
 "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/src/config-store/CMakeFiles/libconfig-store-obj.dir/model/file-config.cc.o" \
 "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/src/config-store/CMakeFiles/libconfig-store-obj.dir/model/raw-text-config.cc.o"
 
+../build/lib/libns3.38-config-store-debug.so: src/config-store/CMakeFiles/libconfig-store-obj.dir/model/xml-config.cc.o
 ../build/lib/libns3.38-config-store-debug.so: src/config-store/CMakeFiles/libconfig-store-obj.dir/model/attribute-default-iterator.cc.o
 ../build/lib/libns3.38-config-store-debug.so: src/config-store/CMakeFiles/libconfig-store-obj.dir/model/attribute-iterator.cc.o
 ../build/lib/libns3.38-config-store-debug.so: src/config-store/CMakeFiles/libconfig-store-obj.dir/model/config-store.cc.o
 ../build/lib/libns3.38-config-store-debug.so: src/config-store/CMakeFiles/libconfig-store-obj.dir/model/file-config.cc.o
 ../build/lib/libns3.38-config-store-debug.so: src/config-store/CMakeFiles/libconfig-store-obj.dir/model/raw-text-config.cc.o
 ../build/lib/libns3.38-config-store-debug.so: src/config-store/CMakeFiles/libconfig-store.dir/build.make
+../build/lib/libns3.38-config-store-debug.so: /usr/lib/x86_64-linux-gnu/libxml2.so
 ../build/lib/libns3.38-config-store-debug.so: src/config-store/CMakeFiles/libconfig-store.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Linking CXX shared library ../../../build/lib/libns3.38-config-store-debug.so"
 	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache/src/config-store && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/libconfig-store.dir/link.txt --verbose=$(VERBOSE)

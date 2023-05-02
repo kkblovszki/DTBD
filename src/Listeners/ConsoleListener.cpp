@@ -18,6 +18,10 @@ void ConsoleListener::OnSimulationEnd() {
     std::cout << "ConsoleListener ended" << std::endl;
 }
 
+void ConsoleListener::OnSimulationEnd(std::string value) {
+    std::cout << value << std::endl;
+}
+
 void ConsoleListener::OnSimulationUpdate(std::string value){
     std::cout << value << std::endl;
 }

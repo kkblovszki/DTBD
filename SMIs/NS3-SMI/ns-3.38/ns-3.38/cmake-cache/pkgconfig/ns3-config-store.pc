@@ -8,6 +8,6 @@ URL:
 Version: 3.38
 Requires:  ns3-core ns3-network
 Requires.private: 
-Cflags: -I"${includedir}" 
-Libs: -L"${libdir}" -lns3.38-config-store-debug  -lns3.38-core-debug -lns3.38-network-debug
+Cflags: -I"${includedir}"  -I/usr/include/libxml2
+Libs: -L"${libdir}" -lns3.38-config-store-debug  -lns3.38-core-debug -lns3.38-network-debug /usr/lib/x86_64-linux-gnu/libxml2.so
 Libs.private: -L"${libdir}" 

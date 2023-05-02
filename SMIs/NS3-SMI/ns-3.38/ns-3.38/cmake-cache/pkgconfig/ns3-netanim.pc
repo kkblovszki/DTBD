@@ -8,6 +8,6 @@ URL:
 Version: 3.38
 Requires:  ns3-internet ns3-mobility ns3-wimax ns3-wifi ns3-csma ns3-lte ns3-uan ns3-energy ns3-lr-wpan ns3-wave ns3-point-to-point-layout
 Requires.private: 
-Cflags: -I"${includedir}" 
+Cflags: -I"${includedir}"  -I/usr/include/libxml2
 Libs: -L"${libdir}" -lns3.38-netanim-debug  -lns3.38-internet-debug -lns3.38-mobility-debug -lns3.38-wimax-debug -lns3.38-wifi-debug -lns3.38-csma-debug -lns3.38-lte-debug -lns3.38-uan-debug -lns3.38-energy-debug -lns3.38-lr-wpan-debug -lns3.38-wave-debug -lns3.38-point-to-point-layout-debug
 Libs.private: -L"${libdir}" 

@@ -54,7 +54,7 @@ endif()
 add_library(ns3::libantenna SHARED IMPORTED)
 
 set_target_properties(ns3::libantenna PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libcore;-Wl,--as-needed"
 )
 
@@ -62,7 +62,7 @@ set_target_properties(ns3::libantenna PROPERTIES
 add_library(ns3::libaodv SHARED IMPORTED)
 
 set_target_properties(ns3::libaodv PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libinternet;ns3::libwifi;-Wl,--as-needed"
 )
 
@@ -70,7 +70,7 @@ set_target_properties(ns3::libaodv PROPERTIES
 add_library(ns3::libapplications SHARED IMPORTED)
 
 set_target_properties(ns3::libapplications PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libinternet;ns3::libstats;-Wl,--as-needed"
 )
 
@@ -78,7 +78,7 @@ set_target_properties(ns3::libapplications PROPERTIES
 add_library(ns3::libbridge SHARED IMPORTED)
 
 set_target_properties(ns3::libbridge PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libnetwork;-Wl,--as-needed"
 )
 
@@ -86,7 +86,7 @@ set_target_properties(ns3::libbridge PROPERTIES
 add_library(ns3::libbuildings SHARED IMPORTED)
 
 set_target_properties(ns3::libbuildings PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libmobility;ns3::libpropagation;-Wl,--as-needed"
 )
 
@@ -94,15 +94,15 @@ set_target_properties(ns3::libbuildings PROPERTIES
 add_library(ns3::libconfig-store SHARED IMPORTED)
 
 set_target_properties(ns3::libconfig-store PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
-  INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libcore;ns3::libnetwork;-Wl,--as-needed"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
+  INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libcore;ns3::libnetwork;/usr/lib/x86_64-linux-gnu/libxml2.so;-Wl,--as-needed"
 )
 
 # Create imported target ns3::libcore
 add_library(ns3::libcore SHARED IMPORTED)
 
 set_target_properties(ns3::libcore PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;-Wl,--as-needed"
 )
 
@@ -110,7 +110,7 @@ set_target_properties(ns3::libcore PROPERTIES
 add_library(ns3::libcsma SHARED IMPORTED)
 
 set_target_properties(ns3::libcsma PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libnetwork;-Wl,--as-needed"
 )
 
@@ -118,7 +118,7 @@ set_target_properties(ns3::libcsma PROPERTIES
 add_library(ns3::libcsma-layout SHARED IMPORTED)
 
 set_target_properties(ns3::libcsma-layout PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libnetwork;ns3::libinternet;ns3::libcsma;ns3::libpoint-to-point;-Wl,--as-needed"
 )
 
@@ -126,7 +126,7 @@ set_target_properties(ns3::libcsma-layout PROPERTIES
 add_library(ns3::libdsdv SHARED IMPORTED)
 
 set_target_properties(ns3::libdsdv PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libinternet;-Wl,--as-needed"
 )
 
@@ -134,7 +134,7 @@ set_target_properties(ns3::libdsdv PROPERTIES
 add_library(ns3::libdsr SHARED IMPORTED)
 
 set_target_properties(ns3::libdsr PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libinternet;ns3::libwifi;-Wl,--as-needed"
 )
 
@@ -142,7 +142,7 @@ set_target_properties(ns3::libdsr PROPERTIES
 add_library(ns3::libenergy SHARED IMPORTED)
 
 set_target_properties(ns3::libenergy PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libnetwork;-Wl,--as-needed"
 )
 
@@ -156,7 +156,7 @@ add_executable(ns3::tap-device-creator IMPORTED)
 add_library(ns3::libfd-net-device SHARED IMPORTED)
 
 set_target_properties(ns3::libfd-net-device PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libnetwork;-Wl,--as-needed"
 )
 
@@ -164,7 +164,7 @@ set_target_properties(ns3::libfd-net-device PROPERTIES
 add_library(ns3::libflow-monitor SHARED IMPORTED)
 
 set_target_properties(ns3::libflow-monitor PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libinternet;ns3::libstats;-Wl,--as-needed"
 )
 
@@ -172,7 +172,7 @@ set_target_properties(ns3::libflow-monitor PROPERTIES
 add_library(ns3::libinternet SHARED IMPORTED)
 
 set_target_properties(ns3::libinternet PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libnetwork;ns3::libcore;ns3::libbridge;ns3::libtraffic-control;-Wl,--as-needed"
 )
 
@@ -180,7 +180,7 @@ set_target_properties(ns3::libinternet PROPERTIES
 add_library(ns3::libinternet-apps SHARED IMPORTED)
 
 set_target_properties(ns3::libinternet-apps PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libinternet;-Wl,--as-needed"
 )
 
@@ -188,7 +188,7 @@ set_target_properties(ns3::libinternet-apps PROPERTIES
 add_library(ns3::liblr-wpan SHARED IMPORTED)
 
 set_target_properties(ns3::liblr-wpan PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libnetwork;ns3::libcore;ns3::libmobility;ns3::libspectrum;ns3::libpropagation;-Wl,--as-needed"
 )
 
@@ -196,7 +196,7 @@ set_target_properties(ns3::liblr-wpan PROPERTIES
 add_library(ns3::liblte SHARED IMPORTED)
 
 set_target_properties(ns3::liblte PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libfd-net-device;ns3::libcore;ns3::libnetwork;ns3::libspectrum;ns3::libstats;ns3::libbuildings;ns3::libvirtual-net-device;ns3::libpoint-to-point;ns3::libapplications;ns3::libinternet;ns3::libcsma;ns3::libconfig-store;-Wl,--as-needed"
 )
 
@@ -204,7 +204,7 @@ set_target_properties(ns3::liblte PROPERTIES
 add_library(ns3::libmesh SHARED IMPORTED)
 
 set_target_properties(ns3::libmesh PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libinternet;ns3::libwifi;ns3::libapplications;-Wl,--as-needed"
 )
 
@@ -212,7 +212,7 @@ set_target_properties(ns3::libmesh PROPERTIES
 add_library(ns3::libmobility SHARED IMPORTED)
 
 set_target_properties(ns3::libmobility PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libnetwork;-Wl,--as-needed"
 )
 
@@ -220,7 +220,7 @@ set_target_properties(ns3::libmobility PROPERTIES
 add_library(ns3::libnetanim SHARED IMPORTED)
 
 set_target_properties(ns3::libnetanim PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libinternet;ns3::libmobility;ns3::libwimax;ns3::libwifi;ns3::libcsma;ns3::liblte;ns3::libuan;ns3::libenergy;ns3::liblr-wpan;ns3::libwave;ns3::libpoint-to-point-layout;-Wl,--as-needed"
 )
 
@@ -228,7 +228,7 @@ set_target_properties(ns3::libnetanim PROPERTIES
 add_library(ns3::libnetwork SHARED IMPORTED)
 
 set_target_properties(ns3::libnetwork PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libcore;ns3::libstats;-Wl,--as-needed"
 )
 
@@ -236,7 +236,7 @@ set_target_properties(ns3::libnetwork PROPERTIES
 add_library(ns3::libnix-vector-routing SHARED IMPORTED)
 
 set_target_properties(ns3::libnix-vector-routing PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libinternet;-Wl,--as-needed"
 )
 
@@ -244,7 +244,7 @@ set_target_properties(ns3::libnix-vector-routing PROPERTIES
 add_library(ns3::libolsr SHARED IMPORTED)
 
 set_target_properties(ns3::libolsr PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libinternet;-Wl,--as-needed"
 )
 
@@ -252,7 +252,7 @@ set_target_properties(ns3::libolsr PROPERTIES
 add_library(ns3::libpoint-to-point SHARED IMPORTED)
 
 set_target_properties(ns3::libpoint-to-point PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libnetwork;-Wl,--as-needed"
 )
 
@@ -260,7 +260,7 @@ set_target_properties(ns3::libpoint-to-point PROPERTIES
 add_library(ns3::libpoint-to-point-layout SHARED IMPORTED)
 
 set_target_properties(ns3::libpoint-to-point-layout PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libinternet;ns3::libpoint-to-point;ns3::libmobility;-Wl,--as-needed"
 )
 
@@ -268,7 +268,7 @@ set_target_properties(ns3::libpoint-to-point-layout PROPERTIES
 add_library(ns3::libpropagation SHARED IMPORTED)
 
 set_target_properties(ns3::libpropagation PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libnetwork;ns3::libmobility;-Wl,--as-needed"
 )
 
@@ -276,7 +276,7 @@ set_target_properties(ns3::libpropagation PROPERTIES
 add_library(ns3::libsixlowpan SHARED IMPORTED)
 
 set_target_properties(ns3::libsixlowpan PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libinternet;ns3::libinternet;ns3::libcore;-Wl,--as-needed"
 )
 
@@ -284,7 +284,7 @@ set_target_properties(ns3::libsixlowpan PROPERTIES
 add_library(ns3::libspectrum SHARED IMPORTED)
 
 set_target_properties(ns3::libspectrum PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libpropagation;ns3::libantenna;-Wl,--as-needed"
 )
 
@@ -292,7 +292,7 @@ set_target_properties(ns3::libspectrum PROPERTIES
 add_library(ns3::libstats SHARED IMPORTED)
 
 set_target_properties(ns3::libstats PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libcore;-Wl,--as-needed"
 )
 
@@ -300,7 +300,7 @@ set_target_properties(ns3::libstats PROPERTIES
 add_library(ns3::libtap-bridge SHARED IMPORTED)
 
 set_target_properties(ns3::libtap-bridge PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libcore;ns3::libinternet;ns3::libnetwork;-Wl,--as-needed"
 )
 
@@ -311,7 +311,7 @@ add_executable(ns3::tap-creator IMPORTED)
 add_library(ns3::libtopology-read SHARED IMPORTED)
 
 set_target_properties(ns3::libtopology-read PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libnetwork;-Wl,--as-needed"
 )
 
@@ -319,7 +319,7 @@ set_target_properties(ns3::libtopology-read PROPERTIES
 add_library(ns3::libtraffic-control SHARED IMPORTED)
 
 set_target_properties(ns3::libtraffic-control PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libnetwork;ns3::libcore;-Wl,--as-needed"
 )
 
@@ -327,7 +327,7 @@ set_target_properties(ns3::libtraffic-control PROPERTIES
 add_library(ns3::libuan SHARED IMPORTED)
 
 set_target_properties(ns3::libuan PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libnetwork;ns3::libmobility;ns3::libenergy;-Wl,--as-needed"
 )
 
@@ -335,7 +335,7 @@ set_target_properties(ns3::libuan PROPERTIES
 add_library(ns3::libvirtual-net-device SHARED IMPORTED)
 
 set_target_properties(ns3::libvirtual-net-device PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libnetwork;-Wl,--as-needed"
 )
 
@@ -343,7 +343,7 @@ set_target_properties(ns3::libvirtual-net-device PROPERTIES
 add_library(ns3::libwave SHARED IMPORTED)
 
 set_target_properties(ns3::libwave PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libcore;ns3::libpropagation;ns3::libwifi;ns3::libinternet;-Wl,--as-needed"
 )
 
@@ -351,7 +351,7 @@ set_target_properties(ns3::libwave PROPERTIES
 add_library(ns3::libwifi SHARED IMPORTED)
 
 set_target_properties(ns3::libwifi PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libnetwork;ns3::libpropagation;ns3::libenergy;ns3::libspectrum;ns3::libantenna;ns3::libmobility;-Wl,--as-needed"
 )
 
@@ -359,7 +359,7 @@ set_target_properties(ns3::libwifi PROPERTIES
 add_library(ns3::libwimax SHARED IMPORTED)
 
 set_target_properties(ns3::libwimax PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::libnetwork;ns3::libinternet;ns3::libpropagation;ns3::libmobility;-Wl,--as-needed"
 )
 

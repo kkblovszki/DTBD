@@ -24,7 +24,4 @@ int main(){
 
     //Run the scenario
     testbed.benchmarks["testBenchmark"]->RunScenario("testScenario"); 
-
-    std::cout << "Scenario ran" << std::endl;
-
 };

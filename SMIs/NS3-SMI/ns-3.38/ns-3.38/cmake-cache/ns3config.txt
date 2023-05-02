@@ -12,7 +12,7 @@ Examples                      : OFF (not requested)
 File descriptor NetDevice     : [32mON[0m
 GNU Scientific Library (GSL)  : [31mOFF (missing dependency)[0m
 GtkConfigStore                : [31mOFF (missing dependency)[0m
-LibXml2 support               : [31mOFF (missing dependency)[0m
+LibXml2 support               : [32mON[0m
 MPI Support                   : OFF (not requested)
 ns-3 Click Integration        : [31mOFF (missing dependency)[0m
 ns-3 OpenFlow Integration     : [31mOFF (missing dependency)[0m

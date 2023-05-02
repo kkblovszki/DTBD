@@ -5,14 +5,12 @@ Benchmark:
     description: An example problem in NS3
     optional: null
     required:
-      topology-file-path: network.cpp
-      traffic-file-path: traffic.cpp
-
       - BuildOptions:
         examples: enable
         tests: enable
   
       - Parameters:
+        simulation-file-path: "Add complete path to NS3 script here"
         protocol: TCP
         tcp-variant: NewReno
         routing-protocol: OSPF

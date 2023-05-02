@@ -3,7 +3,8 @@
 
 /**
  * @brief Construct a new Scenario:: Scenario object
- * 
+ * @details This constructor is used when the scenario is created from the benchmark.
+ * this specific constructor is used when no build options are specified. 
  * @param uniqueName 
  * @param simulatorType
  * @param simulatorVersion
@@ -36,7 +37,8 @@ Scenario::Scenario(std::string uniqueName, std::string& simulatorType, const std
 
 /**
  * @brief Construct a new Scenario:: Scenario object
- * 
+ * @details This constructor is used when the scenario is created from the benchmark.
+ * This specific constructor is used when build options are specified.
  * @param uniqueName 
  * @param simulatorType 
  * @param simulatorVersion 
@@ -71,22 +73,7 @@ Scenario::Scenario(std::string uniqueName, std::string& simulatorType, const std
     }
 }
 
-
 Scenario::~Scenario(){}
-
-/**
- * @brief Prepare the simulation for the given strategy
- *  This function is used to prepare the simulation for the given strategy
- * @param Strategy
-void Scenario::PrepareSimulation() {
-    // load the metrics to the simulator
-    SimulatorInstance->LoadMetrics(metrics);
-    // load the parameters to the simulator
-    SimulatorInstance->LoadParameters(parameters);
-    
-    return;
-} */
-
 
 /**
  * @brief Prepare the simulation with the given metrics and parameters
@@ -95,7 +82,6 @@ void Scenario::PrepareSimulation() {
  * @param Strategy 
  */
 void Scenario::PrepareSimulation(const std::vector<Metrics>& metrics, const std::vector<Parameter>& parameters) {
-    
     std::vector<Metrics> metricsToLoad = metrics;
     std::vector<Parameter> parametersToLoad = parameters;
     

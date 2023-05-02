@@ -8,6 +8,6 @@ URL:
 Version: 3.38
 Requires:  ns3-network ns3-core ns3-bridge ns3-traffic-control
 Requires.private: 
-Cflags: -I"${includedir}" 
+Cflags: -I"${includedir}"  -I/usr/include/libxml2
 Libs: -L"${libdir}" -lns3.38-internet-debug  -lns3.38-network-debug -lns3.38-core-debug -lns3.38-bridge-debug -lns3.38-traffic-control-debug
 Libs.private: -L"${libdir}" 

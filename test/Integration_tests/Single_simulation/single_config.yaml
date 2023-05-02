@@ -1,0 +1,11 @@
+Benchmark:
+  - Simulator: NS3
+    SimVersion: 3.38
+    Scenarios:
+      - Scenario: TutorialScenario
+        Name: NS3 Example
+        Description: An example problem in NS3
+        Optional: null
+        Required:
+          - Parameters:
+            simulation-file-path: "Add complete path to NS3 script here"

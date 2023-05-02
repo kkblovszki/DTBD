@@ -310,6 +310,30 @@ model/raw-text-config.cc.s:
 	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache && $(MAKE) $(MAKESILENT) -f src/config-store/CMakeFiles/libconfig-store-obj.dir/build.make src/config-store/CMakeFiles/libconfig-store-obj.dir/model/raw-text-config.cc.s
 .PHONY : model/raw-text-config.cc.s
 
+model/xml-config.o: model/xml-config.cc.o
+.PHONY : model/xml-config.o
+
+# target to build an object file
+model/xml-config.cc.o:
+	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache && $(MAKE) $(MAKESILENT) -f src/config-store/CMakeFiles/libconfig-store-obj.dir/build.make src/config-store/CMakeFiles/libconfig-store-obj.dir/model/xml-config.cc.o
+.PHONY : model/xml-config.cc.o
+
+model/xml-config.i: model/xml-config.cc.i
+.PHONY : model/xml-config.i
+
+# target to preprocess a source file
+model/xml-config.cc.i:
+	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache && $(MAKE) $(MAKESILENT) -f src/config-store/CMakeFiles/libconfig-store-obj.dir/build.make src/config-store/CMakeFiles/libconfig-store-obj.dir/model/xml-config.cc.i
+.PHONY : model/xml-config.cc.i
+
+model/xml-config.s: model/xml-config.cc.s
+.PHONY : model/xml-config.s
+
+# target to generate assembly for a file
+model/xml-config.cc.s:
+	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache && $(MAKE) $(MAKESILENT) -f src/config-store/CMakeFiles/libconfig-store-obj.dir/build.make src/config-store/CMakeFiles/libconfig-store-obj.dir/model/xml-config.cc.s
+.PHONY : model/xml-config.cc.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -339,6 +363,9 @@ help:
 	@echo "... model/raw-text-config.o"
 	@echo "... model/raw-text-config.i"
 	@echo "... model/raw-text-config.s"
+	@echo "... model/xml-config.o"
+	@echo "... model/xml-config.i"
+	@echo "... model/xml-config.s"
 .PHONY : help
 
 
