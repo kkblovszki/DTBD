@@ -6,7 +6,7 @@
 class Testbed
 {
 private:
-    /* data */
+    
 public:
     Testbed();
     ~Testbed();

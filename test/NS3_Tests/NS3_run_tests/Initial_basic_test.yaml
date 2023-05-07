@@ -9,4 +9,4 @@ Benchmark:
         Optional: null
         Required:
           - Parameters:
-            simulation-file-path: "Add complete path to NS3 script here"
+            simulation-file-path: "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/test/NS3_Tests/NS3_run_tests/Tutorial_NS3_script.cc"

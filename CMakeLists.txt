@@ -93,10 +93,18 @@ set(FRAMEWORK_CPP_INCLUDE_DIR ${FRAMEWORK_CPP_INCLUDE_DIR} "${CMAKE_FRAMEWORK_CP
 # Link the libraries
 target_link_libraries(DTDB_framework ${CMAKE_DL_LIBS})
 target_link_libraries(DTDB_framework DTDB_listeners)
-#target_link_libraries(DTDB_framework Parser)
 
 # Link the libraries to the executables
 target_link_libraries(DTDB DTDB_framework)
+
+# ------------ Basic Commandline interface ------------
+
+add_executable(DTDB_cli src/CLI/DTDB_CLI.cpp)
+
+set_target_properties(DTDB_cli PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/cli")
+
+target_link_libraries(DTDB_cli DTDB_framework)
+
 
 # ------------------------------- Yaml-cpp -----------------------------
 
@@ -198,3 +206,5 @@ target_link_libraries(parser_unit_tests DTDB_framework)
 # Add the test to the test suite
 add_test(NAME parser_test COMMAND parser_test)
 add_test(NAME parser_unit_tests COMMAND parser_unit_tests)
+
+
