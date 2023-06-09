@@ -2,18 +2,20 @@ Benchmark:
   - Simulator: NS3
     SimVersion: 3.38
     Scenarios:
-      - Scenario: TutorialScenario
-        Name: NS3 Example
+      - Scenario: p2p-2-node-network
+        Name: NS3 2-node p2p network
         Description: An example problem in NS3
         Optional: null
         Required:
           - Parameters:
-            simulation-file-path: "Add complete path to NS3 script here"
+            simulation-file-path: "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/test/Integration_tests/Simulation_files/p2p_2_node_network_sim.cc"
 
-      - Scenario: TutorialScenario
-        Name: NS3 Example
+      - Scenario: p2p-timed-network
+        Name: NS3 timed p2p network
         Description: An example problem in NS3
         Optional: null
         Required:
           - Parameters:
-            simulation-file-path: "Add complete path to NS3 script here"
+            simulation-file-path: "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/test/Integration_tests/Simulation_files/p2p_network_sim.cc"
+            simNodes: 2
+            simTime: 20

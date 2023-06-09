@@ -1,0 +1,98 @@
+\hypertarget{classListener}{}\doxysection{Listener Class Reference}
+\label{classListener}\index{Listener@{Listener}}
+
+
+Inheritance diagram for Listener\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{classListener__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Listener\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=187pt]{classListener__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classListener_ac445879b785561a35244b8e8deae4cc9}{Simulation\+Start}} ()
+\begin{DoxyCompactList}\small\item\em Get the Measurements object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classListener_a0da67108861a6ba3a6c7011d1833f439}\label{classListener_a0da67108861a6ba3a6c7011d1833f439}} 
+void {\bfseries Simulation\+Start} (std\+::vector$<$ \mbox{\hyperlink{structMetrics}{Metrics}} $>$ metrics)
+\item 
+\mbox{\Hypertarget{classListener_a14ab71ade38baf07c3c48805b4e4b04e}\label{classListener_a14ab71ade38baf07c3c48805b4e4b04e}} 
+void {\bfseries Simulation\+End} ()
+\item 
+\mbox{\Hypertarget{classListener_a9ff9e5e2e1b7d159a6c9410ea1b98246}\label{classListener_a9ff9e5e2e1b7d159a6c9410ea1b98246}} 
+void {\bfseries Simulation\+End} (std\+::filesystem\+::path filepath)
+\item 
+\mbox{\Hypertarget{classListener_af8bb9fbb930bed060b924dbe4c9bcb25}\label{classListener_af8bb9fbb930bed060b924dbe4c9bcb25}} 
+void {\bfseries Simulation\+End} (std\+::string value)
+\item 
+\mbox{\Hypertarget{classListener_a3c208dda00f02dcdb923929a4b40aab3}\label{classListener_a3c208dda00f02dcdb923929a4b40aab3}} 
+void {\bfseries Simulation\+Update} (std\+::string value)
+\item 
+\mbox{\Hypertarget{classListener_afd856a6fe3671643d994b75269db34a9}\label{classListener_afd856a6fe3671643d994b75269db34a9}} 
+void {\bfseries Simulation\+Update} (std\+::vector$<$ std\+::string $>$ values)
+\item 
+\mbox{\Hypertarget{classListener_a644f42312de51cd93688e49560198891}\label{classListener_a644f42312de51cd93688e49560198891}} 
+void {\bfseries Simulation\+Update} (\mbox{\hyperlink{structMetrics}{Metrics}} metric, std\+::vector$<$ std\+::string $>$ values)
+\item 
+\mbox{\Hypertarget{classListener_a108f11cb9509a1a77422a807429c8e6a}\label{classListener_a108f11cb9509a1a77422a807429c8e6a}} 
+void {\bfseries Simulation\+Update} (\mbox{\hyperlink{structMetrics}{Metrics}} metric, std\+::string value)
+\item 
+\mbox{\Hypertarget{classListener_ad222999aa0b10ff96c38d33053c4702d}\label{classListener_ad222999aa0b10ff96c38d33053c4702d}} 
+void {\bfseries Simulation\+Result} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classListener_a3e250b8bc6500fb505b57602220e0692}\label{classListener_a3e250b8bc6500fb505b57602220e0692}} 
+\mbox{\hyperlink{structMeasure}{Measure}} {\bfseries measurements}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classListener_ac445879b785561a35244b8e8deae4cc9}\label{classListener_ac445879b785561a35244b8e8deae4cc9}} 
+\index{Listener@{Listener}!SimulationStart@{SimulationStart}}
+\index{SimulationStart@{SimulationStart}!Listener@{Listener}}
+\doxysubsubsection{\texorpdfstring{SimulationStart()}{SimulationStart()}}
+{\footnotesize\ttfamily void Listener\+::\+Simulation\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Measurements object. 
+
+This function returns the measurements of the simulation in the form of a read-\/only \mbox{\hyperlink{structMeasure}{Measure}} object. \begin{DoxyNote}{Note}
+Here\textquotesingle{}s an example usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{// Retrieve multiple measurements using GetMeasurements()}}
+\DoxyCodeLine{std::vector<Measure> measurementsCollection = GetMeasurements();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{// Iterate over the measurements}}
+\DoxyCodeLine{\textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& measurement : measurementsCollection) \{}
+\DoxyCodeLine{    \textcolor{comment}{// Access the individual measurement properties}}
+\DoxyCodeLine{    std::string label = measurement.label;}
+\DoxyCodeLine{    std::map<Metrics, std::vector<std::string>> readings = measurement.readings;}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{comment}{// Process or utilize the measurement as needed}}
+\DoxyCodeLine{    \textcolor{comment}{// ...}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+const \mbox{\hyperlink{structMeasure}{Measure}}\& 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/\+Mikkel/\+Documents/\+Git\+Hub/\+DTBD/src/\+Include/Abstract\+Listener.\+hpp\end{DoxyCompactItemize}

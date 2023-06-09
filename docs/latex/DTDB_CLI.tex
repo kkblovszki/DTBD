@@ -1,0 +1,18 @@
+A Command Line Interface (CLI) for managing and interacting with testbeds and benchmarks.
+
+The \mbox{\hyperlink{classDTDB__CLI}{DTDB\+\_\+\+CLI}} class provides a command line interface for users to interact with a system of testbeds, benchmarks, and scenarios. It provides an easy-\/to-\/use interface for creating, managing, and executing these components.
+
+The class stores active testbed and benchmark information and has the capability to process and execute various commands input by the user. The following key functionalities are provided\+:
+
+
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{classTestbed}{Testbed}} management\+: Users can create, select, list, and remove testbeds.
+\item \mbox{\hyperlink{classBenchmark}{Benchmark}} management\+: Within a selected testbed, users can create, select, list, and remove benchmarks, as well as load benchmark configurations.
+\item \mbox{\hyperlink{classScenario}{Scenario}} management\+: Within a selected benchmark, users can create, list, remove scenarios, and run scenarios with or without parameters.
+\end{DoxyItemize}
+
+The \mbox{\hyperlink{classDTDB__CLI}{DTDB\+\_\+\+CLI}} class utilizes a command processor to interpret and execute commands input by the user. These commands are tokenized and processed individually to perform the requested operation on the relevant component (\mbox{\hyperlink{classTestbed}{Testbed}}, \mbox{\hyperlink{classBenchmark}{Benchmark}}, or \mbox{\hyperlink{classScenario}{Scenario}}).
+
+\begin{DoxyNote}{Note}
+The class does not directly manage the underlying details of the \mbox{\hyperlink{classTestbed}{Testbed}}, \mbox{\hyperlink{classBenchmark}{Benchmark}}, or \mbox{\hyperlink{classScenario}{Scenario}} objects, but instead delegates these tasks to the appropriate classes. 
+\end{DoxyNote}

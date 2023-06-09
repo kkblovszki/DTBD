@@ -90,7 +90,7 @@ typedef struct ScenarioDescriptor{
  * @param executionOrder - the order of the execution of the scenarios
  */
 typedef struct SimulationStrategy {
-    bool multithread;
+    bool multithread; //typo to fix: multiThread
     int threadNr;
     std::map<int, std::string> executionOrder;
 }SimulationStrategy;
@@ -115,12 +115,22 @@ struct BenchmarkType{
 typedef struct Measure {
     std::string label;
     std::map<Metrics, std::vector<std::string>> readings;
+    
+    Measure(){}; //default constructor
 
     Measure(std::string specifiedLabel, 
             std::map<Metrics, std::vector<std::string>> specifiedReadings) 
             : label(specifiedLabel), 
             readings(specifiedReadings){};
-    Measure(){};
+
+    //Measure() : label(""), readings({}){};
+
+    int isMeasureEmpty() const {
+        if(label == "" && readings.empty()){
+            return true;
+        }
+        return false;
+    }
 } Measure;
 
 /**

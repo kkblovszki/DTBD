@@ -1,22 +1,243 @@
 \hypertarget{classBenchmark}{}\doxysection{Benchmark Class Reference}
 \label{classBenchmark}\index{Benchmark@{Benchmark}}
+
+
+Collaboration diagram for Benchmark\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=295pt]{classBenchmark__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classBenchmark_a45069705d3e46e0f059b68620a02abd2}\label{classBenchmark_a45069705d3e46e0f059b68620a02abd2}} 
-void {\bfseries Create\+Benchmark} (\mbox{\hyperlink{classScenario}{Scenario}} scenarios)
+void \mbox{\hyperlink{classBenchmark_a9b47daa07368953c21ff8446eaa381c2}{Load\+Simulation\+Config}} (std\+::string config\+Path)
+\begin{DoxyCompactList}\small\item\em Using the library yaml-\/cpp, load the simulation configuration file and store the data in the \mbox{\hyperlink{classBenchmark}{Benchmark}} object convert the config into an accessable ordered map, to get the individual simulations names, get the simulator type, and the listener type Runs the parser parse\+Scenario, parse\+Simulator, and parse\+Listener to parse the simulation configuration file into a predetermined format, with a ruleset. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBenchmark_aa8f2a2ef7444e99ecf41a57e51f63f16}{Create\+Scenario}} (std\+::string scenario\+Name)
+\begin{DoxyCompactList}\small\item\em Create a \mbox{\hyperlink{classScenario}{Scenario}} object and add it to the map of scenarios. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBenchmark_a49ba8be1a752c3089df9b63deec9e038}{Create\+All\+Scenarios}} ()
+\begin{DoxyCompactList}\small\item\em Create all \mbox{\hyperlink{classScenario}{Scenario}} objects in the config file and add them to the map of scenarios. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBenchmark_a1c5284d1ac608f32fb8d29768d7f8f3c}{Remove\+Scenario}} (std\+::string scenario\+Name)
+\begin{DoxyCompactList}\small\item\em Remove a \mbox{\hyperlink{classScenario}{Scenario}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBenchmark_ab25d8b111e820f707a23ed4b4fa8853e}{Run\+Scenario}} (std\+::string Scenario\+Name)
+\begin{DoxyCompactList}\small\item\em Run a \mbox{\hyperlink{classScenario}{Scenario}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBenchmark_aeecc9fb2b2ec3138a7852cb783faab44}{Run\+Scenario\+With\+Parameters}} (std\+::string Scenario\+Name)
+\begin{DoxyCompactList}\small\item\em Runs a specific scenario with parameters. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classBenchmark_aa7e1d4f409ac81c410810b232b217195}{Run\+Scenarios\+Using\+Strategy}} ()
+\begin{DoxyCompactList}\small\item\em Runs the scenarios using the strategy defined in the simulation configuration file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classBenchmark_a8468de1b2c2921a0de7ab4c2d6a131ff}\label{classBenchmark_a8468de1b2c2921a0de7ab4c2d6a131ff}} 
-\mbox{\hyperlink{classScenario}{Scenario}} {\bfseries Run\+Scenario} ()
+\mbox{\Hypertarget{classBenchmark_a53998adc5949a7e8cd0a1779c8268799}\label{classBenchmark_a53998adc5949a7e8cd0a1779c8268799}} 
+std\+::map$<$ std\+::string, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScenario}{Scenario}} $>$ $>$ {\bfseries scenarios}
 \item 
-\mbox{\Hypertarget{classBenchmark_a6d242e6080f1ed87fe85544448299a0c}\label{classBenchmark_a6d242e6080f1ed87fe85544448299a0c}} 
-std\+::vector$<$ std\+::string $>$ {\bfseries Run\+Scenarios\+With\+Parameters} (std\+::map$<$ std\+::string, \mbox{\hyperlink{classScenario}{Scenario}} $>$ scenarios)
+\mbox{\Hypertarget{classBenchmark_aab4b0ff5cddffe05a00dadaa0399d29b}\label{classBenchmark_aab4b0ff5cddffe05a00dadaa0399d29b}} 
+std\+::map$<$ std\+::string, \mbox{\hyperlink{structScenarioDescriptor}{Scenario\+Descriptor}} $>$ {\bfseries scenarios\+Descriptors}
 \item 
-\mbox{\Hypertarget{classBenchmark_aa94aaa2d517b37b99873aa2d7df6e1c0}\label{classBenchmark_aa94aaa2d517b37b99873aa2d7df6e1c0}} 
-std\+::vector$<$ std\+::string $>$ {\bfseries Run\+Scenario\+Using\+Strategy} (std\+::map$<$ std\+::string, \mbox{\hyperlink{classScenario}{Scenario}} $>$, size\+\_\+t execution\+Strategy)
+\mbox{\Hypertarget{classBenchmark_af4afbb04ca26647752857d9303e8f2a6}\label{classBenchmark_af4afbb04ca26647752857d9303e8f2a6}} 
+\mbox{\hyperlink{structSimulationStrategy}{Simulation\+Strategy}} {\bfseries simulation\+Strategies\+Descriptors}
 \end{DoxyCompactItemize}
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBenchmark_a49ba8be1a752c3089df9b63deec9e038}\label{classBenchmark_a49ba8be1a752c3089df9b63deec9e038}} 
+\index{Benchmark@{Benchmark}!CreateAllScenarios@{CreateAllScenarios}}
+\index{CreateAllScenarios@{CreateAllScenarios}!Benchmark@{Benchmark}}
+\doxysubsubsection{\texorpdfstring{CreateAllScenarios()}{CreateAllScenarios()}}
+{\footnotesize\ttfamily void Benchmark\+::\+Create\+All\+Scenarios (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Create all \mbox{\hyperlink{classScenario}{Scenario}} objects in the config file and add them to the map of scenarios. 
+
+Creates all scenarios in the config file.
+
+Iterates through the scenarios in the benchmark config file and creates a single scenario at a time, or type, and listener type. However the listener type is optional and can be added later by manually based on the scenario name, simulatreating a listener object and adding it to the scenario using the @\+Simulator\+Mockup\+Interface\textquotesingle{}s Set\+Listener method \begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBenchmark_aa8f2a2ef7444e99ecf41a57e51f63f16}\label{classBenchmark_aa8f2a2ef7444e99ecf41a57e51f63f16}} 
+\index{Benchmark@{Benchmark}!CreateScenario@{CreateScenario}}
+\index{CreateScenario@{CreateScenario}!Benchmark@{Benchmark}}
+\doxysubsubsection{\texorpdfstring{CreateScenario()}{CreateScenario()}}
+{\footnotesize\ttfamily void Benchmark\+::\+Create\+Scenario (\begin{DoxyParamCaption}\item[{std\+::string}]{scenario\+Name }\end{DoxyParamCaption})}
+
+
+
+Create a \mbox{\hyperlink{classScenario}{Scenario}} object and add it to the map of scenarios. 
+
+Creates a scenario object and adds it to the map of scenarios.
+
+
+\begin{DoxyParams}{Parameters}
+{\em scenario\+Name} & \\
+\hline
+{\em scenario\+Name} & -\/ the name of the scenario to be created\\
+\hline
+\end{DoxyParams}
+The
+\begin{DoxyParams}{Parameters}
+{\em scenario\+Name} & must match the name of the scenario in the simulation configuration file. It iterates through the simulations in the config file and creates a single scenario at a time, based on the scenario name, simulator type, and listener type. However the listener type is optional and can be added later by manually creating a listener object and adding it to the scenario using the @\+Simulator\+Mockup\+Interface\textquotesingle{}s Set\+Listener method\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if the scenario name already exists \\
+\hline
+{\em std\+::runtime\+\_\+error} & if the scenario name does not match any scenario in the simulation configuration file \\
+\hline
+{\em std\+::runtime\+\_\+error} & if the simulator type is not defined in the simulation configuration file \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classBenchmark_a9b47daa07368953c21ff8446eaa381c2}\label{classBenchmark_a9b47daa07368953c21ff8446eaa381c2}} 
+\index{Benchmark@{Benchmark}!LoadSimulationConfig@{LoadSimulationConfig}}
+\index{LoadSimulationConfig@{LoadSimulationConfig}!Benchmark@{Benchmark}}
+\doxysubsubsection{\texorpdfstring{LoadSimulationConfig()}{LoadSimulationConfig()}}
+{\footnotesize\ttfamily void Benchmark\+::\+Load\+Simulation\+Config (\begin{DoxyParamCaption}\item[{std\+::string}]{config\+Path }\end{DoxyParamCaption})}
+
+
+
+Using the library yaml-\/cpp, load the simulation configuration file and store the data in the \mbox{\hyperlink{classBenchmark}{Benchmark}} object convert the config into an accessable ordered map, to get the individual simulations names, get the simulator type, and the listener type Runs the parser parse\+Scenario, parse\+Simulator, and parse\+Listener to parse the simulation configuration file into a predetermined format, with a ruleset. 
+
+Loads the simulation configuration file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em config\+Path} & \\
+\hline
+\end{DoxyParams}
+The simulation configuration file is a YAML file that contains the simulation scenarios and their respective simulation strategies. The simulation configuration file is loaded into a YAML\+::\+Node object and then parsed using the @\+Parser class. 
+\begin{DoxyParams}{Parameters}
+{\em config\+Path} & -\/ the path to the simulation configuration file \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if the simulation configuration file is not found \\
+\hline
+{\em std\+::runtime\+\_\+error} & if the simulation configuration file is empty \\
+\hline
+{\em std\+::runtime\+\_\+error} & if the simulation configuration file is not a valid YAML file \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBenchmark_a1c5284d1ac608f32fb8d29768d7f8f3c}\label{classBenchmark_a1c5284d1ac608f32fb8d29768d7f8f3c}} 
+\index{Benchmark@{Benchmark}!RemoveScenario@{RemoveScenario}}
+\index{RemoveScenario@{RemoveScenario}!Benchmark@{Benchmark}}
+\doxysubsubsection{\texorpdfstring{RemoveScenario()}{RemoveScenario()}}
+{\footnotesize\ttfamily void Benchmark\+::\+Remove\+Scenario (\begin{DoxyParamCaption}\item[{std\+::string}]{scenario\+Name }\end{DoxyParamCaption})}
+
+
+
+Remove a \mbox{\hyperlink{classScenario}{Scenario}} object. 
+
+Removes a scenario from the map of scenarios.
+
+
+\begin{DoxyParams}{Parameters}
+{\em scenario\+Name} & \\
+\hline
+\end{DoxyParams}
+The
+\begin{DoxyParams}{Parameters}
+{\em scenario\+Name} & must match the name of the scenario in the simulation configuration file. \\
+\hline
+{\em scenario\+Name} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBenchmark_ab25d8b111e820f707a23ed4b4fa8853e}\label{classBenchmark_ab25d8b111e820f707a23ed4b4fa8853e}} 
+\index{Benchmark@{Benchmark}!RunScenario@{RunScenario}}
+\index{RunScenario@{RunScenario}!Benchmark@{Benchmark}}
+\doxysubsubsection{\texorpdfstring{RunScenario()}{RunScenario()}}
+{\footnotesize\ttfamily void Benchmark\+::\+Run\+Scenario (\begin{DoxyParamCaption}\item[{std\+::string}]{Scenario\+Name }\end{DoxyParamCaption})}
+
+
+
+Run a \mbox{\hyperlink{classScenario}{Scenario}} object. 
+
+Runs a specific scenario.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Scenario\+Name} & \\
+\hline
+\end{DoxyParams}
+The
+\begin{DoxyParams}{Parameters}
+{\em scenario\+Name} & must match the name of the scenario in the simulation configuration file. \\
+\hline
+{\em Scenario\+Name} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBenchmark_aa7e1d4f409ac81c410810b232b217195}\label{classBenchmark_aa7e1d4f409ac81c410810b232b217195}} 
+\index{Benchmark@{Benchmark}!RunScenariosUsingStrategy@{RunScenariosUsingStrategy}}
+\index{RunScenariosUsingStrategy@{RunScenariosUsingStrategy}!Benchmark@{Benchmark}}
+\doxysubsubsection{\texorpdfstring{RunScenariosUsingStrategy()}{RunScenariosUsingStrategy()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ Benchmark\+::\+Run\+Scenarios\+Using\+Strategy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Runs the scenarios using the strategy defined in the simulation configuration file. 
+
+Runs a specific scenario with a specific strategy defined in the config file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em scenarios} & \\
+\hline
+{\em execution\+Strategy} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::string$>$
+\end{DoxyReturn}
+The
+\begin{DoxyParams}{Parameters}
+{\em scenario\+Name} & must match the name of the scenario in the simulation configuration file, and the strategy must be defined in the config file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::string$>$ A vector of strings containing the names of the scenarios that failed to run 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBenchmark_aeecc9fb2b2ec3138a7852cb783faab44}\label{classBenchmark_aeecc9fb2b2ec3138a7852cb783faab44}} 
+\index{Benchmark@{Benchmark}!RunScenarioWithParameters@{RunScenarioWithParameters}}
+\index{RunScenarioWithParameters@{RunScenarioWithParameters}!Benchmark@{Benchmark}}
+\doxysubsubsection{\texorpdfstring{RunScenarioWithParameters()}{RunScenarioWithParameters()}}
+{\footnotesize\ttfamily void Benchmark\+::\+Run\+Scenario\+With\+Parameters (\begin{DoxyParamCaption}\item[{std\+::string}]{Scenario\+Name }\end{DoxyParamCaption})}
+
+
+
+Runs a specific scenario with parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Scenario\+Name} & \\
+\hline
+\end{DoxyParams}
+The
+\begin{DoxyParams}{Parameters}
+{\em scenario\+Name} & must match the name of the scenario in the simulation configuration file, and the parameters must be supported by the specified simulator. \\
+\hline
+{\em Scenario\+Name} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
+/mnt/c/\+Users/\+Mikkel/\+Documents/\+Git\+Hub/\+DTBD/src/\+Include/core.\+Benchmark.\+hpp\item 
 /mnt/c/\+Users/\+Mikkel/\+Documents/\+Git\+Hub/\+DTBD/src/core.\+Benchmark.\+cpp\end{DoxyCompactItemize}

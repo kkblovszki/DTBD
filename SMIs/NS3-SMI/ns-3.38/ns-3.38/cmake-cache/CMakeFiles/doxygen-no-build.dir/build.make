@@ -67,7 +67,7 @@ include CMakeFiles/doxygen-no-build.dir/compiler_depend.make
 include CMakeFiles/doxygen-no-build.dir/progress.make
 
 CMakeFiles/doxygen-no-build:
-	echo The following Doxygen dependencies are missing: dot dia. Reconfigure the project after installing them.
+	echo The following Doxygen dependencies are missing: dia. Reconfigure the project after installing them.
 
 doxygen-no-build: CMakeFiles/doxygen-no-build
 doxygen-no-build: CMakeFiles/doxygen-no-build.dir/build.make

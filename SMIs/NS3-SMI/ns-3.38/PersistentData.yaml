@@ -2,8 +2,6 @@ SimulatorName: NS3
 SimulatorVersion: 3.38
 SimulatorNativeOutput: Float
 
-#Maybe add, supported settings in the future. For even more versatility? 
-
 SupportedBuildOptions:
 - BuildName: "run"
   Arguments: False
@@ -24,6 +22,16 @@ SupportedParameters:
   Arguments: true
   Type: "String"
   Description: "Path to folder containing simulation project files"
+
+- ParamName: "simTime"
+  Arguments: True
+  Type: "Float"
+  Description: "Simulation time in seconds"
+
+- ParamName: "simNodes"
+  Arguments: True
+  Type: "Integer"
+  Description: "Number of nodes in the simulation"
 
 - ParamName: "protocol"
   Arguments: True
@@ -78,86 +86,6 @@ SupportedMetrics:
   Default: "0.0"
   Min: "0.0"
   Max: "100.0"
-  Step: "0.1"
-  Precision: "1"
-
-- MetricName: "Energy"
-  Type: "Float"
-  Description: "Energy of a node"
-  Unit: "J"
-  Default: "0.0"
-  Min: "0.0"
-  Max: "1000000.0"
-  Step: "0.1"
-  Precision: "1"
-
-- MetricName: "Power"
-  Type: "Float"
-  Description: "Power of a node"
-  Unit: "W"
-  Default: "0.0"
-  Min: "0.0"
-  Max: "1000000.0"
-  Step: "0.1"
-  Precision: "1"
-  
-- MetricName: "EnergyConsumption"
-  Type: "Float"
-  Description: "Energy consumption of a node"
-  Unit: "J"
-  Default: "0.0"
-  Min: "0.0"
-  Max: "1000000.0"
-  Step: "0.1"
-  Precision: "1"
-  
-- MetricName: "EnergyConsumptionRate"
-  Type: "Float"
-  Description: "Energy consumption rate of a node"
-  Unit: "J/s"
-  Default: "0.0"
-  Min: "0.0"
-  Max: "1000000.0"
-  Step: "0.1"
-  Precision: "1"
-  
-- MetricName: "EnergyConsumptionRatePerPacket"
-  Type: "Float"
-  Description: "Energy consumption rate per packet of a node"
-  Unit: "J/packet"
-  Default: "0.0"
-  Min: "0.0"
-  Max: "1000000.0"
-  Step: "0.1"
-  Precision: "1"
-  
-- MetricName: "EnergyConsumptionRatePerBit"
-  Type: "Float"
-  Description: "Energy consumption rate per bit of a node"
-  Unit: "J/bit"
-  Default: "0.0"
-  Min: "0.0"
-  Max: "1000000.0"
-  Step: "0.1"
-  Precision: "1"
-  
-- MetricName: "EnergyConsumptionRatePerSecond"
-  Type: "Float"
-  Description: "Energy consumption rate per second of a node"
-  Unit: "J/s"
-  Default: "0.0"
-  Min: "0.0"
-  Max: "1000000.0"
-  Step: "0.1"
-  Precision: "1"
-
-- MetricName: "EnergyConsumptionRatePerByte"
-  Type: "Float"
-  Description: "Energy consumption rate per byte of a node"
-  Unit: "J/byte"
-  Default: "0.0"
-  Min: "0.0"
-  Max: "1000000.0"
   Step: "0.1"
   Precision: "1"
 

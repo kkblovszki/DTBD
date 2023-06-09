@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cassert>
 #include <filesystem>
+#include <source_location>
 #include <core.Testbed.hpp>
 
 int main(int argc, char** argv) {
@@ -8,11 +9,15 @@ int main(int argc, char** argv) {
 
     namespace fs = std::filesystem;
 
-    std::string configPath = "/mnt/c/Users/Mikkel/Documents/GitHub/DTBD/test/Framework_tests/load_sim_config_desc.yaml";
+    const std::source_location& loc = std::source_location::current(); 
+
+    fs::path SourcePath = loc.file_name();
+
+    fs::path configFile = SourcePath.parent_path() / "load_sim_config_desc.yaml";
     
     testbed.CreateBenchmark("testBenchmark"); // Create a benchmark
 
-    testbed.LoadBenchmarkConfig("testBenchmark", configPath); // Load the config file
+    testbed.LoadBenchmarkConfig("testBenchmark", configFile); // Load the config file
 
     return 0;
 }

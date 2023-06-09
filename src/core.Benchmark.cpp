@@ -2,8 +2,14 @@
 #include "core.Benchmark.hpp"
 
 /**
- * @brief 
- * @param configPath 
+ * @brief Loads the simulation configuration file
+ * @details The simulation configuration file is a YAML file that contains the simulation scenarios and their respective simulation strategies.
+ * The simulation configuration file is loaded into a YAML::Node object and then parsed using the @Parser class.
+ * @param configPath - the path to the simulation configuration file
+ * @throws std::runtime_error if the simulation configuration file is not found
+ * @throws std::runtime_error if the simulation configuration file is empty
+ * @throws std::runtime_error if the simulation configuration file is not a valid YAML file
+ * @returns void
  */
 void Benchmark::LoadSimulationConfig(std::string configPath){
     
@@ -20,10 +26,16 @@ void Benchmark::LoadSimulationConfig(std::string configPath){
 
 /**
  * @brief Creates a scenario object and adds it to the map of scenarios
+ * @param scenarioName - the name of the scenario to be created
+ * @details The @param scenarioName must match the name of the scenario in the simulation configuration file.
  * It iterates through the simulations in the config file and creates a single scenario at a time, based on the scenario name, simulator type, and listener type.
- * \n
  * However the listener type is optional and can be added later by manually creating a listener object and adding it to the scenario using the @SimulatorMockupInterface's SetListener method
- * @details The @param scenarioName must match the name of the scenario in the simulation configuration file
+ * 
+ * @returns void
+ * 
+ * @throws std::runtime_error if the scenario name already exists
+ * @throws std::runtime_error if the scenario name does not match any scenario in the simulation configuration file
+ * @throws std::runtime_error if the simulator type is not defined in the simulation configuration file
  */
 void Benchmark::CreateScenario(std::string scenarioName){
     
@@ -33,18 +45,20 @@ void Benchmark::CreateScenario(std::string scenarioName){
     if (scenarios.find(scenarioName) != scenarios.end()) {
         std::cerr << "Error: Scenario " << scenarioName << " already exists.\n";
         return;
-    }/*else if (scenariosDescriptors.find(scenarioName) == scenariosDescriptors.end()) {
-        std::cerr << "Error: Scenario " << scenarioName << " not found in config file.\n";
+    }
+
+    //Check to see if the scenario exists in the config file
+    if (scenariosDescriptors.find(scenarioName) == scenariosDescriptors.end()) {
+        //std::cerr << "Error: Scenario " << scenarioName << " not found in config file.\n";
+        throw std::runtime_error("Scenario not found in config file: " + scenarioName); 
         return;
-    }*/ //This makes it unable to run some basic framework tests since it needs the parser to work.
+    }
 
     std::string simulatorType = scenariosDescriptors[scenarioName].simulator;
     std::string simulatorVersion = scenariosDescriptors[scenarioName].simulatorVersion;
 
     if(simulatorType == ""){
-        std::cerr << "Error - Simulator type is undefined found for scenario: " << scenarioName << ".\n";
-        std::cerr << "Please check the simulation configuration file.\n";
-        std::cerr << "Exiting scenario creation\n";
+        throw std::runtime_error("Simulator type is undefined found for scenario: " + scenarioName + ".\n" + "Please check the simulation configuration file.\n" + "Exiting scenario creation\n");
         return;
     }
 
@@ -79,12 +93,10 @@ void Benchmark::CreateScenario(std::string scenarioName){
 };
 
 /**
- * @brief 
- * Creates all scenarios in the config file
- * @details 
- * Iterates through the scenarios in the benchmark config file and creates a single scenario at a time, or type, and listener type.
- * \n
+ * @brief Creates all scenarios in the config file
+ * @details Iterates through the scenarios in the benchmark config file and creates a single scenario at a time, or type, and listener type.
  * However the listener type is optional and can be added later by manually based on the scenario name, simulatreating a listener object and adding it to the scenario using the @SimulatorMockupInterface's SetListener method
+ * @returns void
  */
 void Benchmark::CreateAllScenarios()
 {   
@@ -96,9 +108,10 @@ void Benchmark::CreateAllScenarios()
 };
 
 /**
- * @brief 
- * Removes a scenario from the map of scenarios
+ * @brief Removes a scenario from the map of scenarios
+ * @details The @param scenarioName must match the name of the scenario in the simulation configuration file.
  * @param scenarioName 
+ * @returns void
  */
 void Benchmark::RemoveScenario(std::string scenarioName){
     //delete instance from memory and remove from map
@@ -107,7 +120,12 @@ void Benchmark::RemoveScenario(std::string scenarioName){
     return;
 };
 
-//using the scenarioName given as a string and run the scenario
+/**
+ * @brief Runs a specific scenario
+ * @details The @param scenarioName must match the name of the scenario in the simulation configuration file.
+ * @param ScenarioName
+ * @returns void 
+ */
 void Benchmark::RunScenario(std::string ScenarioName){
 
     auto it = scenarios.find(ScenarioName);
@@ -122,7 +140,12 @@ void Benchmark::RunScenario(std::string ScenarioName){
 };
 
 
-
+/**
+ * @brief Runs a specific scenario with parameters
+ * @details The @param scenarioName must match the name of the scenario in the simulation configuration file, and the parameters must be supported by the specified simulator.
+ * @param ScenarioName 
+ * @returns void
+ */
 void Benchmark::RunScenarioWithParameters(std::string ScenarioName){
     auto it = scenarios.find(ScenarioName);
     if (it == scenarios.end()) {
@@ -146,9 +169,8 @@ void Benchmark::RunScenarioWithParameters(std::string ScenarioName){
 };
 
 /**
- * @brief 
- * Implements the RunScenarioWithStrategy function from the BenchmarkInterface
- * by using the strategy specified in the config file
+ * @brief Runs a specific scenario with a specific strategy defined in the config file
+ * @details The @param scenarioName must match the name of the scenario in the simulation configuration file, and the strategy must be defined in the config file.
  * @return std::vector<std::string> A vector of strings containing the names of the scenarios that failed to run
  */
 std::vector<std::string> Benchmark::RunScenariosUsingStrategy(){

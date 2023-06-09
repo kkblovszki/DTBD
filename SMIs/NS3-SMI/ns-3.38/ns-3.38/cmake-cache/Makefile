@@ -1970,6 +1970,32 @@ scratch_Tutorial_NS3_script/fast:
 .PHONY : scratch_Tutorial_NS3_script/fast
 
 #=============================================================================
+# Target rules for targets named scratch_p2p_2_node_network_sim
+
+# Build rule for target.
+scratch_p2p_2_node_network_sim: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 scratch_p2p_2_node_network_sim
+.PHONY : scratch_p2p_2_node_network_sim
+
+# fast build rule for target.
+scratch_p2p_2_node_network_sim/fast:
+	$(MAKE) $(MAKESILENT) -f scratch/CMakeFiles/scratch_p2p_2_node_network_sim.dir/build.make scratch/CMakeFiles/scratch_p2p_2_node_network_sim.dir/build
+.PHONY : scratch_p2p_2_node_network_sim/fast
+
+#=============================================================================
+# Target rules for targets named scratch_p2p_network_sim
+
+# Build rule for target.
+scratch_p2p_network_sim: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 scratch_p2p_network_sim
+.PHONY : scratch_p2p_network_sim
+
+# fast build rule for target.
+scratch_p2p_network_sim/fast:
+	$(MAKE) $(MAKESILENT) -f scratch/CMakeFiles/scratch_p2p_network_sim.dir/build.make scratch/CMakeFiles/scratch_p2p_network_sim.dir/build
+.PHONY : scratch_p2p_network_sim/fast
+
+#=============================================================================
 # Target rules for targets named scratch_scratch-simulator
 
 # Build rule for target.
@@ -2292,6 +2318,8 @@ help:
 	@echo "... scratch-nested-subdir-lib"
 	@echo "... scratch_Tutorial_NS3_script"
 	@echo "... scratch_nested-subdir_scratch-nested-subdir-executable"
+	@echo "... scratch_p2p_2_node_network_sim"
+	@echo "... scratch_p2p_network_sim"
 	@echo "... scratch_scratch-simulator"
 	@echo "... scratch_subdir_scratch-subdir"
 	@echo "... stdlib_pch-debug"

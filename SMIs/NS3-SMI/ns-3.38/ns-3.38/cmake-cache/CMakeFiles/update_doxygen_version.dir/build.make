@@ -67,7 +67,7 @@ include CMakeFiles/update_doxygen_version.dir/compiler_depend.make
 include CMakeFiles/update_doxygen_version.dir/progress.make
 
 CMakeFiles/update_doxygen_version:
-	echo The following Doxygen dependencies are missing: dot dia. Reconfigure the project after installing them.
+	echo The following Doxygen dependencies are missing: dia. Reconfigure the project after installing them.
 
 update_doxygen_version: CMakeFiles/update_doxygen_version
 update_doxygen_version: CMakeFiles/update_doxygen_version.dir/build.make

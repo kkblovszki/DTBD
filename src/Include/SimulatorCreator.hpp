@@ -5,14 +5,23 @@
 #include "SimulatorMockUpInterface.hpp"
 #include <bit>
 
-/*! 
-    \class SimulatorCreator
-    \brief This class is responsible for creating the simulator instances
-    \details This class is responsible for creating the simulator instances. It contains a map of strings to simulator types, which is used to create the simulator instances. 
-    \author Asbjørn Nielsen & Mikkel Silkeborg
-    \date 2023-02-15
-    \version 0.1
- */ 
+
+/**
+ * @brief SimulatorCreator class
+ * 
+ * \page SimulatorCreator SimulatorCreator
+ * 
+ * The SimulatorCreator class is responsible for creating the simulator instances. It contains a map of strings to simulator types, which is used to create the simulator instances.
+ * 
+ * The SimulatorCreator class have the following functions:
+ * 
+ * @li SimulatorCreator::stringForceUpperCase(std::string inputString)
+ * @li SimulatorCreator::stringToSimType()
+ * @li SimulatorCreator::CreateSimulator(const std::string& simulatorName)
+ * 
+ * @see SimulatorCreator.cpp for implementation
+ * 
+ */
 class SimulatorCreator{
     
 protected:

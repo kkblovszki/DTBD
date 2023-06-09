@@ -1,19 +1,27 @@
 #include <iostream>
 #include <cassert>
+#include <filesystem>
+#include <source_location>
 #include <core.Testbed.hpp>
 
 int main(int argc, char** argv) {
     Testbed testbed;
+
+    namespace fs = std::filesystem;
+
+    const std::source_location& loc = std::source_location::current(); 
+
+    fs::path SourcePath = loc.file_name();
+
+    fs::path configFile = SourcePath.parent_path() / "load_sim_config_desc.yaml";
     
     testbed.CreateBenchmark("testBenchmark");
 
-    assert(testbed.benchmarks["testBenchmark"] != nullptr);
+    testbed.LoadBenchmarkConfig("testBenchmark", configFile);
 
-    testbed.benchmarks["testBenchmark"]->CreateScenario("testScenario");
+    testbed.benchmarks["testBenchmark"]->CreateScenario("TutorialScenario");
 
-    assert(testbed.benchmarks["testBenchmark"]->scenarios["testScenario"] != nullptr);
-
-    std::cout << "Benchmark created" << std::endl;
+    std::cout << "Benchmark & Scenario created" << std::endl;
 
     return 0;
 }

@@ -67,7 +67,7 @@ include CMakeFiles/assemble-introspected-command-line.dir/compiler_depend.make
 include CMakeFiles/assemble-introspected-command-line.dir/progress.make
 
 CMakeFiles/assemble-introspected-command-line:
-	echo The following Doxygen dependencies are missing: dot dia. Reconfigure the project after installing them.
+	echo The following Doxygen dependencies are missing: dia. Reconfigure the project after installing them.
 
 assemble-introspected-command-line: CMakeFiles/assemble-introspected-command-line
 assemble-introspected-command-line: CMakeFiles/assemble-introspected-command-line.dir/build.make

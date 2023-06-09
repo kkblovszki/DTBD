@@ -39,7 +39,7 @@ extern "C" void* NS3_mockup_interface::createSimulator() {
     @return SimulatorInfo 
  */
 SimulatorInfo NS3_mockup_interface::GetSimulatorInfo() {
-    return simulatorInfo; //Return a copy of the simulatorInfo
+    return simulatorInfo;
 }
 
 /*!
@@ -55,7 +55,7 @@ void NS3_mockup_interface::AddBuildOptions(const std::vector<BuildOptions>& buil
     @param libraryHandle 
  */
 void NS3_mockup_interface::setLibraryHandle(std::shared_ptr<void> libraryHandle) {
-    ns3LibHandler = std::move(libraryHandle); //I know std::move is not needed here, but it's a good practice to use it.
+    ns3LibHandler = std::move(libraryHandle); //I know std::move is not necessary here, but it's a good practice to use it.
 };
 
 /*!
@@ -212,11 +212,22 @@ void NS3_mockup_interface::ParseToNS3CommandLine(){
     for(auto it = NS3buildOptions.begin(); it != NS3buildOptions.end(); ++it){
         BuildCMDstring += "--" + it->buildOption + "=" + it->buildOptionValue + " ";
     }
-
+    
+    // if there are more than the simulation file path parameter
+    if (NS3parameters.size() > 1)  
+    {
+        ParamsCMDstring += "-- "; //ensure params are added
+    }
+     
     //Parse the parameters to an NS3 command line string for building the simulation
     for(auto it = NS3parameters.begin(); it != NS3parameters.end(); ++it){
         if((it->name) != "simulation-file-path"){
-            ParamsCMDstring += "--" + (it->name) + "=" + (it->defaultParameter) + " ";
+            if (it == NS3parameters.end() - 1){
+                ParamsCMDstring += "--" + (it->name) + "=" + (it->defaultParameter) + " ";
+            }else{
+                ParamsCMDstring += "--" + (it->name) + "=" + (it->defaultParameter) + ", ";
+            }
+            
         }else{
             continue;
         }
@@ -269,7 +280,6 @@ void NS3_mockup_interface::RunSimulation(){
     std::string ns3_3_8 = "/ns-" + simulatorInfo.simulatorVersion;
     std::string changeDirectory = "cd "  + SMIPath + "/NS3-SMI" + ns3_3_8 + ns3_3_8;
     
-
     std::string copySimulationCommand; 
 
     //checks to see if either a simulation-file-path or a simulation-file-path is given in the benchmark configuration file

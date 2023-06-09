@@ -1,0 +1,46 @@
+\hypertarget{structMeasure}{}\doxysection{Measure Struct Reference}
+\label{structMeasure}\index{Measure@{Measure}}
+
+
+\mbox{\hyperlink{structMeasure}{Measure}} structure that holds the information about a measurement.  
+
+
+
+
+{\ttfamily \#include $<$core.\+Types.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structMeasure_a112846dfd3d7949ad2c81b590fb8aa33}\label{structMeasure_a112846dfd3d7949ad2c81b590fb8aa33}} 
+{\bfseries Measure} (std\+::string specified\+Label, std\+::map$<$ \mbox{\hyperlink{structMetrics}{Metrics}}, std\+::vector$<$ std\+::string $>$$>$ specified\+Readings)
+\item 
+\mbox{\Hypertarget{structMeasure_a0e7ed5d4974d86967102d5440d04570d}\label{structMeasure_a0e7ed5d4974d86967102d5440d04570d}} 
+int {\bfseries is\+Measure\+Empty} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structMeasure_a6c7049f19a480f0d2a4ca4a94bc69815}\label{structMeasure_a6c7049f19a480f0d2a4ca4a94bc69815}} 
+std\+::string {\bfseries label}
+\item 
+\mbox{\Hypertarget{structMeasure_adbc4d915487b326bd55b256de49e887f}\label{structMeasure_adbc4d915487b326bd55b256de49e887f}} 
+std\+::map$<$ \mbox{\hyperlink{structMetrics}{Metrics}}, std\+::vector$<$ std\+::string $>$ $>$ {\bfseries readings}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{structMeasure}{Measure}} structure that holds the information about a measurement. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em label} & -\/ the label of the measure \\
+\hline
+{\em readings} & -\/ the readings of the measure it consist of a map of metrics and a vector of strings pr. metric\\
+\hline
+\end{DoxyParams}
+This structure is used to hold the information about the measure that is read from the simulation configuration file. The \mbox{\hyperlink{structMeasure}{Measure}} structure itself contains a map of multiple \mbox{\hyperlink{structMetrics}{Metrics}}. The \mbox{\hyperlink{structMetrics}{Metrics}} structure contains a name and a unit. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/\+Mikkel/\+Documents/\+Git\+Hub/\+DTBD/src/\+Include/core.\+Types.\+hpp\end{DoxyCompactItemize}

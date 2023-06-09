@@ -4,7 +4,7 @@
 #include "AbstractListener.hpp"
 
 /**
- * \page Listeners
+ * \page AbstractListener
  * 
  * \section Listeners
  * 
@@ -17,19 +17,27 @@
  * - DefaultListener
  * - CSVListener
  * 
- * \subsection TestListener
+ * \subsection TestListener \ref TestListener
  * The TestListener is a listener that is used for testing purposes.
  * 
- * \subsection DefaultListener
+ * \subsection DefaultListener \ref DefaultListener
  * The DefaultListener is the default listener that is used by the framework and outputs the simulation results to the console.
  * 
- * \subsection CSVListener
+ * \subsection CSVListener \ref CSVListener
  * The CSVListener is a listener that outputs the simulation results to a CSV file.
  * 
  */
 namespace Core {
     namespace Listeners {
 
+        /**
+         * @brief TestListener class
+         * 
+         * \page TestListener TestListener
+         * 
+         * The TestListener is a listener that is used for testing purposes.
+         * 
+         */
         class TestListener : public Listener {
         public:
             TestListener();
@@ -42,6 +50,14 @@ namespace Core {
             void OnSimulationUpdate(std::string value) override;
         };
 
+        /**
+         * @brief ConsoleListener class
+         * 
+         * \page ConsoleListener ConsoleListener
+         * 
+         * The ConsoleListener is the default listener that is used by the framework and outputs the simulation results to the console.
+         * 
+         */
         class ConsoleListener : public Listener {
         public:
             ConsoleListener();
@@ -54,7 +70,15 @@ namespace Core {
             void OnSimulationEnd(std::string value) override;
         };
 
-
+        /**
+         * 
+         * @brief CSVListener class
+         * 
+         * \page CSVListener CSVListener
+         * 
+         * The CSVListener is a listener that outputs the simulation results to a CSV file.
+         * 
+         */
         class CSVListener : public Listener {
         public:
             CSVListener();

@@ -8,9 +8,13 @@
 #include "Parser.hpp"
 
 /**
- * @brief Benchmark class
- * This class is responsible for managing the simulation scenarios.
- * It is responsible for creating, removing, and running scenarios.
+ * @page BenchmarkPage Benchmark
+ * 
+ * @section Benchmark 
+ * 
+ * @brief Benchmark documentation.
+ * 
+ * This is the Benchmark class. It does some things and has some properties..
  */
 class Benchmark {
 private:

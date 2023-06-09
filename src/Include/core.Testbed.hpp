@@ -3,6 +3,19 @@
 
 #include "core.Benchmark.hpp"
 
+
+/**
+ * @brief Testbed class
+ * 
+ * \page Testbed Testbed
+ * 
+ * The Testbed class is responsible for creating the benchmark instances.
+ * 
+ * @brief Testbed documentation.
+ * 
+ * This is the Testbed class. It does some things and has some properties.
+ * 
+ */
 class Testbed
 {
 private:

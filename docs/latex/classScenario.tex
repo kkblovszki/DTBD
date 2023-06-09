@@ -3,14 +3,79 @@
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classScenario_a3898a9b978075c159c6f79d338789b76}\label{classScenario_a3898a9b978075c159c6f79d338789b76}} 
-{\bfseries Scenario} (std\+::string scenario\+Name, std\+::string simulator\+Type)
+\mbox{\Hypertarget{classScenario_a9e49a0e14ad71a558dd8de96fbdcdf14}\label{classScenario_a9e49a0e14ad71a558dd8de96fbdcdf14}} 
+{\bfseries Scenario} (std\+::string unique\+Name, std\+::string \&simulator\+Type, const std\+::string \&simulator\+Version=\char`\"{}\char`\"{}, const std\+::string \&listener\+Type=\char`\"{}Console\+Listener\char`\"{})
 \item 
-\mbox{\Hypertarget{classScenario_a5cf11d3ef88fd9328fb4f714c8490309}\label{classScenario_a5cf11d3ef88fd9328fb4f714c8490309}} 
-void {\bfseries Prepare\+Execution} (std\+::map$<$ std\+::string, size\+\_\+t $>$ Strategy)
+\mbox{\hyperlink{classScenario_aa58146c7131d8eafacfd4ee02271bd5c}{Scenario}} (std\+::string unique\+Name, std\+::string \&simulator\+Type, const std\+::string \&simulator\+Version=\char`\"{}\char`\"{}, const std\+::vector$<$ \mbox{\hyperlink{structBuildOptions}{Build\+Options}} $>$ \&build\+Options=\{\}, const std\+::string \&listener\+Type=\char`\"{}Console\+Listener\char`\"{})
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classScenario}{Scenario}}\+:\+: \mbox{\hyperlink{classScenario}{Scenario}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classScenario_a00e36d00d6789466f67104af5bcd038e}{Prepare\+Simulation}} (const std\+::vector$<$ \mbox{\hyperlink{structMetrics}{Metrics}} $>$ \&metrics=\{\}, const std\+::vector$<$ \mbox{\hyperlink{structParameter}{Parameter}} $>$ \&parameters=\{\})
+\begin{DoxyCompactList}\small\item\em Prepare the simulation with the given metrics and parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classScenario_a3e80d8bfc03d32972a328c612f0fa3ce}\label{classScenario_a3e80d8bfc03d32972a328c612f0fa3ce}} 
+const std\+::string {\bfseries scenario\+Name}
+\item 
+\mbox{\Hypertarget{classScenario_a037e9fecef929696a9b423b92fd6ddb3}\label{classScenario_a037e9fecef929696a9b423b92fd6ddb3}} 
+std\+::vector$<$ \mbox{\hyperlink{structMetrics}{Metrics}} $>$ {\bfseries metrics}
+\item 
+\mbox{\Hypertarget{classScenario_a631a637748a7e22919e5f6cecaa8f2a5}\label{classScenario_a631a637748a7e22919e5f6cecaa8f2a5}} 
+std\+::vector$<$ \mbox{\hyperlink{structParameter}{Parameter}} $>$ {\bfseries parameters}
+\item 
+\mbox{\Hypertarget{classScenario_ab72fcb04f800a2c54ce3153900f11c3c}\label{classScenario_ab72fcb04f800a2c54ce3153900f11c3c}} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classSimulatorMockUpInterface}{Simulator\+Mock\+Up\+Interface}} $>$ {\bfseries Simulator\+Instance}
 \end{DoxyCompactItemize}
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classScenario_aa58146c7131d8eafacfd4ee02271bd5c}\label{classScenario_aa58146c7131d8eafacfd4ee02271bd5c}} 
+\index{Scenario@{Scenario}!Scenario@{Scenario}}
+\index{Scenario@{Scenario}!Scenario@{Scenario}}
+\doxysubsubsection{\texorpdfstring{Scenario()}{Scenario()}}
+{\footnotesize\ttfamily Scenario\+::\+Scenario (\begin{DoxyParamCaption}\item[{std\+::string}]{unique\+Name,  }\item[{std\+::string \&}]{simulator\+Type,  }\item[{const std\+::string \&}]{simulator\+Version = {\ttfamily \char`\"{}\char`\"{}},  }\item[{const std\+::vector$<$ \mbox{\hyperlink{structBuildOptions}{Build\+Options}} $>$ \&}]{build\+Options = {\ttfamily \{\}},  }\item[{const std\+::string \&}]{listener\+Type = {\ttfamily \char`\"{}ConsoleListener\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classScenario}{Scenario}}\+:\+: \mbox{\hyperlink{classScenario}{Scenario}} object. 
+
+This constructor is used when the scenario is created from the benchmark. This specific constructor is used when build options are specified. 
+\begin{DoxyParams}{Parameters}
+{\em unique\+Name} & \\
+\hline
+{\em simulator\+Type} & \\
+\hline
+{\em simulator\+Version} & \\
+\hline
+{\em build\+Options} & \\
+\hline
+{\em listener\+Type} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classScenario_a00e36d00d6789466f67104af5bcd038e}\label{classScenario_a00e36d00d6789466f67104af5bcd038e}} 
+\index{Scenario@{Scenario}!PrepareSimulation@{PrepareSimulation}}
+\index{PrepareSimulation@{PrepareSimulation}!Scenario@{Scenario}}
+\doxysubsubsection{\texorpdfstring{PrepareSimulation()}{PrepareSimulation()}}
+{\footnotesize\ttfamily void Scenario\+::\+Prepare\+Simulation (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{structMetrics}{Metrics}} $>$ \&}]{metrics = {\ttfamily \{\}},  }\item[{const std\+::vector$<$ \mbox{\hyperlink{structParameter}{Parameter}} $>$ \&}]{parameters = {\ttfamily \{\}} }\end{DoxyParamCaption})}
+
+
+
+Prepare the simulation with the given metrics and parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em metrics} & \\
+\hline
+{\em parameters} & \\
+\hline
+{\em Strategy} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/mnt/c/\+Users/\+Mikkel/\+Documents/\+Git\+Hub/\+DTBD/src/core.\+Benchmark.\+cpp\end{DoxyCompactItemize}
+/mnt/c/\+Users/\+Mikkel/\+Documents/\+Git\+Hub/\+DTBD/src/\+Include/core.\+Scenario.\+hpp\item 
+/mnt/c/\+Users/\+Mikkel/\+Documents/\+Git\+Hub/\+DTBD/src/core.\+Scenario.\+cpp\end{DoxyCompactItemize}

@@ -2,6 +2,7 @@
 #include <cassert>
 
 /**
+ * @page ScenarioPage Scenario
  * @brief Construct a new Scenario:: Scenario object
  * @details This constructor is used when the scenario is created from the benchmark.
  * this specific constructor is used when no build options are specified. 
@@ -9,6 +10,7 @@
  * @param simulatorType
  * @param simulatorVersion
  * @param ListenerType 
+ * @returns void
  */
 Scenario::Scenario(std::string uniqueName, std::string& simulatorType, const std::string& simulatorVersion, const std::string& listenerType) : scenarioName(uniqueName) {
     

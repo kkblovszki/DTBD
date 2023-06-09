@@ -10,6 +10,32 @@
 #include "../include/core.Testbed.hpp"
 
 
+/**
+ * @brief A Command Line Interface (CLI) for managing and interacting with testbeds and benchmarks.
+ * 
+ * \page DTDB_CLI DTDB_CLI
+ *  
+ * The DTDB_CLI class provides a command line interface for users to interact with 
+ * a system of testbeds, benchmarks, and scenarios. It provides an easy-to-use interface 
+ * for creating, managing, and executing these components. 
+ *
+ * The class stores active testbed and benchmark information and has the capability 
+ * to process and execute various commands input by the user. The following key functionalities 
+ * are provided:
+ *
+ *  - Testbed management: Users can create, select, list, and remove testbeds.
+ *  - Benchmark management: Within a selected testbed, users can create, select, list, 
+ *    and remove benchmarks, as well as load benchmark configurations.
+ *  - Scenario management: Within a selected benchmark, users can create, list, remove scenarios, 
+ *    and run scenarios with or without parameters.
+ *  
+ * The DTDB_CLI class utilizes a command processor to interpret and execute commands input 
+ * by the user. These commands are tokenized and processed individually to perform the requested 
+ * operation on the relevant component (Testbed, Benchmark, or Scenario).
+ *
+ * \note The class does not directly manage the underlying details of the Testbed, Benchmark, 
+ *       or Scenario objects, but instead delegates these tasks to the appropriate classes.
+ */
 class DTDB_CLI {
    
     public:

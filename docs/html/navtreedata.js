@@ -24,12 +24,63 @@
 */
 var NAVTREE =
 [
-  [ "DTDB Code Documentation", "index.html", ]
+  [ "DTDB Unified Framework", "index.html", [
+    [ "Digital Benchmark and Testbed framework for self-adaptive and self-organising systems", "index.html", [
+      [ "Bachelor Thesis", "index.html#autotoc_md1", [
+        [ "Todo", "index.html#autotoc_md2", null ]
+      ] ],
+      [ "Introduction", "index.html#autotoc_md3", null ],
+      [ "Installation", "index.html#autotoc_md4", null ],
+      [ "Usage", "index.html#autotoc_md5", [
+        [ "Currently supported features", "index.html#autotoc_md7", null ]
+      ] ],
+      [ "NS-3 Simulator", "index.html#autotoc_md8", null ]
+    ] ],
+    [ "DTDB_CLI", "DTDB_CLI.html", null ],
+    [ "Scenario", "ScenarioPage.html", [
+      [ "Scenario", "ScenarioPage.html#ScenarioOverview", null ]
+    ] ],
+    [ "Listeners", "Listeners.html", [
+      [ "Listeners", "Listeners.html#Listeners", [
+        [ "ListenersOverview", "Listeners.html#ListenersOverview", null ],
+        [ "TestListener", "Listeners.html#TestListener", null ],
+        [ "ConsoleListener", "Listeners.html#ConsoleListener", null ],
+        [ "CSVListener", "Listeners.html#CSVListener", null ]
+      ] ]
+    ] ],
+    [ "Benchmark", "BenchmarkPage.html", [
+      [ "Benchmark", "BenchmarkPage.html#Benchmark", null ]
+    ] ],
+    [ "Testbed", "Testbed.html", null ],
+    [ "AbstractListener", "AbstractListener.html", null ],
+    [ "TestListener", "TestListener.html", null ],
+    [ "ConsoleListener", "ConsoleListener.html", null ],
+    [ "CSVListener", "CSVListener.html", null ],
+    [ "SimulatorCreator", "SimulatorCreator.html", null ],
+    [ "Simulator Mockup Interface", "Simulator-Mockup-Interface.html", [
+      [ "What is the SMI?", "Simulator-Mockup-Interface.html#what-is-the-smi", null ]
+    ] ],
+    [ "NS3_mockup_interface", "NS3_mockup_interfacePage.html", [
+      [ "NS3_mockup_interface", "NS3_mockup_interfacePage.html#NS3_mockup_interface", null ]
+    ] ],
+    [ "Classes", "annotated.html", [
+      [ "Class List", "annotated.html", "annotated_dup" ],
+      [ "Class Index", "classes.html", null ],
+      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
+      [ "Class Members", "functions.html", [
+        [ "All", "functions.html", null ],
+        [ "Functions", "functions_func.html", null ]
+      ] ]
+    ] ],
+    [ "Files", "files.html", [
+      [ "File List", "files.html", "files_dup" ]
+    ] ]
+  ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"index.html"
+"AbstractListener.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

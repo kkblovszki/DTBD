@@ -10,7 +10,7 @@ Benchmark:
         tests: enable
   
       - Parameters:
-        simulation-file-path: "Add complete path to NS3 script here"
+        simulation-file-path: ""
         protocol: TCP
         tcp-variant: NewReno
         routing-protocol: OSPF

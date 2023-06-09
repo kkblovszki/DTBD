@@ -10,6 +10,8 @@ add_definitions(-DDEBUG)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+include(CTest)
+
 # Set the compiler flags
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wpedantic -Wno-unused-value") #-Wextra -Werror
 
@@ -76,8 +78,6 @@ add_library(DTDB_framework
             src/Parser.cpp
             )
 
-#add_library(Parser )
-
 add_library(DTDB_listeners 
             src/Listeners/ConsoleListener.cpp
             src/Listeners/CSVListener.cpp
@@ -133,6 +133,7 @@ target_link_libraries(NS3Simulator yaml-cpp)
 
 # ------------------------------- Add the tests -------------------------------
 
+
 # ------------ Framework tests ------------
 
 add_executable(LoadSimConfig test/Framework_tests/load_sim_config.cpp)
@@ -142,11 +143,15 @@ add_executable(PersistentDataMatchingTest test/Framework_tests/check_persistent_
 add_executable(RunScenario test/Framework_tests/test_run_scenario.cpp)
 
 # Set the output directory for the 'my_project_tests' target to 'test/bin'
-set_target_properties(LoadSimConfig PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests/framework_tests")
-set_target_properties(CreateBenchmark PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests/framework_tests")
-set_target_properties(SharedLibLoad PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests/framework_tests")
-set_target_properties(PersistentDataMatchingTest PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests/framework_tests")
-set_target_properties(RunScenario PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests/framework_tests")
+set_target_properties(
+    LoadSimConfig 
+    CreateBenchmark
+    SharedLibLoad
+    PersistentDataMatchingTest
+    RunScenario
+    PROPERTIES 
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests/framework_tests"
+)
 
 target_link_libraries(LoadSimConfig DTDB_framework)
 target_link_libraries(CreateBenchmark DTDB_framework)
@@ -161,34 +166,46 @@ add_test(NAME PersistentDataMatchingTest COMMAND PersistentDataMatchingTest)
 add_test(NAME RunScenario COMMAND RunScenario)
 
 
+# ------------ Integrations tests ------------
+
+add_executable(DualSimulation test/Integration_tests/Dual_simulation/dual_sim.cpp)
+add_executable(ExecOrderSimulation test/Integration_tests/Execution_simulation/exec_order_sim.cpp)
+add_executable(SingleSimulation test/Integration_tests/Single_simulation/single_sim.cpp)
+
+set_target_properties(
+    DualSimulation 
+    ExecOrderSimulation
+    SingleSimulation
+    PROPERTIES 
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests/integration_tests"
+)
+
+target_link_libraries(DualSimulation DTDB_framework)
+target_link_libraries(ExecOrderSimulation DTDB_framework)
+target_link_libraries(SingleSimulation DTDB_framework)
+
+add_test(NAME DualSimulation COMMAND DualSimulation)
+add_test(NAME ExecOrderSimulation COMMAND ExecOrderSimulation)
+add_test(NAME SingleSimulation COMMAND SingleSimulation)
+
 # ------------ NS3 tests ------------
 
 add_executable(RunNS3Tutorial test/NS3_Tests/NS3_run_tests/Test_run_tutorial.cpp)
+add_executable(UnsupportedSim test/NS3_Tests/NS3_input_tests/NS3_unsupported_params.cpp)
 
-set_target_properties(RunNS3Tutorial PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests/NS3_tests")
+set_target_properties(
+    RunNS3Tutorial
+    UnsupportedSim 
+    PROPERTIES 
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests/NS3_tests"
+)
 
 target_link_libraries(RunNS3Tutorial DTDB_framework)
+target_link_libraries(UnsupportedSim DTDB_framework)
 
+add_test(NAME UnsupportedSim COMMAND UnsupportedSim)
 add_test(NAME RunNS3Tutorial COMMAND RunNS3Tutorial)
 
-
-if(COMPILE_TESTS)
-
-# Add any test files from the 'test' directory
-add_executable(NS3_Exhaustive_scenario_creation test/NS3_Tests/NS3_ScenarioCreationExhaustive.cpp)
-add_executable(NS3_Basic_scenario_creation test/NS3_Tests/NS3_ScenarioCreationBasic.cpp)
-
-# Set the output directory for the 'my_project_tests' target to 'test/bin'
-set_target_properties(NS3_Basic_scenario_creation NS3_Exhaustive_scenario_creation PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests/NS3_tests")
-
-target_link_libraries(NS3_Exhaustive_scenario_creation DTDB_framework)
-target_link_libraries(NS3_Basic_scenario_creation DTDB_framework)
-
-# Add tests that will be run when running the 'make test' command
-add_test(NAME NS3_Exhaustive_scenario_creation_test COMMAND NS3_Exhaustive_scenario_creation)
-add_test(NAME NS3_Basic_scenario_creation_test COMMAND NS3_Basic_scenario_creation)
-
-endif()
 # ------------ YAML parser tests ------------
 
 # Add tests from the directory

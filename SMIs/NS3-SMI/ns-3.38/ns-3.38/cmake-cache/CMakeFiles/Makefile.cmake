@@ -357,6 +357,8 @@ set(CMAKE_DEPEND_INFO_FILES
   "src/wimax/CMakeFiles/libwimax-obj.dir/DependInfo.cmake"
   "src/wimax/CMakeFiles/libwimax.dir/DependInfo.cmake"
   "scratch/CMakeFiles/scratch_Tutorial_NS3_script.dir/DependInfo.cmake"
+  "scratch/CMakeFiles/scratch_p2p_2_node_network_sim.dir/DependInfo.cmake"
+  "scratch/CMakeFiles/scratch_p2p_network_sim.dir/DependInfo.cmake"
   "scratch/CMakeFiles/scratch_scratch-simulator.dir/DependInfo.cmake"
   "scratch/CMakeFiles/scratch_subdir_scratch-subdir.dir/DependInfo.cmake"
   "scratch/nested-subdir/CMakeFiles/scratch-nested-subdir-lib.dir/DependInfo.cmake"

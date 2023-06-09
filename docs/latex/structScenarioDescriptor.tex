@@ -1,0 +1,82 @@
+\hypertarget{structScenarioDescriptor}{}\doxysection{Scenario\+Descriptor Struct Reference}
+\label{structScenarioDescriptor}\index{ScenarioDescriptor@{ScenarioDescriptor}}
+
+
+The descriptor of the scenario structure.  
+
+
+
+
+{\ttfamily \#include $<$core.\+Types.\+hpp$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structScenarioDescriptor_a93ed16d8b292fb82600978575ce298cd}\label{structScenarioDescriptor_a93ed16d8b292fb82600978575ce298cd}} 
+std\+::string {\bfseries name}
+\item 
+\mbox{\Hypertarget{structScenarioDescriptor_a2292c4b2860287432b87a413de274b02}\label{structScenarioDescriptor_a2292c4b2860287432b87a413de274b02}} 
+std\+::string {\bfseries description}
+\item 
+\mbox{\Hypertarget{structScenarioDescriptor_ae2f4e5863befb7bdde1dbdededc9c0f4}\label{structScenarioDescriptor_ae2f4e5863befb7bdde1dbdededc9c0f4}} 
+std\+::string {\bfseries simulator}
+\item 
+\mbox{\Hypertarget{structScenarioDescriptor_ac2f8cebe401fa954abffceb26c953085}\label{structScenarioDescriptor_ac2f8cebe401fa954abffceb26c953085}} 
+std\+::string {\bfseries simulator\+Version}
+\item 
+\mbox{\Hypertarget{structScenarioDescriptor_a16869af3acc87a34c86d08274b82d5b1}\label{structScenarioDescriptor_a16869af3acc87a34c86d08274b82d5b1}} 
+std\+::string {\bfseries listener}
+\item 
+\mbox{\Hypertarget{structScenarioDescriptor_af92600de345da35b212df65e810425ce}\label{structScenarioDescriptor_af92600de345da35b212df65e810425ce}} 
+std\+::map$<$ std\+::string, std\+::string $>$ {\bfseries optional}
+\item 
+\mbox{\Hypertarget{structScenarioDescriptor_ac2cdae06ea26b56b91984908c04e5271}\label{structScenarioDescriptor_ac2cdae06ea26b56b91984908c04e5271}} 
+std\+::map$<$ std\+::string, std\+::string $>$ {\bfseries required}
+\item 
+\mbox{\Hypertarget{structScenarioDescriptor_af5707bb2b782a254061de128ab61be01}\label{structScenarioDescriptor_af5707bb2b782a254061de128ab61be01}} 
+std\+::vector$<$ \mbox{\hyperlink{structParameter}{Parameter}} $>$ {\bfseries parameters}
+\item 
+\mbox{\Hypertarget{structScenarioDescriptor_ae1beead21f8483cb8088cfe6056995b6}\label{structScenarioDescriptor_ae1beead21f8483cb8088cfe6056995b6}} 
+std\+::vector$<$ \mbox{\hyperlink{structMetrics}{Metrics}} $>$ {\bfseries metrics}
+\item 
+\mbox{\Hypertarget{structScenarioDescriptor_a02ed574b3ccf068d280cbb6f7450fe50}\label{structScenarioDescriptor_a02ed574b3ccf068d280cbb6f7450fe50}} 
+std\+::vector$<$ \mbox{\hyperlink{structBuildOptions}{Build\+Options}} $>$ {\bfseries build\+Options}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The descriptor of the scenario structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & -\/ the name of the scenario \\
+\hline
+{\em description} & -\/ the description of the scenario \\
+\hline
+{\em simulator} & -\/ the simulator that the scenario uses \\
+\hline
+{\em simulator\+Version} & -\/ the version of the simulator \\
+\hline
+{\em listener} & -\/ the listener that the scenario uses \\
+\hline
+{\em optional} & -\/ the optional parameters of the scenario \\
+\hline
+{\em required} & -\/ the required parameters of the scenario \\
+\hline
+{\em parameters} & -\/ the parameters of the scenario \\
+\hline
+{\em metrics} & -\/ the metrics of the scenario \\
+\hline
+{\em build\+Options} & -\/ the build options of the scenario\\
+\hline
+\end{DoxyParams}
+This structure is used to hold the information about the scenario that is read from the simulation configuration file. The
+\begin{DoxyParams}{Parameters}
+{\em simulator} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/\+Mikkel/\+Documents/\+Git\+Hub/\+DTBD/src/\+Include/core.\+Types.\+hpp\end{DoxyCompactItemize}

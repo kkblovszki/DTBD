@@ -6,28 +6,41 @@
 #include <functional>
 
 /**
- * @brief This class is an mockup interface for a simulator.
- * @class SimulatorMockUpInterface
- * @version 1.0
- * @details The SimulatorMockUpInterface is an interface for the simulator. It contains all the functions that a simulator should implement.
- * The class is an abstract class, which means that it cannot be instantiated. It is used to create a common interface for the simulators.
- * The class contains a map of strings to functions, which can be used to implement a DSL language. 
- * 
- * @class SimulatorMockUpInterface contains the following functions:
- *
- * @fn SimulatorMockUpInterface::SimulatorMockUpInterface()
- * @fn SimulatorMockUpInterface::~SimulatorMockUpInterface()
- * @fn SimulatorMockUpInterface::GetSimulatorInfo()
- * @fn SimulatorMockUpInterface::SetLibraryHandle(void* libraryHandle)
- * @fn SimulatorMockUpInterface::SetListener(std::unique_ptr<Listener> newListener)
- * @fn SimulatorMockUpInterface::LoadConfiguration(std::string simulatorVersion)
- * @fn SimulatorMockUpInterface::AddBuildOptions(std::vector<BuildOptions> buildOptions)
- * @fn SimulatorMockupInterface::WriteToConfiguration(std::string configFileName)
- * @fn SimulatorMockUpInterface::LoadParameters(std::vector<Parameter> parameter)
- * @fn SimulatorMockUpInterface::LoadMetrics(std::vector<Metrics> metrics)
- * @fn SimulatorMockUpInterface::RunSimulation()
- * 
- * For instantiation of SMI's based on @class SimulatorMockupInterface @see SimulatorCreator.hpp
+    @page   Simulator-Mockup-Interface Simulator Mockup Interface
+
+    @brief This class is an mockup interface for a simulator. It contains all the functions that a simulator should implement.
+
+    @section  what-is-the-smi  What is the SMI?
+
+    The term Simulator mock-up interface is coined by the authors of this framework and is defined as follows:
+    in the context of this thesis, we will introduce a new term Simulator Mock-up Interface .
+    The Simulator Mock-up Interface in software design represents a standardised blueprint that
+    facilitates the connection of different simulators to a common interface. This term defines a
+    unified protocol, dictating the methods and properties that a class must implement to operate
+    a simulator within a consistent environment. Its purpose is to enable systematic interaction
+    with one or multiple simulators through standardised method of connection, hence promoting
+    interoperability and simplifying the integration process, of new and old simulators. It can be
+    used in connection with a simulator name to describe the actual SMI implementation for said
+    simulator. Examples of this would be OpenSIM SMI, NS-3 SMI and Alchemist SMI.
+    
+    @details The SimulatorMockUpInterface is an interface for the simulator. It contains all the functions that a simulator should implement.
+    The class is an abstract class, which means that it cannot be instantiated. It is used to create a common interface for the simulators.
+    The class contains a map of strings to functions, which can be used to implement a DSL language. 
+
+    SimulatorMockUpInterface have the following functions:
+    @li SimulatorMockUpInterface::SimulatorMockUpInterface()
+    @li SimulatorMockUpInterface::~SimulatorMockUpInterface()
+    @li SimulatorMockUpInterface::GetSimulatorInfo()
+    @li SimulatorMockUpInterface::SetLibraryHandle(void* libraryHandle)
+    @li SimulatorMockUpInterface::SetListener(std::unique_ptr<Listener> newListener)
+    @li SimulatorMockUpInterface::LoadConfiguration(std::string simulatorVersion)
+    @li SimulatorMockUpInterface::AddBuildOptions(std::vector<BuildOptions> buildOptions)
+    @li SimulatorMockupInterface::WriteToConfiguration(std::string configFileName)
+    @li SimulatorMockUpInterface::LoadParameters(std::vector<Parameter> parameter)
+    @li SimulatorMockUpInterface::LoadMetrics(std::vector<Metrics> metrics)
+    @li SimulatorMockUpInterface::RunSimulation()
+
+    For instantiation of SMI's based on @ref Simulator-Mockup-Interface @see SimulatorCreator
  */
 class SimulatorMockUpInterface
 {

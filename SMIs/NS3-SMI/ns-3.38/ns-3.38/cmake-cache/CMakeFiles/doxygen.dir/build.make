@@ -67,7 +67,7 @@ include CMakeFiles/doxygen.dir/compiler_depend.make
 include CMakeFiles/doxygen.dir/progress.make
 
 CMakeFiles/doxygen:
-	echo The following Doxygen dependencies are missing: dot dia. Reconfigure the project after installing them.
+	echo The following Doxygen dependencies are missing: dia. Reconfigure the project after installing them.
 
 doxygen: CMakeFiles/doxygen
 doxygen: CMakeFiles/doxygen.dir/build.make

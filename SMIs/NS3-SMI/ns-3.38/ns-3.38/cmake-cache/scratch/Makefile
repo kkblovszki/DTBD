@@ -177,6 +177,34 @@ scratch_Tutorial_NS3_script/fast:
 .PHONY : scratch_Tutorial_NS3_script/fast
 
 # Convenience name for target.
+scratch/CMakeFiles/scratch_p2p_2_node_network_sim.dir/rule:
+	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 scratch/CMakeFiles/scratch_p2p_2_node_network_sim.dir/rule
+.PHONY : scratch/CMakeFiles/scratch_p2p_2_node_network_sim.dir/rule
+
+# Convenience name for target.
+scratch_p2p_2_node_network_sim: scratch/CMakeFiles/scratch_p2p_2_node_network_sim.dir/rule
+.PHONY : scratch_p2p_2_node_network_sim
+
+# fast build rule for target.
+scratch_p2p_2_node_network_sim/fast:
+	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache && $(MAKE) $(MAKESILENT) -f scratch/CMakeFiles/scratch_p2p_2_node_network_sim.dir/build.make scratch/CMakeFiles/scratch_p2p_2_node_network_sim.dir/build
+.PHONY : scratch_p2p_2_node_network_sim/fast
+
+# Convenience name for target.
+scratch/CMakeFiles/scratch_p2p_network_sim.dir/rule:
+	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 scratch/CMakeFiles/scratch_p2p_network_sim.dir/rule
+.PHONY : scratch/CMakeFiles/scratch_p2p_network_sim.dir/rule
+
+# Convenience name for target.
+scratch_p2p_network_sim: scratch/CMakeFiles/scratch_p2p_network_sim.dir/rule
+.PHONY : scratch_p2p_network_sim
+
+# fast build rule for target.
+scratch_p2p_network_sim/fast:
+	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache && $(MAKE) $(MAKESILENT) -f scratch/CMakeFiles/scratch_p2p_network_sim.dir/build.make scratch/CMakeFiles/scratch_p2p_network_sim.dir/build
+.PHONY : scratch_p2p_network_sim/fast
+
+# Convenience name for target.
 scratch/CMakeFiles/scratch_scratch-simulator.dir/rule:
 	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 scratch/CMakeFiles/scratch_scratch-simulator.dir/rule
 .PHONY : scratch/CMakeFiles/scratch_scratch-simulator.dir/rule
@@ -227,6 +255,54 @@ Tutorial_NS3_script.s: Tutorial_NS3_script.cc.s
 Tutorial_NS3_script.cc.s:
 	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache && $(MAKE) $(MAKESILENT) -f scratch/CMakeFiles/scratch_Tutorial_NS3_script.dir/build.make scratch/CMakeFiles/scratch_Tutorial_NS3_script.dir/Tutorial_NS3_script.cc.s
 .PHONY : Tutorial_NS3_script.cc.s
+
+p2p_2_node_network_sim.o: p2p_2_node_network_sim.cc.o
+.PHONY : p2p_2_node_network_sim.o
+
+# target to build an object file
+p2p_2_node_network_sim.cc.o:
+	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache && $(MAKE) $(MAKESILENT) -f scratch/CMakeFiles/scratch_p2p_2_node_network_sim.dir/build.make scratch/CMakeFiles/scratch_p2p_2_node_network_sim.dir/p2p_2_node_network_sim.cc.o
+.PHONY : p2p_2_node_network_sim.cc.o
+
+p2p_2_node_network_sim.i: p2p_2_node_network_sim.cc.i
+.PHONY : p2p_2_node_network_sim.i
+
+# target to preprocess a source file
+p2p_2_node_network_sim.cc.i:
+	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache && $(MAKE) $(MAKESILENT) -f scratch/CMakeFiles/scratch_p2p_2_node_network_sim.dir/build.make scratch/CMakeFiles/scratch_p2p_2_node_network_sim.dir/p2p_2_node_network_sim.cc.i
+.PHONY : p2p_2_node_network_sim.cc.i
+
+p2p_2_node_network_sim.s: p2p_2_node_network_sim.cc.s
+.PHONY : p2p_2_node_network_sim.s
+
+# target to generate assembly for a file
+p2p_2_node_network_sim.cc.s:
+	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache && $(MAKE) $(MAKESILENT) -f scratch/CMakeFiles/scratch_p2p_2_node_network_sim.dir/build.make scratch/CMakeFiles/scratch_p2p_2_node_network_sim.dir/p2p_2_node_network_sim.cc.s
+.PHONY : p2p_2_node_network_sim.cc.s
+
+p2p_network_sim.o: p2p_network_sim.cc.o
+.PHONY : p2p_network_sim.o
+
+# target to build an object file
+p2p_network_sim.cc.o:
+	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache && $(MAKE) $(MAKESILENT) -f scratch/CMakeFiles/scratch_p2p_network_sim.dir/build.make scratch/CMakeFiles/scratch_p2p_network_sim.dir/p2p_network_sim.cc.o
+.PHONY : p2p_network_sim.cc.o
+
+p2p_network_sim.i: p2p_network_sim.cc.i
+.PHONY : p2p_network_sim.i
+
+# target to preprocess a source file
+p2p_network_sim.cc.i:
+	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache && $(MAKE) $(MAKESILENT) -f scratch/CMakeFiles/scratch_p2p_network_sim.dir/build.make scratch/CMakeFiles/scratch_p2p_network_sim.dir/p2p_network_sim.cc.i
+.PHONY : p2p_network_sim.cc.i
+
+p2p_network_sim.s: p2p_network_sim.cc.s
+.PHONY : p2p_network_sim.s
+
+# target to generate assembly for a file
+p2p_network_sim.cc.s:
+	cd /mnt/c/Users/Mikkel/Documents/GitHub/DTBD/SMIs/NS3-SMI/ns-3.38/ns-3.38/cmake-cache && $(MAKE) $(MAKESILENT) -f scratch/CMakeFiles/scratch_p2p_network_sim.dir/build.make scratch/CMakeFiles/scratch_p2p_network_sim.dir/p2p_network_sim.cc.s
+.PHONY : p2p_network_sim.cc.s
 
 scratch-simulator.o: scratch-simulator.cc.o
 .PHONY : scratch-simulator.o
@@ -313,11 +389,19 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... scratch_Tutorial_NS3_script"
+	@echo "... scratch_p2p_2_node_network_sim"
+	@echo "... scratch_p2p_network_sim"
 	@echo "... scratch_scratch-simulator"
 	@echo "... scratch_subdir_scratch-subdir"
 	@echo "... Tutorial_NS3_script.o"
 	@echo "... Tutorial_NS3_script.i"
 	@echo "... Tutorial_NS3_script.s"
+	@echo "... p2p_2_node_network_sim.o"
+	@echo "... p2p_2_node_network_sim.i"
+	@echo "... p2p_2_node_network_sim.s"
+	@echo "... p2p_network_sim.o"
+	@echo "... p2p_network_sim.i"
+	@echo "... p2p_network_sim.s"
 	@echo "... scratch-simulator.o"
 	@echo "... scratch-simulator.i"
 	@echo "... scratch-simulator.s"

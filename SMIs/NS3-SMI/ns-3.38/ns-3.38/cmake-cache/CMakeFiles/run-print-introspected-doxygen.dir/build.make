@@ -67,7 +67,7 @@ include CMakeFiles/run-print-introspected-doxygen.dir/compiler_depend.make
 include CMakeFiles/run-print-introspected-doxygen.dir/progress.make
 
 CMakeFiles/run-print-introspected-doxygen:
-	echo The following Doxygen dependencies are missing: dot dia. Reconfigure the project after installing them.
+	echo The following Doxygen dependencies are missing: dia. Reconfigure the project after installing them.
 
 run-print-introspected-doxygen: CMakeFiles/run-print-introspected-doxygen
 run-print-introspected-doxygen: CMakeFiles/run-print-introspected-doxygen.dir/build.make

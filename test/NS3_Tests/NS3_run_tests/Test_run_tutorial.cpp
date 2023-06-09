@@ -40,8 +40,5 @@ int main(){
     std::cout << "-----------------------------------" << std::endl;
 
     testbed.benchmarks["TutorialBenchmark"]->CreateScenario("TutorialScenario");
-
-    //auto testbed.benchmarks["TutorialBenchmark"]->scenarios["TutorialScenario"]->SimulatorInstance->GetSimulatorInfo();
     testbed.benchmarks["TutorialBenchmark"]->RunScenarioWithParameters("TutorialScenario");
-    //testbed.benchmarks["TutorialBenchmark"]->RunScenario("TutorialScenario");
 }

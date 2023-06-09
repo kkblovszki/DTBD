@@ -3,23 +3,70 @@
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classTestbed_ac34da29ea5742d482c7c4a292fa56851}\label{classTestbed_ac34da29ea5742d482c7c4a292fa56851}} 
-void {\bfseries Create\+Benchmark} (std\+::string benchmark\+Name)
+void \mbox{\hyperlink{classTestbed_ac34da29ea5742d482c7c4a292fa56851}{Create\+Benchmark}} (std\+::string benchmark\+Name)
+\begin{DoxyCompactList}\small\item\em Add new \mbox{\hyperlink{classBenchmark}{Benchmark}} to the \mbox{\hyperlink{classTestbed}{Testbed}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTestbed_a768c20463336666b9824a9eaeb3a023f}{Remove\+Benchmark}} (std\+::string benchmark\+Name)
+\begin{DoxyCompactList}\small\item\em Remove specified benchmark from the \mbox{\hyperlink{classTestbed}{Testbed}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTestbed_a99624379e7add183a1c304da622392e6}\label{classTestbed_a99624379e7add183a1c304da622392e6}} 
+std\+::vector$<$ std\+::string $>$ {\bfseries List\+Benchmarks} (bool verbose=false)
 \item 
-\mbox{\Hypertarget{classTestbed_a768c20463336666b9824a9eaeb3a023f}\label{classTestbed_a768c20463336666b9824a9eaeb3a023f}} 
-void {\bfseries Remove\+Benchmark} (std\+::string benchmark\+Name)
-\item 
-\mbox{\Hypertarget{classTestbed_a1f94f371b1db3f8acb08aba6be5b9f9d}\label{classTestbed_a1f94f371b1db3f8acb08aba6be5b9f9d}} 
-void {\bfseries Load\+Benchmark\+Config} (std\+::string benchmark\+Name, std\+::string config\+Path)
+void \mbox{\hyperlink{classTestbed_a1f94f371b1db3f8acb08aba6be5b9f9d}{Load\+Benchmark\+Config}} (std\+::string benchmark\+Name, std\+::string config\+Path)
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classTestbed_adb0cc0e094ea6cbad61f5dee4aafe8be}\label{classTestbed_adb0cc0e094ea6cbad61f5dee4aafe8be}} 
-std\+::map$<$ std\+::string, Benchmark $>$ {\bfseries benchmarks}
+\mbox{\Hypertarget{classTestbed_a3e9ef28a521d61d9e9a3daae8b611429}\label{classTestbed_a3e9ef28a521d61d9e9a3daae8b611429}} 
+std\+::map$<$ std\+::string, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classBenchmark}{Benchmark}} $>$ $>$ {\bfseries benchmarks}
 \end{DoxyCompactItemize}
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTestbed_ac34da29ea5742d482c7c4a292fa56851}\label{classTestbed_ac34da29ea5742d482c7c4a292fa56851}} 
+\index{Testbed@{Testbed}!CreateBenchmark@{CreateBenchmark}}
+\index{CreateBenchmark@{CreateBenchmark}!Testbed@{Testbed}}
+\doxysubsubsection{\texorpdfstring{CreateBenchmark()}{CreateBenchmark()}}
+{\footnotesize\ttfamily void Testbed\+::\+Create\+Benchmark (\begin{DoxyParamCaption}\item[{std\+::string}]{benchmark\+Name }\end{DoxyParamCaption})}
+
+
+
+Add new \mbox{\hyperlink{classBenchmark}{Benchmark}} to the \mbox{\hyperlink{classTestbed}{Testbed}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em benchmark\+Name} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTestbed_a1f94f371b1db3f8acb08aba6be5b9f9d}\label{classTestbed_a1f94f371b1db3f8acb08aba6be5b9f9d}} 
+\index{Testbed@{Testbed}!LoadBenchmarkConfig@{LoadBenchmarkConfig}}
+\index{LoadBenchmarkConfig@{LoadBenchmarkConfig}!Testbed@{Testbed}}
+\doxysubsubsection{\texorpdfstring{LoadBenchmarkConfig()}{LoadBenchmarkConfig()}}
+{\footnotesize\ttfamily void Testbed\+::\+Load\+Benchmark\+Config (\begin{DoxyParamCaption}\item[{std\+::string}]{benchmark\+Name,  }\item[{std\+::string}]{config\+Path }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em benchmark\+Name} & \\
+\hline
+{\em config\+Path} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTestbed_a768c20463336666b9824a9eaeb3a023f}\label{classTestbed_a768c20463336666b9824a9eaeb3a023f}} 
+\index{Testbed@{Testbed}!RemoveBenchmark@{RemoveBenchmark}}
+\index{RemoveBenchmark@{RemoveBenchmark}!Testbed@{Testbed}}
+\doxysubsubsection{\texorpdfstring{RemoveBenchmark()}{RemoveBenchmark()}}
+{\footnotesize\ttfamily void Testbed\+::\+Remove\+Benchmark (\begin{DoxyParamCaption}\item[{std\+::string}]{benchmark\+Name }\end{DoxyParamCaption})}
+
+
+
+Remove specified benchmark from the \mbox{\hyperlink{classTestbed}{Testbed}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em benchmark\+Name} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
+/mnt/c/\+Users/\+Mikkel/\+Documents/\+Git\+Hub/\+DTBD/src/\+Include/core.\+Testbed.\+hpp\item 
 /mnt/c/\+Users/\+Mikkel/\+Documents/\+Git\+Hub/\+DTBD/src/core.\+Testbed.\+cpp\end{DoxyCompactItemize}

@@ -12,22 +12,22 @@ int main(){
 
     fs::path SourcePath = loc.file_name();
 
-    fs::path configFile = SourcePath.parent_path() / "Initial_basic_test.yaml";
+    fs::path configFile = SourcePath.parent_path() / "exec_order_config.yaml";
     
     std::cout << "SourcePath: " << SourcePath << std::endl;
     std::cout << "configFile: " << configFile << std::endl;
 
-    testbed.CreateBenchmark("TutorialBenchmark");
+    testbed.CreateBenchmark("P2P_Benchmark");
 
-    testbed.LoadBenchmarkConfig("TutorialBenchmark", configFile.string());
+    testbed.LoadBenchmarkConfig("P2P_Benchmark", configFile.string());
 
     std::cout << "----------- Benchmarks -----------" << std::endl;
     std::vector<std::string> benchmarks = testbed.ListBenchmarks(true);
 
     std::cout << "-----------------------------------" << std::endl;
 
-    testbed.benchmarks["TutorialBenchmark"]->CreateScenario("TutorialScenario1");
-    testbed.benchmarks["TutorialBenchmark"]->CreateScenario("TutorialScenario2");
+    testbed.benchmarks["P2P_Benchmark"]->CreateScenario("p2p-2-node-network");
+    testbed.benchmarks["P2P_Benchmark"]->CreateScenario("p2p-scalable-network");
 
-    testbed.benchmarks["TutorialBenchmark"]->RunScenariosUsingStrategy();
+    testbed.benchmarks["P2P_Benchmark"]->RunScenariosUsingStrategy();
 }

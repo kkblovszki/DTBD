@@ -1,0 +1,86 @@
+\hypertarget{classParser}{}\doxysection{Parser Class Reference}
+\label{classParser}\index{Parser@{Parser}}
+
+
+Implements parser functions for the YAML configuration files \mbox{\hyperlink{classParser_af734dbfe88530641ae650f5ae0be0b88}{parse\+Scenario}}, \mbox{\hyperlink{classParser_a70dd387bb9f514e4a4b52da82123639e}{parse\+Benchmark}} @parse\+Simulation\+Strategy.  
+
+
+
+
+{\ttfamily \#include $<$Parser.\+hpp$>$}
+
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classParser_a70dd387bb9f514e4a4b52da82123639e}{parse\+Benchmark}} (YAML\+::\+Node \&benchmark\+Node, std\+::map$<$ std\+::string, \mbox{\hyperlink{structScenarioDescriptor}{Scenario\+Descriptor}} $>$ \&\mbox{\hyperlink{structScenarioDescriptor}{Scenario\+Descriptor}}, \mbox{\hyperlink{structSimulationStrategy}{Simulation\+Strategy}} \&simulation\+Strategy)
+\begin{DoxyCompactList}\small\item\em This function takes an entire benchmarks and parses it into cpp objects, to standardise the data through the framework. This is done to ensure simple rules in the YAML configuration file is followed. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classParser_aac670709ec49bec2de372903fd6a62ba}{parse\+Simulation\+Strategy}} (const YAML\+::\+Node \&simulation\+Strategy\+Node, \mbox{\hyperlink{structSimulationStrategy}{Simulation\+Strategy}} \&simulation\+Strategy)
+\item 
+static void \mbox{\hyperlink{classParser_af734dbfe88530641ae650f5ae0be0b88}{parse\+Scenario}} (const YAML\+::\+Node \&scenario\+Node, \mbox{\hyperlink{structScenarioDescriptor}{Scenario\+Descriptor}} \&scenario)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implements parser functions for the YAML configuration files \mbox{\hyperlink{classParser_af734dbfe88530641ae650f5ae0be0b88}{parse\+Scenario}}, \mbox{\hyperlink{classParser_a70dd387bb9f514e4a4b52da82123639e}{parse\+Benchmark}} @parse\+Simulation\+Strategy. 
+
+Must follow the Main Rules of the YAML configuration file (which is so far)\+:
+\begin{DoxyEnumerate}
+\item If no benchmark exists no Simulator can be determined thus no scenario can be created.
+\item A single benchmark must consist of atleast 1 simulator with 1 scenario connected.
+\item The scenario must have atleast a name defined 
+\end{DoxyEnumerate}
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classParser_a70dd387bb9f514e4a4b52da82123639e}\label{classParser_a70dd387bb9f514e4a4b52da82123639e}} 
+\index{Parser@{Parser}!parseBenchmark@{parseBenchmark}}
+\index{parseBenchmark@{parseBenchmark}!Parser@{Parser}}
+\doxysubsubsection{\texorpdfstring{parseBenchmark()}{parseBenchmark()}}
+{\footnotesize\ttfamily void Parser\+::parse\+Benchmark (\begin{DoxyParamCaption}\item[{YAML\+::\+Node \&}]{benchmark\+Node,  }\item[{std\+::map$<$ std\+::string, \mbox{\hyperlink{structScenarioDescriptor}{Scenario\+Descriptor}} $>$ \&}]{Scenario\+Descriptors,  }\item[{\mbox{\hyperlink{structSimulationStrategy}{Simulation\+Strategy}} \&}]{simulation\+Strategy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+This function takes an entire benchmarks and parses it into cpp objects, to standardise the data through the framework. This is done to ensure simple rules in the YAML configuration file is followed. 
+
+If we find the simulation strategy we parse it into a \mbox{\hyperlink{structSimulationStrategy}{Simulation\+Strategy}} object. If we find the simulator we parse each scenario in this simulator node into a Scenario\+Type object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em benchmark\+Node} & \\
+\hline
+{\em Scenario\+Descriptors} & \\
+\hline
+{\em simulation\+Strategy} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classParser_af734dbfe88530641ae650f5ae0be0b88}\label{classParser_af734dbfe88530641ae650f5ae0be0b88}} 
+\index{Parser@{Parser}!parseScenario@{parseScenario}}
+\index{parseScenario@{parseScenario}!Parser@{Parser}}
+\doxysubsubsection{\texorpdfstring{parseScenario()}{parseScenario()}}
+{\footnotesize\ttfamily void Parser\+::parse\+Scenario (\begin{DoxyParamCaption}\item[{const YAML\+::\+Node \&}]{scenario\+Node,  }\item[{\mbox{\hyperlink{structScenarioDescriptor}{Scenario\+Descriptor}} \&}]{scenario }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em scenario\+Node} & \\
+\hline
+{\em scenario} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classParser_aac670709ec49bec2de372903fd6a62ba}\label{classParser_aac670709ec49bec2de372903fd6a62ba}} 
+\index{Parser@{Parser}!parseSimulationStrategy@{parseSimulationStrategy}}
+\index{parseSimulationStrategy@{parseSimulationStrategy}!Parser@{Parser}}
+\doxysubsubsection{\texorpdfstring{parseSimulationStrategy()}{parseSimulationStrategy()}}
+{\footnotesize\ttfamily void Parser\+::parse\+Simulation\+Strategy (\begin{DoxyParamCaption}\item[{const YAML\+::\+Node \&}]{simulation\+Strategy\+Node,  }\item[{\mbox{\hyperlink{structSimulationStrategy}{Simulation\+Strategy}} \&}]{simulation\+Strategy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em simulation\+Strategy\+Node} & \\
+\hline
+{\em simulation\+Strategy} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/\+Mikkel/\+Documents/\+Git\+Hub/\+DTBD/src/\+Include/Parser.\+hpp\item 
+/mnt/c/\+Users/\+Mikkel/\+Documents/\+Git\+Hub/\+DTBD/src/Parser.\+cpp\end{DoxyCompactItemize}

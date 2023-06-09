@@ -8,16 +8,16 @@
 #include "AbstractListener.hpp"
 
 /**
- * \page ScenarioPage Scenario
- *
- * This is the Scenario page. It documents the Scenario class.
- */
-
-/**
- * \brief Scenario documentation.
+ * @page ScenarioPage Scenario
+ * 
+ * @section ScenarioOverview Scenario
+ * 
+ * The Scenario class is responsible for creating the simulator and listener instances.
+ * 
+ * @brief Scenario documentation.
  *
  * This is the Scenario class. It does some things and has some properties.
- * For more information, see \ref Scenario.
+ * For more information, see @ref{Scenario}.
  */
 class Scenario{
 public:

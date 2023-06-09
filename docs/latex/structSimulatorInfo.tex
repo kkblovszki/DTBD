@@ -1,0 +1,69 @@
+\hypertarget{structSimulatorInfo}{}\doxysection{Simulator\+Info Struct Reference}
+\label{structSimulatorInfo}\index{SimulatorInfo@{SimulatorInfo}}
+
+
+\mbox{\hyperlink{structSimulatorInfo}{Simulator\+Info}} structure that holds the information about a simulator.  
+
+
+
+
+{\ttfamily \#include $<$core.\+Types.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structSimulatorInfo_aab3e7c8284fe8acb6f0dff3ee09887dc}\label{structSimulatorInfo_aab3e7c8284fe8acb6f0dff3ee09887dc}} 
+{\bfseries Simulator\+Info} (const std\+::string \&simulator\+Name=\char`\"{}\char`\"{}, const std\+::string \&simulator\+Version=\char`\"{}\char`\"{}, const std\+::string \&native\+Output\+Type=\char`\"{}\char`\"{}, const std\+::vector$<$ std\+::string $>$ \&functions=\{\}, const std\+::vector$<$ std\+::string $>$ \&parameters=\{\}, const std\+::vector$<$ std\+::string $>$ \&metrics=\{\}, const std\+::vector$<$ std\+::string $>$ \&build\+Options=\{\})
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structSimulatorInfo_a2167c9c6bc8ff5d07221e008b495edfc}\label{structSimulatorInfo_a2167c9c6bc8ff5d07221e008b495edfc}} 
+std\+::string {\bfseries simulator\+Name}
+\item 
+\mbox{\Hypertarget{structSimulatorInfo_abfcfc7718ebff257be81048599832a11}\label{structSimulatorInfo_abfcfc7718ebff257be81048599832a11}} 
+std\+::string {\bfseries simulator\+Version}
+\item 
+\mbox{\Hypertarget{structSimulatorInfo_a99d967b840b9052a1d3ccaba5a4975b5}\label{structSimulatorInfo_a99d967b840b9052a1d3ccaba5a4975b5}} 
+std\+::string {\bfseries native\+Output\+Type}
+\item 
+\mbox{\Hypertarget{structSimulatorInfo_a3a01bacd8187b50433793beeadb29720}\label{structSimulatorInfo_a3a01bacd8187b50433793beeadb29720}} 
+std\+::vector$<$ std\+::string $>$ {\bfseries functions}
+\item 
+\mbox{\Hypertarget{structSimulatorInfo_a8e7094f1c8f1975104c16f1f90c83330}\label{structSimulatorInfo_a8e7094f1c8f1975104c16f1f90c83330}} 
+std\+::vector$<$ std\+::string $>$ {\bfseries supported\+Parameters}
+\item 
+\mbox{\Hypertarget{structSimulatorInfo_aeef69a96ea6a483c4dabf99a1707d432}\label{structSimulatorInfo_aeef69a96ea6a483c4dabf99a1707d432}} 
+std\+::vector$<$ std\+::string $>$ {\bfseries supported\+Metrics}
+\item 
+\mbox{\Hypertarget{structSimulatorInfo_a8e29e6c6b4397ab2257ec1c1208d523f}\label{structSimulatorInfo_a8e29e6c6b4397ab2257ec1c1208d523f}} 
+std\+::vector$<$ std\+::string $>$ {\bfseries supported\+Build\+Options}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{structSimulatorInfo}{Simulator\+Info}} structure that holds the information about a simulator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em simulator\+Name} & -\/ the name of the simulator \\
+\hline
+{\em simulator\+Version} & -\/ the version of the simulator \\
+\hline
+{\em native\+Output\+Type} & -\/ the native output type of the simulator ~\newline
+ \\
+\hline
+{\em functions} & -\/ the functions that the simulator supports \\
+\hline
+{\em parameters} & -\/ the parameters that the simulator supports \\
+\hline
+{\em metrics} & -\/ the metrics that the simulator supports \\
+\hline
+{\em build\+Options} & -\/ the build options that the simulator supports\\
+\hline
+\end{DoxyParams}
+This structure is used to hold the information about the simulator that is read from the simulation configuration file. The entirety of this structure isn\textquotesingle{}t optional, this is since the framework needs to know what simulator it is working with, what version it is and what it supports. Therefore a new simulator must be defined with a simulation configuration file. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/\+Mikkel/\+Documents/\+Git\+Hub/\+DTBD/src/\+Include/core.\+Types.\+hpp\end{DoxyCompactItemize}

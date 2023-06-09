@@ -1,0 +1,53 @@
+\hypertarget{classSimulatorCreator}{}\doxysection{Simulator\+Creator Class Reference}
+\label{classSimulatorCreator}\index{SimulatorCreator@{SimulatorCreator}}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classSimulatorMockUpInterface}{Simulator\+Mock\+Up\+Interface}} $>$ \mbox{\hyperlink{classSimulatorCreator_a9b003abbe6be374ef2b7fac6b1e3f821}{Create\+Simulator}} (const std\+::string \&simulator\+Name)
+\begin{DoxyCompactList}\small\item\em function that creates a simulator object based on the name of the simulator \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSimulatorCreator_ac2c4a73b9e6f1dad0373ff3484e69d0e}\label{classSimulatorCreator_ac2c4a73b9e6f1dad0373ff3484e69d0e}} 
+enum class {\bfseries Simulator\+Type} \{ {\bfseries EVOCRAFT}
+, {\bfseries ALCHEMIST}
+, {\bfseries NS3}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSimulatorCreator_a9b003abbe6be374ef2b7fac6b1e3f821}\label{classSimulatorCreator_a9b003abbe6be374ef2b7fac6b1e3f821}} 
+\index{SimulatorCreator@{SimulatorCreator}!CreateSimulator@{CreateSimulator}}
+\index{CreateSimulator@{CreateSimulator}!SimulatorCreator@{SimulatorCreator}}
+\doxysubsubsection{\texorpdfstring{CreateSimulator()}{CreateSimulator()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classSimulatorMockUpInterface}{Simulator\+Mock\+Up\+Interface}} $>$ Simulator\+Creator\+::\+Create\+Simulator (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{simulator\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+function that creates a simulator object based on the name of the simulator 
+
+
+\begin{DoxyParams}{Parameters}
+{\em simulator\+Name} & The name of the simulator \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a unique pointer to the simulator object 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em invalid\+\_\+argument} & if the simulator\+Name is not supported\\
+\hline
+\end{DoxyExceptions}
+This function creates a simulator object based on the name of the simulator. It uses the dlopen function to load the shared library of the simulator and then uses the dlsym function to get the address of the constructor function of the simulator. Then it calls the constructor function to create an instance of the simulator and returns a unique pointer to the simulator object. By using a individual shared library for each simulator, the simulator can be easily replaced by another simulator without having to recompile the whole project, while ensuring that each simulator instance have its own library handle. \begin{DoxyNote}{Note}
+-\/ Fun fact\+: the simulator object is created in the shared library, but the library handle is in the main program
+
+Fun fact\+: using the std\+::move function on a shared\+\_\+ptr, is much faster than copying the shared\+\_\+ptr. Since we basically steal the atomic reference counter from the shared\+\_\+ptr and give it to another smart pointer. (yoink) This is because \char`\"{}stealing\char`\"{} the reference count isn\textquotesingle{}t atomic.
+\end{DoxyNote}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/\+Mikkel/\+Documents/\+Git\+Hub/\+DTBD/src/\+Include/Simulator\+Creator.\+hpp\item 
+/mnt/c/\+Users/\+Mikkel/\+Documents/\+Git\+Hub/\+DTBD/src/Simulator\+Creator.\+cpp\end{DoxyCompactItemize}

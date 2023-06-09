@@ -12,7 +12,18 @@
 
 //#include <pty.h> for forkpty but not implemented to use it yet.
 
-
+/**
+ * @brief NS3_mockup_interface is a class that implements the SimulatorMockUpInterface.
+ * 
+ * @page NS3_mockup_interfacePage NS3_mockup_interface
+ * 
+ * @section NS3_mockup_interface
+ * 
+ * This class is used to create a NS3 simulator instance, and to run a simulation with it.
+ * 
+ * @details This class is used to create a NS3 simulator instance, and to run a simulation with it.
+ * 
+ */
 class NS3_mockup_interface : SimulatorMockUpInterface {    
 private:
     const std::string SMIPath = SMI_PATH; //contains the path to the SMI folder.
